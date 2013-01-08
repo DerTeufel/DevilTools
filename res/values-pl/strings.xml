@@ -50,9 +50,9 @@
     <string name="label_restore_on_boot">Ustaw przy starcie</string>
     <string name="summaryOn_restore_on_boot">Ustawienia zostaną zachowane przy ponownym uruchomieniu systemu</string>
     <string name="summaryOff_restore_on_boot">Zresetuj do ustawień domyślnych przy starcie</string>
-    <string name="label_nstools_service">Usługi NSTools</string>	
-    <string name="summaryOn_nstools_service">Włącz usługę BLN dla nieodebranych połączeń</string>	
-    <string name="summaryOff_nstools_service">Wyłącz usługę BLN dla nieodebranych połączeń</string>
+    <string name="label_deviltools_service">Usługi DevilTools</string>	
+    <string name="summaryOn_deviltools_service">Włącz usługę BLN dla nieodebranych połączeń</string>	
+    <string name="summaryOff_deviltools_service">Wyłącz usługę BLN dla nieodebranych połączeń</string>
     <string name="label_load_settings">Wczytaj</string>
     <string name="summary_load_settings">Wczytaj ustawienia z pliku</string>
     <string name="label_save_settings">Zapisz</string>
@@ -62,8 +62,8 @@
     <string name="label_delete_settings">Usuń</string>
     <string name="summary_delete_settings">Usuń zapisany plik</string>
     <string name="label_about">O programie</string>
-    <string name="about_text">NSTools na XDA</string>
-    <string name="about_desc">Odwiedź wątek NSTools na XDA</string>
+    <string name="about_text">DevilTools na XDA</string>
+    <string name="about_desc">Odwiedź wątek DevilTools na XDA</string>
 
     <!-- CPU Activity -->
     <string name="label_cpu_tweak">CPU</string>

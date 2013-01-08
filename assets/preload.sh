@@ -1,7 +1,7 @@
 #!/system/bin/sh
 
 # outputfile to save result
-OUT_FILE="/data/data/mobi.cyann.nstools/preload.prop"
+OUT_FILE="/data/data/mobi.cyann.deviltools/preload.prop"
 
 # prepare the file
 echo "" > $OUT_FILE

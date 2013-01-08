@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:custom="http://schemas.android.com/apk/res/mobi.cyann.nstools" android:key="root" >
+    xmlns:custom="http://schemas.android.com/apk/res/mobi.cyann.deviltools" android:key="root" >
 
-    <mobi.cyann.nstools.preference.RemovablePreferenceCategory android:title="@string/fast_charge_tweak" >
-        <mobi.cyann.nstools.preference.StatusPreference
+    <mobi.cyann.deviltools.preference.RemovablePreferenceCategory android:title="@string/fast_charge_tweak" >
+        <mobi.cyann.deviltools.preference.StatusPreference
             custom:interfacePath="/sys/kernel/fast_charge/force_fast_charge"
             android:key="@string/key_fast_charge_forced"
             android:summary="@string/status_not_available"
             android:title="@string/label_status" />
-	</mobi.cyann.nstools.preference.RemovablePreferenceCategory>
+	</mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
 
-    <mobi.cyann.nstools.preference.RemovablePreferenceCategory android:title="@string/bld_tweak" >
-        <mobi.cyann.nstools.preference.StatusPreference
+    <mobi.cyann.deviltools.preference.RemovablePreferenceCategory android:title="@string/bld_tweak" >
+        <mobi.cyann.deviltools.preference.StatusPreference
             custom:interfacePath="/sys/class/misc/backlightdimmer/enabled"
             android:key="@string/key_bld_status"
             android:summary="@string/status_not_available"
             android:title="@string/label_status" />
 
-        <mobi.cyann.nstools.preference.IntegerPreference
+        <mobi.cyann.deviltools.preference.IntegerPreference
             android:dependency="@string/key_bld_status"
             custom:interfacePath="/sys/class/misc/backlightdimmer/delay"
             android:key="@string/key_bld_delay"
@@ -27,14 +27,14 @@
             custom:step="500"
             android:summary="0"
             android:title="@string/label_delay" />
-    </mobi.cyann.nstools.preference.RemovablePreferenceCategory>
-    <mobi.cyann.nstools.preference.RemovablePreferenceCategory android:title="@string/bln_tweak" >
-        <mobi.cyann.nstools.preference.StatusPreference
+    </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
+    <mobi.cyann.deviltools.preference.RemovablePreferenceCategory android:title="@string/bln_tweak" >
+        <mobi.cyann.deviltools.preference.StatusPreference
             custom:interfacePath="/sys/class/misc/backlightnotification/enabled"
             android:key="@string/key_bln_status"
             android:summary="@string/status_not_available"
             android:title="@string/label_status" />
-        <mobi.cyann.nstools.preference.normal.IntegerPreference
+        <mobi.cyann.deviltools.preference.normal.IntegerPreference
             android:dependency="@string/key_bln_status"
             android:key="@string/key_bln_timeout"
             custom:maxValue="1800"
@@ -43,12 +43,12 @@
             custom:step="30"
             android:summary="0"
             android:title="@string/label_bln_timeout" />
-        <mobi.cyann.nstools.preference.StatusPreference
+        <mobi.cyann.deviltools.preference.StatusPreference
             custom:interfacePath="/sys/class/misc/backlightnotification/in_kernel_blink"
             android:key="@string/key_bln_blink"
             android:summary="@string/status_not_available"
             android:title="@string/label_bln_blink" />
-        <mobi.cyann.nstools.preference.IntegerPreference
+        <mobi.cyann.deviltools.preference.IntegerPreference
             android:dependency="@string/key_bln_blink"
             custom:interfacePath="/sys/class/misc/backlightnotification/blink_interval"
             android:key="@string/key_bln_blink_interval"
@@ -58,7 +58,7 @@
             custom:step="50"
             android:summary="0"
             android:title="@string/label_bln_blink_interval" />
-        <mobi.cyann.nstools.preference.IntegerPreference
+        <mobi.cyann.deviltools.preference.IntegerPreference
             android:dependency="@string/key_bln_blink"
             custom:interfacePath="/sys/class/misc/backlightnotification/max_blink_count"
             android:key="@string/key_bln_blink_count"
@@ -68,9 +68,9 @@
             custom:step="10"
             android:summary="0"
             android:title="@string/label_bln_blink_count" />
-    </mobi.cyann.nstools.preference.RemovablePreferenceCategory>
-    <mobi.cyann.nstools.preference.RemovablePreferenceCategory android:title="@string/blx_tweak" >
-        <mobi.cyann.nstools.preference.IntegerPreference
+    </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
+    <mobi.cyann.deviltools.preference.RemovablePreferenceCategory android:title="@string/blx_tweak" >
+        <mobi.cyann.deviltools.preference.IntegerPreference
             custom:interfacePath="/sys/class/misc/batterylifeextender/charging_limit"
             android:key="@string/key_blx_charging_limit"
             custom:maxValue="100"
@@ -79,15 +79,15 @@
             custom:step="1"
             android:summary="0"
             android:title="@string/label_charging_limit" />
-    </mobi.cyann.nstools.preference.RemovablePreferenceCategory>
-    <mobi.cyann.nstools.preference.RemovablePreferenceCategory android:title="@string/touchwake_tweak" >
-        <mobi.cyann.nstools.preference.StatusPreference
+    </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
+    <mobi.cyann.deviltools.preference.RemovablePreferenceCategory android:title="@string/touchwake_tweak" >
+        <mobi.cyann.deviltools.preference.StatusPreference
             custom:interfacePath="/sys/class/misc/touchwake/enabled"
             android:key="@string/key_touchwake_status"
             android:summary="@string/status_not_available"
             android:title="@string/label_status" />
 
-        <mobi.cyann.nstools.preference.IntegerPreference
+        <mobi.cyann.deviltools.preference.IntegerPreference
             android:dependency="@string/key_touchwake_status"
             custom:interfacePath="/sys/class/misc/touchwake/delay"
             android:key="@string/key_touchwake_delay"
@@ -97,9 +97,9 @@
             custom:step="1000"
             android:summary="0"
             android:title="@string/label_delay" />
-    </mobi.cyann.nstools.preference.RemovablePreferenceCategory>
-    <mobi.cyann.nstools.preference.RemovablePreferenceCategory android:title="@string/cmled_tweak" >
-        <mobi.cyann.nstools.preference.IntegerPreference
+    </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
+    <mobi.cyann.deviltools.preference.RemovablePreferenceCategory android:title="@string/cmled_tweak" >
+        <mobi.cyann.deviltools.preference.IntegerPreference
             custom:interfacePath="/sys/class/misc/notification/bl_timeout"
             android:key="@string/key_cmled_bltimeout"
             custom:maxValue="1800"
@@ -109,13 +109,13 @@
             android:summary="0"
             android:title="@string/label_cmled_bltimeout" />
 
-        <mobi.cyann.nstools.preference.StatusPreference
+        <mobi.cyann.deviltools.preference.StatusPreference
             custom:interfacePath="/sys/class/misc/notification/blink"
             android:key="@string/key_cmled_blink"
             android:summary="@string/status_not_available"
             android:title="@string/label_cmled_blink" />
 
-        <mobi.cyann.nstools.preference.IntegerPreference
+        <mobi.cyann.deviltools.preference.IntegerPreference
             android:dependency="@string/key_cmled_blink"
             custom:interfacePath="/sys/class/misc/notification/blinktimeout"
             android:key="@string/key_cmled_blinktimeout"
@@ -125,14 +125,14 @@
             custom:step="1"
             android:summary="0"
             android:title="@string/label_cmled_blinktimeout" />
-    </mobi.cyann.nstools.preference.RemovablePreferenceCategory>
-    <mobi.cyann.nstools.preference.RemovablePreferenceCategory android:title="@string/iosched_tweak" >
-        <mobi.cyann.nstools.preference.IoSchedPreference
+    </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
+    <mobi.cyann.deviltools.preference.RemovablePreferenceCategory android:title="@string/iosched_tweak" >
+        <mobi.cyann.deviltools.preference.IoSchedPreference
             custom:interfacePath="/sys/block/mmcblk0/queue/scheduler"
             android:key="@string/key_iosched"
             android:summary="@string/status_not_available"
             android:title="@string/label_iosched"
             custom:writeToInterface="@array/iosched_interfaces" />
-    </mobi.cyann.nstools.preference.RemovablePreferenceCategory>
+    </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
 
 </PreferenceScreen>

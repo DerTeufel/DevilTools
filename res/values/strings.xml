@@ -55,9 +55,9 @@
     <string name="label_restore_on_initd">Use init.d script</string>
     <string name="summaryOn_restore_on_initd">Set through init.d script</string>
     <string name="summaryOff_restore_on_initd">Set through android boot complete event</string>
-    <string name="label_nstools_service">NSTools service</string>
-    <string name="summaryOn_nstools_service">Enable service for BLN missed call and timeout</string>
-    <string name="summaryOff_nstools_service">Disable service for BLN missed call and timeout</string>
+    <string name="label_deviltools_service">DevilTools service</string>
+    <string name="summaryOn_deviltools_service">Enable service for BLN missed call and timeout</string>
+    <string name="summaryOff_deviltools_service">Disable service for BLN missed call and timeout</string>
     <string name="label_load_settings">Load</string>
     <string name="summary_load_settings">Load settings from saved file</string>
     <string name="label_save_settings">Save</string>
@@ -67,8 +67,8 @@
     <string name="label_delete_settings">Delete</string>
     <string name="summary_delete_settings">Delete saved file</string>
     <string name="label_about">About</string>
-    <string name="about_text">NSTools on XDA</string>
-    <string name="about_desc">Visit NSTools thread on XDA</string>
+    <string name="about_text">DevilTools on XDA</string>
+    <string name="about_desc">Visit DevilTools thread on XDA</string>
 
     <!-- CPU Activity -->
     <string name="label_cpu_tweak">CPU</string>

@@ -51,9 +51,9 @@
     <string name="label_restore_on_boot">Aplicar ao iniciar</string>
     <string name="summaryOn_restore_on_boot">As configurações serão mantidas mesmo depois de reiniciar</string>
     <string name="summaryOff_restore_on_boot">Aplicar as configurações padrão ao iniciar</string>
-    <string name="label_nstools_service">Serviço NSTools</string>
-    <string name="summaryOn_nstools_service">Ativar o serviço para notificá-lo de chamadas não atendidas e definir um tempo limite</string>
-    <string name="summaryOff_nstools_service">Desativar o serviço para notificá-lo de chamadas não atendidas e definir um tempo limite</string>
+    <string name="label_deviltools_service">Serviço DevilTools</string>
+    <string name="summaryOn_deviltools_service">Ativar o serviço para notificá-lo de chamadas não atendidas e definir um tempo limite</string>
+    <string name="summaryOff_deviltools_service">Desativar o serviço para notificá-lo de chamadas não atendidas e definir um tempo limite</string>
     <string name="label_load_settings">Carregar</string>
     <string name="summary_load_settings">Carregar configurações a partir de um ficheiro salvo</string>
     <string name="label_save_settings">Salvar</string>
@@ -63,8 +63,8 @@
     <string name="label_delete_settings">Apagar</string>
     <string name="summary_delete_settings">Apagar o ficheiro salvo</string>
     <string name="label_about">Salvo</string>
-    <string name="about_text">NSTools no XDA</string>
-    <string name="about_desc">Visitar o post do NSTools no XDA</string>
+    <string name="about_text">DevilTools no XDA</string>
+    <string name="about_desc">Visitar o post do DevilTools no XDA</string>
 
     <!-- CPU Activity -->
     <string name="label_cpu_tweak">CPU</string>

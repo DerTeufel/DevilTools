@@ -46,8 +46,8 @@
     <string name="summaryOn_restore_on_boot">Diese Einstellungen nach einem Neustart verwenden</string>
     <string name="summaryOff_restore_on_boot">Diese Einstellungen nicht nach einem Neustart verwenden</string>
     <string name="label_about">Über</string>
-    <string name="about_text">NSTools bei XDA</string>
-    <string name="about_desc">Besuche den NSTools Forum-Thread bei XDA</string>
+    <string name="about_text">DevilTools bei XDA</string>
+    <string name="about_desc">Besuche den DevilTools Forum-Thread bei XDA</string>
 
     <!-- CPU Activity -->
     <string name="label_cpu_tweak">CPU</string>

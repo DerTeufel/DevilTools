@@ -7,12 +7,12 @@ LOCAL_STATIC_JAVA_LIBRARIES := android-support-v4
 
 LOCAL_SRC_FILES := $(call all-java-files-under,src)
 
-LOCAL_PACKAGE_NAME := NSTools
+LOCAL_PACKAGE_NAME := DevilTools
 
 # disable proguard to make easy debugging
 #LOCAL_PROGUARD_FLAG_FILES := proguard.cfg
 
-# sign apk with nstools key
-LOCAL_CERTIFICATE := nstools
+# sign apk with deviltools key
+LOCAL_CERTIFICATE := deviltools
 
 include $(BUILD_PACKAGE)

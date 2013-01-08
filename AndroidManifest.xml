@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="mobi.cyann.nstools"
+    package="mobi.cyann.deviltools"
     android:versionCode="20"
     android:versionName="@string/app_version" >
 
@@ -16,7 +16,7 @@
         android:icon="@drawable/icon"
         android:label="@string/app_name" >
         <activity
-            android:name="mobi.cyann.nstools.MainActivity"
+            android:name="mobi.cyann.deviltools.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,16 +25,16 @@
             </intent-filter>
         </activity>
 
-        <service android:name="mobi.cyann.nstools.OnBootCompleteService" >
+        <service android:name="mobi.cyann.deviltools.OnBootCompleteService" >
             <intent-filter>
-                <action android:name="mobi.cyann.nstools.OnBootCompleteService" >
+                <action android:name="mobi.cyann.deviltools.OnBootCompleteService" >
                 </action>
             </intent-filter>
         </service>
 
-        <service android:name="mobi.cyann.nstools.services.ObserverService" />
+        <service android:name="mobi.cyann.deviltools.services.ObserverService" />
             
-        <receiver android:name="mobi.cyann.nstools.BootCompleteReceiver" >
+        <receiver android:name="mobi.cyann.deviltools.BootCompleteReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>

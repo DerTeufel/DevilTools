@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="mobi.cyann.nstools.preference.BasePreference">
+    <declare-styleable name="mobi.cyann.deviltools.preference.BasePreference">
 		<attr name="reloadOnResume" format="boolean"/>
 		<attr name="interfacePath" format="string"/>
 		<attr name="dependencyType">
@@ -8,25 +8,25 @@
 		    <enum name="reload_value" value="1"/>
 		</attr>
 	</declare-styleable>
-	<declare-styleable name="mobi.cyann.nstools.preference.IntegerPreference">
+	<declare-styleable name="mobi.cyann.deviltools.preference.IntegerPreference">
 	    <attr name="minValue" format="integer"/>
 		<attr name="maxValue" format="integer"/>
 		<attr name="step" format="integer"/>
 		<attr name="metrics" format="string"/>
 	</declare-styleable>
-	<declare-styleable name="mobi.cyann.nstools.preference.IoSchedPreference">
+	<declare-styleable name="mobi.cyann.deviltools.preference.IoSchedPreference">
 		<attr name="writeToInterface" format="reference"/>    
 	</declare-styleable>
-	<declare-styleable name="mobi.cyann.nstools.preference.ListPreference">
+	<declare-styleable name="mobi.cyann.deviltools.preference.ListPreference">
 		<attr name="valueType">
 		   <enum name="integer" value="0"/>
 		   <enum name="string" value="1"/>
 		</attr>
 	</declare-styleable>
-	<declare-styleable name="mobi.cyann.nstools.preference.FileSelectPreference">
+	<declare-styleable name="mobi.cyann.deviltools.preference.FileSelectPreference">
 		<attr name="path" format="string"/>    
 	</declare-styleable>
-	<declare-styleable name="mobi.cyann.nstools.preference.GovernorPreferenceGroup">
+	<declare-styleable name="mobi.cyann.deviltools.preference.GovernorPreferenceGroup">
 		<attr name="governor" format="string"/>    
 	</declare-styleable>
 </resources>

@@ -1,26 +1,26 @@
 ui_print();
 ui_print("====================");
-ui_print("NSTools reset script");
+ui_print("DevilTools reset script");
 ui_print("====================");
 ui_print();
 set_progress(0.1);
 ui_print("Trying to mount system...");
 mount("ext4", "EMMC", "/dev/block/platform/s3c-sdhci.0/by-name/system", "/system");
 ifelse(is_mounted("/system"),
-	ui_print("Deleting NSTools init script..."),
+	ui_print("Deleting DevilTools init script..."),
 	(ui_print("ERR: /system not mounted, this script may failed"); ui_print("ERR: please mount it from recovery menu");));
-delete("/system/etc/init.d/99nstools");
+delete("/system/etc/init.d/99deviltools");
 set_progress(0.5);
 ui_print();
 ui_print("Trying to mount data...");
 mount("ext4", "EMMC", "/dev/block/platform/s3c-sdhci.0/by-name/userdata", "/data");
 ifelse(is_mounted("/data"),
-	ui_print("/data mounted, deleting NSTools preference..."),
+	ui_print("/data mounted, deleting DevilTools preference..."),
 	ui_print("ERR: /data not mounted, this script may failed"));
 ifelse(is_mounted("/datadata"),
-	ui_print("/datadata mounted, deleting NSTools preference..."),
+	ui_print("/datadata mounted, deleting DevilTools preference..."),
 	ui_print("ERR: /datadata not mounted, this script may failed"));
-delete("/data/data/mobi.cyann.nstools/shared_prefs/mobi.cyann.nstools_preferences.xml", "/datadata/mobi.cyann.nstools/shared_prefs/mobi.cyann.nstools_preferences.xml");
+delete("/data/data/mobi.cyann.deviltools/shared_prefs/mobi.cyann.deviltools_preferences.xml", "/datadata/mobi.cyann.deviltools/shared_prefs/mobi.cyann.deviltools_preferences.xml");
 set_progress(1.0);
 ui_print();
 ui_print("-------------------------------------");
@@ -29,5 +29,5 @@ ui_print("  please mount /system and /data from");
 ui_print("  recovery menuand re-apply this zip.");
 ui_print("-------------------------------------");
 ui_print();
-ui_print("Done, thank you for using NSTools !");
+ui_print("Done, thank you for using DevilTools !");
 ui_print();

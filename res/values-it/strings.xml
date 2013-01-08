@@ -50,9 +50,9 @@
     <string name="label_restore_on_boot">Imposta all\'avvio</string>
     <string name="summaryOn_restore_on_boot">Le impostazioni rimarranno anche in seguito ai riavvii</string>
     <string name="summaryOff_restore_on_boot">"Ripristina alle impostazioni di default all'avvio"</string>
-    <string name="label_nstools_service">Servizio NSTools</string>
-    <string name="summaryOn_nstools_service">Abilita servizio per BLN su chiamate perse e timeout</string>
-    <string name="summaryOff_nstools_service">Disabilita servizio per BLN su chiamate perse e timeout</string>
+    <string name="label_deviltools_service">Servizio DevilTools</string>
+    <string name="summaryOn_deviltools_service">Abilita servizio per BLN su chiamate perse e timeout</string>
+    <string name="summaryOff_deviltools_service">Disabilita servizio per BLN su chiamate perse e timeout</string>
     <string name="label_load_settings">Carica</string>
     <string name="summary_load_settings">Carica impostazioni salvate</string>
     <string name="label_save_settings">Salva</string>
@@ -62,8 +62,8 @@
     <string name="label_delete_settings">Elimina</string>
     <string name="summary_delete_settings">Elimina file impostazioni</string>
     <string name="label_about">Informazioni</string>
-    <string name="about_text">NSTools su XDA</string>
-    <string name="about_desc">Visita il thread NSTools su XDA</string>
+    <string name="about_text">DevilTools su XDA</string>
+    <string name="about_desc">Visita il thread DevilTools su XDA</string>
  
     <!-- CPU Activity -->
     <string name="label_cpu_tweak">CPU</string>
