@@ -92,6 +92,12 @@ public class SettingsManager {
 		if(value > -1) {
 			command.append("echo " + value + " > " + "/sys/class/misc/deepidle/enabled\n");
 		}
+
+		// Smooth Ui
+		value = preferences.getInt(c.getString(R.string.key_smooth_ui_enabled), -1);
+		if(value > -1) {
+			command.append("echo " + value + " > " + "/sys/class/misc/devil_tweaks/smooth_ui_enabled\n");
+		}
 		
 		// Touchwake
 		value = preferences.getInt(c.getString(R.string.key_touchwake_status), -1);

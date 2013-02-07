@@ -89,6 +89,11 @@
     <string name="label_liveoc_ocvalue">OC Value</string>
     <string name="label_liveoc_target_low">OC Target Low</string>
     <string name="label_liveoc_target_high">OC Target High</string>
+
+	<!-- general governor -->
+    <string name="general_governor">General Governor Tweaks</string>
+    <string name="label_smooth_ui_enabled">Smooth Ui</string>
+
 	<!-- lazy governor -->
     <string name="label_lazy">Lazy</string>
     <string name="label_screenoff_maxfreq">Screen off max freq</string>

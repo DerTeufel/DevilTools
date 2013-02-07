@@ -3,6 +3,15 @@
     xmlns:custom="http://schemas.android.com/apk/res/mobi.cyann.deviltools"
     android:key="root" >
 
+    <mobi.cyann.deviltools.preference.RemovablePreferenceCategory android:title="@string/general_governor" >
+
+        <mobi.cyann.deviltools.preference.StatusPreference
+            custom:interfacePath="/sys/class/misc/devil_tweaks/smooth_ui_enabled"
+            android:key="@string/key_smooth_ui_enabled"
+            android:summary="@string/status_not_available"
+            android:title="@string/label_smooth_ui_enabled" />
+    </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
+
     <mobi.cyann.deviltools.preference.ListPreference
         custom:interfacePath="/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor"
         android:key="@string/key_governor"
@@ -63,6 +72,7 @@
             android:key="@string/key_deepidle_stats"
             android:title="@string/label_deepidle_stats" />
     </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
+
 
     <mobi.cyann.deviltools.preference.GovernorPreferenceGroup
         android:dependency="@string/key_governor"
