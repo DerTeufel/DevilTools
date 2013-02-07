@@ -83,6 +83,7 @@
 	<string name="key_smartass_down_rate_us">key_smartass_down_rate_us</string>
 	<string name="key_smartass_up_rate_us">key_smartass_up_rate_us</string>
 	<string name="key_interactive_go_hispeed_load">key_interactive_go_hispeed_load</string>
+	<string name="key_interactive_target_loads">key_interactive_target_loads</string>
 	<string name="key_interactive_hispeed_freq">key_interactive_hispeed_freq</string>
 	<string name="key_interactive_min_sample_time">key_interactive_min_sample_time</string>
 	<string name="key_interactive_timer_rate">key_interactive_timer_rate</string>
