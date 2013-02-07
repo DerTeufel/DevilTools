@@ -70,6 +70,9 @@
     <string name="about_text">DevilTools on XDA</string>
     <string name="about_desc">Visit DevilTools thread on XDA</string>
 
+    <string name="label_donation">Donation</string>
+    <string name="donation_text">Donate to DerTeufel1980</string>
+
     <!-- CPU Activity -->
     <string name="label_cpu_tweak">CPU</string>
     <string name="label_governor">Governor</string>

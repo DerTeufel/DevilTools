@@ -55,4 +55,11 @@
             android:title="@string/about_text" />
     </PreferenceCategory>
 
+    <PreferenceCategory android:title="@string/label_donation" >
+        <PreferenceScreen
+            android:key="@string/key_donation"
+            android:summary="@string/donation_text" />
+    </PreferenceCategory>
+
+
 </PreferenceScreen>

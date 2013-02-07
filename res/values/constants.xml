@@ -13,7 +13,8 @@
 
     <string name="PRELOAD_SCRIPT">/data/data/mobi.cyann.deviltools/scripts/preload.sh</string>
     <string name="INITD_SCRIPT">/etc/init.d/99deviltools</string>
-    
+
+	<string name="deviltools_donation_url">http://forum.xda-developers.com/donatetome.php?u=4196889/</string>    
 	<string name="deviltools_thread_url">http://forum.xda-developers.com/</string>
 	
 	<string name="key_fast_charge_forced">key_fast_charge_forced</string>
@@ -48,6 +49,7 @@
     <string name="key_save_settings">key_save_settings</string>
     <string name="key_delete_settings">key_delete_settings</string>
     <string name="key_about">key_about</string>
+    <string name="key_donation">key_donation</string>
     <string name="key_governor">key_governor</string>
     <string name="key_max_cpufreq">key_max_cpufreq</string>
     <string name="key_screenoff_maxfreq">key_screenoff_maxfreq</string>

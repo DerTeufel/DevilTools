@@ -36,6 +36,9 @@ public class SettingFragment extends PreferenceListFragment implements OnPrefere
 		Preference about = findPreference(getString(R.string.key_about));
 		about.setOnPreferenceClickListener(this);
 		about.setTitle(getString(R.string.app_name)+ " " + getString(R.string.app_version));
+
+		Preference donation = findPreference(getString(R.string.key_donation));
+		donation.setOnPreferenceClickListener(this);
 	}
 
 	@Override
@@ -44,6 +47,11 @@ public class SettingFragment extends PreferenceListFragment implements OnPrefere
 			Intent browse = new Intent();
 			browse.setAction(Intent.ACTION_VIEW);
 			browse.setData(Uri.parse(getString(R.string.deviltools_thread_url)));
+			startActivity(browse);
+		}else if(preference.getKey().equals(getString(R.string.key_donation))) {
+			Intent browse = new Intent();
+			browse.setAction(Intent.ACTION_VIEW);
+			browse.setData(Uri.parse(getString(R.string.deviltools_donation_url)));
 			startActivity(browse);
 		}else if(preference.getKey().equals(getString(R.string.key_save_settings))) {
 			((EditTextPreference)preference).getEditText().setText("");
