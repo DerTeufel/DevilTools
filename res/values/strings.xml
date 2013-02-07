@@ -151,6 +151,7 @@
 	<!-- interactive governor -->
 	<string name="label_interactive">Interactive</string>
 	<string name="label_interactive_go_hispeed_load">Go hispeed load</string>
+	<string name="label_interactive_target_loads">Target loads</string>
 	<string name="label_interactive_hispeed_freq">Hispeed freq</string>
 	<string name="label_interactive_min_sample_time">Min sample time</string>
 	<string name="label_interactive_timer_rate">Timer rate</string>

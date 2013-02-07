@@ -292,6 +292,10 @@ public class SettingsManager {
 			if(value > -1) {
 				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load\n");
 			}
+			value = preferences.getInt(c.getString(R.string.key_interactive_target_loads), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/interactive/target_loads\n");
+			}
 			value = preferences.getInt(c.getString(R.string.key_interactive_hispeed_freq), -1);
 			if(value > -1) {
 				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/interactive/hispeed_freq\n");
