@@ -126,6 +126,16 @@
             android:summary="0"
             android:title="@string/label_cmled_blinktimeout" />
     </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
+
+    <mobi.cyann.deviltools.preference.RemovablePreferenceCategory android:title="@string/dyn_fsync" >
+
+        <mobi.cyann.deviltools.preference.StatusPreference
+            custom:interfacePath="/sys/kernel/dyn_fsync/Dyn_fsync_active"
+            android:key="@string/key_dyn_fsync"
+            android:summary="@string/status_not_available"
+            android:title="@string/label_dyn_fsync" />
+    </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
+
     <mobi.cyann.deviltools.preference.RemovablePreferenceCategory android:title="@string/iosched_tweak" >
         <mobi.cyann.deviltools.preference.IoSchedPreference
             custom:interfacePath="/sys/block/mmcblk0/queue/scheduler"

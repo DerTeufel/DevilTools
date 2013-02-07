@@ -98,6 +98,12 @@ public class SettingsManager {
 		if(value > -1) {
 			command.append("echo " + value + " > " + "/sys/class/misc/devil_tweaks/smooth_ui_enabled\n");
 		}
+
+		// Dyn Fsync
+		value = preferences.getInt(c.getString(R.string.key_dyn_fsync), -1);
+		if(value > -1) {
+			command.append("echo " + value + " > " + "/sys/kernel/dyn_fsync/Dyn_fsync_active\n");
+		}
 		
 		// Touchwake
 		value = preferences.getInt(c.getString(R.string.key_touchwake_status), -1);
