@@ -145,5 +145,7 @@
 
 	<!-- misc settings -->
 	<string name="dyn_fsync">Dynamic Fsync</string>
-	<string name="label_dyn_fsync">With this enabled, Fsync only is active while screen off. This improves overall performance, with the risk off data corruption on a crash, caused by overclocking or similar.</string>
+	<string name="label_dyn_fsync">Use at your own risk!</string>
+	<string name="vibration_intensity">Vibration intensity</string>
+	<string name="label_vibration_intensity">Set vibration intensity</string>
 </resources>

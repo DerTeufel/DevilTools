@@ -92,6 +92,7 @@
 
 	<string name="key_smooth_ui_enabled">key_smooth_ui_enabled</string>
 	<string name="key_dyn_fsync">key_dyn_fsync</string>
+	<string name="key_vibration_intensity">key_vibration_intensity</string>
            
 	<string-array name="iosched_interfaces">
 	    <item>/sys/block/mtdblock4/queue/scheduler</item>

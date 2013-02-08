@@ -104,6 +104,12 @@ public class SettingsManager {
 		if(value > -1) {
 			command.append("echo " + value + " > " + "/sys/kernel/dyn_fsync/Dyn_fsync_active\n");
 		}
+
+		// vibrator
+		value = preferences.getInt(c.getString(R.string.key_vibration_intensity), -1);
+		if(value > -1) {
+			command.append("echo " + value + " > " + "/sys/class/misc/pwm_duty/pwm_duty\n");
+		}
 		
 		// Touchwake
 		value = preferences.getInt(c.getString(R.string.key_touchwake_status), -1);

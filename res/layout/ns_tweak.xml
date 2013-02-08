@@ -136,6 +136,20 @@
             android:title="@string/label_dyn_fsync" />
     </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
 
+    <mobi.cyann.deviltools.preference.RemovablePreferenceCategory android:title="@string/vibration_intensity" >
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/class/misc/pwm_duty/pwm_duty"
+            android:key="@string/key_vibration_intensity"
+            custom:maxValue="100"
+            custom:metrics="%"
+            custom:minValue="0"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_vibration_intensity" />
+    </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
+
+
     <mobi.cyann.deviltools.preference.RemovablePreferenceCategory android:title="@string/iosched_tweak" >
         <mobi.cyann.deviltools.preference.IoSchedPreference
             custom:interfacePath="/sys/block/mmcblk0/queue/scheduler"
