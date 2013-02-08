@@ -17,7 +17,7 @@
     <string name="label_iosched">Aktiver Scheduler</string>
 
     <!-- VoltageControlActivity -->
-    <string name="voltage_control">Benutzerdefinierte Spannung</string>
+    <string name="voltage_control">Spannung</string>
     <string name="label_default_voltage">Voreingestellte Werte</string>
     <string name="summaryOn_default_voltage">Verwende die standard Kernelspannung</string>
     <string name="summaryOff_default_voltage">Verwende benutzerdefinierte Kernelspannung</string>
