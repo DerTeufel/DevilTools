@@ -14,6 +14,10 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceScreen;
 import android.widget.Toast;
+import android.app.ActivityManager;
+import android.app.ActivityManager.MemoryInfo;
+import android.content.Context;
+import android.os.Bundle;
 
 /**
  * @author arif
@@ -24,7 +28,21 @@ public class SettingFragment extends PreferenceListFragment implements OnPrefere
 		super(R.layout.setting);
 		setOnPreferenceAttachedListener(this);
 	}
-	
+
+ 	@Override
+    	public void onCreate(Bundle savedInstanceState) {
+        	super.onCreate(savedInstanceState);
+     
+        	MemoryInfo mi = new MemoryInfo();
+        	ActivityManager activityManager = (ActivityManager) getActivity().getSystemService(Context.ACTIVITY_SERVICE);
+        	activityManager.getMemoryInfo(mi);
+        	long totalMegs = mi.totalMem / 1048576L;
+
+        	Preference pref = findPreference("system_memory");
+        	pref.setSummary(String.valueOf(totalMegs) + " MB");
+        
+    	}
+
 	@Override
 	public void onPreferenceAttached(PreferenceScreen rootPreference, int xmlId) {
 		findPreference(getString(R.string.key_deviltools_service)).setOnPreferenceChangeListener(this);
@@ -32,7 +50,8 @@ public class SettingFragment extends PreferenceListFragment implements OnPrefere
 		findPreference(getString(R.string.key_save_settings)).setOnPreferenceClickListener(this);
 		findPreference(getString(R.string.key_save_settings)).setOnPreferenceChangeListener(this);
 		findPreference(getString(R.string.key_delete_settings)).setOnPreferenceChangeListener(this);
-		
+
+	
 		Preference about = findPreference(getString(R.string.key_about));
 		about.setOnPreferenceClickListener(this);
 		about.setTitle(getString(R.string.app_name)+ " " + getString(R.string.app_version));
