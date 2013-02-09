@@ -76,6 +76,10 @@ public class MainActivity extends FragmentActivity {
 		tab4.setIndicator(getString(R.string.label_setting), res.getDrawable(R.drawable.ic_tab_settings));
 		//tab4.setContent(new Intent(this, SettingFragment.class));
 		tabsAdapter.addTab(tab4, SettingFragment.class, null);
+
+		TabSpec tab5 = tabHost.newTabSpec("info");
+		tab5.setIndicator(getString(R.string.label_info), res.getDrawable(R.drawable.ic_tab_info));
+		tabsAdapter.addTab(tab5, InfoFragment.class, null);
 		
 		if (savedInstanceState != null) {
             tabHost.setCurrentTabByTag(savedInstanceState.getString("tab"));

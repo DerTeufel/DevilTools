@@ -47,27 +47,5 @@
 		custom:path="@string/SETTINGS_DIR"
         android:negativeButtonText="@string/label_cancel"
         android:persistent="false"/>
-
-    <PreferenceCategory android:title="System Info" >
-        <Preference
-            android:key="system_memory"
-            android:title="Toatal Ram"
-            android:summary="MB">
-        </Preference>
-    </PreferenceCategory>
-        
-    <PreferenceCategory android:title="@string/label_about" >
-        <PreferenceScreen
-            android:key="@string/key_about"
-            android:summary="@string/about_desc"
-            android:title="@string/about_text" />
-    </PreferenceCategory>
-
-    <PreferenceCategory android:title="@string/label_donation" >
-        <PreferenceScreen
-            android:key="@string/key_donation"
-            android:summary="@string/donation_text" />
-    </PreferenceCategory>
-
-
+       
 </PreferenceScreen>

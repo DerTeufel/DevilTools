@@ -148,4 +148,7 @@
 	<string name="label_dyn_fsync">Use at your own risk!</string>
 	<string name="vibration_intensity">Vibration intensity</string>
 	<string name="label_vibration_intensity">Set vibration intensity</string>
+
+    <!-- About Activity -->
+    <string name="label_info">Info</string>
 </resources>
