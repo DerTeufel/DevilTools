@@ -17,6 +17,10 @@ import android.view.ViewGroup;
 import android.widget.TabHost;
 import android.widget.TabWidget;
 
+import android.util.DisplayMetrics;
+import android.view.WindowManager;
+
+
 /**
  * This class taken from FragmentTabsPager.java (android compatibility package sample code)
  *
@@ -91,6 +95,9 @@ public class TabsAdapter extends FragmentPagerAdapter implements TabHost.OnTabCh
 	public void onTabChanged(String tabId) {
 		int position = mTabHost.getCurrentTab();
 		mViewPager.setCurrentItem(position);
+
+		int widthTab = getSuggestedWidth();
+		MainActivity.mScrollView.smoothScrollTo(widthTab*position, 0);
 	}
 
 	@Override
@@ -114,4 +121,14 @@ public class TabsAdapter extends FragmentPagerAdapter implements TabHost.OnTabCh
 	@Override
 	public void onPageScrollStateChanged(int state) {
 	}
+
+
+        protected int getSuggestedWidth() {
+    	DisplayMetrics metrics = new DisplayMetrics();
+    	((WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(metrics);
+    	float widthTab = (((metrics.widthPixels / metrics.density))/3);
+	return (int) widthTab;
+        }
+
+
 }

@@ -17,8 +17,10 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 import android.util.Log;
 import android.view.Window;
+import android.widget.HorizontalScrollView;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 
@@ -28,6 +30,7 @@ public class MainActivity extends FragmentActivity {
 	private boolean onCreate = false;
 	private TabHost tabHost;
 	private TabsAdapter tabsAdapter;
+	public static HorizontalScrollView mScrollView;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +50,14 @@ public class MainActivity extends FragmentActivity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		
 		setContentView(R.layout.main);
-		
+	
 		tabHost = (TabHost)findViewById(android.R.id.tabhost);
 		tabHost.setup();
 		
 		ViewPager viewPager = (ViewPager)findViewById(R.id.pager);
-		
+
+		mScrollView = (HorizontalScrollView)findViewById(R.id.hscroll);
+	
 		tabsAdapter = new TabsAdapter(this, tabHost, viewPager);
 		
 		Resources res = getResources();
@@ -80,6 +85,13 @@ public class MainActivity extends FragmentActivity {
 		TabSpec tab5 = tabHost.newTabSpec("info");
 		tab5.setIndicator(getString(R.string.label_info), res.getDrawable(R.drawable.ic_tab_info));
 		tabsAdapter.addTab(tab5, InfoFragment.class, null);
+
+       		// set the width of tab 
+		//int widthTab = mView.getLayoutParams().width/4;
+        	for(int i=0;i<tabHost.getTabWidget().getChildCount();i++){
+             	tabHost.getTabWidget().getChildAt(i).getLayoutParams().width = tabsAdapter.getSuggestedWidth();
+		//tabHost.getTabWidget().getChildAt(i).getLayoutParams().width = getSuggestedWidth();
+        	}
 		
 		if (savedInstanceState != null) {
             tabHost.setCurrentTabByTag(savedInstanceState.getString("tab"));
@@ -191,4 +203,11 @@ public class MainActivity extends FragmentActivity {
 		SettingsManager.saveToInitd(this);
 		super.onDestroy();
 	}
+
+/*        protected int getSuggestedWidth() {
+	View mView = (View) findViewById(R.id.root);
+	int widthTab = mView.getLayoutParams().width/4;
+	return widthTab;
+        }
+*/
 }
