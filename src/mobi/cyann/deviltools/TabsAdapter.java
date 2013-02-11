@@ -6,6 +6,7 @@ package mobi.cyann.deviltools;
 
 import java.util.ArrayList;
 
+import android.util.Log;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -125,8 +126,11 @@ public class TabsAdapter extends FragmentPagerAdapter implements TabHost.OnTabCh
 
         protected int getSuggestedWidth() {
     	DisplayMetrics metrics = new DisplayMetrics();
+	int screenWidth = ((WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getWidth();
     	((WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(metrics);
-    	float widthTab = (((metrics.widthPixels / metrics.density))/3);
+    	float widthTab = (screenWidth/4)*(240/DisplayMetrics.DENSITY_DEVICE); //*((metrics.widthPixels / metrics.density))/4);
+	Log.d("widthPixels: ", String.valueOf(metrics.widthPixels));
+	Log.d("density: ", String.valueOf(metrics.density));
 	return (int) widthTab;
         }
 

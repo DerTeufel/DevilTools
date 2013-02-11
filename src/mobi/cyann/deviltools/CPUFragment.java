@@ -15,6 +15,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceManager;
@@ -41,8 +42,8 @@ public class CPUFragment extends BasePreferenceFragment implements OnPreferenceC
 	}
 	
 	@Override
-	public void onPreferenceAttached(PreferenceScreen rootPreference, int xmlId) {
-		super.onPreferenceAttached(rootPreference, xmlId);
+    	public void onCreate(Bundle savedInstanceState) {
+        	super.onCreate(savedInstanceState);
 		
 		// deepidle stats
 		Preference p = findPreference(getString(R.string.key_deepidle_stats));

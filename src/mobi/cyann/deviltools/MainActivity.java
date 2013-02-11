@@ -17,7 +17,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.view.View;
 import android.util.Log;
 import android.view.Window;
 import android.widget.HorizontalScrollView;
@@ -87,10 +86,8 @@ public class MainActivity extends FragmentActivity {
 		tabsAdapter.addTab(tab5, InfoFragment.class, null);
 
        		// set the width of tab 
-		//int widthTab = mView.getLayoutParams().width/4;
         	for(int i=0;i<tabHost.getTabWidget().getChildCount();i++){
              	tabHost.getTabWidget().getChildAt(i).getLayoutParams().width = tabsAdapter.getSuggestedWidth();
-		//tabHost.getTabWidget().getChildAt(i).getLayoutParams().width = getSuggestedWidth();
         	}
 		
 		if (savedInstanceState != null) {
@@ -203,11 +200,4 @@ public class MainActivity extends FragmentActivity {
 		SettingsManager.saveToInitd(this);
 		super.onDestroy();
 	}
-
-/*        protected int getSuggestedWidth() {
-	View mView = (View) findViewById(R.id.root);
-	int widthTab = mView.getLayoutParams().width/4;
-	return widthTab;
-        }
-*/
 }
