@@ -97,8 +97,8 @@ public class TabsAdapter extends FragmentPagerAdapter implements TabHost.OnTabCh
 		int position = mTabHost.getCurrentTab();
 		mViewPager.setCurrentItem(position);
 
-		int widthTab = getSuggestedWidth();
-		MainActivity.mScrollView.smoothScrollTo(widthTab*position, 0);
+		int scrollX = getSuggestedWidth()*position*3/getCount();
+		MainActivity.mScrollView.smoothScrollTo(scrollX, 0);
 	}
 
 	@Override
@@ -128,7 +128,7 @@ public class TabsAdapter extends FragmentPagerAdapter implements TabHost.OnTabCh
     	DisplayMetrics metrics = new DisplayMetrics();
 	int screenWidth = ((WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getWidth();
     	((WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(metrics);
-    	float widthTab = (screenWidth/4)*(240/DisplayMetrics.DENSITY_DEVICE); //*((metrics.widthPixels / metrics.density))/4);
+    	float widthTab = (screenWidth/3)*(240/DisplayMetrics.DENSITY_DEVICE); //*((metrics.widthPixels / metrics.density))/4);
 	Log.d("widthPixels: ", String.valueOf(metrics.widthPixels));
 	Log.d("density: ", String.valueOf(metrics.density));
 	return (int) widthTab;
