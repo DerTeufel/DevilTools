@@ -149,6 +149,16 @@
 	<string name="vibration_intensity">Vibration intensity</string>
 	<string name="label_vibration_intensity">Set vibration intensity</string>
 
+    <!-- Bigmem Settings-->
+	<string name="bigmem">Bigmem</string>
+	<string name="label_bigmem">Change Ram settings</string>
+	<string name="bigmem_default">Default</string>
+	<string name="bigmem_xl">about 395 mb</string>
+	<string name="bigmem_big">about 407 mb, breaks 720p</string>
+	<string name="bigmem_nocam">maximum ram, no cam at all</string>
+
+    <string name="label_devil_tweak">Devil Tweaks</string>
+
     <!-- About Activity -->
     <string name="label_info">Info</string>
 </resources>
