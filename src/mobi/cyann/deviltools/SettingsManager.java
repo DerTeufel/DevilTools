@@ -10,6 +10,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import java.lang.Integer;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -118,6 +120,12 @@ public class SettingsManager {
 			value = preferences.getInt(c.getString(R.string.key_touchwake_delay), -1);
 			if(value > -1)
 				command.append("echo " + value + " > " + "/sys/class/misc/touchwake/delay\n");
+		}
+
+		// bigmem
+		value = Integer.parseInt(preferences.getString(c.getString(R.string.key_bigmem), "-1"));
+		if(value > -1) {
+			command.append("echo " + value + " > " + "/sys/kernel/bigmem/enable\n");
 		}
 		
 		// governor

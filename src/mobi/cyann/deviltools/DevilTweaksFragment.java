@@ -27,7 +27,7 @@ import android.view.View;
 import android.widget.TextView;
 
 /**
- * @author arif
+ * @DerTeufel1980
  *
  */
 public class DevilTweaksFragment extends BasePreferenceFragment implements OnPreferenceChangeListener {

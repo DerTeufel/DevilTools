@@ -215,3 +215,34 @@ case "$?" in
 	echo "key_iosched=-1" >> $OUT_FILE
 	;;
 esac
+
+# vibrate
+STAT=`cat /sys/class/misc/pwm_duty/pwm_duty`
+case "$?" in
+	0)
+	echo "key_vibration_intensity=$STAT" >> $OUT_FILE
+	;;
+	*)
+	echo "key_vibration_intensity=-1" >> $OUT_FILE
+	;;
+esac
+
+# bigmem
+STAT=`cat /sys/kernel/bigmem/enable`
+case "$STAT" in
+	3)
+	echo "key_bigmem=3" >> $OUT_FILE
+	;;
+	2)
+	echo "key_bigmem=2" >> $OUT_FILE
+	;;
+	1)
+	echo "key_bigmem=1" >> $OUT_FILE
+	;;
+	0)
+	echo "key_bigmem=0" >> $OUT_FILE
+	;;
+	*)
+	echo "key_bigmem=-1" >> $OUT_FILE
+	;;
+esac
