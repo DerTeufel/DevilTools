@@ -39,6 +39,12 @@ public class DevilTweaksFragment extends BasePreferenceFragment implements OnPre
 
         private ContentResolver mContentResolver;
 	private SharedPreferences preferences;
+
+    	private static final String[] FILE_PATH = new String[] {
+        "/sys/kernel/bigmem/enable",
+        "/data/local/devil/bigmem"
+    	};
+
 	
 	@Override
     	public void onCreate(Bundle savedInstanceState) {
@@ -51,6 +57,19 @@ public class DevilTweaksFragment extends BasePreferenceFragment implements OnPre
 
         mBigmem = (ListPreference) findPreference("key_bigmem");
         mBigmem.setOnPreferenceChangeListener(this);
+
+	SysCommand sc = SysCommand.getInstance();
+
+        int value;
+        for (int i = 0; i < FILE_PATH.length; i++) {
+            //if (i == 0)
+		//value = Integer.parseInt(preferences.getString(R.string.key_bigmem), "-1");
+		value = Integer.parseInt(preferences.getString(getString(R.string.key_bigmem), "-1"));
+            //else   
+                //value = Integer.parseInt(preferences.getString(c.getString(R.string.key_bigmem), "-1"));
+
+ 	    sc.writeSysfs(FILE_PATH[i], String.valueOf(value));
+        }
 
         MemoryInfo mi = new MemoryInfo();
         ActivityManager activityManager = (ActivityManager) getActivity().getSystemService(Context.ACTIVITY_SERVICE);
