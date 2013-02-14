@@ -14,6 +14,8 @@ import android.app.ActivityManager;
 import android.app.ActivityManager.MemoryInfo;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.ListPreference;
@@ -36,10 +38,13 @@ public class DevilTweaksFragment extends BasePreferenceFragment implements OnPre
 	private ListPreference mBigmem;
 
         private ContentResolver mContentResolver;
+	private SharedPreferences preferences;
 	
 	@Override
     	public void onCreate(Bundle savedInstanceState) {
         	super.onCreate(savedInstanceState);
+
+	preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
         PreferenceScreen prefSet = getPreferenceScreen();
         mContentResolver = getActivity().getApplicationContext().getContentResolver();
@@ -58,12 +63,15 @@ public class DevilTweaksFragment extends BasePreferenceFragment implements OnPre
 	
     public boolean onPreferenceChange(Preference preference, Object objValue) {
 	SysCommand sc = SysCommand.getInstance();
+	Editor ed = preferences.edit();
 	if (preference == mBigmem) {
             int status = Integer.valueOf((String) objValue);
             int index = mBigmem.findIndexOfValue((String) objValue);
             mBigmem.setSummary("After Reboot: " + mBigmem.getEntries()[index]);
 	    sc.writeSysfs("/sys/kernel/bigmem/enable", ((String) objValue));
 	    sc.writeSysfs("/data/local/devil/bigmem", ((String) objValue));
+	    ed.putString(getString(R.string.key_bigmem), ((String) objValue));
+	    ed.commit();
             return true;
         }
 
