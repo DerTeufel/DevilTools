@@ -35,6 +35,7 @@ public class DevilTweaksFragment extends BasePreferenceFragment implements OnPre
 		super(R.layout.devil_tweak);
 	}
 	
+	private final static String LOG_TAG = "DevilTools.tweaks";
 	private ListPreference mBigmem;
 
         private ContentResolver mContentResolver;
@@ -69,6 +70,8 @@ public class DevilTweaksFragment extends BasePreferenceFragment implements OnPre
                 //value = Integer.parseInt(preferences.getString(c.getString(R.string.key_bigmem), "-1"));
 
  	    sc.writeSysfs(FILE_PATH[i], String.valueOf(value));
+
+	Log.d(LOG_TAG, "onCreate() Called");
         }
 
         MemoryInfo mi = new MemoryInfo();
