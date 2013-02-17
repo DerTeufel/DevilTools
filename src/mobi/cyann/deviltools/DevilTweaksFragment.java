@@ -37,13 +37,11 @@ public class DevilTweaksFragment extends BasePreferenceFragment implements OnPre
 	
 	private final static String LOG_TAG = "DevilTools.tweaks";
 
-    	public static final String KEY_MDNIE = "mdnie";
-
 	private ListPreference mBigmem;
     	private ListPreference mMdnie;
 
         private ContentResolver mContentResolver;
-	private SharedPreferences preferences;
+	private static SharedPreferences preferences;
 
     	private static final String[] FILE_PATH = new String[] {
         "/sys/kernel/bigmem/enable",
@@ -63,7 +61,7 @@ public class DevilTweaksFragment extends BasePreferenceFragment implements OnPre
         mBigmem = (ListPreference) findPreference("key_bigmem");
         mBigmem.setOnPreferenceChangeListener(this);
 
-        mMdnie = (ListPreference) findPreference(KEY_MDNIE);
+        mMdnie = (ListPreference) findPreference("mdnie");
         mMdnie.setEnabled(Mdnie.isSupported());
         mMdnie.setOnPreferenceChangeListener(new Mdnie());
 
@@ -93,18 +91,29 @@ public class DevilTweaksFragment extends BasePreferenceFragment implements OnPre
 	
     public boolean onPreferenceChange(Preference preference, Object objValue) {
 	SysCommand sc = SysCommand.getInstance();
-	Editor ed = preferences.edit();
 	if (preference == mBigmem) {
             int status = Integer.valueOf((String) objValue);
             int index = mBigmem.findIndexOfValue((String) objValue);
             mBigmem.setSummary("After Reboot: " + mBigmem.getEntries()[index]);
 	    sc.writeSysfs("/sys/kernel/bigmem/enable", ((String) objValue));
 	    sc.writeSysfs("/data/local/devil/bigmem", ((String) objValue));
-	    ed.putString(getString(R.string.key_bigmem), ((String) objValue));
-	    ed.commit();
+	    setPreferenceString(getString(R.string.key_bigmem), ((String) objValue));
             return true;
         }
 
         return false;
     }
+
+    public static void setPreferenceString(String key, String value) {
+	Editor ed = preferences.edit();
+	ed.putString(key, value);
+	ed.commit();
+    }
+
+    public static void setPreferenceInteger(String key, int value) {
+	Editor ed = preferences.edit();
+	ed.putInt(key, value);
+	ed.commit();
+    }
+
 }

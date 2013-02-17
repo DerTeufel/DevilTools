@@ -8,7 +8,7 @@ import android.preference.PreferenceManager;
 
 public class Mdnie implements OnPreferenceChangeListener {
 
-    private static final String FILE = "/sys/class/mdnieset_ui/switch_mdnieset_ui/mdnieset_ui_file_cmd";
+    public static final String FILE = "/sys/class/mdnieset_ui/switch_mdnieset_ui/mdnieset_ui_file_cmd";
 
     public static boolean isSupported() {
         return Utils.fileExists(FILE);
@@ -24,12 +24,13 @@ public class Mdnie implements OnPreferenceChangeListener {
         }
 
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-        Utils.writeValue(FILE, sharedPrefs.getString(DevilTweaksFragment.KEY_MDNIE, "6"));
+        Utils.writeValue(FILE, sharedPrefs.getString(FILE, "6"));
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         Utils.writeValue(FILE, (String) newValue);
+	DevilTweaksFragment.setPreferenceString(FILE, (String) newValue);
         return true;
     }
 

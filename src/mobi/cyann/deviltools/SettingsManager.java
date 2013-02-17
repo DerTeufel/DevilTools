@@ -32,6 +32,7 @@ public class SettingsManager {
 		StringBuilder command = new StringBuilder();
 		
 		String status = null;
+		String filepath = null;
 		int value = -1;
 		if(!preferences.getBoolean(c.getString(R.string.key_default_voltage), true)) {
 			// restore voltage setting if and only if key_default_voltage is false
@@ -107,10 +108,11 @@ public class SettingsManager {
 		}
 
 		// Mdnie
-		value = Integer.parseInt(preferences.getString(DevilTweaksFragment.KEY_MDNIE, "-1"));
+		filepath = Mdnie.FILE;
+		value = Integer.parseInt(preferences.getString(filepath, "-1"));
 		//if(value > -1) {
 			Log.d(LOG_TAG, "mdnie");
-			command.append("echo " + value + " > " + "/sys/class/mdnieset_ui/switch_mdnieset_ui/mdnieset_ui_file_cmd\n");
+			command.append("echo " + value + " > " + filepath + "\n");
 		//}
 
 		// Smooth Ui

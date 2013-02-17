@@ -3,7 +3,6 @@ package mobi.cyann.deviltools;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.preference.DialogPreference;
 import android.preference.PreferenceManager;
 import android.util.AttributeSet;
@@ -197,9 +196,7 @@ public class ColorTuningPreference extends DialogPreference implements OnClickLi
         }
 
         public void save() {
-            Editor editor = getEditor();
-            editor.putInt(mFilePath, mSeekBar.getProgress());
-            editor.commit();
+	DevilTweaksFragment.setPreferenceInteger(mFilePath, mSeekBar.getProgress());
         }
 
         @Override
