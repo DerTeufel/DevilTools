@@ -36,7 +36,11 @@ public class DevilTweaksFragment extends BasePreferenceFragment implements OnPre
 	}
 	
 	private final static String LOG_TAG = "DevilTools.tweaks";
+
+    	public static final String KEY_MDNIE = "mdnie";
+
 	private ListPreference mBigmem;
+    	private ListPreference mMdnie;
 
         private ContentResolver mContentResolver;
 	private SharedPreferences preferences;
@@ -58,6 +62,10 @@ public class DevilTweaksFragment extends BasePreferenceFragment implements OnPre
 
         mBigmem = (ListPreference) findPreference("key_bigmem");
         mBigmem.setOnPreferenceChangeListener(this);
+
+        mMdnie = (ListPreference) findPreference(KEY_MDNIE);
+        mMdnie.setEnabled(Mdnie.isSupported());
+        mMdnie.setOnPreferenceChangeListener(new Mdnie());
 
 	SysCommand sc = SysCommand.getInstance();
 

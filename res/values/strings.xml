@@ -136,7 +136,6 @@
 	<!-- interactive governor -->
 	<string name="label_interactive">Interactive</string>
 	<string name="label_interactive_go_hispeed_load">Go hispeed load</string>
-	<string name="label_interactive_target_loads">Target loads</string>
 	<string name="label_interactive_hispeed_freq">Hispeed freq</string>
 	<string name="label_interactive_min_sample_time">Min sample time</string>
 	<string name="label_interactive_timer_rate">Timer rate</string>
@@ -161,4 +160,18 @@
 
     <!-- About Activity -->
     <string name="label_info">Info</string>
+
+    <string name="category_screen_title">Screen</string>
+    <string name="color_tuning_title_head">Color Tuning</string>
+    <string name="color_tuning_summary_head">Calibrate screen color</string>
+    <string name="color_red_title">Red</string>
+    <string name="color_green_title">Green</string>
+    <string name="color_blue_title">Blue</string>
+    <string name="color_red_gamma_title">Red Gamma</string>
+    <string name="color_green_gamma_title">Green Gamma</string>
+    <string name="color_blue_gamma_title">Blue Gamma</string>
+    <string name="mdnie_title_head">mDNIe Mode</string>
+    <string name="mdnie_summary_head">Adjust mDNIe display post-processing</string>
+
+    <string name="button_reset_title">Reset</string>
 </resources>

@@ -88,6 +88,17 @@ public class SettingsManager {
 		if(value > -1) {
 			command.append("echo " + value + " > " + "/sys/class/misc/batterylifeextender/charging_limit\n");
 		}
+
+		//color
+        	for (String filePath : ColorTuningPreference.FILE_PATH) {
+            	value = preferences.getInt(filePath, ColorTuningPreference.MAX_VALUE);
+		command.append("echo " + value + " > " + filePath + "\n");
+        	}
+        	for (String filePath : ColorTuningPreference.GAMMA_FILE_PATH) {
+            	value = preferences.getInt(filePath, ColorTuningPreference.GAMMA_DEFAULT_VALUE);
+		command.append("echo " + value + " > " + filePath + "\n");
+        	}
+
 		
 		// Deepidle
 		value = preferences.getInt(c.getString(R.string.key_deepidle_status), -1);
@@ -95,9 +106,17 @@ public class SettingsManager {
 			command.append("echo " + value + " > " + "/sys/class/misc/deepidle/enabled\n");
 		}
 
+		// Mdnie
+		value = Integer.parseInt(preferences.getString(DevilTweaksFragment.KEY_MDNIE, "-1"));
+		//if(value > -1) {
+			Log.d(LOG_TAG, "mdnie");
+			command.append("echo " + value + " > " + "/sys/class/mdnieset_ui/switch_mdnieset_ui/mdnieset_ui_file_cmd\n");
+		//}
+
 		// Smooth Ui
 		value = preferences.getInt(c.getString(R.string.key_smooth_ui_enabled), -1);
 		if(value > -1) {
+			Log.d(LOG_TAG, "smooth_ui");
 			command.append("echo " + value + " > " + "/sys/class/misc/devil_tweaks/smooth_ui_enabled\n");
 		}
 
@@ -223,10 +242,6 @@ public class SettingsManager {
 			value = preferences.getInt(c.getString(R.string.key_interactive_go_hispeed_load), -1);
 			if(value > -1) {
 				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load\n");
-			}
-			value = preferences.getInt(c.getString(R.string.key_interactive_target_loads), -1);
-			if(value > -1) {
-				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/interactive/target_loads\n");
 			}
 			value = preferences.getInt(c.getString(R.string.key_interactive_hispeed_freq), -1);
 			if(value > -1) {
@@ -481,6 +496,8 @@ public class SettingsManager {
 		if(!restoreOnInitd) {
 			String command = buildCommand(c, preferences);
 			SysCommand.getInstance().suRun(command);
+        		ColorTuningPreference.restore(c);
+        		Mdnie.restore(c);
 		}
 		return SUCCESS;
 	}

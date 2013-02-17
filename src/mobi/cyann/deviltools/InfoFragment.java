@@ -25,10 +25,11 @@ public class InfoFragment extends PreferenceListFragment implements OnPreference
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Helper help = Helper.getInstance();
-        help.readFile("/proc/version");
+	SysCommand sysCommand = SysCommand.getInstance();
         Preference pref = findPreference("kernel_version");
-        pref.setSummary(help.getOutResult().get(0));
+	if(sysCommand.readSysfs("/proc/version") > 0) {
+           pref.setSummary(sysCommand.getLastResult(0));
+	}
         
         MemoryInfo mi = new MemoryInfo();
         ActivityManager activityManager = (ActivityManager) getActivity().getSystemService(Context.ACTIVITY_SERVICE);
