@@ -500,6 +500,7 @@ public class SettingsManager {
 			SysCommand.getInstance().suRun(command);
         		ColorTuningPreference.restore(c);
         		Mdnie.restore(c);
+        		DockAudio.restore(c);
 		}
 		return SUCCESS;
 	}
