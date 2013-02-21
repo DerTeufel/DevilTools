@@ -17,11 +17,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.ListPreference;
 import android.preference.Preference.OnPreferenceChangeListener;
-import android.preference.PreferenceCategory;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.util.Log;
@@ -38,12 +36,9 @@ public class DevilTweaksFragment extends BasePreferenceFragment implements OnPre
 	}
 	
 	private final static String LOG_TAG = "DevilTools.tweaks";
-    	public static final String KEY_CARDOCK_AUDIO = "cardock_audio";
-    	public static final String KEY_DOCK_AUDIO_CATEGORY = "category_dock_audio";
 
 	private ListPreference mBigmem;
     	private ListPreference mMdnie;
-    	private CheckBoxPreference mCarDockAudio;
 
         private ContentResolver mContentResolver;
 	private static SharedPreferences preferences;
@@ -69,15 +64,6 @@ public class DevilTweaksFragment extends BasePreferenceFragment implements OnPre
         mMdnie = (ListPreference) findPreference("mdnie");
         mMdnie.setEnabled(Mdnie.isSupported());
         mMdnie.setOnPreferenceChangeListener(new Mdnie());
-
-        mCarDockAudio = (CheckBoxPreference) findPreference(KEY_CARDOCK_AUDIO);
-         if (DockAudio.isSupported()) {
-            mCarDockAudio.setOnPreferenceChangeListener(new DockAudio());
-        } else {
-            PreferenceCategory category = (PreferenceCategory) getPreferenceScreen().findPreference(KEY_DOCK_AUDIO_CATEGORY);
-            category.removePreference(mCarDockAudio);
-            getPreferenceScreen().removePreference(category);
-        }
 
 	SysCommand sc = SysCommand.getInstance();
 
@@ -128,12 +114,6 @@ public class DevilTweaksFragment extends BasePreferenceFragment implements OnPre
 	Editor ed = preferences.edit();
 	ed.putInt(key, value);
 	ed.commit();
-    }
-
-    public static void setPreferenceBoolean(String key, boolean value) {
-  	Editor ed = preferences.edit();
-  	ed.putBoolean(key, value);
-  	ed.commit();
     }
 
 }
