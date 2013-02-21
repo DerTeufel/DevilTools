@@ -91,6 +91,7 @@ public class SettingsManager {
 		}
 
 		//color
+		if(!ColorTuningPreference.isVoodoo()) { //no voodoo
         	for (String filePath : ColorTuningPreference.FILE_PATH) {
             	value = preferences.getInt(filePath, ColorTuningPreference.MAX_VALUE);
 		command.append("echo " + value + " > " + filePath + "\n");
@@ -99,6 +100,16 @@ public class SettingsManager {
             	value = preferences.getInt(filePath, ColorTuningPreference.GAMMA_DEFAULT_VALUE);
 		command.append("echo " + value + " > " + filePath + "\n");
         	}
+		} else { // try voodoo
+        	for (String filePath : ColorTuningPreference.VOODOO_FILE_PATH) {
+            	value = preferences.getInt(filePath, ColorTuningPreference.MAX_VALUE);
+		command.append("echo " + value + " > " + filePath + "\n");
+        	}
+        	for (String filePath : ColorTuningPreference.VOODOO_GAMMA_FILE_PATH) {
+            	value = preferences.getInt(filePath, ColorTuningPreference.GAMMA_DEFAULT_VALUE);
+		command.append("echo " + value + " > " + filePath + "\n");
+        	}
+		}
 
 		
 		// Deepidle

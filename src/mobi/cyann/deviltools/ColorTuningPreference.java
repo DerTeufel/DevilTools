@@ -61,12 +61,30 @@ public class ColorTuningPreference extends DialogPreference implements OnClickLi
         "/sys/devices/virtual/misc/color_tuning/blue_v1_offset"
     };
 
+   public static final String[] VOODOO_FILE_PATH = new String[] {
+        "/sys/devices/virtual/misc/voodoo_color/red_multiplier",
+        "/sys/devices/virtual/misc/voodoo_color/green_multiplier",
+        "/sys/devices/virtual/misc/voodoo_color/blue_multiplier"
+    };
+
+    public static final String[] VOODOO_GAMMA_FILE_PATH = new String[] {
+        "/sys/devices/virtual/misc/voodoo_color/red_v1_offset",
+        "/sys/devices/virtual/misc/voodoo_color/green_v1_offset",
+        "/sys/devices/virtual/misc/voodoo_color/blue_v1_offset"
+    };
+
     private ColorSeekBar mSeekBars[] = new ColorSeekBar[6];
 
     public static final int MAX_VALUE = Integer.MAX_VALUE;
 
     private static final int GAMMA_MAX_VALUE = 40;
     public static final int GAMMA_DEFAULT_VALUE = 0;
+    private static final int OFFSET_VALUE = 0;
+    private static final int VOODOO_GAMMA_MAX_VALUE = 60;
+    private static final int VOODOO_GAMMA_DEFAULT_VALUE = 40;
+    private static final int VOODOO_OFFSET_VALUE = 40;
+
+
 
     // Track instances to know when to restore original color
     // (when the orientation changes, a new dialog is created before the old one is destroyed)
@@ -83,7 +101,7 @@ public class ColorTuningPreference extends DialogPreference implements OnClickLi
         super.onBindDialogView(view);
 
         sInstances++;
-
+	if(!isVoodoo()) { // not voodoo
         for (int i = 0; i < SEEKBAR_ID.length; i++) {
             SeekBar seekBar = (SeekBar) view.findViewById(SEEKBAR_ID[i]);
             TextView valueDisplay = (TextView) view.findViewById(VALUE_DISPLAY_ID[i]);
@@ -95,6 +113,19 @@ public class ColorTuningPreference extends DialogPreference implements OnClickLi
             TextView valueDisplay = (TextView) view.findViewById(GAMMA_VALUE_DISPLAY_ID[i]);
             mSeekBars[SEEKBAR_ID.length + i] = new GammaSeekBar(seekBar, valueDisplay, GAMMA_FILE_PATH[i]);
         }
+	} else { //try voodoo
+        for (int i = 0; i < SEEKBAR_ID.length; i++) {
+            SeekBar seekBar = (SeekBar) view.findViewById(SEEKBAR_ID[i]);
+            TextView valueDisplay = (TextView) view.findViewById(VALUE_DISPLAY_ID[i]);
+            mSeekBars[i] = new ColorSeekBar(seekBar, valueDisplay, VOODOO_FILE_PATH[i]);
+        }
+
+        for (int i = 0; i < GAMMA_SEEKBAR_ID.length; i++) {
+            SeekBar seekBar = (SeekBar) view.findViewById(GAMMA_SEEKBAR_ID[i]);
+            TextView valueDisplay = (TextView) view.findViewById(GAMMA_VALUE_DISPLAY_ID[i]);
+            mSeekBars[SEEKBAR_ID.length + i] = new GammaSeekBar(seekBar, valueDisplay, VOODOO_GAMMA_FILE_PATH[i]);
+        }
+	}
 
         SetupButtonClickListener(view);
     }
@@ -130,11 +161,8 @@ public class ColorTuningPreference extends DialogPreference implements OnClickLi
             return;
         }
 
-	Log.d(LOG_TAG, "Restore Called");
-	Log.d(LOG_TAG, "Restore Called2");
-	Log.d(LOG_TAG, "Restore Called3");
-
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
+        if (!isVoodoo()) { // no voodoo
         for (String filePath : FILE_PATH) {
             int value = sharedPrefs.getInt(filePath, MAX_VALUE);
             Utils.writeColor(filePath, value);
@@ -143,6 +171,16 @@ public class ColorTuningPreference extends DialogPreference implements OnClickLi
             int value = sharedPrefs.getInt(filePath, GAMMA_DEFAULT_VALUE);
             Utils.writeGamma(filePath, value);
         }
+	} else { // try vodoo
+        for (String filePath : VOODOO_FILE_PATH) {
+            int value = sharedPrefs.getInt(filePath, MAX_VALUE);
+            Utils.writeColor(filePath, value);
+        }
+        for (String filePath : VOODOO_GAMMA_FILE_PATH) {
+            int value = sharedPrefs.getInt(filePath, VOODOO_GAMMA_DEFAULT_VALUE);
+            Utils.writeGamma(filePath, value - VOODOO_OFFSET_VALUE);
+        }
+	}
     }
 
     /**
@@ -161,8 +199,52 @@ public class ColorTuningPreference extends DialogPreference implements OnClickLi
                 supported = false;
             }
         }
+	if(!supported) {
+	   supported = true;
+           for (String filePath : VOODOO_FILE_PATH) {
+            	if (!Utils.fileExists(filePath)) {
+                   supported = false;
+            	}
+           }
+           for (String filePath : VOODOO_GAMMA_FILE_PATH) {
+            	if (!Utils.fileExists(filePath)) {
+                   supported = false;
+               }
+           }
+	}
 
         return supported;
+    }
+
+
+    public static boolean isVoodoo() {
+        boolean supported = true;
+	boolean voodoo = false;
+        for (String filePath : FILE_PATH) {
+            if (!Utils.fileExists(filePath)) {
+                supported = false;
+            }
+        }
+        for (String filePath : GAMMA_FILE_PATH) {
+            if (!Utils.fileExists(filePath)) {
+                supported = false;
+            }
+        }
+	if(!supported) {
+	   voodoo = true;
+           for (String filePath : VOODOO_FILE_PATH) {
+            	if (!Utils.fileExists(filePath)) {
+                   voodoo = false;
+            	}
+           }
+           for (String filePath : VOODOO_GAMMA_FILE_PATH) {
+            	if (!Utils.fileExists(filePath)) {
+                   voodoo = false;
+               }
+           }
+	}
+
+        return voodoo;
     }
 
     class ColorSeekBar implements SeekBar.OnSeekBarChangeListener {
@@ -192,7 +274,13 @@ public class ColorTuningPreference extends DialogPreference implements OnClickLi
 
         public void reset() {
             mSeekBar.setProgress(mOriginal);
+
+        if (!isVoodoo()) { // no voodoo
             updateValue(mOriginal);
+	} else {
+            updateValue(mOriginal - VOODOO_OFFSET_VALUE);
+	}
+
         }
 
         public void save() {
@@ -237,9 +325,14 @@ public class ColorTuningPreference extends DialogPreference implements OnClickLi
 
             // Read original value
             SharedPreferences sharedPreferences = getSharedPreferences();
+        if (!isVoodoo()) { // no voodoo
             mOriginal = sharedPreferences.getInt(mFilePath, GAMMA_DEFAULT_VALUE);
-
             seekBar.setMax(GAMMA_MAX_VALUE);
+	} else {
+            mOriginal = sharedPreferences.getInt(mFilePath, VOODOO_GAMMA_DEFAULT_VALUE);
+            seekBar.setMax(VOODOO_GAMMA_MAX_VALUE);
+	}
+
             reset();
             seekBar.setOnSeekBarChangeListener(this);
         }
@@ -247,19 +340,33 @@ public class ColorTuningPreference extends DialogPreference implements OnClickLi
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress,
                 boolean fromUser) {
-            Utils.writeGamma(mFilePath, progress);
-            updateValue(progress);
+	   if(!isVoodoo()) {
+            Utils.writeGamma(mFilePath, progress - OFFSET_VALUE);
+            updateValue(progress - OFFSET_VALUE);
+	   } else {
+            Utils.writeGamma(mFilePath, progress - VOODOO_OFFSET_VALUE);
+            updateValue(progress - VOODOO_OFFSET_VALUE);
+	   }
         }
 
         @Override
         protected void updateValue(int progress) {
-            mValueDisplay.setText("-" + progress);
+           if (!isVoodoo()) { // no voodoo
+            	mValueDisplay.setText("-" + progress);
+	   } else {
+           	 mValueDisplay.setText("" + progress);
+	   }
         }
 
         public void resetDefault(String path, int value) {
             mSeekBar.setProgress(value);
-            updateValue(value);
-            Utils.writeGamma(path, value);
+	   if(!isVoodoo()) {
+            updateValue(value - OFFSET_VALUE);
+            Utils.writeGamma(path, value - OFFSET_VALUE);
+	   } else {
+            updateValue(value - VOODOO_OFFSET_VALUE);
+            Utils.writeGamma(path, value - VOODOO_OFFSET_VALUE);
+	   }
         }
 
     }
@@ -267,12 +374,21 @@ public class ColorTuningPreference extends DialogPreference implements OnClickLi
     public void onClick(View v) {
         switch(v.getId()) {
             case R.id.color_reset:
+		if(!isVoodoo()) { // no voodoo
                 for (int i = 0; i < SEEKBAR_ID.length; i++) {
                     mSeekBars[i].resetDefault(FILE_PATH[i], MAX_VALUE);
                 }
                 for (int i = 0; i < GAMMA_SEEKBAR_ID.length; i++) {
                     mSeekBars[SEEKBAR_ID.length + i].resetDefault(GAMMA_FILE_PATH[i], GAMMA_DEFAULT_VALUE);
                 }
+		} else { // try voodoo
+                for (int i = 0; i < SEEKBAR_ID.length; i++) {
+                    mSeekBars[i].resetDefault(VOODOO_FILE_PATH[i], MAX_VALUE);
+                }
+                for (int i = 0; i < GAMMA_SEEKBAR_ID.length; i++) {
+                    mSeekBars[SEEKBAR_ID.length + i].resetDefault(VOODOO_GAMMA_FILE_PATH[i], VOODOO_GAMMA_DEFAULT_VALUE);
+                }
+		}
                 break;
         }
     }
