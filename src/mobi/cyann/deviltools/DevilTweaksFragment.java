@@ -8,6 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import mobi.cyann.deviltools.PreferenceListFragment.OnPreferenceAttachedListener;
+import mobi.cyann.deviltools.ColorTuningPreference;
 import mobi.cyann.deviltools.preference.IntegerPreference;
 import mobi.cyann.deviltools.SysCommand;
 import android.app.ActivityManager;
@@ -20,6 +21,7 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.ListPreference;
 import android.preference.Preference.OnPreferenceChangeListener;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.view.View;
@@ -37,6 +39,7 @@ public class DevilTweaksFragment extends BasePreferenceFragment implements OnPre
 	//private final static String LOG_TAG = "DevilTools.tweaks";
 
 	private ListPreference mBigmem;
+    	private ColorTuningPreference mColor;
     	private ListPreference mMdnie;
 
         private ContentResolver mContentResolver;
@@ -62,7 +65,19 @@ public class DevilTweaksFragment extends BasePreferenceFragment implements OnPre
 
         mMdnie = (ListPreference) findPreference("mdnie");
         mMdnie.setEnabled(Mdnie.isSupported());
+
+  	mColor = (ColorTuningPreference) findPreference("color_tuning");
+        mColor.setEnabled(ColorTuningPreference.isSupported());
+
+        if (!Mdnie.isSupported() && !ColorTuningPreference.isSupported()) {
+            PreferenceCategory category = (PreferenceCategory) getPreferenceScreen().findPreference("screen_category");
+            category.removePreference(mMdnie);
+            category.removePreference(mColor);
+            getPreferenceScreen().removePreference(category);	
+        } else if (Mdnie.isSupported()) {
         mMdnie.setOnPreferenceChangeListener(new Mdnie());
+        }
+
 
 	SysCommand sc = SysCommand.getInstance();
 
