@@ -22,7 +22,6 @@ import android.preference.ListPreference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -35,7 +34,7 @@ public class DevilTweaksFragment extends BasePreferenceFragment implements OnPre
 		super(R.layout.devil_tweak);
 	}
 	
-	private final static String LOG_TAG = "DevilTools.tweaks";
+	//private final static String LOG_TAG = "DevilTools.tweaks";
 
 	private ListPreference mBigmem;
     	private ListPreference mMdnie;
@@ -77,7 +76,6 @@ public class DevilTweaksFragment extends BasePreferenceFragment implements OnPre
 
  	    sc.writeSysfs(FILE_PATH[i], String.valueOf(value));
 
-	Log.d(LOG_TAG, "onCreate() Called");
         }
 
         MemoryInfo mi = new MemoryInfo();

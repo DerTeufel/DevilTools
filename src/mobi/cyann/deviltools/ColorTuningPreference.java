@@ -11,14 +11,13 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.util.Log;
 
 /**
  * Special preference type that allows configuration of both the ring volume and
  * notification volume.
  */
 public class ColorTuningPreference extends DialogPreference implements OnClickListener {
-	private final static String LOG_TAG = "DevilTools.Color";
+	//private final static String LOG_TAG = "DevilTools.Color";
     enum Colors {
         RED,
         GREEN,

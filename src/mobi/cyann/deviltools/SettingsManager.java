@@ -122,14 +122,12 @@ public class SettingsManager {
 		filepath = Mdnie.FILE;
 		value = Integer.parseInt(preferences.getString(filepath, "-1"));
 		//if(value > -1) {
-			Log.d(LOG_TAG, "mdnie");
 			command.append("echo " + value + " > " + filepath + "\n");
 		//}
 
 		// Smooth Ui
 		value = preferences.getInt(c.getString(R.string.key_smooth_ui_enabled), -1);
 		if(value > -1) {
-			Log.d(LOG_TAG, "smooth_ui");
 			command.append("echo " + value + " > " + "/sys/class/misc/devil_tweaks/smooth_ui_enabled\n");
 		}
 
