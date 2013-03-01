@@ -117,6 +117,24 @@
             custom:step="10"
             android:summary="0"
             android:title="@string/label_ondemand_powersave_bias" />
+
+        <mobi.cyann.deviltools.preference.StatusPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/ondemand/early_demand"
+            android:key="@string/key_early_demand"
+            android:summary="@string/status_not_available"
+            android:title="@string/label_early_demand" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            android:dependency="@string/key_early_demand"
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/ondemand/grad_up_threshold"
+            android:key="@string/key_grad_up_threshold"
+            custom:maxValue="100"
+            custom:metrics="%"
+            custom:minValue="1"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_grad_up_threshold" />
+
     </mobi.cyann.deviltools.preference.GovernorPreferenceGroup>
 
     <mobi.cyann.deviltools.preference.GovernorPreferenceGroup
