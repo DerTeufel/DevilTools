@@ -114,8 +114,10 @@
     <string name="label_ondemand_up_threshold">Up threshold</string>
     <string name="label_ondemand_sampling_down_factor">Sampling down factor</string>
     <string name="label_ondemand_powersave_bias">Powersave bias</string>
-    <string name="label_early_demand">Early Demand</string>
-    <string name="label_grad_up_threshold">Gradient Up threshold</string>
+    <string name="label_ondemand_early_demand">Early Demand</string>
+    <string name="label_ondemand_grad_up_threshold">Gradient Up threshold</string>
+    <string name="label_ondemand_sleep_up_threshold">Up threshold (screen off)</string>
+    <string name="label_ondemand_sleep_sampling_rate">Sampling rate (screen off)</string>
 
     <!-- conservative governor -->
     <string name="label_conservative">Conservative</string>

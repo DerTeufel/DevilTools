@@ -5,7 +5,7 @@
 
     <mobi.cyann.deviltools.preference.RemovablePreferenceCategory android:title="@string/general_governor" >
 
-        <mobi.cyann.deviltools.preference.StatusPreference
+    <mobi.cyann.deviltools.preference.StatusPreference
             custom:interfacePath="/sys/class/misc/devil_tweaks/smooth_ui_enabled"
             android:key="@string/key_smooth_ui_enabled"
             android:summary="@string/status_not_available"
@@ -94,7 +94,7 @@
             android:key="@string/key_ondemand_up_threshold"
             custom:maxValue="100"
             custom:metrics="%"
-            custom:minValue="1"
+            custom:minValue="11"
             custom:step="1"
             android:summary="0"
             android:title="@string/label_ondemand_up_threshold" />
@@ -120,20 +120,40 @@
 
         <mobi.cyann.deviltools.preference.StatusPreference
             custom:interfacePath="/sys/devices/system/cpu/cpufreq/ondemand/early_demand"
-            android:key="@string/key_early_demand"
+            android:key="@string/key_ondemand_early_demand"
             android:summary="@string/status_not_available"
-            android:title="@string/label_early_demand" />
+            android:title="@string/label_ondemand_early_demand" />
 
         <mobi.cyann.deviltools.preference.IntegerPreference
-            android:dependency="@string/key_early_demand"
+            android:dependency="@string/key_ondemand_early_demand"
             custom:interfacePath="/sys/devices/system/cpu/cpufreq/ondemand/grad_up_threshold"
-            android:key="@string/key_grad_up_threshold"
+            android:key="@string/key_ondemand_grad_up_threshold"
             custom:maxValue="100"
             custom:metrics="%"
             custom:minValue="1"
             custom:step="1"
             android:summary="0"
-            android:title="@string/label_grad_up_threshold" />
+            android:title="@string/label_ondemand_grad_up_threshold" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/ondemand/sleep_up_threshold"
+            android:key="@string/key_ondemand_sleep_up_threshold"
+            custom:maxValue="100"
+            custom:metrics="%"
+            custom:minValue="11"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_ondemand_sleep_up_threshold" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/ondemand/sleep_sampling_rate"
+            android:key="@string/key_ondemand_sleep_sampling_rate"
+            custom:maxValue="500000"
+            custom:metrics="µs"
+            custom:minValue="10000"
+            custom:step="1000"
+            android:summary="0"
+            android:title="@string/label_ondemand_sleep_sampling_rate" />
 
     </mobi.cyann.deviltools.preference.GovernorPreferenceGroup>
 

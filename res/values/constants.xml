@@ -69,8 +69,10 @@
     <string name="key_ondemand_up_threshold">key_ondemand_up_threshold</string>
     <string name="key_ondemand_sampling_down_factor">key_ondemand_sampling_down_factor</string>
     <string name="key_ondemand_powersave_bias">key_ondemand_powersave_bias</string>
-    <string name="key_early_demand">key_early_demand</string>
-    <string name="key_grad_up_threshold">key_grad_up_threshold</string>
+    <string name="key_ondemand_early_demand">key_ondemand_early_demand</string>
+    <string name="key_ondemand_grad_up_threshold">key_ondemand_grad_up_threshold</string>
+    <string name="key_ondemand_sleep_up_threshold">key_ondemand_sleep_up_threshold</string>
+    <string name="key_ondemand_sleep_sampling_rate">key_ondemand_sleep_sampling_rate</string>
     <string name="key_conservative_sampling_rate">key_conservative_sampling_rate</string>
     <string name="key_conservative_down_threshold">key_conservative_down_threshold</string>
     <string name="key_conservative_up_threshold">key_conservative_up_threshold</string>
