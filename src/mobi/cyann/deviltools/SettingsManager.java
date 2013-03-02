@@ -486,6 +486,7 @@ public class SettingsManager {
 		
 		// check 'set on boot' preference
 		boolean restoreOnBoot = preferences.getBoolean(c.getString(R.string.key_restore_on_boot), true);
+		boolean forceRestore = preferences.getBoolean(c.getString(R.string.key_force_restore_on_boot), false);
 		if(!restoreOnBoot) {
 			return ERR_SET_ON_BOOT_FALSE;
 		}
@@ -496,7 +497,7 @@ public class SettingsManager {
 		if(sysCommand.readSysfs("/proc/version") > 0) {
 			String kernel = sysCommand.getLastResult(0);
 			String savedKernelVersion = preferences.getString(c.getString(R.string.key_kernel_version), null);
-			if(kernel.equals(savedKernelVersion)) {
+			if(kernel.equals(savedKernelVersion) || forceRestore) {
 				restoreOnBoot = true;
 			}
 		}
@@ -517,6 +518,7 @@ public class SettingsManager {
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(c);
 		boolean restoreOnBoot = preferences.getBoolean(c.getString(R.string.key_restore_on_boot), true);
 		boolean restoreOnInitd = preferences.getBoolean(c.getString(R.string.key_restore_on_initd), false);
+		boolean forceRestore = preferences.getBoolean(c.getString(R.string.key_force_restore_on_boot), false);
 		SysCommand sysCommand = SysCommand.getInstance();
 		if(restoreOnBoot && restoreOnInitd) {
 			Log.d(LOG_TAG, "write to init.d script");
@@ -533,10 +535,11 @@ public class SettingsManager {
 				fw.write("#!/system/bin/sh\n");
 				fw.write("CUR=`cat /proc/version`\n");
 				fw.write("SAV=\""+preferences.getString(c.getString(R.string.key_kernel_version), null)+"\"\n");
+				if (!forceRestore) {
 				fw.write("if [ ! \"$CUR\" == \"$SAV\" ] ; then\n");
 				fw.write("exit\n");
 				fw.write("fi\n");
-				//cat /proc/version | grep ""
+				}
 				fw.write(command);
 				fw.close();
 			}catch(IOException e) {
