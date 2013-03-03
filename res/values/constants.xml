@@ -103,6 +103,7 @@
 	<string name="key_vibration_intensity">key_vibration_intensity</string>
 
 	<string name="key_bigmem">key_bigmem</string>
+	<string name="key_voodoo_gamma_presets">key_voodoo_gamma_presets</string>
            
 	<string-array name="iosched_interfaces">
 	    <item>/sys/block/mtdblock4/queue/scheduler</item>

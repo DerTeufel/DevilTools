@@ -4,6 +4,7 @@ package mobi.cyann.deviltools;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.DialogPreference;
+import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 import android.view.View;
@@ -72,7 +73,9 @@ public class ColorTuningPreference extends DialogPreference implements OnClickLi
         "/sys/devices/virtual/misc/voodoo_color/blue_v1_offset"
     };
 
-    private ColorSeekBar mSeekBars[] = new ColorSeekBar[6];
+    private static final String KEY_VOODOO_GAMMA_PRESETS = "key_voodoo_gamma_presets";
+
+    private static ColorSeekBar mSeekBars[] = new ColorSeekBar[6];
 
     public static final int MAX_VALUE = Integer.MAX_VALUE;
 
@@ -82,8 +85,6 @@ public class ColorTuningPreference extends DialogPreference implements OnClickLi
     private static final int VOODOO_GAMMA_MAX_VALUE = 60;
     private static final int VOODOO_GAMMA_DEFAULT_VALUE = 40;
     private static final int VOODOO_OFFSET_VALUE = 40;
-
-
 
     // Track instances to know when to restore original color
     // (when the orientation changes, a new dialog is created before the old one is destroyed)
@@ -244,6 +245,21 @@ public class ColorTuningPreference extends DialogPreference implements OnClickLi
 	}
 
         return voodoo;
+    }
+
+
+    public static void Preset1() {
+ 	int[] GAMMA_VALUE = new int[] {
+        -14,
+        -17,
+        -18
+    	};
+
+        for (int i = 0; i < VOODOO_GAMMA_FILE_PATH.length; i++) {
+            //Utils.writeGamma(VOODOO_GAMMA_FILE_PATH[i], GAMMA_VALUE[i]);
+	    mSeekBars[SEEKBAR_ID.length + i].resetDefault(VOODOO_GAMMA_FILE_PATH[i], GAMMA_VALUE[i]);
+	    //updateValue(progress - VOODOO_OFFSET_VALUE);
+        }
     }
 
     class ColorSeekBar implements SeekBar.OnSeekBarChangeListener {

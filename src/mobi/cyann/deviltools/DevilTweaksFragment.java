@@ -41,6 +41,7 @@ public class DevilTweaksFragment extends BasePreferenceFragment implements OnPre
 	private ListPreference mBigmem;
     	private ColorTuningPreference mColor;
     	private ListPreference mMdnie;
+    	private ListPreference mVoodooPre;
 
         private ContentResolver mContentResolver;
 	private static SharedPreferences preferences;
@@ -68,6 +69,12 @@ public class DevilTweaksFragment extends BasePreferenceFragment implements OnPre
 
   	mColor = (ColorTuningPreference) findPreference("color_tuning");
         mColor.setEnabled(ColorTuningPreference.isSupported());
+
+    	mVoodooPre = (ListPreference) findPreference("key_voodoo_gamma_presets");
+	if (ColorTuningPreference.isVoodoo()) {
+    	mVoodooPre.setOnPreferenceChangeListener(this);
+	}
+        mVoodooPre.setEnabled(ColorTuningPreference.isVoodoo());
 
         if (!Mdnie.isSupported() && !ColorTuningPreference.isSupported()) {
             PreferenceCategory category = (PreferenceCategory) getPreferenceScreen().findPreference("screen_category");
@@ -104,13 +111,28 @@ public class DevilTweaksFragment extends BasePreferenceFragment implements OnPre
 	
     public boolean onPreferenceChange(Preference preference, Object objValue) {
 	SysCommand sc = SysCommand.getInstance();
+	int status, index;
 	if (preference == mBigmem) {
-            int status = Integer.valueOf((String) objValue);
-            int index = mBigmem.findIndexOfValue((String) objValue);
+            status = Integer.valueOf((String) objValue);
+            index = mBigmem.findIndexOfValue((String) objValue);
             mBigmem.setSummary("After Reboot: " + mBigmem.getEntries()[index]);
 	    sc.writeSysfs("/sys/kernel/bigmem/enable", ((String) objValue));
 	    sc.writeSysfs("/data/local/devil/bigmem", ((String) objValue));
 	    setPreferenceString(getString(R.string.key_bigmem), ((String) objValue));
+            return true;
+        } else if (preference == mVoodooPre) {
+            status = Integer.valueOf((String) objValue);
+            switch(status){
+            	case 0:
+                    //reset();
+                    break;
+            	case 1:
+                    ColorTuningPreference.Preset1();
+                    break;
+            	case 2:
+                    //Preset2();
+                    break;
+	    }
             return true;
         }
 

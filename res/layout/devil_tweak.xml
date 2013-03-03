@@ -28,8 +28,16 @@
 	        android:key="color_tuning"
 	        android:title="@string/color_tuning_title_head"
 	        android:summary="@string/color_tuning_summary_head" />
-	    <!-- mDNIe Options -->
-	    <ListPreference
+
+    	<ListPreference
+            	android:key="@string/key_voodoo_gamma_presets"
+            	android:title="@string/label_voodoo_gamma_presets"
+            	android:entries="@array/voodoo_gamma_presets_entries"
+            	android:entryValues="@array/voodoo_gamma_presets_values"
+            	android:summary="@string/status_not_available" />
+
+	 <!-- mDNIe Options -->
+	 <ListPreference
 	        android:key="mdnie"
 	        android:title="@string/mdnie_title_head"
 	        android:summary="@string/mdnie_summary_head"

@@ -187,6 +187,7 @@
     <string name="color_blue_gamma_title">Blue Gamma</string>
     <string name="mdnie_title_head">mDNIe Mode</string>
     <string name="mdnie_summary_head">Adjust mDNIe display post-processing</string>
+    <string name="label_voodoo_gamma_presets">Voodoo Gamma Presets</string>
 
     <string name="button_reset_title">Reset</string>
 </resources>
