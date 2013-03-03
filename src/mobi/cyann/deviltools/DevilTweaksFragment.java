@@ -122,6 +122,8 @@ public class DevilTweaksFragment extends BasePreferenceFragment implements OnPre
             return true;
         } else if (preference == mVoodooPre) {
             status = Integer.valueOf((String) objValue);
+            index = mVoodooPre.findIndexOfValue((String) objValue);
+            mVoodooPre.setSummary(mVoodooPre.getEntries()[index]);
             switch(status){
             	case 0:
                     ColorTuningPreference.Preset(0);
@@ -131,6 +133,9 @@ public class DevilTweaksFragment extends BasePreferenceFragment implements OnPre
                     break;
             	case 2:
                     ColorTuningPreference.Preset(2);
+                    break;
+            	default:
+                    ColorTuningPreference.Preset(0);
                     break;
 	    }
             return true;
