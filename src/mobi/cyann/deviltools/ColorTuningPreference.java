@@ -75,7 +75,7 @@ public class ColorTuningPreference extends DialogPreference implements OnClickLi
 
     private static final String KEY_VOODOO_GAMMA_PRESETS = "key_voodoo_gamma_presets";
 
-    private static ColorSeekBar mSeekBars[] = new ColorSeekBar[6];
+    private ColorSeekBar mSeekBars[] = new ColorSeekBar[6];
 
     public static final int MAX_VALUE = Integer.MAX_VALUE;
 
@@ -248,20 +248,6 @@ public class ColorTuningPreference extends DialogPreference implements OnClickLi
     }
 
 
-    public static void Preset1() {
- 	int[] GAMMA_VALUE = new int[] {
-        -14,
-        -17,
-        -18
-    	};
-
-        for (int i = 0; i < VOODOO_GAMMA_FILE_PATH.length; i++) {
-            //Utils.writeGamma(VOODOO_GAMMA_FILE_PATH[i], GAMMA_VALUE[i]);
-	    mSeekBars[SEEKBAR_ID.length + i].resetDefault(VOODOO_GAMMA_FILE_PATH[i], GAMMA_VALUE[i]);
-	    //updateValue(progress - VOODOO_OFFSET_VALUE);
-        }
-    }
-
     class ColorSeekBar implements SeekBar.OnSeekBarChangeListener {
 
         protected String mFilePath;
@@ -331,7 +317,7 @@ public class ColorTuningPreference extends DialogPreference implements OnClickLi
 
     }
 
-    class GammaSeekBar extends ColorSeekBar {
+    public class GammaSeekBar extends ColorSeekBar {
 
         public GammaSeekBar(SeekBar seekBar, TextView valueDisplay, String filePath) {
             mSeekBar = seekBar;
@@ -372,6 +358,21 @@ public class ColorTuningPreference extends DialogPreference implements OnClickLi
            	 mValueDisplay.setText("" + progress);
 	   }
         }
+
+
+    public static void Preset1() {
+ 	int[] GAMMA_VALUE = new int[] {
+        -14,
+        -17,
+        -18
+    	};
+
+        for (int i = 0; i < VOODOO_GAMMA_FILE_PATH.length; i++) {
+            //Utils.writeGamma(VOODOO_GAMMA_FILE_PATH[i], GAMMA_VALUE[i]);
+	    mSeekBars[SEEKBAR_ID.length + i].resetDefault(VOODOO_GAMMA_FILE_PATH[i], GAMMA_VALUE[i]);
+	    //updateValue(progress - VOODOO_OFFSET_VALUE);
+        }
+    }
 
         public void resetDefault(String path, int value) {
             mSeekBar.setProgress(value);
