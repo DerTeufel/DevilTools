@@ -216,6 +216,44 @@
             android:key="@string/key_conservative_ignore_nice_load"
             android:summary="@string/status_not_available"
             android:title="@string/label_conservative_ignore_nice_load" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/conservative/sleep_up_threshold"
+            android:key="@string/key_conservative_sleep_up_threshold"
+            custom:maxValue="100"
+            custom:metrics="%"
+            custom:minValue="11"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_conservative_sleep_up_threshold" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/conservative/sleep_sampling_rate"
+            android:key="@string/key_conservative_sleep_sampling_rate"
+            custom:maxValue="500000"
+            custom:metrics="µs"
+            custom:minValue="10000"
+            custom:step="1000"
+            android:summary="0"
+            android:title="@string/label_conservative_sleep_sampling_rate" />
+
+        <mobi.cyann.deviltools.preference.StatusPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/conservative/smooth_up_enabled"
+            android:key="@string/key_conservative_smooth_up_enabled"
+            android:summary="@string/status_not_available"
+            android:title="@string/label_conservative_smooth_up_enabled" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            android:dependency="@string/key_conservative_smooth_up_enabled"
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/conservative/smooth_up"
+            android:key="@string/key_conservative_smooth_up"
+            custom:maxValue="100"
+            custom:metrics="%"
+            custom:minValue="1"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_conservative_smooth_up" />
+
     </mobi.cyann.deviltools.preference.GovernorPreferenceGroup>
 
     <mobi.cyann.deviltools.preference.GovernorPreferenceGroup

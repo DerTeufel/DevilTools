@@ -132,6 +132,11 @@
     <string name="label_conservative_sampling_down_factor">Sampling down factor</string>
     <string name="label_conservative_freq_step">Freq step</string>
     <string name="label_conservative_ignore_nice_load">Ignore nice load</string>
+    <string name="label_conservative_sleep_up_threshold">Up threshold (screen off)</string>
+    <string name="label_conservative_sleep_sampling_rate">Sampling rate (screen off)</string>
+    <string name="label_conservative_smooth_up_enabled">Smooth Up</string>
+    <string name="label_conservative_smooth_up">Smooth Up threshold</string>
+
 	<!-- smartass2 governor -->
 	<string name="label_smartass">Smartass v2</string>
 	<string name="label_smartass_awake_ideal_freq">Awake ideal freq</string>

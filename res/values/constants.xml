@@ -80,6 +80,10 @@
     <string name="key_conservative_sampling_down_factor">key_conservative_sampling_down_factor</string>
     <string name="key_conservative_freq_step">key_conservative_freq_step</string>
     <string name="key_conservative_ignore_nice_load">key_conservative_ignore_nice_load</string>
+    <string name="key_conservative_sleep_up_threshold">key_conservative_sleep_up_threshold</string>
+    <string name="key_conservative_sleep_sampling_rate">key_conservative_sleep_sampling_rate</string>
+    <string name="key_conservative_smooth_up_enabled">key_conservative_smooth_up_enabled</string>
+    <string name="key_conservative_smooth_up">key_conservative_smooth_up</string>
 	<string name="key_smartass_awake_ideal_freq">key_smartass_awake_ideal_freq</string>
 	<string name="key_smartass_sleep_ideal_freq">key_smartass_sleep_ideal_freq</string>
 	<string name="key_smartass_sleep_wakeup_freq">key_smartass_sleep_wakeup_freq</string>
