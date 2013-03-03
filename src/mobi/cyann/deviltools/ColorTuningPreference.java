@@ -248,6 +248,19 @@ public class ColorTuningPreference extends DialogPreference implements OnClickLi
     }
 
 
+    public static void Preset1() {
+ 	int[] GAMMA_VALUE = new int[] {
+        -14,
+        -17,
+        -18
+    	};
+
+        for (int i = 0; i < VOODOO_GAMMA_FILE_PATH.length; i++) {
+            Utils.writeGamma(VOODOO_GAMMA_FILE_PATH[i], GAMMA_VALUE[i]);
+	    DevilTweaksFragment.setPreferenceInteger(VOODOO_GAMMA_FILE_PATH[i], GAMMA_VALUE[i] + 40);
+        }
+    }
+
     class ColorSeekBar implements SeekBar.OnSeekBarChangeListener {
 
         protected String mFilePath;
@@ -317,7 +330,7 @@ public class ColorTuningPreference extends DialogPreference implements OnClickLi
 
     }
 
-    public class GammaSeekBar extends ColorSeekBar {
+    class GammaSeekBar extends ColorSeekBar {
 
         public GammaSeekBar(SeekBar seekBar, TextView valueDisplay, String filePath) {
             mSeekBar = seekBar;
@@ -359,20 +372,6 @@ public class ColorTuningPreference extends DialogPreference implements OnClickLi
 	   }
         }
 
-
-    public static void Preset1() {
- 	int[] GAMMA_VALUE = new int[] {
-        -14,
-        -17,
-        -18
-    	};
-
-        for (int i = 0; i < VOODOO_GAMMA_FILE_PATH.length; i++) {
-            //Utils.writeGamma(VOODOO_GAMMA_FILE_PATH[i], GAMMA_VALUE[i]);
-	    mSeekBars[SEEKBAR_ID.length + i].resetDefault(VOODOO_GAMMA_FILE_PATH[i], GAMMA_VALUE[i]);
-	    //updateValue(progress - VOODOO_OFFSET_VALUE);
-        }
-    }
 
         public void resetDefault(String path, int value) {
             mSeekBar.setProgress(value);

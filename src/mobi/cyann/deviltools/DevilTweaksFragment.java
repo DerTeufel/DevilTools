@@ -127,7 +127,7 @@ public class DevilTweaksFragment extends BasePreferenceFragment implements OnPre
                     //reset();
                     break;
             	case 1:
-                    ColorTuningPreference.GammaSeekBar.Preset1();
+                    ColorTuningPreference.Preset1();
                     break;
             	case 2:
                     //Preset2();
