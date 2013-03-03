@@ -106,11 +106,16 @@ public class SettingsManager {
 		command.append("echo " + value + " > " + filePath + "\n");
         	}
         	for (String filePath : ColorTuningPreference.VOODOO_GAMMA_FILE_PATH) {
-            	value = preferences.getInt(filePath, ColorTuningPreference.GAMMA_DEFAULT_VALUE);
+            	value = (preferences.getInt(filePath, ColorTuningPreference.GAMMA_DEFAULT_VALUE) -40);
 		command.append("echo " + value + " > " + filePath + "\n");
         	}
 		}
-
+		// Mdnie
+		filepath = Mdnie.FILE;
+		value = Integer.parseInt(preferences.getString(filepath, "-1"));
+		if(value > -1) {
+			command.append("echo " + value + " > " + filepath + "\n");
+		}
 		
 		// Deepidle
 		value = preferences.getInt(c.getString(R.string.key_deepidle_status), -1);
@@ -118,12 +123,6 @@ public class SettingsManager {
 			command.append("echo " + value + " > " + "/sys/class/misc/deepidle/enabled\n");
 		}
 
-		// Mdnie
-		filepath = Mdnie.FILE;
-		value = Integer.parseInt(preferences.getString(filepath, "-1"));
-		//if(value > -1) {
-			command.append("echo " + value + " > " + filepath + "\n");
-		//}
 
 		// Smooth Ui
 		value = preferences.getInt(c.getString(R.string.key_smooth_ui_enabled), -1);
@@ -187,6 +186,25 @@ public class SettingsManager {
 			if(value > -1) {
 				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/ondemand/powersave_bias\n");
 			}
+			value = preferences.getInt(c.getString(R.string.key_ondemand_early_demand), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/ondemand/early_demand\n");
+				if (value == 1) {
+				value = preferences.getInt(c.getString(R.string.key_ondemand_grad_up_threshold), -1);
+				   if(value > -1) {
+					command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/ondemand/grad_up_threshold\n");
+				   }
+				}	
+			}
+			value = preferences.getInt(c.getString(R.string.key_ondemand_sleep_up_threshold), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/ondemand/sleep_up_threshold\n");
+			}
+			value = preferences.getInt(c.getString(R.string.key_ondemand_sleep_sampling_rate), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/ondemand/sleep_sampling_rate\n");
+			}
+
 		}else if(status.equals("conservative")) { // set this parameter only if active governor = conservative
 		    value = preferences.getInt(c.getString(R.string.key_conservative_sampling_rate), -1);
 			if(value > -1) {
@@ -212,6 +230,26 @@ public class SettingsManager {
 			if(value > -1) {
 				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/conservative/ignore_nice_load\n");
 			}
+
+			value = preferences.getInt(c.getString(R.string.key_conservative_smooth_up_enabled), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/conservative/smooth_up_enabled\n");
+				if (value == 1) {
+				value = preferences.getInt(c.getString(R.string.key_conservative_smooth_up), -1);
+				   if(value > -1) {
+					command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/conservative/smooth_up\n");
+				   }
+				}	
+			}
+			value = preferences.getInt(c.getString(R.string.key_conservative_sleep_up_threshold), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/conservative/sleep_up_threshold\n");
+			}
+			value = preferences.getInt(c.getString(R.string.key_conservative_sleep_sampling_rate), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/conservative/sleep_sampling_rate\n");
+			}
+
 		}else if(status.equals("smartassV2")) { // set this parameter only if active governor = smartass2
 			value = preferences.getInt(c.getString(R.string.key_smartass_awake_ideal_freq), -1);
 			if(value > -1) {
