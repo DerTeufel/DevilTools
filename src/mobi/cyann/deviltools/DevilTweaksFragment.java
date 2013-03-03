@@ -124,13 +124,13 @@ public class DevilTweaksFragment extends BasePreferenceFragment implements OnPre
             status = Integer.valueOf((String) objValue);
             switch(status){
             	case 0:
-                    //reset();
+                    ColorTuningPreference.Preset(0);
                     break;
             	case 1:
-                    ColorTuningPreference.Preset1();
+                    ColorTuningPreference.Preset(1);
                     break;
             	case 2:
-                    //Preset2();
+                    ColorTuningPreference.Preset(2);
                     break;
 	    }
             return true;

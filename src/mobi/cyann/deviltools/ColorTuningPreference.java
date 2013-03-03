@@ -248,16 +248,16 @@ public class ColorTuningPreference extends DialogPreference implements OnClickLi
     }
 
 
-    public static void Preset1() {
- 	int[] GAMMA_VALUE = new int[] {
-        -14,
-        -17,
-        -18
-    	};
+    public static void Preset(int selection) {
+ 	int[] [] GAMMA_VALUE = new int[] [] {
+	{0,0,0},
+	{-14,-17,-18},
+	{-26,-30,-33}
+   	};
 
         for (int i = 0; i < VOODOO_GAMMA_FILE_PATH.length; i++) {
-            Utils.writeGamma(VOODOO_GAMMA_FILE_PATH[i], GAMMA_VALUE[i]);
-	    DevilTweaksFragment.setPreferenceInteger(VOODOO_GAMMA_FILE_PATH[i], GAMMA_VALUE[i] + 40);
+            Utils.writeGamma(VOODOO_GAMMA_FILE_PATH[i], GAMMA_VALUE[selection][i]);
+	    DevilTweaksFragment.setPreferenceInteger(VOODOO_GAMMA_FILE_PATH[i], GAMMA_VALUE[selection][i] + 40);
         }
     }
 
