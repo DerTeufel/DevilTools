@@ -358,15 +358,6 @@
         custom:governor="interactive"
         android:title="@string/label_interactive" >
 
-       <EditTextPreference
-            custom:interfacePath="/sys/devices/system/cpu/cpufreq/interactive/target_loads"
-            	android:title="@string/label_interactive_target_loads"
-                android:key="@string/key_interactive_target_loads"
-                android:summary="@string/interactive_target_loads_summary"
-                android:numeric="integer"
-                android:inputType="textNoSuggestions" />
-
-
         <mobi.cyann.deviltools.preference.IntegerPreference
             custom:interfacePath="/sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load"
             android:key="@string/key_interactive_go_hispeed_load"
