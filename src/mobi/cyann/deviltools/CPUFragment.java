@@ -16,7 +16,9 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.EditTextPreference;
 import android.preference.Preference;
+import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
@@ -36,6 +38,7 @@ public class CPUFragment extends BasePreferenceFragment implements OnPreferenceC
 	private ListPreference maxFreq;
 	private ListPreference liveocTargetLow;
 	private ListPreference liveocTargetHigh;
+	private EditTextPreference mTargetsLoad;
 	
 	public CPUFragment() {
 		super(R.layout.cpu);
@@ -69,8 +72,14 @@ public class CPUFragment extends BasePreferenceFragment implements OnPreferenceC
 		minFreq = (ListPreference)findPreference(getString(R.string.key_min_cpufreq));
 		maxFreq = (ListPreference)findPreference(getString(R.string.key_max_cpufreq));
 		reloadFrequencies();
-	}
-	
+
+        	mTargetsLoad = (EditTextPreference) findPreference(getString(R.string.key_interactive_target_loads));
+        	mTargetsLoad.setOnPreferenceClickListener(this);
+            		if (mTargetsLoad.getText() != null) {
+               		 mTargetsLoad.setSummary(mTargetsLoad.getText());
+			}
+        }
+
 	private void reloadGovernors() {
 		String availableGovernors[] = null;
 		String temp = PreloadValues.getInstance().getString("key_available_governor");
@@ -205,7 +214,10 @@ public class CPUFragment extends BasePreferenceFragment implements OnPreferenceC
 		if(preference.getKey().equals(getString(R.string.key_deepidle_stats))) {
 			showIdleStatsDialog();
 			ret = true;
+		} else if(preference == mTargetsLoad) {
+			((EditTextPreference)preference).getEditText().setText("");
 		}
+
 		return ret;
 	}
 

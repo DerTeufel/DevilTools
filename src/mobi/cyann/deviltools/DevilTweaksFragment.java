@@ -19,6 +19,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.preference.Preference;
+import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceCategory;
@@ -42,6 +43,7 @@ public class DevilTweaksFragment extends BasePreferenceFragment implements OnPre
     	private ColorTuningPreference mColor;
     	private ListPreference mMdnie;
     	private ListPreference mVoodooPre;
+	private EditTextPreference mTargetsLoad;
 
         private ContentResolver mContentResolver;
 	private static SharedPreferences preferences;
@@ -85,6 +87,10 @@ public class DevilTweaksFragment extends BasePreferenceFragment implements OnPre
         mMdnie.setOnPreferenceChangeListener(new Mdnie());
         }
 
+        mTargetsLoad = (EditTextPreference) findPreference("key_interactive_target_loads");
+	//if(mTargetsLoad != null) {
+	mTargetsLoad.setOnPreferenceChangeListener(this);
+	//}
 
 	SysCommand sc = SysCommand.getInstance();
 
@@ -139,7 +145,16 @@ public class DevilTweaksFragment extends BasePreferenceFragment implements OnPre
                     break;
 	    }
             return true;
+        } else if (preference == mTargetsLoad) {
+            if (mTargetsLoad.getText() != null) {
+                mTargetsLoad.setSummary(mTargetsLoad.getText());
+	    sc.writeSysfs("/sys/devices/system/cpu/cpufreq/interactive/target_loads", ((String) objValue));
+	    setPreferenceString(getString(R.string.key_interactive_target_loads), ((String) objValue));
+            }
         }
+
+
+
 
         return false;
     }
