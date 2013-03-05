@@ -30,6 +30,7 @@ public class MainActivity extends FragmentActivity {
 	private TabHost tabHost;
 	private TabsAdapter tabsAdapter;
 	public static HorizontalScrollView mScrollView;
+	public static int suggestedWidth;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +64,6 @@ public class MainActivity extends FragmentActivity {
 		
 		TabSpec tab1 = tabHost.newTabSpec("nstweak");
 		tab1.setIndicator(getString(R.string.ns_tweak), res.getDrawable(R.drawable.ic_tab_tweaks));
-		//tab1.setContent(new Intent(this, NSTweakFragment.class));
 		tabsAdapter.addTab(tab1, NSTweakFragment.class, null);
 
 		TabSpec tab2 = tabHost.newTabSpec("deviltweaks");
@@ -72,26 +72,24 @@ public class MainActivity extends FragmentActivity {
 		
 		TabSpec tab3 = tabHost.newTabSpec("cpu");
 		tab3.setIndicator(getString(R.string.label_cpu_tweak), res.getDrawable(R.drawable.ic_tab_cpu));
-		//tab2.setContent(new Intent(this, CPUFragment.class));
 		tabsAdapter.addTab(tab3, CPUFragment.class, null);
 		
 		TabSpec tab4 = tabHost.newTabSpec("volt");
 		tab4.setIndicator(getString(R.string.voltage_control), res.getDrawable(R.drawable.ic_tab_voltages));
-		//tab3.setContent(new Intent(this, VoltageControlFragment.class));
 		tabsAdapter.addTab(tab4, VoltageControlFragment.class, null);
 		
 		TabSpec tab5 = tabHost.newTabSpec("setting");
 		tab5.setIndicator(getString(R.string.label_setting), res.getDrawable(R.drawable.ic_tab_settings));
-		//tab4.setContent(new Intent(this, SettingFragment.class));
 		tabsAdapter.addTab(tab5, SettingFragment.class, null);
 
 		TabSpec tab6 = tabHost.newTabSpec("info");
 		tab6.setIndicator(getString(R.string.label_info), res.getDrawable(R.drawable.ic_tab_info));
 		tabsAdapter.addTab(tab6, InfoFragment.class, null);
 
+		suggestedWidth = tabsAdapter.getSuggestedWidth();
        		// set the width of tab 
         	for(int i=0;i<tabHost.getTabWidget().getChildCount();i++){
-             	tabHost.getTabWidget().getChildAt(i).getLayoutParams().width = tabsAdapter.getSuggestedWidth();
+             	tabHost.getTabWidget().getChildAt(i).getLayoutParams().width = suggestedWidth;
         	}
 		
 		if (savedInstanceState != null) {
@@ -164,7 +162,7 @@ public class MainActivity extends FragmentActivity {
 			try {
 				SysCommand sc = SysCommand.getInstance();
 				// clean old script dir
-				int r = sc.run("rm", "-r", scriptDir);
+				int r = sc.suRun("rm", "-r", scriptDir);
 				if(r < 0) {
 					Log.e(LOG_TAG, sc.getLastError(0));
 				}
@@ -174,7 +172,7 @@ public class MainActivity extends FragmentActivity {
 				String[] scripts = getResources().getStringArray(R.array.scripts);
 				for(String f: scripts) {
 					copyAsset(f, scriptDir + f);
-					r = SysCommand.getInstance().run("chmod", "0755", scriptDir + f);
+					r = SysCommand.getInstance().suRun("chmod", "0755", scriptDir + f);
 					if(r < 0) {
 						Log.e(LOG_TAG, sc.getLastError(0));
 					}
