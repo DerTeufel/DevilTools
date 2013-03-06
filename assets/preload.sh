@@ -183,17 +183,6 @@ case "$?" in
 	;;
 esac
 
-# target_loads
-STAT=`cat /sys/devices/system/cpu/cpufreq/interactive/target_loads`
-case "$?" in
-	0)
-	echo "key_interactive_target_loads=$STAT" >> $OUT_FILE
-	;;
-	*)
-	echo "key_available_governor=-1" >> $OUT_FILE
-	;;
-esac
-
 # cpu min freq
 STAT=`cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq`
 case "$?" in

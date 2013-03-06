@@ -72,11 +72,11 @@ public abstract class BasePreference<T> extends Preference {
 
 	@Override
 	protected View onCreateView(ViewGroup parent) {
-		//if(isAvailable() && isVisible()) {
+		if(isAvailable() && isVisible()) {
 			return super.onCreateView(parent);
-		//}else {
-		//	return blankView;
-		//}
+		}else {
+			return blankView;
+		}
 	}
 	
 	public void setVisible(boolean visible) {

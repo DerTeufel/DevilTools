@@ -108,9 +108,9 @@ public class ListPreference extends BasePreference<Object> implements DialogInte
 		Object preloadVal = null;
 		if(valueType == 0) { // int
 			preloadVal = PreloadValues.getInstance().getInt(getKey());
-    		}else { // string
+    	}else { // string
     		preloadVal = PreloadValues.getInstance().getString(getKey());
-    		}
+    	}
 		if(preloadVal == null || (valueType == 0 && (Integer)preloadVal == -2)) { // if the value was not found in preload, we try to read it from interface
 			return readValue();
 		}else {
@@ -195,11 +195,9 @@ public class ListPreference extends BasePreference<Object> implements DialogInte
 	@Override
 	public boolean isAvailable() {
 		if(valueType == 0 && value != null) {
-			//return (Integer)value != -1;
-			return true;
+			return (Integer)value != -1;
 		}else {
-			//return value != null;
-			return true;
+			return value != null;
 		}
 	}
 }
