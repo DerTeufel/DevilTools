@@ -51,9 +51,10 @@ public class IntegerPreference extends StatusPreference implements DialogInterfa
 		// Sync the summary view
         TextView summaryView = (TextView) view.findViewById(android.R.id.summary);
         if (summaryView != null) {
-        	if(value < 0) {
-        		summaryView.setText(R.string.status_not_available);
-        	}else if(metrics != null) {
+        	//if(value < 0) {
+        		//summaryView.setText(R.string.status_not_available);
+        	//}else if(metrics != null) {
+        	if(metrics != null) {
         		summaryView.setText(value + " " + metrics);
         	}else {
         		summaryView.setText(String.valueOf(value));

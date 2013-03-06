@@ -56,7 +56,8 @@ public class GovernorPreferenceGroup extends RemovablePreferenceCategory {
 	private boolean isVisible() {
 		SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getContext());
 		String currentGovernor = pref.getString(getContext().getString(R.string.key_governor), "");
-		return governor.equals(currentGovernor);
+		//return governor.equals(currentGovernor);
+		return true;
 	}
 	
 	@Override
@@ -79,14 +80,11 @@ public class GovernorPreferenceGroup extends RemovablePreferenceCategory {
     		if(p instanceof BasePreference) {
     			BasePreference<?> bp = ((BasePreference<?>) p);
     			if(visible) {
-    				// show child
-    				bp.setVisible(true);
-    				// reload values from interface
-    				bp.reload(false);
-    			}else {
-    				// hide child
-    				bp.setVisible(false);	
+    			   // reload values from interface
+    			   bp.reload(false);
     			}
+    			// show (if visible=true) /hide child
+    			bp.setVisible(visible);	
     		}
     	}
 		super.onDependencyChanged(dependency, disableDependent);

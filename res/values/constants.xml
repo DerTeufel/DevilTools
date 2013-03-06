@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">DevilTools</string>
-    <string name="app_version">0.5</string>
+    <string name="app_version">0.51</string>
     
 	<string name="SETTINGS_DIR">/data/data/mobi.cyann.deviltools/settings/</string>
     <string name="SCRIPT_DIR">/data/data/mobi.cyann.deviltools/scripts/</string>
-    <string name="SCRIPT_VERSION">11</string>
+    <string name="SCRIPT_VERSION">12</string>
 
     <string-array name="scripts">
         <item>preload.sh</item>
