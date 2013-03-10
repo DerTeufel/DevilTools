@@ -129,6 +129,9 @@ public class TabsAdapter extends FragmentPagerAdapter implements TabHost.OnTabCh
 	int screenWidth = ((WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getWidth();
     	((WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(metrics);
     	float widthTab = (screenWidth/3)*(240/DisplayMetrics.DENSITY_DEVICE);
+	if (screenWidth > 480) {
+    	widthTab = (screenWidth/3)*(320/DisplayMetrics.DENSITY_DEVICE);
+	}
 	return (int) widthTab;
         }
 

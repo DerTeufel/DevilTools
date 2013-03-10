@@ -46,11 +46,7 @@ public class DevilTweaksFragment extends BasePreferenceFragment implements OnPre
         private ContentResolver mContentResolver;
 	private static SharedPreferences preferences;
 
-    	private static final String[] FILE_PATH = new String[] {
-        "/sys/kernel/bigmem/enable",
-        "/data/local/devil/bigmem"
-    	};
-
+    	private static final String FILE_PATH = "/sys/kernel/bigmem/enable";
 	
 	@Override
     	public void onCreate(Bundle savedInstanceState) {
@@ -60,9 +56,6 @@ public class DevilTweaksFragment extends BasePreferenceFragment implements OnPre
 
         PreferenceScreen prefSet = getPreferenceScreen();
         mContentResolver = getActivity().getApplicationContext().getContentResolver();
-
-        mBigmem = (ListPreference) findPreference("key_bigmem");
-        mBigmem.setOnPreferenceChangeListener(this);
 
         mMdnie = (ListPreference) findPreference("mdnie");
         mMdnie.setEnabled(Mdnie.isSupported());
@@ -85,29 +78,22 @@ public class DevilTweaksFragment extends BasePreferenceFragment implements OnPre
         mMdnie.setOnPreferenceChangeListener(new Mdnie());
         }
 
-
-	SysCommand sc = SysCommand.getInstance();
-
-        int value;
-        for (int i = 0; i < FILE_PATH.length; i++) {
-            //if (i == 0)
-		//value = Integer.parseInt(preferences.getString(R.string.key_bigmem), "-1");
-		value = Integer.parseInt(preferences.getString(getString(R.string.key_bigmem), "-1"));
-            //else   
-                //value = Integer.parseInt(preferences.getString(c.getString(R.string.key_bigmem), "-1"));
-
- 	    sc.writeSysfs(FILE_PATH[i], String.valueOf(value));
-
-        }
-
+	// get current available ram
         MemoryInfo mi = new MemoryInfo();
         ActivityManager activityManager = (ActivityManager) getActivity().getSystemService(Context.ACTIVITY_SERVICE);
         activityManager.getMemoryInfo(mi);
         long totalMegs = mi.totalMem / 1048576L;
 
+        mBigmem = (ListPreference) findPreference("key_bigmem");
+	if (!Utils.fileExists(FILE_PATH)) {
+            PreferenceCategory category = (PreferenceCategory) getPreferenceScreen().findPreference("bigmem_category");
+            category.removePreference(mBigmem);
+            getPreferenceScreen().removePreference(category);
+	} else {
+        mBigmem.setOnPreferenceChangeListener(this);
         mBigmem.setSummary(String.valueOf("Current Ram: " + totalMegs) + " MB");
-
 	}
+    }
 	
     public boolean onPreferenceChange(Preference preference, Object objValue) {
 	SysCommand sc = SysCommand.getInstance();
