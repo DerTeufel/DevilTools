@@ -603,6 +603,7 @@
         <mobi.cyann.deviltools.preference.IntegerPreference
             custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/cpu_up_rate"
             android:key="@string/key_lulzactiveq_cpu_up_rate"
+	    custom:description="Sample time to calculate avg_rq and avg_freq for up-scaling"
             custom:maxValue="40"
             custom:metrics="s"
             custom:minValue="1"
