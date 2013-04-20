@@ -23,6 +23,7 @@ public class IntegerPreference extends StatusPreference implements DialogInterfa
 	private Context context;
 	private int minValue, maxValue, step;
 	private String metrics;
+	private String description;
 	
 	public IntegerPreference(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
@@ -33,6 +34,9 @@ public class IntegerPreference extends StatusPreference implements DialogInterfa
 		step = a.getInt(R.styleable.mobi_cyann_deviltools_preference_IntegerPreference_step, 1);
 		metrics = a.getString(R.styleable.mobi_cyann_deviltools_preference_IntegerPreference_metrics);
 		a.recycle();
+		description = a.getString(R.styleable.mobi_cyann_deviltools_preference_IntegerPreference_description);
+		a.recycle();
+
 		
 		this.context = context;
 	}
@@ -54,8 +58,14 @@ public class IntegerPreference extends StatusPreference implements DialogInterfa
         	if(value < 0) {
         		summaryView.setText(R.string.status_not_available);
         	}else if(metrics != null) {
+			if(description != null)
+        		summaryView.setText(description\nvalue + " " + metrics);
+			else
         		summaryView.setText(value + " " + metrics);
         	}else {
+			if(description != null)
+        		summaryView.setText(description\nvalue);
+			else
         		summaryView.setText(String.valueOf(value));
         	}
         }
@@ -70,6 +80,8 @@ public class IntegerPreference extends StatusPreference implements DialogInterfa
 		dialog.setStep(step);
 		dialog.setTitle(getTitle());
 		dialog.setMetrics(metrics);
+		dialog.setDescription(description);
+
 		
 		dialog.setValue(value);
 		dialog.show();
@@ -88,6 +100,10 @@ public class IntegerPreference extends StatusPreference implements DialogInterfa
 	
 	public void setMetrics(String metrics) {
 		this.metrics = metrics;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 	public void setMinValue(int minValue) {

@@ -13,6 +13,7 @@
 		<attr name="maxValue" format="integer"/>
 		<attr name="step" format="integer"/>
 		<attr name="metrics" format="string"/>
+		<attr name="description" format="string"/>
 	</declare-styleable>
 	<declare-styleable name="mobi.cyann.deviltools.preference.IoSchedPreference">
 		<attr name="writeToInterface" format="reference"/>    
