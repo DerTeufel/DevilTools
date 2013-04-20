@@ -116,12 +116,38 @@
 
     <!-- lulzactiveq governor -->
     <string name="label_lulzactiveq">lulzactiveq</string>
-    <string name="label_lulzactiveq_inc_cpu_load">Inc CPU load</string>
+    <string name="label_lulzactiveq_inc_cpu_load">Increase Freq above this CPU load</string>
+    <string name="label_lulzactiveq_dec_cpu_load">Decrease Freq below this CPU load</string>
     <string name="label_lulzactiveq_pump_up_step">Pump up step</string>
     <string name="label_lulzactiveq_pump_down_step">Pump down step</string>
     <string name="label_lulzactiveq_screen_off_min_step">Screen off min step</string>
     <string name="label_lulzactiveq_down_sample_time">Down sample time</string>
     <string name="label_lulzactiveq_up_sample_time">Up sample time</string>
+    <string name="label_lulzactiveq_cpu_up_rate">Sample time to calculate avg_rq and avg_freq for up-scaling</string>
+    <string name="label_lulzactiveq_cpu_down_rate">Sample time to calculate avg_rq and avg_freq for down-scaling</string>
+    <string name="label_lulzactiveq_hispeed_freq">Hi speed to bump to from lo speed when load burst</string>
+    <string name="label_lulzactiveq_hotplug_freq_1_1">Above this Freq. turn 2nd Cpu online</string>
+    <string name="label_lulzactiveq_hotplug_freq_2_0">Below this Freq. turn 2nd Cpu offline</string>
+    <string name="label_lulzactiveq_hotplug_freq_2_1">Above this Freq. turn 3rd Cpu online</string>
+    <string name="label_lulzactiveq_hotplug_freq_3_0">Below this Freq. turn 3rd Cpu offline</string>
+    <string name="label_lulzactiveq_hotplug_freq_3_1">Above this Freq. turn 4th Cpu online</string>
+    <string name="label_lulzactiveq_hotplug_freq_4_0">Below this Freq. turn 4th Cpu offline</string>
+    <string name="label_lulzactiveq_hotplug_lock">Fixed number of online cpus. 0=auto-hotplug</string>
+    <string name="label_lulzactiveq_hotplug_rq_1_1">Above this run queue lengh turn 2nd Cpu online</string>
+    <string name="label_lulzactiveq_hotplug_rq_2_0">Below this run queue lengh turn 2nd Cpu offline</string>
+    <string name="label_lulzactiveq_hotplug_rq_2_1">Above this run queue lengh turn 3rd Cpu online</string>
+    <string name="label_lulzactiveq_hotplug_rq_3_0">Below this run queue lengh turn 3rd Cpu offline</string>
+    <string name="label_lulzactiveq_hotplug_rq_3_1">Above this run queue lengh turn 4th Cpu online</string>
+    <string name="label_lulzactiveq_hotplug_rq_4_0">Below this run queue lengh turn 4th Cpu offline</string>
+    <string name="label_lulzactiveq_hotplug_sampling_rate">Time between to checks for hotplug changes</string>
+    <string name="label_lulzactiveq_ignore_nice_load">Ignore nice load</string>
+    <string name="label_lulzactiveq_min_cpu_lock">min number of online cpus. 0=disabled</string>
+    <string name="label_lulzactiveq_max_cpu_lock">max number of online cpus. 0=disabled</string>
+    <string name="label_lulzactiveq_up_nr_cpus">min number of online cpus while auto-hotplugging</string>
+
+
+
+
     <!-- ondemand governor -->
     <string name="label_ondemand">Ondemand</string>
     <string name="label_ondemand_sampling_rate">Sampling rate</string>
