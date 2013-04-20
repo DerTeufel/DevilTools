@@ -33,10 +33,8 @@ public class IntegerPreference extends StatusPreference implements DialogInterfa
 		maxValue = a.getInt(R.styleable.mobi_cyann_deviltools_preference_IntegerPreference_maxValue, 100);
 		step = a.getInt(R.styleable.mobi_cyann_deviltools_preference_IntegerPreference_step, 1);
 		metrics = a.getString(R.styleable.mobi_cyann_deviltools_preference_IntegerPreference_metrics);
-		a.recycle();
 		description = a.getString(R.styleable.mobi_cyann_deviltools_preference_IntegerPreference_description);
 		a.recycle();
-
 		
 		this.context = context;
 	}
@@ -59,12 +57,12 @@ public class IntegerPreference extends StatusPreference implements DialogInterfa
         		summaryView.setText(R.string.status_not_available);
         	}else if(metrics != null) {
 			if(description != null)
-        		summaryView.setText(description\nvalue + " " + metrics);
+        		summaryView.setText(description + "\n" + value + " " + metrics);
 			else
         		summaryView.setText(value + " " + metrics);
         	}else {
 			if(description != null)
-        		summaryView.setText(description\nvalue);
+        		summaryView.setText(description + "\n" + value);
 			else
         		summaryView.setText(String.valueOf(value));
         	}

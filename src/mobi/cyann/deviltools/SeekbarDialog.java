@@ -31,6 +31,7 @@ public class SeekbarDialog extends AlertDialog implements OnSeekBarChangeListene
 	private int step;
 	private int value;
 	private String metrics;
+	private String description;
 	
 	private DialogInterface.OnClickListener okButtonListener;
 	private DialogInterface.OnClickListener cancelButtonListener;
@@ -131,11 +132,18 @@ public class SeekbarDialog extends AlertDialog implements OnSeekBarChangeListene
 		if(seekbar != null && textValue != null) {
 			seekbar.setMax(seekbarMax);
 			seekbar.setProgress(seekbarValue);
-			if(metrics != null) {
-				textValue.setText(value + " " + metrics);
-			}else {
-				textValue.setText(String.valueOf(value));	
-			}
+        		if(metrics != null) {
+				if(description != null)
+        			textValue.setText(description + "\n" + value + " " + metrics);
+				else
+        			textValue.setText(value + " " + metrics);
+        		}else {
+				if(description != null)
+        			textValue.setText(description + "\n" + value);
+				else
+        			textValue.setText(String.valueOf(value));
+        		}
+
 		}
 	}
 	
@@ -145,6 +153,14 @@ public class SeekbarDialog extends AlertDialog implements OnSeekBarChangeListene
 
 	public void setMetrics(String metrics) {
 		this.metrics = metrics;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 	public int getStep() {
@@ -196,11 +212,19 @@ public class SeekbarDialog extends AlertDialog implements OnSeekBarChangeListene
 			boolean fromUser) {
 
 		value = progress * step + min;
-		if(metrics != null) {
-			textValue.setText(value + " " + metrics);
-		}else {
-			textValue.setText(String.valueOf(value));	
-		}
+
+        	if(metrics != null) {
+			if(description != null)
+        		textValue.setText(description + "\n" + value + " " + metrics);
+			else
+        		textValue.setText(value + " " + metrics);
+        	}else {
+			if(description != null)
+        		textValue.setText(description + "\n" + value);
+			else
+        		textValue.setText(String.valueOf(value));
+        	}
+
 	}
 
 	@Override
