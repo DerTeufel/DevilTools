@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">DevilTools</string>
-    <string name="app_version">0.5</string>
+    <string name="app_version">0.5.1</string>
     
 	<string name="SETTINGS_DIR">/data/data/mobi.cyann.deviltools/settings/</string>
     <string name="SCRIPT_DIR">/data/data/mobi.cyann.deviltools/scripts/</string>
@@ -74,6 +74,12 @@
     <string name="key_ondemand_grad_up_threshold">key_ondemand_grad_up_threshold</string>
     <string name="key_ondemand_sleep_up_threshold">key_ondemand_sleep_up_threshold</string>
     <string name="key_ondemand_sleep_sampling_rate">key_ondemand_sleep_sampling_rate</string>
+    <string name="key_lulzactiveq_inc_cpu_load">key_lulzactiveq_inc_cpu_load</string>
+    <string name="key_lulzactiveq_pump_up_step">key_lulzactiveq_pump_up_step</string>
+    <string name="key_lulzactiveq_pump_down_step">key_lulzactiveq_pump_down_step</string>
+    <string name="key_lulzactiveq_screen_off_min_step">key_lulzactiveq_screen_off_min_step</string>
+    <string name="key_lulzactiveq_up_sample_time">key_lulzactiveq_up_sample_time</string>
+    <string name="key_lulzactiveq_down_sample_time">key_lulzactiveq_down_sample_time</string>
     <string name="key_conservative_sampling_rate">key_conservative_sampling_rate</string>
     <string name="key_conservative_down_threshold">key_conservative_down_threshold</string>
     <string name="key_conservative_up_threshold">key_conservative_up_threshold</string>

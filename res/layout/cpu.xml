@@ -509,4 +509,77 @@
             android:title="@string/label_lulzactive_down_sample_time" />
     </mobi.cyann.deviltools.preference.GovernorPreferenceGroup>
 
+<mobi.cyann.deviltools.preference.GovernorPreferenceGroup
+        android:dependency="@string/key_governor"
+        custom:governor="lulzactiveq"
+        android:title="@string/label_lulzactiveq" >
+
+    <mobi.cyann.deviltools.preference.StatusPreference
+            custom:interfacePath="/sys/class/misc/devil_tweaks/smooth_ui_enabled"
+            android:key="@string/key_smooth_ui_enabled"
+            android:summary="@string/status_not_available"
+            android:title="@string/label_smooth_ui_enabled" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/inc_cpu_load"
+            android:key="@string/key_lulzactiveq_inc_cpu_load"
+            custom:maxValue="100"
+            custom:metrics="%"
+            custom:minValue="1"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_lulzactiveq_inc_cpu_load" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/pump_up_step"
+            android:key="@string/key_lulzactiveq_pump_up_step"
+            custom:maxValue="7"
+            custom:metrics="step"
+            custom:minValue="0"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_lulzactiveq_pump_up_step" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/pump_down_step"
+            android:key="@string/key_lulzactiveq_pump_down_step"
+            custom:maxValue="7"
+            custom:metrics="step"
+            custom:minValue="0"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_lulzactiveq_pump_down_step" />
+
+        <mobi.cyann.deviltools.preference.LulzactiveScreenOffPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/screen_off_min_step"
+            android:key="@string/key_lulzactiveq_screen_off_min_step"
+            custom:maxValue="7"
+            custom:metrics="step"
+            custom:minValue="0"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_lulzactiveq_screen_off_min_step" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/up_sample_time"
+            android:key="@string/key_lulzactiveq_up_sample_time"
+            custom:maxValue="500000"
+            custom:metrics="µs"
+            custom:minValue="10000"
+            custom:step="1000"
+            android:summary="0"
+            android:title="@string/label_lulzactiveq_up_sample_time" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/down_sample_time"
+            android:key="@string/key_lulzactiveq_down_sample_time"
+            custom:maxValue="500000"
+            custom:metrics="µs"
+            custom:minValue="10000"
+            custom:step="1000"
+            android:summary="0"
+            android:title="@string/label_lulzactiveq_down_sample_time" />
+    </mobi.cyann.deviltools.preference.GovernorPreferenceGroup>
+
+
 </PreferenceScreen>

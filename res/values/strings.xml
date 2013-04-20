@@ -113,6 +113,15 @@
     <string name="label_lulzactive_screen_off_min_step">Screen off min step</string>
     <string name="label_lulzactive_down_sample_time">Down sample time</string>
     <string name="label_lulzactive_up_sample_time">Up sample time</string>
+
+    <!-- lulzactiveq governor -->
+    <string name="label_lulzactiveq">lulzactiveq</string>
+    <string name="label_lulzactiveq_inc_cpu_load">Inc CPU load</string>
+    <string name="label_lulzactiveq_pump_up_step">Pump up step</string>
+    <string name="label_lulzactiveq_pump_down_step">Pump down step</string>
+    <string name="label_lulzactiveq_screen_off_min_step">Screen off min step</string>
+    <string name="label_lulzactiveq_down_sample_time">Down sample time</string>
+    <string name="label_lulzactiveq_up_sample_time">Up sample time</string>
     <!-- ondemand governor -->
     <string name="label_ondemand">Ondemand</string>
     <string name="label_ondemand_sampling_rate">Sampling rate</string>
