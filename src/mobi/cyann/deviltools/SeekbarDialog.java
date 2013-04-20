@@ -133,14 +133,8 @@ public class SeekbarDialog extends AlertDialog implements OnSeekBarChangeListene
 			seekbar.setMax(seekbarMax);
 			seekbar.setProgress(seekbarValue);
         		if(metrics != null) {
-				if(description != null)
-        			textValue.setText(description + "\n" + value + " " + metrics);
-				else
         			textValue.setText(value + " " + metrics);
         		}else {
-				if(description != null)
-        			textValue.setText(description + "\n" + value);
-				else
         			textValue.setText(String.valueOf(value));
         		}
 
@@ -214,14 +208,8 @@ public class SeekbarDialog extends AlertDialog implements OnSeekBarChangeListene
 		value = progress * step + min;
 
         	if(metrics != null) {
-			if(description != null)
-        		textValue.setText(description + "\n" + value + " " + metrics);
-			else
         		textValue.setText(value + " " + metrics);
         	}else {
-			if(description != null)
-        		textValue.setText(description + "\n" + value);
-			else
         		textValue.setText(String.valueOf(value));
         	}
 
