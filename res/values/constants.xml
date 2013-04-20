@@ -103,7 +103,14 @@
     <string name="key_lulzactiveq_max_cpu_lock">key_lulzactiveq_max_cpu_lock</string>
     <string name="key_lulzactiveq_up_nr_cpus">key_lulzactiveq_up_nr_cpus</string>
 
-
+    <string name="key_hotplug_down_differential">key_hotplug_down_differential</string>
+    <string name="key_hotplug_down_threshold">key_hotplug_down_threshold</string>
+    <string name="key_hotplug_in_sampling_periods">key_hotplug_in_sampling_periods</string>
+    <string name="key_hotplug_out_sampling_periods">key_hotplug_out_sampling_periods</string>
+    <string name="key_hotplug_ignore_nice_load">key_hotplug_ignore_nice_load</string>
+    <string name="key_hotplug_io_is_busy">key_hotplug_io_is_busy</string>
+    <string name="key_hotplug_sampling_rate">key_hotplug_sampling_rate</string>
+    <string name="key_hotplug_up_threshold">key_hotplug_up_threshold</string>
 
     <string name="key_conservative_sampling_rate">key_conservative_sampling_rate</string>
     <string name="key_conservative_down_threshold">key_conservative_down_threshold</string>

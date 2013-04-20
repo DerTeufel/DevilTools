@@ -811,8 +811,89 @@
             custom:step="1"
             android:summary="0"
             android:title="@string/label_lulzactiveq_hotplug_lock" />
-
     </mobi.cyann.deviltools.preference.GovernorPreferenceGroup>
 
+
+<mobi.cyann.deviltools.preference.GovernorPreferenceGroup
+        android:dependency="@string/key_governor"
+        custom:governor="hotplug"
+        android:title="@string/label_hotplug" >
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/hotplug/up_threshold"
+            android:key="@string/key_hotplug_up_threshold"
+            custom:maxValue="100"
+	    custom:description="Above this load, CPU scales up"
+            custom:metrics="%"
+            custom:minValue="11"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_hotplug_up_threshold" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/hotplug/down_threshold"
+            android:key="@string/key_hotplug_down_threshold"
+            custom:maxValue="100"
+	    custom:description="Below this load, CPU scales down"
+            custom:metrics="%"
+            custom:minValue="11"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_hotplug_down_threshold" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/hotplug/sampling_rate"
+            android:key="@string/key_hotplug_sampling_rate"
+            custom:maxValue="500000"
+	    custom:description="Time between two samples"
+            custom:metrics="µs"
+            custom:minValue="10000"
+            custom:step="1000"
+            android:summary="0"
+            android:title="@string/label_hotplug_sampling_rate" />
+
+        <mobi.cyann.deviltools.preference.StatusPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/hotplug/ignore_nice_load"
+            android:key="@string/key_hotplug_ignore_nice_load"
+            android:summary="@string/status_not_available"
+            android:title="@string/label_hotplug_ignore_nice_load" />
+
+        <mobi.cyann.deviltools.preference.StatusPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/hotplug/io_is_busy"
+            android:key="@string/key_hotplug_io_is_busy"
+            android:summary="@string/status_not_available"
+            android:title="@string/label_hotplug_io_is_busy" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/hotplug/down_differential"
+            android:key="@string/key_hotplug_down_differential"
+            custom:maxValue="100"
+	    custom:description="Keep x % of idle under the up threshold when decreasing the frequency"
+            custom:metrics="%"
+            custom:minValue="11"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_hotplug_down_differential" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="hotplug_in_sampling_periods"
+            android:key="@string/key_hotplug_in_sampling_periods"
+            custom:maxValue="40"
+	    custom:description="how many sampling periods do we use for hotplug decisions (turn cpu on)?"
+            custom:minValue="1"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_hotplug_in_sampling_periods" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="hotplug_out_sampling_periods"
+            android:key="@string/key_hotplug_out_sampling_periods"
+            custom:maxValue="40"
+	    custom:description="how many sampling periods do we use for hotplug decisions (turn cpu off)?"
+            custom:minValue="1"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_hotplug_out_sampling_periods" />
+    </mobi.cyann.deviltools.preference.GovernorPreferenceGroup>
 
 </PreferenceScreen>

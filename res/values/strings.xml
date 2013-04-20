@@ -145,8 +145,16 @@
     <string name="label_lulzactiveq_max_cpu_lock">max online cpus</string>
     <string name="label_lulzactiveq_up_nr_cpus">auto-hotplug: min online cpus</string>
 
-
-
+    <!-- hotplug governor -->
+    <string name="label_hotplug">hotplug</string>
+    <string name="label_hotplug_down_differential">Down Differential</string>
+    <string name="label_hotplug_down_threshold">Down Threshold</string>
+    <string name="label_hotplug_up_threshold">Up Threshold</string>
+    <string name="label_hotplug_in_sampling_periods">Sampling Periods in</string>
+    <string name="label_hotplug_out_sampling_periods">Sampling Periods out</string>
+    <string name="label_hotplug_ignore_nice_load">Ignore nice load</string>
+    <string name="label_hotplug_io_is_busy">I/O is busy</string>
+    <string name="label_hotplug_sampling_rate">Sampling Rate</string>
 
     <!-- ondemand governor -->
     <string name="label_ondemand">Ondemand</string>
