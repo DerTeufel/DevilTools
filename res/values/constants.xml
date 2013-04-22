@@ -78,7 +78,7 @@
     <string name="key_lulzactiveq_dec_cpu_load">key_lulzactiveq_dec_cpu_load</string>
     <string name="key_lulzactiveq_pump_up_step">key_lulzactiveq_pump_up_step</string>
     <string name="key_lulzactiveq_pump_down_step">key_lulzactiveq_pump_down_step</string>
-    <string name="key_lulzactiveq_screen_off_min_step">key_lulzactiveq_screen_off_min_step</string>
+    <string name="key_lulzactiveq_screen_off_max_step">key_lulzactiveq_screen_off_max_step</string>
     <string name="key_lulzactiveq_up_sample_time">key_lulzactiveq_up_sample_time</string>
     <string name="key_lulzactiveq_down_sample_time">key_lulzactiveq_down_sample_time</string>
     <string name="key_lulzactiveq_cpu_up_rate">key_lulzactiveq_cpu_up_rate</string>
