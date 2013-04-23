@@ -143,17 +143,36 @@ public class CPUFragment extends BasePreferenceFragment implements OnPreferenceC
 			maxFreq.reload(false);
 			
 			// setup lulzactive min/max step
-			if(findPreference(getString(R.string.key_lulzactive_pump_up_step)) != null) {
-				IntegerPreference p = (IntegerPreference)findPreference(getString(R.string.key_lulzactive_pump_up_step));
+			if(findPreference(getString
+			(R.string.key_lulzactive_pump_up_step)) != null) {
+				IntegerPreference p = (IntegerPreference)
+				findPreference(getString
+				(R.string.key_lulzactive_pump_up_step));
 				p.setMaxValue(availableFreqs.length - 1);
-				
-				p = (IntegerPreference)findPreference(getString(R.string.key_lulzactive_pump_down_step));
+			}	
+			if(findPreference(getString
+			(R.string.key_lulzactive_pump_down_step)) != null) {
+				IntegerPreference p = (IntegerPreference)
+				findPreference(getString
+				(R.string.key_lulzactive_pump_down_step));
 				p.setMaxValue(availableFreqs.length - 1);
-				
-				p = (IntegerPreference)findPreference(getString(R.string.key_lulzactive_screen_off_min_step));
+			}
+			if(findPreference(getString
+			(R.string.key_lulzactive_screen_off_min_step)) != null) {	
+				IntegerPreference p = (IntegerPreference)
+				findPreference(getString
+				(R.string.key_lulzactive_screen_off_min_step));
 				p.setMaxValue(availableFreqs.length - 1);
 				((LulzactiveScreenOffPreference)p).setAvailableFrequencies(availableFreqsStr);
 			}
+			/*if(findPreference(getString
+			(R.string.key_lulzactiveq_screen_off_max_step)) != null) {	
+				IntegerPreference p = (IntegerPreference)
+				findPreference(getString
+				(R.string.key_lulzactiveq_screen_off_max_step));
+				p.setMaxValue(availableFreqs.length - 1);
+				((LulzactiveScreenOffPreference)p).setAvailableFrequencies(availableFreqsStr);
+			}*/
 		}
 	}
 	
