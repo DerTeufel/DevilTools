@@ -896,4 +896,289 @@
             android:title="@string/label_hotplug_out_sampling_periods" />
     </mobi.cyann.deviltools.preference.GovernorPreferenceGroup>
 
+<mobi.cyann.deviltools.preference.GovernorPreferenceGroup
+        android:dependency="@string/key_governor"
+        custom:governor="devilq"
+        android:title="@string/label_devilq" >
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/devilq/inc_cpu_load"
+            android:key="@string/key_devilq_inc_cpu_load"
+            custom:maxValue="100"
+	    custom:description="Increase Freq above this CPU load"
+            custom:metrics="%"
+            custom:minValue="1"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_devilq_inc_cpu_load" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/devilq/dec_cpu_load"
+            android:key="@string/key_devilq_dec_cpu_load"
+            custom:maxValue="100"
+	    custom:description="Decrease Freq below this CPU load"
+            custom:metrics="%"
+            custom:minValue="1"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_devilq_dec_cpu_load" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/devilq/up_sample_time"
+            android:key="@string/key_devilq_up_sample_time"
+            custom:maxValue="500000"
+            custom:metrics="µs"
+            custom:minValue="10000"
+            custom:step="1000"
+            android:summary="0"
+            android:title="@string/label_devilq_up_sample_time" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/devilq/down_sample_time"
+            android:key="@string/key_devilq_down_sample_time"
+            custom:maxValue="500000"
+            custom:metrics="µs"
+            custom:minValue="10000"
+            custom:step="1000"
+            android:summary="0"
+            android:title="@string/label_devilq_down_sample_time" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/devilq/cpu_up_rate"
+            android:key="@string/key_devilq_cpu_up_rate"
+            custom:maxValue="40"
+	    custom:description="Sample time to calculate avg_rq and avg_freq for up-scaling"
+            custom:metrics="s"
+            custom:minValue="1"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_devilq_cpu_up_rate" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/devilq/cpu_down_rate"
+            android:key="@string/key_devilq_cpu_down_rate"
+            custom:maxValue="40"
+	    custom:description="Sample time to calculate avg_rq and avg_freq for down-scaling"
+            custom:metrics="s"
+            custom:minValue="1"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_devilq_cpu_down_rate" />
+
+        <mobi.cyann.deviltools.preference.StatusPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/devilq/early_demand"
+            android:key="@string/key_devilq_early_demand"
+            android:summary="@string/status_not_available"
+            android:title="@string/label_devilq_early_demand" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            android:dependency="@string/key_devilq_early_demand"
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/devilq/grad_up_threshold"
+            android:key="@string/key_devilq_grad_up_threshold"
+            custom:maxValue="100"
+            custom:metrics="%"
+            custom:minValue="1"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_devilq_grad_up_threshold" />
+			
+		<mobi.cyann.deviltools.preference.IntegerPreference
+            android:dependency="@string/key_devilq_early_demand"
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/devilq/grad_down_threshold"
+            android:key="@string/key_devilq_grad_down_threshold"
+            custom:maxValue="100"
+            custom:metrics="%"
+            custom:minValue="1"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_devilq_grad_down_threshold" />
+
+        <mobi.cyann.deviltools.preference.StatusPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/devilq/ignore_nice_load"
+            android:key="@string/key_devilq_ignore_nice_load"
+            android:summary="@string/status_not_available"
+            android:title="@string/label_devilq_ignore_nice_load" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/devilq/max_cpu_lock"
+            android:key="@string/key_devilq_max_cpu_lock"
+            custom:maxValue="4"
+	    custom:description="max number of online cpus. 0=disabled. priority: hotplug_lock > max_cpu_lock > min_cpu_lock"
+            custom:metrics="cores"
+            custom:minValue="0"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_devilq_max_cpu_lock" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/devilq/min_cpu_lock"
+            android:key="@string/key_devilq_min_cpu_lock"
+            custom:maxValue="4"
+	    custom:description="min number of online cpus. 0=disabled. priority: hotplug_lock > max_cpu_lock > min_cpu_lock"
+            custom:metrics="cores"
+            custom:minValue="0"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_devilq_min_cpu_lock" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/devilq/hotplug_freq_1_1"
+            android:key="@string/key_devilq_hotplug_freq_1_1"
+            custom:maxValue="2000000"
+	    custom:description="Above this Freq. turn 2nd Cpu online"
+            custom:metrics="Hz"
+            custom:minValue="200000"
+            custom:step="100000"
+            android:summary="0"
+            android:title="@string/label_devilq_hotplug_freq_1_1" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/devilq/hotplug_freq_2_0"
+            android:key="@string/key_devilq_hotplug_freq_2_0"
+            custom:maxValue="2000000"
+	    custom:description="Below this Freq. turn 2nd Cpu offline"
+            custom:metrics="Hz"
+            custom:minValue="200000"
+            custom:step="100000"
+            android:summary="0"
+            android:title="@string/label_devilq_hotplug_freq_2_0" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/devilq/hotplug_freq_2_1"
+            android:key="@string/key_devilq_hotplug_freq_2_1"
+            custom:maxValue="2000000"
+	    custom:description="Above this Freq. turn 3rd Cpu online"
+            custom:metrics="Hz"
+            custom:minValue="200000"
+            custom:step="100000"
+            android:summary="0"
+            android:title="@string/label_devilq_hotplug_freq_2_1" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/devilq/hotplug_freq_3_0"
+            android:key="@string/key_devilq_hotplug_freq_3_0"
+            custom:maxValue="2000000"
+	    custom:description="Below this Freq. turn 3rd Cpu offline"
+            custom:metrics="Hz"
+            custom:minValue="200000"
+            custom:step="100000"
+            android:summary="0"
+            android:title="@string/label_devilq_hotplug_freq_3_0" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/devilq/hotplug_freq_3_1"
+            android:key="@string/key_devilq_hotplug_freq_3_1"
+            custom:maxValue="2000000"
+	    custom:description="Above this Freq. turn 4th Cpu online"
+            custom:metrics="Hz"
+            custom:minValue="200000"
+            custom:step="100000"
+            android:summary="0"
+            android:title="@string/label_devilq_hotplug_freq_3_1" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/devilq/hotplug_freq_4_0"
+            android:key="@string/key_devilq_hotplug_freq_4_0"
+            custom:maxValue="2000000"
+	    custom:description="Below this Freq. turn 4th Cpu offline"
+            custom:metrics="Hz"
+            custom:minValue="200000"
+            custom:step="100000"
+            android:summary="0"
+            android:title="@string/label_devilq_hotplug_freq_4_0" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/devilq/hotplug_rq_1_1"
+            android:key="@string/key_devilq_hotplug_rq_1_1"
+	    custom:description="Above this run queue lengh turn 2nd Cpu online"
+            custom:maxValue="1000"
+            custom:minValue="0"
+            custom:step="100"
+            android:summary="0"
+            android:title="@string/label_devilq_hotplug_rq_1_1" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/devilq/hotplug_rq_2_0"
+            android:key="@string/key_devilq_hotplug_rq_2_0"
+	    custom:description="Below this run queue lengh turn 2nd Cpu offline"
+            custom:maxValue="1000"
+            custom:minValue="0"
+            custom:step="100"
+            android:summary="0"
+            android:title="@string/label_devilq_hotplug_rq_2_0" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/devilq/hotplug_rq_2_1"
+            android:key="@string/key_devilq_hotplug_rq_2_1"
+	    custom:description="Above this run queue lengh turn 3rd Cpu online"
+            custom:maxValue="1000"
+            custom:minValue="0"
+            custom:step="100"
+            android:summary="0"
+            android:title="@string/label_devilq_hotplug_rq_2_1" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/devilq/hotplug_rq_3_0"
+            android:key="@string/key_devilq_hotplug_rq_3_0"
+	    custom:description="Below this run queue lengh turn 3rd Cpu offline"
+            custom:maxValue="1000"
+            custom:minValue="0"
+            custom:step="100"
+            android:summary="0"
+            android:title="@string/label_devilq_hotplug_rq_3_0" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/devilq/hotplug_rq_3_1"
+            android:key="@string/key_devilq_hotplug_rq_3_1"
+	    custom:description="Above this run queue lengh turn 4th Cpu online"
+            custom:maxValue="1000"
+            custom:minValue="0"
+            custom:step="100"
+            android:summary="0"
+            android:title="@string/label_devilq_hotplug_rq_3_1" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/devilq/hotplug_rq_4_0"
+            android:key="@string/key_devilq_hotplug_rq_4_0"
+	    custom:description="Below this run queue lengh turn 4th Cpu offline"
+            custom:maxValue="1000"
+            custom:minValue="0"
+            custom:step="100"
+            android:summary="0"
+            android:title="@string/label_devilq_hotplug_rq_4_0" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/devilq/hotplug_sampling_rate"
+            android:key="@string/key_devilq_hotplug_sampling_rate"
+            custom:maxValue="500000"
+	    custom:description="Time between two checks for hotplug changes"
+            custom:metrics="µs"
+            custom:minValue="10000"
+            custom:step="1000"
+            android:summary="0"
+            android:title="@string/label_devilq_hotplug_sampling_rate" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/devilq/up_nr_cpus"
+            android:key="@string/key_devilq_up_nr_cpus"
+            custom:maxValue="4"
+	    custom:description="min number of online cpus while auto-hotplugging."
+            custom:metrics="cores"
+            custom:minValue="0"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_devilq_up_nr_cpus" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/devilq/hotplug_lock"
+            android:key="@string/key_devilq_hotplug_lock"
+            custom:maxValue="4"
+	    custom:description="Fixed number of online cpus. 0=auto-hotplug. priority: hotplug_lock > max_cpu_lock > min_cpu_lock"
+            custom:metrics="cores"
+            custom:minValue="0"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_devilq_hotplug_lock" />
+    </mobi.cyann.deviltools.preference.GovernorPreferenceGroup>
+
 </PreferenceScreen>

@@ -137,6 +137,34 @@
 	<string name="key_interactive_min_sample_time">key_interactive_min_sample_time</string>
 	<string name="key_interactive_timer_rate">key_interactive_timer_rate</string>
 
+<string name="key_devilq_cpu_down_rate">key_devilq_cpu_down_rate</string>
+<string name="key_devilq_cpu_up_rate">key_devilq_cpu_up_rate</string>
+<string name="key_devilq_dec_cpu_load">key_devilq_dec_cpu_load</string>
+<string name="key_devilq_down_sample_time">key_devilq_down_sample_time</string>
+<string name="key_devilq_early_demand">key_devilq_early_demand</string>
+<string name="key_devilq_grad_down_threshold">key_devilq_grad_down_threshold</string>
+<string name="key_devilq_grad_up_threshold">key_devilq_grad_up_threshold</string>
+<string name="key_devilq_hotplug_freq_1_1">key_devilq_hotplug_freq_1_1</string>
+<string name="key_devilq_hotplug_freq_2_0">key_devilq_hotplug_freq_2_0</string>
+<string name="key_devilq_hotplug_freq_2_1">key_devilq_hotplug_freq_2_1</string>
+<string name="key_devilq_hotplug_freq_3_0">key_devilq_hotplug_freq_3_0</string>
+<string name="key_devilq_hotplug_freq_3_1">key_devilq_hotplug_freq_3_1</string>
+<string name="key_devilq_hotplug_freq_4_0">key_devilq_hotplug_freq_4_0</string>
+<string name="key_devilq_hotplug_lock">key_devilq_hotplug_lock</string>
+<string name="key_devilq_hotplug_rq_1_1">key_devilq_hotplug_rq_1_1</string>
+<string name="key_devilq_hotplug_rq_2_0">key_devilq_hotplug_rq_2_0</string>
+<string name="key_devilq_hotplug_rq_2_1">key_devilq_hotplug_rq_2_1</string>
+<string name="key_devilq_hotplug_rq_3_0">key_devilq_hotplug_rq_3_0</string>
+<string name="key_devilq_hotplug_rq_3_1">key_devilq_hotplug_rq_3_1</string>
+<string name="key_devilq_hotplug_rq_4_0">key_devilq_hotplug_rq_4_0</string>
+<string name="key_devilq_hotplug_sampling_rate">key_devilq_hotplug_sampling_rate</string>
+<string name="key_devilq_ignore_nice_load">key_devilq_ignore_nice_load</string>
+<string name="key_devilq_inc_cpu_load">key_devilq_inc_cpu_load</string>
+<string name="key_devilq_max_cpu_lock">key_devilq_max_cpu_lock</string>
+<string name="key_devilq_min_cpu_lock">key_devilq_min_cpu_lock</string>
+<string name="key_devilq_up_nr_cpus">key_devilq_up_nr_cpus</string>
+<string name="key_devilq_up_sample_time">key_devilq_up_sample_time</string>
+
 	<string name="key_smooth_ui_enabled">key_smooth_ui_enabled</string>
 	<string name="key_dyn_fsync">key_dyn_fsync</string>
 	<string name="key_vibration_intensity">key_vibration_intensity</string>
