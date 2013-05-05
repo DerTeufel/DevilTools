@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">DevilTools</string>
-    <string name="app_version">0.5.1</string>
+    <string name="app_version">0.6.0</string>
     
 	<string name="SETTINGS_DIR">/data/data/mobi.cyann.deviltools/settings/</string>
     <string name="SCRIPT_DIR">/data/data/mobi.cyann.deviltools/scripts/</string>
@@ -169,6 +169,21 @@
 	<string name="key_dyn_fsync">key_dyn_fsync</string>
 	<string name="key_vibration_intensity">key_vibration_intensity</string>
 	<string name="key_vibration_intensity_smdk4412">key_vibration_intensity_smdk4412</string>
+
+	<!-- Battery -->
+	<string name="key_dcp_ac_input_curr">key_dcp_ac_input_curr</string>
+	<string name="key_dcp_ac_chrg_curr">key_dcp_ac_chrg_curr</string>
+	<string name="key_sdp_input_curr">key_sdp_input_curr</string>
+	<string name="key_sdp_chrg_curr">key_sdp_chrg_curr</string>
+	<string name="key_cdp_input_curr">key_cdp_input_curr</string>
+	<string name="key_cdp_chrg_curr">key_cdp_chrg_curr</string>
+	<string name="key_ignore_stable_margin">key_ignore_stable_margin</string>
+	<string name="key_ignore_unstable_power">key_ignore_unstable_power</string>
+	<string name="key_batt_chrg_soft_volt">key_batt_chrg_soft_volt</string>
+
+
+
+
 
 	<string name="key_bigmem">key_bigmem</string>
 	<string name="key_voodoo_gamma_presets">key_voodoo_gamma_presets</string>

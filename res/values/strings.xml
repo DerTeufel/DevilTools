@@ -229,6 +229,25 @@
 <string name="label_devilq_up_nr_cpus">up_nr_cpus</string>
 <string name="label_devilq_up_sample_time">up_sample_time</string>
 
+	<!-- Battery -->
+	<string name="label_battery_tweak">Charging Control</string>
+	<string name="label_dcp_ac_input_curr">DCP AC Input Current</string>
+	<string name="label_dcp_ac_chrg_curr">DCP AC Charge Current</string>
+	<string name="label_sdp_input_curr">SDP Input Current</string>
+	<string name="label_sdp_chrg_curr">SDP Charge Current</string>
+	<string name="label_cdp_input_curr">CDP Input Current</string>
+	<string name="label_cdp_chrg_curr">CDP Charge Current</string>
+	<string name="label_ignore_stable_margin">Ignore 100mA safety margin</string>
+	<string name="label_ignore_unstable_power">Ignore unstable power detection</string>
+	<string name="label_batt_chrg_soft_volt">Charge Soft voltage</string>
+
+
+
+
+
+
+
+
 	<string name="msg_kernel_changed">Settings discarded because the kernel version has changed</string>
 
 	<!-- misc settings -->

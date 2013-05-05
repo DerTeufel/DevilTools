@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res/mobi.cyann.deviltools" android:key="root" >
+
+    <mobi.cyann.deviltools.preference.RemovablePreferenceCategory android:title="@string/label_battery_tweak" >
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/platform/samsung-battery/dcp_ac_input_curr"
+            android:key="@string/key_dcp_ac_input_curr"
+	    custom:description="Input current limit if standalone charger connected, or if a USB connector with shorted D+ and D- pins is attached."
+            custom:maxValue="2000"
+            custom:metrics="mA"
+            custom:minValue="100"
+            custom:step="25"
+            android:summary="0"
+            android:title="@string/label_dcp_ac_input_curr" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/platform/samsung-battery/dcp_ac_chrg_curr"
+            android:key="@string/key_dcp_ac_chrg_curr"
+	    custom:description="Dedicated Charging Port and Mains charge current supplied to battery during charging."
+            custom:maxValue="2300"
+            custom:metrics="mA"
+            custom:minValue="100"
+            custom:step="25"
+            android:summary="0"
+            android:title="@string/label_dcp_ac_chrg_curr" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/platform/samsung-battery/sdp_input_curr"
+            android:key="@string/key_sdp_input_curr"
+	    custom:description="Standard Downstream Port input current limit applied on plain and compliant USB data connectivity ports."
+            custom:maxValue="1500"
+            custom:metrics="mA"
+            custom:minValue="100"
+            custom:step="25"
+            android:summary="0"
+            android:title="@string/label_sdp_input_curr" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/platform/samsung-battery/sdp_chrg_curr"
+            android:key="@string/key_sdp_chrg_curr"
+	    custom:description="Standard Downstream Port charge current supplied to battery during charging."
+            custom:maxValue="1700"
+            custom:metrics="mA"
+            custom:minValue="100"
+            custom:step="25"
+            android:summary="0"
+            android:title="@string/label_sdp_chrg_curr" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/platform/samsung-battery/cdp_input_curr"
+            android:key="@string/key_cdp_input_curr"
+	    custom:description="Charging Downstream Port input current limit applied on BCS 1.1 special charging USB data connectivity ports."
+            custom:maxValue="1500"
+            custom:metrics="mA"
+            custom:minValue="100"
+            custom:step="25"
+            android:summary="0"
+            android:title="@string/label_cdp_input_curr" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/platform/samsung-battery/cdp_chrg_curr"
+            android:key="@string/key_cdp_chrg_curr"
+	    custom:description="Charging Downstream Port and Mains charge current supplied to battery during charging."
+            custom:maxValue="1700"
+            custom:metrics="mA"
+            custom:minValue="100"
+            custom:step="25"
+            android:summary="0"
+            android:title="@string/label_cdp_chrg_curr" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/platform/samsung-battery/batt_chrg_soft_volt"
+            android:key="@string/key_batt_chrg_soft_volt"
+	    custom:description="Charge voltage the battery has to reach until the charger regulation turns off charging, as measured by the fuelgauge."
+            custom:maxValue="4500000"
+            custom:metrics="mV"
+            custom:minValue="3600000"
+            custom:step="25000"
+            android:summary="0"
+            android:title="@string/label_batt_chrg_soft_volt" />
+
+    <mobi.cyann.deviltools.preference.StatusPreference
+            custom:interfacePath="/sys/devices/platform/samsung-battery/ignore_stable_margin"
+            android:key="@string/key_ignore_stable_margin"
+            android:summary="@string/status_not_available"
+            android:title="@string/label_ignore_stable_margin" />
+
+    <mobi.cyann.deviltools.preference.StatusPreference
+            custom:interfacePath="/sys/devices/platform/samsung-battery/ignore_unstable_power"
+            android:key="@string/key_ignore_unstable_power"
+            android:summary="@string/status_not_available"
+            android:title="@string/label_ignore_unstable_power" />
+
+    </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
+
+</PreferenceScreen>

@@ -66,25 +66,29 @@ public class MainActivity extends FragmentActivity {
 		tab1.setIndicator(getString(R.string.ns_tweak), res.getDrawable(R.drawable.ic_tab_tweaks));
 		tabsAdapter.addTab(tab1, NSTweakFragment.class, null);
 
-		TabSpec tab2 = tabHost.newTabSpec("deviltweaks");
+		TabSpec tab2 = tabHost.newTabSpec("performancetweaks");
 		tab2.setIndicator(getString(R.string.label_performance_tweak), res.getDrawable(R.drawable.ic_tab_deviltweaks));
 		tabsAdapter.addTab(tab2, DevilTweaksFragment.class, null);
-		
-		TabSpec tab3 = tabHost.newTabSpec("cpu");
-		tab3.setIndicator(getString(R.string.label_cpu_tweak), res.getDrawable(R.drawable.ic_tab_cpu));
-		tabsAdapter.addTab(tab3, CPUFragment.class, null);
-		
-		TabSpec tab4 = tabHost.newTabSpec("volt");
-		tab4.setIndicator(getString(R.string.voltage_control), res.getDrawable(R.drawable.ic_tab_voltages));
-		tabsAdapter.addTab(tab4, VoltageControlFragment.class, null);
-		
-		TabSpec tab5 = tabHost.newTabSpec("setting");
-		tab5.setIndicator(getString(R.string.label_setting), res.getDrawable(R.drawable.ic_tab_settings));
-		tabsAdapter.addTab(tab5, SettingFragment.class, null);
 
-		TabSpec tab6 = tabHost.newTabSpec("info");
-		tab6.setIndicator(getString(R.string.label_info), res.getDrawable(R.drawable.ic_tab_info));
-		tabsAdapter.addTab(tab6, InfoFragment.class, null);
+		TabSpec tab3 = tabHost.newTabSpec("chargingcontrol");
+		tab3.setIndicator(getString(R.string.label_battery_tweak), res.getDrawable(R.drawable.ic_tab_battery));
+		tabsAdapter.addTab(tab3, BatteryFragment.class, null);
+		
+		TabSpec tab4 = tabHost.newTabSpec("cpu");
+		tab4.setIndicator(getString(R.string.label_cpu_tweak), res.getDrawable(R.drawable.ic_tab_cpu));
+		tabsAdapter.addTab(tab4, CPUFragment.class, null);
+		
+		TabSpec tab5 = tabHost.newTabSpec("volt");
+		tab5.setIndicator(getString(R.string.voltage_control), res.getDrawable(R.drawable.ic_tab_voltages));
+		tabsAdapter.addTab(tab5, VoltageControlFragment.class, null);
+		
+		TabSpec tab6 = tabHost.newTabSpec("setting");
+		tab6.setIndicator(getString(R.string.label_setting), res.getDrawable(R.drawable.ic_tab_settings));
+		tabsAdapter.addTab(tab6, SettingFragment.class, null);
+
+		TabSpec tab7 = tabHost.newTabSpec("info");
+		tab7.setIndicator(getString(R.string.label_info), res.getDrawable(R.drawable.ic_tab_info));
+		tabsAdapter.addTab(tab7, InfoFragment.class, null);
 
 		suggestedWidth = tabsAdapter.getSuggestedWidth();
        		// set the width of tab 
