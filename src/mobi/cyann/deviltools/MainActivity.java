@@ -67,7 +67,7 @@ public class MainActivity extends FragmentActivity {
 		tabsAdapter.addTab(tab1, NSTweakFragment.class, null);
 
 		TabSpec tab2 = tabHost.newTabSpec("deviltweaks");
-		tab2.setIndicator(getString(R.string.label_devil_tweak), res.getDrawable(R.drawable.ic_tab_deviltweaks));
+		tab2.setIndicator(getString(R.string.label_performance_tweak), res.getDrawable(R.drawable.ic_tab_deviltweaks));
 		tabsAdapter.addTab(tab2, DevilTweaksFragment.class, null);
 		
 		TabSpec tab3 = tabHost.newTabSpec("cpu");

@@ -233,7 +233,7 @@
 
 	<!-- misc settings -->
 	<string name="dyn_fsync">Dynamic Fsync</string>
-	<string name="label_dyn_fsync">Use at your own risk!</string>
+	<string name="label_dyn_fsync">Dynamic Fsync</string>
 	<string name="vibration_intensity">Vibration intensity</string>
 	<string name="label_vibration_intensity">Set vibration intensity</string>
 
@@ -245,7 +245,7 @@
 	<string name="bigmem_big">about 407 mb, breaks 720p</string>
 	<string name="bigmem_nocam">maximum ram, no cam at all</string>
 
-    <string name="label_devil_tweak">Devil Tweaks</string>
+    <string name="label_performance_tweak">Performance Tweaks</string>
 
     <!-- About Activity -->
     <string name="label_info">Info</string>
