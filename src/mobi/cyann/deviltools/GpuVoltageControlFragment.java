@@ -31,10 +31,8 @@ public class GpuVoltageControlFragment extends BasePreferenceFragment implements
 	private final static String LOG_TAG = "DevilTools.GpuVoltageControlActivity";
 	
 	private IntegerPreference maxArmVolt;
-	private IntegerPreference maxIntVolt;
 	
 	private List<Integer> armVoltages;
-	private List<Integer> intVoltages;
 	
 	private SharedPreferences preferences;
 	
@@ -42,7 +40,6 @@ public class GpuVoltageControlFragment extends BasePreferenceFragment implements
 		super(R.layout.voltage);
 		
 		armVoltages = new ArrayList<Integer>();
-		intVoltages = new ArrayList<Integer>();
 	}
 
 	@Override
@@ -50,13 +47,10 @@ public class GpuVoltageControlFragment extends BasePreferenceFragment implements
 		preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
 		
 		maxArmVolt = (IntegerPreference)findPreference(getString(R.string.key_max_arm_volt));
-		maxIntVolt = (IntegerPreference)findPreference(getString(R.string.key_max_int_volt));
 		findPreference(getString(R.string.key_default_voltage)).setOnPreferenceChangeListener(this);
 
 		armVoltages.clear();
-		intVoltages.clear();
-		
-		readVoltages(maxIntVolt, getString(R.string.key_int_volt_pref), "intvolt_", "/sys/class/misc/customvoltage/int_volt", intVoltages);
+
 		if(maxArmVolt.getValue() == -1) {
 			Log.d(LOG_TAG, "read from uv_mv_table");
 			// if we can't get customvoltage mod, then try to read UV_mV_table
@@ -182,11 +176,6 @@ public class GpuVoltageControlFragment extends BasePreferenceFragment implements
 			int i = Integer.parseInt(parts[1]);
 			armVoltages.set(i, (Integer)newValue);
 			saveVoltages(getString(R.string.key_uvmvtable_pref), armVoltages, "/sys/class/misc/mali_control/voltage_control");
-		}else if(preference.getKey().startsWith("intvolt_")) {
-			String parts[] = preference.getKey().split("_");
-			int i = Integer.parseInt(parts[1]);
-			intVoltages.set(i, (Integer)newValue);
-			saveVoltages(getString(R.string.key_int_volt_pref), intVoltages, "/sys/class/misc/customvoltage/int_volt");
 		}else if(preference.getKey().equals(getString(R.string.key_default_voltage))) {
 			if(!(Boolean)newValue) {
 				showWarningDialog();
