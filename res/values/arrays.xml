@@ -63,4 +63,44 @@
         <item>2</item>
     </string-array>
 
+    <string-array name="gpu_clk_entries">
+        <item>54 Mhz</item>
+        <item>108 Mhz</item>
+        <item>160 Mhz</item>
+        <item>200 Mhz</item>
+        <item>266 Mhz</item>
+        <item>275 Mhz</item>
+        <item>300 Mhz</item>
+        <item>333 Mhz</item>
+        <item>350 Mhz</item>
+        <item>400 Mhz</item>
+        <item>440 Mhz</item>
+        <item>533 Mhz</item>
+        <item>600 Mhz</item>
+        <item>640 Mhz</item>
+        <item>666 Mhz</item>
+        <item>700 Mhz</item>
+        <item>800 Mhz</item>
+    </string-array>
+
+    <string-array name="gpu_clk_values" translatable="false">
+        <item>54</item>
+        <item>108</item>
+        <item>160</item>
+        <item>200</item>
+        <item>266</item>
+        <item>275</item>
+        <item>300</item>
+        <item>333</item>
+        <item>350</item>
+        <item>400</item>
+        <item>440</item>
+        <item>533</item>
+        <item>600</item>
+        <item>640</item>
+        <item>666</item>
+        <item>700</item>
+        <item>800</item>
+    </string-array>
+
 </resources>

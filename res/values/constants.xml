@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">DevilTools</string>
-    <string name="app_version">0.6.0</string>
+    <string name="app_version">0.6.1</string>
     
 	<string name="SETTINGS_DIR">/data/data/mobi.cyann.deviltools/settings/</string>
     <string name="SCRIPT_DIR">/data/data/mobi.cyann.deviltools/scripts/</string>
@@ -181,7 +181,21 @@
 	<string name="key_ignore_unstable_power">key_ignore_unstable_power</string>
 	<string name="key_batt_chrg_soft_volt">key_batt_chrg_soft_volt</string>
 
-
+	<!-- GPU -->
+	<string name="key_mali_gpu_utilization_timeout">key_mali_gpu_utilization_timeout</string>
+	<string name="key_step0_clk">key_step0_clk</string>
+	<string name="key_step0_up">key_step0_up</string>
+	<string name="key_step1_clk">key_step1_clk</string>
+	<string name="key_step1_down">key_step1_down</string>
+	<string name="key_step1_up">key_step1_up</string>
+	<string name="key_step2_clk">key_step2_clk</string>
+	<string name="key_step2_down">key_step2_down</string>
+	<string name="key_step2_up">key_step2_up</string>
+	<string name="key_step3_clk">key_step3_clk</string>
+	<string name="key_step3_down">key_step3_down</string>
+	<string name="key_step3_up">key_step3_up</string>
+	<string name="key_step4_clk">key_step4_clk</string>
+	<string name="key_step4_down">key_step4_down</string>
 
 
 

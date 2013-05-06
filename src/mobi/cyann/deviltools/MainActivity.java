@@ -81,14 +81,18 @@ public class MainActivity extends FragmentActivity {
 		TabSpec tab5 = tabHost.newTabSpec("volt");
 		tab5.setIndicator(getString(R.string.voltage_control), res.getDrawable(R.drawable.ic_tab_voltages));
 		tabsAdapter.addTab(tab5, VoltageControlFragment.class, null);
-		
-		TabSpec tab6 = tabHost.newTabSpec("setting");
-		tab6.setIndicator(getString(R.string.label_setting), res.getDrawable(R.drawable.ic_tab_settings));
-		tabsAdapter.addTab(tab6, SettingFragment.class, null);
 
-		TabSpec tab7 = tabHost.newTabSpec("info");
-		tab7.setIndicator(getString(R.string.label_info), res.getDrawable(R.drawable.ic_tab_info));
-		tabsAdapter.addTab(tab7, InfoFragment.class, null);
+		TabSpec tab6 = tabHost.newTabSpec("gpu");
+		tab6.setIndicator(getString(R.string.label_gpu_tweak), res.getDrawable(R.drawable.ic_tab_gpu));
+		tabsAdapter.addTab(tab6, GpuFragment.class, null);
+		
+		TabSpec tab7 = tabHost.newTabSpec("setting");
+		tab7.setIndicator(getString(R.string.label_setting), res.getDrawable(R.drawable.ic_tab_settings));
+		tabsAdapter.addTab(tab7, SettingFragment.class, null);
+
+		TabSpec tab8 = tabHost.newTabSpec("info");
+		tab8.setIndicator(getString(R.string.label_info), res.getDrawable(R.drawable.ic_tab_info));
+		tabsAdapter.addTab(tab8, InfoFragment.class, null);
 
 		suggestedWidth = tabsAdapter.getSuggestedWidth();
        		// set the width of tab 

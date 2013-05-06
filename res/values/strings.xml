@@ -241,8 +241,22 @@
 	<string name="label_ignore_unstable_power">Ignore unstable power detection</string>
 	<string name="label_batt_chrg_soft_volt">Charge Soft voltage</string>
 
-
-
+	<!-- GPU -->
+	<string name="label_gpu_tweak">GPU Settings</string>
+	<string name="label_mali_gpu_utilization_timeout">Utilization Timeout</string>
+	<string name="label_step0_clk">Gpu Speed Step 1</string>
+	<string name="label_step0_up">Up_threshold Step 1</string>
+	<string name="label_step1_clk">Gpu Speed Step 2</string>
+	<string name="label_step1_down">Down_threshold Step 2</string>
+	<string name="label_step1_up">Up_threshold Step 2</string>
+	<string name="label_step2_clk">Gpu Speed Step 3</string>
+	<string name="label_step2_down">Down_threshold Step 3</string>
+	<string name="label_step2_up">Up_threshold Step 3</string>
+	<string name="label_step3_clk">Gpu Speed Step 4</string>
+	<string name="label_step3_down">Down_threshold Step 4</string>
+	<string name="label_step3_up">Up_threshold Step 4</string>
+	<string name="label_step4_clk">Gpu Speed Step 5</string>
+	<string name="label_step4_down">Down_threshold Step 5</string>
 
 
 
