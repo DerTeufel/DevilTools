@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:custom="http://schemas.android.com/apk/res/mobi.cyann.deviltools" android:key="root" >
+
+    <CheckBoxPreference
+        android:key="@string/key_default_gpu_voltage"
+        android:summaryOff="@string/summaryOff_default_gpu_voltage"
+        android:summaryOn="@string/summaryOn_default_gpu_voltage"
+        android:title="@string/label_default_gpu_voltage" android:defaultValue="true"
+        android:disableDependentsState="true"/>
+
+    <mobi.cyann.deviltools.preference.RemovablePreferenceCategory
+        android:key="@string/key_gpu_volt_pref"
+        android:title="@string/gpu_voltage" >
+
+        <mobi.cyann.deviltools.preference.VoltagePreference
+            android:dependency="@string/key_default_gpu_voltage"
+            custom:interfacePath="/sys/class/misc/mali_control/voltage_control"
+            android:key="@string/key_max_gpu_volt"
+            custom:maxValue="1400000"
+            custom:metrics="mV"
+            custom:minValue="600000"
+            custom:step="25000"
+            android:summary="0"
+            android:title="@string/label_max_gpu_volt" />
+    </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
+
+</PreferenceScreen>

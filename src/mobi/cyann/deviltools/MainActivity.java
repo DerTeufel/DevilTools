@@ -85,14 +85,18 @@ public class MainActivity extends FragmentActivity {
 		TabSpec tab6 = tabHost.newTabSpec("gpu");
 		tab6.setIndicator(getString(R.string.label_gpu_tweak), res.getDrawable(R.drawable.ic_tab_gpu));
 		tabsAdapter.addTab(tab6, GpuFragment.class, null);
-		
-		TabSpec tab7 = tabHost.newTabSpec("setting");
-		tab7.setIndicator(getString(R.string.label_setting), res.getDrawable(R.drawable.ic_tab_settings));
-		tabsAdapter.addTab(tab7, SettingFragment.class, null);
 
-		TabSpec tab8 = tabHost.newTabSpec("info");
-		tab8.setIndicator(getString(R.string.label_info), res.getDrawable(R.drawable.ic_tab_info));
-		tabsAdapter.addTab(tab8, InfoFragment.class, null);
+		TabSpec tab7 = tabHost.newTabSpec("gpuvolt");
+		tab7.setIndicator(getString(R.string.gpu_voltage_control), res.getDrawable(R.drawable.ic_tab_gpu_voltages));
+		tabsAdapter.addTab(tab7, GpuVoltageControlFragment.class, null);
+		
+		TabSpec tab8 = tabHost.newTabSpec("setting");
+		tab8.setIndicator(getString(R.string.label_setting), res.getDrawable(R.drawable.ic_tab_settings));
+		tabsAdapter.addTab(tab8, SettingFragment.class, null);
+
+		TabSpec tab9 = tabHost.newTabSpec("info");
+		tab9.setIndicator(getString(R.string.label_info), res.getDrawable(R.drawable.ic_tab_info));
+		tabsAdapter.addTab(tab9, InfoFragment.class, null);
 
 		suggestedWidth = tabsAdapter.getSuggestedWidth();
        		// set the width of tab 

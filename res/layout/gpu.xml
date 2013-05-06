@@ -131,6 +131,4 @@
             android:title="@string/label_mali_gpu_utilization_timeout" />
     </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
 
-
-
 </PreferenceScreen>
