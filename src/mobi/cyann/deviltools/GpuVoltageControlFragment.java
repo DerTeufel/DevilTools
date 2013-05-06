@@ -30,34 +30,34 @@ import android.widget.CheckBox;
 public class GpuVoltageControlFragment extends BasePreferenceFragment implements OnPreferenceChangeListener {
 	private final static String LOG_TAG = "DevilTools.GpuVoltageControlActivity";
 	
-	private IntegerPreference maxArmVolt;
+	private IntegerPreference maxGpuVolt;
 	
-	private List<Integer> armVoltages;
+	private List<Integer> gpuVoltages;
 	
 	private SharedPreferences preferences;
 	
 	public GpuVoltageControlFragment() {
-		super(R.layout.voltage);
+		super(R.layout.gpu_voltage);
 		
-		armVoltages = new ArrayList<Integer>();
+		gpuVoltages = new ArrayList<Integer>();
 	}
 
 	@Override
 	public void onPreferenceAttached(PreferenceScreen rootPreference, int xmlId) {
 		preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
 		
-		maxArmVolt = (IntegerPreference)findPreference(getString(R.string.key_max_arm_volt));
+		maxGpuVolt = (IntegerPreference)findPreference(getString(R.string.key_max_gpu_volt));
 		findPreference(getString(R.string.key_default_voltage)).setOnPreferenceChangeListener(this);
 
-		armVoltages.clear();
+		gpuVoltages.clear();
 
-		if(maxArmVolt.getValue() == -1) {
-			Log.d(LOG_TAG, "read from uv_mv_table");
+		if(maxGpuVolt.getValue() == -1) {
+			Log.d(LOG_TAG, "read from mali_table");
 			// if we can't get customvoltage mod, then try to read UV_mV_table
 			readUvmvTable();
 		}else {
 			Log.d(LOG_TAG, "read from customvoltage");
-			readVoltages(maxArmVolt, getString(R.string.key_arm_volt_pref), "armvolt_", "/sys/class/misc/customvoltage/arm_volt", armVoltages);
+			readVoltages(maxGpuVolt, getString(R.string.key_gpu_volt_pref), "armvolt_", "/sys/class/misc/customvoltage/arm_volt", gpuVoltages);
 		}
 		
 		super.onPreferenceAttached(rootPreference, xmlId);
@@ -103,7 +103,7 @@ public class GpuVoltageControlFragment extends BasePreferenceFragment implements
 	}
 	
 	private void readUvmvTable() {
-		PreferenceCategory c = (PreferenceCategory)findPreference(getString(R.string.key_arm_volt_pref));
+		PreferenceCategory c = (PreferenceCategory)findPreference(getString(R.string.key_gpu_volt_pref));
 		SysCommand sc = SysCommand.getInstance();
 		int count = sc.readSysfs("/sys/class/misc/mali_control/voltage_control");
 		for(int i = 0; i < count; ++i) {
@@ -115,11 +115,11 @@ public class GpuVoltageControlFragment extends BasePreferenceFragment implements
 				Log.d(LOG_TAG, line);
 				createDefaultVoltPreference(c, "uvmvtable_", i, parts[0], volt);
 				
-				armVoltages.add(volt);
+				gpuVoltages.add(volt);
 			}
 		}
-		if(armVoltages.size() > 0) {
-			saveVoltages(getString(R.string.key_uvmvtable_pref), armVoltages, null);
+		if(gpuVoltages.size() > 0) {
+			saveVoltages(getString(R.string.key_uvmvtable_pref), gpuVoltages, null);
 		}
 	}
 	
@@ -166,16 +166,16 @@ public class GpuVoltageControlFragment extends BasePreferenceFragment implements
 
 	@Override
 	public boolean onPreferenceChange(Preference preference, Object newValue) {
-		if(preference.getKey().startsWith("armvolt_")) {
+		if(preference.getKey().startsWith("gpuvolt_")) {
 			String parts[] = preference.getKey().split("_");
 			int i = Integer.parseInt(parts[1]);
-			armVoltages.set(i, (Integer)newValue);
-			saveVoltages(getString(R.string.key_arm_volt_pref), armVoltages, "/sys/class/misc/customvoltage/arm_volt");
+			gpuVoltages.set(i, (Integer)newValue);
+			saveVoltages(getString(R.string.key_gpu_volt_pref), gpuVoltages, "/sys/class/misc/customvoltage/gpu_volt");
 		}else if(preference.getKey().startsWith("uvmvtable_")) {
 			String parts[] = preference.getKey().split("_");
 			int i = Integer.parseInt(parts[1]);
-			armVoltages.set(i, (Integer)newValue);
-			saveVoltages(getString(R.string.key_uvmvtable_pref), armVoltages, "/sys/class/misc/mali_control/voltage_control");
+			gpuVoltages.set(i, (Integer)newValue);
+			saveVoltages(getString(R.string.key_uvmvtable_pref), gpuVoltages, "/sys/class/misc/mali_control/voltage_control");
 		}else if(preference.getKey().equals(getString(R.string.key_default_voltage))) {
 			if(!(Boolean)newValue) {
 				showWarningDialog();
