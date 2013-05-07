@@ -20,9 +20,15 @@ import android.widget.TextView;
 public class StatusPreference extends BasePreference<Integer> {
 	private final static String LOG_TAG = "DevilTools.StatusPreference";
 	protected int value = -1;
+	private String description;
 	
 	public StatusPreference(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
+
+		TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.mobi_cyann_deviltools_preference_IntegerPreference, defStyle, 0);
+		description = a.getString(R.styleable.mobi_cyann_deviltools_preference_IntegerPreference_description);
+		a.recycle();
+		
 	}
 
 	public StatusPreference(Context context, AttributeSet attrs) {
@@ -40,8 +46,14 @@ public class StatusPreference extends BasePreference<Integer> {
         TextView summaryView = (TextView) view.findViewById(android.R.id.summary);
         if (summaryView != null) {
         	if(value == 0) {
+			if(description != null)
+        		summaryView.setText(description + "\n" + "Enabled");
+			else
         		summaryView.setText(R.string.status_off);
         	}else if(value == 1) {
+			if(description != null)
+        		summaryView.setText(description + "\n" + "Disabled");
+			else
         		summaryView.setText(R.string.status_on);
         	}else {
         		summaryView.setText(R.string.status_not_available);
@@ -132,6 +144,14 @@ public class StatusPreference extends BasePreference<Integer> {
 	
 	public void setValue(int value) {
 		this.value = value;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 	@Override
