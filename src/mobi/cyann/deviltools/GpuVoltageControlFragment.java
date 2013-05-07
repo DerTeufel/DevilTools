@@ -37,7 +37,7 @@ public class GpuVoltageControlFragment extends BasePreferenceFragment implements
 	private SharedPreferences preferences;
 	
 	public GpuVoltageControlFragment() {
-		super(R.layout.voltage);
+		super(R.layout.gpu_voltage);
 		
 		armVoltages = new ArrayList<Integer>();
 	}
@@ -46,7 +46,7 @@ public class GpuVoltageControlFragment extends BasePreferenceFragment implements
 	public void onPreferenceAttached(PreferenceScreen rootPreference, int xmlId) {
 		preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
 		
-		maxArmVolt = (IntegerPreference)findPreference(getString(R.string.key_max_arm_volt));
+		maxArmVolt = (IntegerPreference)findPreference(getString(R.string.key_max_gpu_volt));
 		findPreference(getString(R.string.key_default_voltage)).setOnPreferenceChangeListener(this);
 
 		armVoltages.clear();
@@ -57,7 +57,7 @@ public class GpuVoltageControlFragment extends BasePreferenceFragment implements
 			readUvmvTable();
 		}else {
 			Log.d(LOG_TAG, "read from customvoltage");
-			readVoltages(maxArmVolt, getString(R.string.key_arm_volt_pref), "armvolt_", "/sys/class/misc/customvoltage/arm_volt", armVoltages);
+			readVoltages(maxArmVolt, getString(R.string.key_gpu_volt_pref), "armvolt_", "/sys/class/misc/customvoltage/arm_volt", armVoltages);
 		}
 		
 		super.onPreferenceAttached(rootPreference, xmlId);
@@ -89,9 +89,9 @@ public class GpuVoltageControlFragment extends BasePreferenceFragment implements
 		vp.setTitle(title);
 		vp.setValue(value);
 		vp.setSummary("0");
-		vp.setMaxValue(1500);
-		vp.setMinValue(750);
-		vp.setStep(25);
+		vp.setMaxValue(1400000);
+		vp.setMinValue(600000);
+		vp.setStep(25000);
 		vp.setMetrics("mV");
 		vp.setPersistent(false);
 		vp.setIgnoreInterface(true);
@@ -103,7 +103,7 @@ public class GpuVoltageControlFragment extends BasePreferenceFragment implements
 	}
 	
 	private void readUvmvTable() {
-		PreferenceCategory c = (PreferenceCategory)findPreference(getString(R.string.key_arm_volt_pref));
+		PreferenceCategory c = (PreferenceCategory)findPreference(getString(R.string.key_gpu_volt_pref));
 		SysCommand sc = SysCommand.getInstance();
 		int count = sc.readSysfs("/sys/class/misc/mali_control/voltage_control");
 		for(int i = 0; i < count; ++i) {
@@ -170,7 +170,7 @@ public class GpuVoltageControlFragment extends BasePreferenceFragment implements
 			String parts[] = preference.getKey().split("_");
 			int i = Integer.parseInt(parts[1]);
 			armVoltages.set(i, (Integer)newValue);
-			saveVoltages(getString(R.string.key_arm_volt_pref), armVoltages, "/sys/class/misc/customvoltage/arm_volt");
+			saveVoltages(getString(R.string.key_gpu_volt_pref), armVoltages, "/sys/class/misc/customvoltage/arm_volt");
 		}else if(preference.getKey().startsWith("uvmvtable_")) {
 			String parts[] = preference.getKey().split("_");
 			int i = Integer.parseInt(parts[1]);

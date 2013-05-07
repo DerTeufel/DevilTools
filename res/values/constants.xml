@@ -197,9 +197,7 @@
 	<string name="key_step4_clk">key_step4_clk</string>
 	<string name="key_step4_down">key_step4_down</string>
 
-	<string name="key_default_gpu_voltage">key_default_gpu_voltage</string>
 	<string name="key_gpu_volt_pref">key_gpu_volt_pref</string>
-	<string name="key_gpumvtable_pref">key_gpumvtable_pref</string>
 	<string name="key_max_gpu_volt">key_max_gpu_volt</string>
 
 

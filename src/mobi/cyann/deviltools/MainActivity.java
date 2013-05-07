@@ -87,7 +87,7 @@ public class MainActivity extends FragmentActivity {
 		tabsAdapter.addTab(tab6, GpuFragment.class, null);
 
 		TabSpec tab7 = tabHost.newTabSpec("gpuvolt");
-		tab7.setIndicator(getString(R.string.gpu_voltage_control), res.getDrawable(R.drawable.ic_tab_gpu_voltages));
+		tab7.setIndicator(getString(R.string.gpu_voltage), res.getDrawable(R.drawable.ic_tab_gpu_voltages));
 		tabsAdapter.addTab(tab7, GpuVoltageControlFragment.class, null);
 		
 		TabSpec tab8 = tabHost.newTabSpec("setting");

@@ -258,12 +258,8 @@
 	<string name="label_step4_clk">Gpu Speed Step 5</string>
 	<string name="label_step4_down">Down_threshold Step 5</string>
 
-    <string name="gpu_voltage_control">Gpu Voltages</string>
-    <string name="label_default_gpu_voltage">Default voltages</string>
-    <string name="summaryOn_default_gpu_voltage">Use voltage settings from kernel</string>
-    <string name="summaryOff_default_gpu_voltage">Use customized voltage settings below</string>
-    <string name="gpu_voltage">GPU Voltage</string>
-    <string name="label_max_gpu_volt">Max GPU Volt</string>
+	<string name="gpu_voltage">GPU Voltage</string>
+    	<string name="label_max_gpu_volt">Max GPU Volt</string>
 
 
 

@@ -28,6 +28,17 @@ case "$?" in
 	;;
 esac
 
+# gpu volt
+STAT=1400000
+case "$?" in
+	0)
+	echo "key_max_gpu_volt=$STAT" >> $OUT_FILE
+	;;
+	*)
+	echo "key_max_gpu_volt=-1" >> $OUT_FILE
+	;;
+esac
+
 # bld
 STAT=`cat /sys/class/misc/backlightdimmer/enabled`
 case "$STAT" in
