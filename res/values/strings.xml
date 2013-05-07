@@ -264,6 +264,28 @@
     	<string name="touch_boost_tweak">Touch Boost</string>
     	<string name="label_touch_boost_freq">Touch Boost</string>
 
+	<!-- Audio -->
+    	<string name="label_audio_tweak">Audio Settings</string>
+	<string name="label_speaker_tuning">Enable speaker tuning for better bass</string>
+	<string name="label_speaker_offset">Speaker Amplification Offset</string>
+	<string name="label_headphone_amplifier_level">Headphone Amplifier Level</string>
+	<string name="label_stereo_expansion">3D Effect Settings</string>
+	<string name="label_stereo_expansion_gain">3D Effect Gain Level</string>
+	<string name="label_headphone_eq">Use Graphical Eq</string>
+	<string name="label_headphone_eq_b1_gain">Band1 gain</string>
+	<string name="label_headphone_eq_b2_gain">Band2 gain</string>
+	<string name="label_headphone_eq_b3_gain">Band3 gain</string>
+	<string name="label_headphone_eq_b4_gain">Band4 gain</string>
+	<string name="label_headphone_eq_b5_gain">Band5 gain</string>
+	<string name="label_fll_tuning">Anti-jitter</string>
+	<string name="label_dac_osr128">DAC OverSampling (play)</string>
+	<string name="label_dac_direct">dac direct</string>
+	<string name="label_adc_osr128">DAC OverSampling (record)</string>
+	<string name="label_mono_downmix">Force Mono</string>
+
+
+
+
 
 	<string name="msg_kernel_changed">Settings discarded because the kernel version has changed</string>
 

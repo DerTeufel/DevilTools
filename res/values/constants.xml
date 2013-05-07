@@ -203,6 +203,25 @@
 	<!-- Touch Boost -->
 	<string name="key_touch_boost_freq">key_touch_boost_freq</string>
 
+	<!-- Audio -->
+	<string name="key_speaker_tuning">key_speaker_tuning</string>
+	<string name="key_speaker_offset">key_speaker_offset</string>
+	<string name="key_headphone_amplifier_level">key_headphone_amplifier_level</string>
+	<string name="key_stereo_expansion">key_stereo_expansion</string>
+	<string name="key_stereo_expansion_gain">key_stereo_expansion_gain</string>
+	<string name="key_headphone_eq">key_headphone_eq</string>
+	<string name="key_headphone_eq_b1_gain">key_headphone_eq_b1_gain</string>
+	<string name="key_headphone_eq_b2_gain">key_headphone_eq_b2_gain</string>
+	<string name="key_headphone_eq_b3_gain">key_headphone_eq_b3_gain</string>
+	<string name="key_headphone_eq_b4_gain">key_headphone_eq_b4_gain</string>
+	<string name="key_headphone_eq_b5_gain">key_headphone_eq_b5_gain</string>
+	<string name="key_fll_tuning">key_fll_tuning</string>
+	<string name="key_dac_osr128">key_dac_osr128</string>
+	<string name="key_dac_direct">key_dac_direct</string>
+	<string name="key_adc_osr128">key_adc_osr128</string>
+	<string name="key_mono_downmix">key_mono_downmix</string>
+
+
 
 
 	<string name="key_bigmem">key_bigmem</string>
