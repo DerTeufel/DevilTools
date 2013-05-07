@@ -257,10 +257,12 @@
 	<string name="label_step3_up">Up_threshold Step 4</string>
 	<string name="label_step4_clk">Gpu Speed Step 5</string>
 	<string name="label_step4_down">Down_threshold Step 5</string>
-
 	<string name="gpu_voltage">GPU Voltage</string>
     	<string name="label_max_gpu_volt">Max GPU Volt</string>
 
+	<!-- Touch Boost -->
+    	<string name="touch_boost_tweak">Touch Boost</string>
+    	<string name="label_touch_boost_freq">Touch Boost</string>
 
 
 	<string name="msg_kernel_changed">Settings discarded because the kernel version has changed</string>

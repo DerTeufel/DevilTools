@@ -196,10 +196,14 @@
 	<string name="key_step3_up">key_step3_up</string>
 	<string name="key_step4_clk">key_step4_clk</string>
 	<string name="key_step4_down">key_step4_down</string>
-
 	<string name="key_gpu_volt_pref">key_gpu_volt_pref</string>
 	<string name="key_max_gpu_volt">key_max_gpu_volt</string>
 	<string name="key_malivolt_pref">key_malivolt_pref</string>
+
+	<!-- Touch Boost -->
+	<string name="key_touch_boost_freq">key_touch_boost_freq</string>
+
+
 
 	<string name="key_bigmem">key_bigmem</string>
 	<string name="key_voodoo_gamma_presets">key_voodoo_gamma_presets</string>
