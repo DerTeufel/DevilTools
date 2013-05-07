@@ -17,10 +17,10 @@
             android:dependency="@string/key_default_voltage"
             custom:interfacePath="/sys/class/misc/customvoltage/max_gpu_volt"
             android:key="@string/key_max_gpu_volt"
-            custom:maxValue="1400000"
+            custom:maxValue="1400"
             custom:metrics="mV"
-            custom:minValue="600000"
-            custom:step="25000"
+            custom:minValue="600"
+            custom:step="5"
             android:summary="0"
             android:title="@string/label_max_gpu_volt" />
     </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>

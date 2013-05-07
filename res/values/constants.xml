@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">DevilTools</string>
-    <string name="app_version">0.6.1</string>
+    <string name="app_version">0.6.2</string>
     
 	<string name="SETTINGS_DIR">/data/data/mobi.cyann.deviltools/settings/</string>
     <string name="SCRIPT_DIR">/data/data/mobi.cyann.deviltools/scripts/</string>
@@ -199,7 +199,7 @@
 
 	<string name="key_gpu_volt_pref">key_gpu_volt_pref</string>
 	<string name="key_max_gpu_volt">key_max_gpu_volt</string>
-
+	<string name="key_malivolt_pref">key_malivolt_pref</string>
 
 	<string name="key_bigmem">key_bigmem</string>
 	<string name="key_voodoo_gamma_presets">key_voodoo_gamma_presets</string>

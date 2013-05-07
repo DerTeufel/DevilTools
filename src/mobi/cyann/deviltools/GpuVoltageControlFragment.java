@@ -89,9 +89,9 @@ public class GpuVoltageControlFragment extends BasePreferenceFragment implements
 		vp.setTitle(title);
 		vp.setValue(value);
 		vp.setSummary("0");
-		vp.setMaxValue(1400000);
-		vp.setMinValue(600000);
-		vp.setStep(25000);
+		vp.setMaxValue(1400);
+		vp.setMinValue(600);
+		vp.setStep(5);
 		vp.setMetrics("mV");
 		vp.setPersistent(false);
 		vp.setIgnoreInterface(true);
@@ -113,13 +113,13 @@ public class GpuVoltageControlFragment extends BasePreferenceFragment implements
 				int volt = Integer.parseInt(parts[1].substring(1, parts[1].length()-3));
 	
 				Log.d(LOG_TAG, line);
-				createDefaultVoltPreference(c, "uvmvtable_", i, parts[0], volt);
+				createDefaultVoltPreference(c, "malivolt_", i, parts[0], volt);
 				
 				armVoltages.add(volt);
 			}
 		}
 		if(armVoltages.size() > 0) {
-			saveVoltages(getString(R.string.key_uvmvtable_pref), armVoltages, null);
+			saveVoltages(getString(R.string.key_malivolt_pref), armVoltages, null);
 		}
 	}
 	
@@ -171,11 +171,11 @@ public class GpuVoltageControlFragment extends BasePreferenceFragment implements
 			int i = Integer.parseInt(parts[1]);
 			armVoltages.set(i, (Integer)newValue);
 			saveVoltages(getString(R.string.key_gpu_volt_pref), armVoltages, "/sys/class/misc/customvoltage/arm_volt");
-		}else if(preference.getKey().startsWith("uvmvtable_")) {
+		}else if(preference.getKey().startsWith("malivolt_")) {
 			String parts[] = preference.getKey().split("_");
 			int i = Integer.parseInt(parts[1]);
 			armVoltages.set(i, (Integer)newValue);
-			saveVoltages(getString(R.string.key_uvmvtable_pref), armVoltages, "/sys/class/misc/mali_control/voltage_control");
+			saveVoltages(getString(R.string.key_malivolt_pref), armVoltages, "/sys/class/misc/mali_control/voltage_control");
 		}else if(preference.getKey().equals(getString(R.string.key_default_voltage))) {
 			if(!(Boolean)newValue) {
 				showWarningDialog();
