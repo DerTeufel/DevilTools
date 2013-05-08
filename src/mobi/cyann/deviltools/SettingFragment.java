@@ -9,6 +9,7 @@ import mobi.cyann.deviltools.services.ObserverService;
 import android.content.Intent;
 import android.preference.EditTextPreference;
 import android.preference.Preference;
+import android.preference.CheckBoxPreference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceScreen;
@@ -24,9 +25,19 @@ public class SettingFragment extends PreferenceListFragment implements OnPrefere
 		setOnPreferenceAttachedListener(this);
 	}
 
+    private CheckBoxPreference mService;
+    private static final String FILE = "/sys/class/misc/backlightnotification/enabled";
+
+    private static boolean BLNisSupported() {
+        return Utils.fileExists(FILE);
+    }
+
 	@Override
 	public void onPreferenceAttached(PreferenceScreen rootPreference, int xmlId) {
-		findPreference(getString(R.string.key_deviltools_service)).setOnPreferenceChangeListener(this);
+		mService = (CheckBoxPreference) findPreference(getString(R.string.key_deviltools_service));
+        	mService.setEnabled(BLNisSupported());
+		if(BLNisSupported())
+		mService.setOnPreferenceChangeListener(this);
 		findPreference(getString(R.string.key_load_settings)).setOnPreferenceChangeListener(this);
 		findPreference(getString(R.string.key_save_settings)).setOnPreferenceClickListener(this);
 		findPreference(getString(R.string.key_save_settings)).setOnPreferenceChangeListener(this);
@@ -63,8 +74,10 @@ public class SettingFragment extends PreferenceListFragment implements OnPrefere
 				SettingsManager.deleteSettings(getActivity(), newValue.toString());
 			}
 			return true;
-		}else if(preference.getKey().equals(getString(R.string.key_deviltools_service))) {
+		}else if(preference == mService) {
 			if(newValue != null) {
+			    if(!BLNisSupported())
+				newValue = false;
 				if((Boolean)newValue) {
 					ObserverService.startService(getActivity(), true);
 				}else {

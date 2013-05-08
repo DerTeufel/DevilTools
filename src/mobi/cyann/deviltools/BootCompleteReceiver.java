@@ -12,6 +12,12 @@ import android.util.Log;
  */
 public class BootCompleteReceiver extends BroadcastReceiver {
 	private static final String LOG_TAG = "DevilTools.BootCompleteReceiver";
+	private static final String FILE = "/sys/class/misc/backlightnotification/enabled";
+    
+	private static boolean BLNisSupported() {
+        return Utils.fileExists(FILE);
+    	}
+
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		Log.d(LOG_TAG, "starting service");
@@ -20,7 +26,10 @@ public class BootCompleteReceiver extends BroadcastReceiver {
 		context.startService(new Intent(context, OnBootCompleteService.class));
 		
 		// start our ObserverService (monitor missed call)
+		if(BLNisSupported())
 		ObserverService.startService(context, false);
+		else
+		ObserverService.stopService(context);
+		
 	}
-	
 }
