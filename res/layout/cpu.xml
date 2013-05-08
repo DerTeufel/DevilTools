@@ -119,6 +119,7 @@
         <mobi.cyann.deviltools.preference.StatusPreference
             custom:interfacePath="/sys/devices/system/cpu/cpufreq/ondemand/early_demand"
             android:key="@string/key_ondemand_early_demand"
+	    custom:description="Calculate gradient of previous load and actual load."
             android:summary="@string/status_not_available"
             android:title="@string/label_ondemand_early_demand" />
 
@@ -126,6 +127,7 @@
             android:dependency="@string/key_ondemand_early_demand"
             custom:interfacePath="/sys/devices/system/cpu/cpufreq/ondemand/grad_up_threshold"
             android:key="@string/key_ondemand_grad_up_threshold"
+	    custom:description="Scale up, if gradient is above this value."
             custom:maxValue="100"
             custom:metrics="%"
             custom:minValue="1"
@@ -968,6 +970,7 @@
         <mobi.cyann.deviltools.preference.StatusPreference
             custom:interfacePath="/sys/devices/system/cpu/cpufreq/devilq/early_demand"
             android:key="@string/key_devilq_early_demand"
+	    custom:description="Calculate gradient of previous load and actual load."
             android:summary="@string/status_not_available"
             android:title="@string/label_devilq_early_demand" />
 
@@ -975,6 +978,7 @@
             android:dependency="@string/key_devilq_early_demand"
             custom:interfacePath="/sys/devices/system/cpu/cpufreq/devilq/grad_up_threshold"
             android:key="@string/key_devilq_grad_up_threshold"
+	    custom:description="Scale up, if gradient is above this value."
             custom:maxValue="100"
             custom:metrics="%"
             custom:minValue="1"
@@ -986,6 +990,7 @@
             android:dependency="@string/key_devilq_early_demand"
             custom:interfacePath="/sys/devices/system/cpu/cpufreq/devilq/grad_down_threshold"
             android:key="@string/key_devilq_grad_down_threshold"
+	    custom:description="Scale down, if gradient is below this value."
             custom:maxValue="100"
             custom:metrics="%"
             custom:minValue="1"

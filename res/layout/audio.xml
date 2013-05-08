@@ -7,7 +7,7 @@
     <mobi.cyann.deviltools.preference.StatusPreference
             custom:interfacePath="/sys/devices/virtual/misc/scoobydoo_sound/speaker_tuning"
             android:key="@string/key_speaker_tuning"
-	    custom:description="test test test."
+	    custom:description="Enable speaker tuning for better bass."
             android:summary="@string/status_not_available"
             android:title="@string/label_speaker_tuning" />
 

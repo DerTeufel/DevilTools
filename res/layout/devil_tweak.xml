@@ -40,6 +40,7 @@
         <mobi.cyann.deviltools.preference.StatusPreference
             custom:interfacePath="/sys/kernel/dyn_fsync/Dyn_fsync_active"
             android:key="@string/key_dyn_fsync"
+	    custom:description="With this enabled, fsync is disabled, while screen on, and enabled while screen off. Can lead to data loss in case of a system crash!"
             android:summary="@string/status_not_available"
             android:title="@string/label_dyn_fsync" />
     	</mobi.cyann.deviltools.preference.RemovablePreferenceCategory>

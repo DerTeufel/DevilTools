@@ -266,7 +266,7 @@
 
 	<!-- Audio -->
     	<string name="label_audio_tweak">Audio Settings</string>
-	<string name="label_speaker_tuning">Enable speaker tuning for better bass</string>
+	<string name="label_speaker_tuning">Enable speaker tuning</string>
 	<string name="label_speaker_offset">Speaker Amplification Offset</string>
 	<string name="label_headphone_amplifier_level">Headphone Amplifier Level</string>
 	<string name="label_stereo_expansion">3D Effect Settings</string>
