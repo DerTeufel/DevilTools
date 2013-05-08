@@ -47,12 +47,12 @@ public class StatusPreference extends BasePreference<Integer> {
         if (summaryView != null) {
         	if(value == 0) {
 			if(description != null)
-        		summaryView.setText(description + "\n" + "Enabled");
+        		summaryView.setText(description + "\n" + "Disabled");
 			else
         		summaryView.setText(R.string.status_off);
         	}else if(value == 1) {
 			if(description != null)
-        		summaryView.setText(description + "\n" + "Disabled");
+        		summaryView.setText(description + "\n" + "Enabled");
 			else
         		summaryView.setText(R.string.status_on);
         	}else {
