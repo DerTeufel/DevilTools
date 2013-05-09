@@ -201,6 +201,7 @@
 	<string name="key_malivolt_pref">key_malivolt_pref</string>
 
 	<!-- Touch Boost -->
+	<string name="key_touch_boost_enabled">key_touch_boost_enabled</string>
 	<string name="key_touch_boost_freq">key_touch_boost_freq</string>
 
 	<!-- Audio -->

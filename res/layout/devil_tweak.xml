@@ -11,9 +11,18 @@
             custom:writeToInterface="@array/iosched_interfaces" />
     </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
 
-    <mobi.cyann.deviltools.preference.RemovablePreferenceCategory android:title="@string/touch_boost_tweak" >
+    <mobi.cyann.deviltools.preference.RemovablePreferenceCategory android:title="@string/touch_boost" >
+
+        <mobi.cyann.deviltools.preference.StatusPreference
+            custom:interfacePath="/sys/class/misc/touchboost/input_boost_enabled"
+            android:key="@string/key_touch_boost_enabled"
+	    custom:description="Enable or disbale Touch Boost"
+            android:summary="@string/status_not_available"
+            android:title="@string/label_touch_boost_enabled" />
+
         <mobi.cyann.deviltools.preference.IntegerPreference
             custom:interfacePath="/sys/class/misc/touchboost/input_boost_freq"
+            android:dependency="@string/key_touch_boost_enabled"
             android:key="@string/key_touch_boost_freq"
 	    custom:description="Push Cpu to this Freq. if Touchscreen gets touched"
             custom:maxValue="1600000"

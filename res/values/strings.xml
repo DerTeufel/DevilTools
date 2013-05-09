@@ -261,8 +261,9 @@
     	<string name="label_max_gpu_volt">Max GPU Volt</string>
 
 	<!-- Touch Boost -->
-    	<string name="touch_boost_tweak">Touch Boost</string>
-    	<string name="label_touch_boost_freq">Touch Boost</string>
+    	<string name="touch_boost">Touch Boost</string>
+    	<string name="label_touch_boost_enabled">Touch Boost Status</string>
+    	<string name="label_touch_boost_freq">Touch Boost Frequency</string>
 
 	<!-- Audio -->
     	<string name="label_audio_tweak">Audio Settings</string>
