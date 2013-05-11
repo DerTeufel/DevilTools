@@ -728,6 +728,11 @@ public class SettingsManager {
 			command.append("echo " + value + " > " + "/sys/devices/platform/samsung-battery/sdp_input_curr\n");
 		}
 
+		value = preferences.getInt(c.getString(R.string.key_sdp_chrg_curr), -1);
+		if(value > -1) {
+			command.append("echo " + value + " > " + "/sys/devices/platform/samsung-battery/sdp_chrg_curr\n");
+		}
+
 		value = preferences.getInt(c.getString(R.string.key_cdp_input_curr), -1);
 		if(value > -1) {
 			command.append("echo " + value + " > " + "/sys/devices/platform/samsung-battery/cdp_input_curr\n");
@@ -752,6 +757,7 @@ public class SettingsManager {
 		if(value > -1) {
 			command.append("echo " + value + " > " + "/sys/devices/platform/samsung-battery/ignore_unstable_power\n");
 		}
+
 
 		// cmled
 		value = preferences.getInt(c.getString(R.string.key_cmled_bltimeout), -1);
