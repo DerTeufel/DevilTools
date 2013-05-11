@@ -344,7 +344,172 @@ public class SettingsManager {
 			if(value > -1) {
 				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/lulzactive/down_sample_time\n");
 			}
+}else if(status.equals("lulzactiveq")) { // set this parameter only if active governor = lulzactiveq
+			// lulzactiveq hispeed_freq
+			value = preferences.getInt(c.getString(R.string.key_lulzactiveq_hispeed_freq), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/lulzactiveq/hispeed_freq\n");
+			}
+
+			// lulzactiveq inc_cpu_load
+			value = preferences.getInt(c.getString(R.string.key_lulzactiveq_inc_cpu_load), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/lulzactiveq/inc_cpu_load\n");
+			}
+	
+			// lulzactiveq pump_up_step
+			value = preferences.getInt(c.getString(R.string.key_lulzactiveq_pump_up_step), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/lulzactiveq/pump_up_step\n");
+			}
+	
+			// lulzactiveq pump_down_step
+			value = preferences.getInt(c.getString(R.string.key_lulzactiveq_pump_down_step), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/lulzactiveq/pump_down_step\n");
+			}
+			
+			// lulzactiveq screen_off_min_step
+			value = preferences.getInt(c.getString(R.string.key_lulzactiveq_screen_off_min_step), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/lulzactiveq/screen_off_min_step\n");
+			}
+			
+			// lulzactiveq up_sample_time
+			value = preferences.getInt(c.getString(R.string.key_lulzactiveq_up_sample_time), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/lulzactiveq/up_sample_time\n");
+			}
+			
+			// lulzactiveq down_sample_time
+			value = preferences.getInt(c.getString(R.string.key_lulzactiveq_down_sample_time), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/lulzactiveq/down_sample_time\n");
+			}
+
+			// lulzactiveq cpu_up_rate
+			value = preferences.getInt(c.getString(R.string.key_lulzactiveq_cpu_up_rate), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/lulzactiveq/cpu_up_rate\n");
+			}
+
+			// lulzactiveq cpu_down_rate
+			value = preferences.getInt(c.getString(R.string.key_lulzactiveq_cpu_down_rate), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/lulzactiveq/cpu_down_rate\n");
+			}
+
+			// lulzactiveq ignore_nice_load
+			value = preferences.getInt(c.getString(R.string.key_lulzactiveq_ignore_nice_load), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/lulzactiveq/ignore_nice_load\n");
+			}
+
+			// lulzactiveq max_cpu_lock
+			value = preferences.getInt(c.getString(R.string.key_lulzactiveq_max_cpu_lock), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/lulzactiveq/max_cpu_lock\n");
+			}
+
+			// lulzactiveq min_cpu_lock
+			value = preferences.getInt(c.getString(R.string.key_lulzactiveq_min_cpu_lock), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/lulzactiveq/min_cpu_lock\n");
+			}
+
+			// lulzactiveq hotplug_freq_1_1
+			value = preferences.getInt(c.getString(R.string.key_lulzactiveq_hotplug_freq_1_1), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/lulzactiveq/hotplug_freq_1_1\n");
+			}
+
+			// lulzactiveq hotplug_freq_2_0
+			value = preferences.getInt(c.getString(R.string.key_lulzactiveq_hotplug_freq_2_0), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/lulzactiveq/hotplug_freq_2_0\n");
+			}
+
+			// lulzactiveq hotplug_freq_2_1
+			value = preferences.getInt(c.getString(R.string.key_lulzactiveq_hotplug_freq_2_1), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/lulzactiveq/hotplug_freq_2_1\n");
+			}
+
+			// lulzactiveq hotplug_freq_3_0
+			value = preferences.getInt(c.getString(R.string.key_lulzactiveq_hotplug_freq_3_0), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/lulzactiveq/hotplug_freq_3_0\n");
+			}
+
+			// lulzactiveq hotplug_freq_3_1
+			value = preferences.getInt(c.getString(R.string.key_lulzactiveq_hotplug_freq_3_1), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/lulzactiveq/hotplug_freq_3_1\n");
+			}
+
+			// lulzactiveq hotplug_freq_4_0
+			value = preferences.getInt(c.getString(R.string.key_lulzactiveq_hotplug_freq_4_0), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/lulzactiveq/hotplug_freq_4_0\n");
+			}
+
+			// lulzactiveq hotplug_rq_1_1
+			value = preferences.getInt(c.getString(R.string.key_lulzactiveq_hotplug_rq_1_1), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/lulzactiveq/hotplug_rq_1_1\n");
+			}
+
+			// lulzactiveq hotplug_rq_2_0
+			value = preferences.getInt(c.getString(R.string.key_lulzactiveq_hotplug_rq_2_0), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/lulzactiveq/hotplug_rq_2_0\n");
+			}
+
+			// lulzactiveq hotplug_rq_2_1
+			value = preferences.getInt(c.getString(R.string.key_lulzactiveq_hotplug_rq_2_1), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/lulzactiveq/hotplug_rq_2_1\n");
+			}
+
+			// lulzactiveq hotplug_rq_3_0
+			value = preferences.getInt(c.getString(R.string.key_lulzactiveq_hotplug_rq_3_0), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/lulzactiveq/hotplug_rq_3_0\n");
+			}
+
+			// lulzactiveq hotplug_rq_3_1
+			value = preferences.getInt(c.getString(R.string.key_lulzactiveq_hotplug_rq_3_1), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/lulzactiveq/hotplug_rq_3_1\n");
+			}
+
+			// lulzactiveq hotplug_rq_4_0
+			value = preferences.getInt(c.getString(R.string.key_lulzactiveq_hotplug_rq_4_0), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/lulzactiveq/hotplug_rq_4_0\n");
+			}
+
+			// lulzactiveq hotplug_sampling_rate
+			value = preferences.getInt(c.getString(R.string.key_lulzactiveq_hotplug_sampling_rate), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/lulzactiveq/hotplug_sampling_rate\n");
+			}
+
+			// lulzactiveq up_nr_cpus
+			value = preferences.getInt(c.getString(R.string.key_lulzactiveq_up_nr_cpus), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/lulzactiveq/up_nr_cpus\n");
+			}
+
+			// lulzactiveq hotplug_lock
+			value = preferences.getInt(c.getString(R.string.key_lulzactiveq_hotplug_lock), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/lulzactiveq/hotplug_lock\n");
+			}
 		}
+
+
+
 		// cmled
 		value = preferences.getInt(c.getString(R.string.key_cmled_bltimeout), -1);
 		if(value > -1) {
