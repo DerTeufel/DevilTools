@@ -547,6 +547,169 @@ public class SettingsManager {
 			if(value > -1) {
 				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/hotplug/hotplug_out_sampling_periods\n");
 			}
+		} else if(status.equals("devilq")) { // set this parameter only if active governor = devilq
+			// devilq inc_cpu_load
+			value = preferences.getInt(c.getString(R.string.key_devilq_inc_cpu_load), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/devilq/inc_cpu_load\n");
+			}
+
+			value = preferences.getInt(c.getString(R.string.key_devilq_dec_cpu_load), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/devilq/inc_dec_load\n");
+			}
+		
+			// devilq up_sample_time
+			value = preferences.getInt(c.getString(R.string.key_devilq_up_sample_time), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/devilq/up_sample_time\n");
+			}
+			
+			// devilq down_sample_time
+			value = preferences.getInt(c.getString(R.string.key_devilq_down_sample_time), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/devilq/down_sample_time\n");
+			}
+
+			// devilq cpu_up_rate
+			value = preferences.getInt(c.getString(R.string.key_devilq_cpu_up_rate), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/devilq/cpu_up_rate\n");
+			}
+
+			// devilq cpu_down_rate
+			value = preferences.getInt(c.getString(R.string.key_devilq_cpu_down_rate), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/devilq/cpu_down_rate\n");
+			}
+
+			value = preferences.getInt(c.getString(R.string.key_devilq_early_demand), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/devilq/early_demand\n");
+				if (value == 1) {
+				value = preferences.getInt(c.getString(R.string.key_devilq_grad_up_threshold), -1);
+				   if(value > -1) {
+					command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/devilq/grad_up_threshold\n");
+				   }
+				value = preferences.getInt(c.getString(R.string.key_devilq_grad_down_threshold), -1);
+				   if(value > -1) {
+					command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/devilq/grad_down_threshold\n");
+				   }
+				}	
+			}
+
+			// devilq ignore_nice_load
+			value = preferences.getInt(c.getString(R.string.key_devilq_ignore_nice_load), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/devilq/ignore_nice_load\n");
+			}
+
+			// devilq max_cpu_lock
+			value = preferences.getInt(c.getString(R.string.key_devilq_max_cpu_lock), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/devilq/max_cpu_lock\n");
+			}
+
+			// devilq min_cpu_lock
+			value = preferences.getInt(c.getString(R.string.key_devilq_min_cpu_lock), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/devilq/min_cpu_lock\n");
+			}
+
+			// devilq hotplug_freq_1_1
+			value = preferences.getInt(c.getString(R.string.key_devilq_hotplug_freq_1_1), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/devilq/hotplug_freq_1_1\n");
+			}
+
+			// devilq hotplug_freq_2_0
+			value = preferences.getInt(c.getString(R.string.key_devilq_hotplug_freq_2_0), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/devilq/hotplug_freq_2_0\n");
+			}
+
+			// devilq hotplug_freq_2_1
+			value = preferences.getInt(c.getString(R.string.key_devilq_hotplug_freq_2_1), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/devilq/hotplug_freq_2_1\n");
+			}
+
+			// devilq hotplug_freq_3_0
+			value = preferences.getInt(c.getString(R.string.key_devilq_hotplug_freq_3_0), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/devilq/hotplug_freq_3_0\n");
+			}
+
+			// devilq hotplug_freq_3_1
+			value = preferences.getInt(c.getString(R.string.key_devilq_hotplug_freq_3_1), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/devilq/hotplug_freq_3_1\n");
+			}
+
+			// devilq hotplug_freq_4_0
+			value = preferences.getInt(c.getString(R.string.key_devilq_hotplug_freq_4_0), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/devilq/hotplug_freq_4_0\n");
+			}
+
+			// devilq hotplug_rq_1_1
+			value = preferences.getInt(c.getString(R.string.key_devilq_hotplug_rq_1_1), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/devilq/hotplug_rq_1_1\n");
+			}
+
+			// devilq hotplug_rq_2_0
+			value = preferences.getInt(c.getString(R.string.key_devilq_hotplug_rq_2_0), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/devilq/hotplug_rq_2_0\n");
+			}
+
+			// devilq hotplug_rq_2_1
+			value = preferences.getInt(c.getString(R.string.key_devilq_hotplug_rq_2_1), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/devilq/hotplug_rq_2_1\n");
+			}
+
+			// devilq hotplug_rq_3_0
+			value = preferences.getInt(c.getString(R.string.key_devilq_hotplug_rq_3_0), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/devilq/hotplug_rq_3_0\n");
+			}
+
+			// devilq hotplug_rq_3_1
+			value = preferences.getInt(c.getString(R.string.key_devilq_hotplug_rq_3_1), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/devilq/hotplug_rq_3_1\n");
+			}
+
+			// devilq hotplug_rq_4_0
+			value = preferences.getInt(c.getString(R.string.key_devilq_hotplug_rq_4_0), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/devilq/hotplug_rq_4_0\n");
+			}
+
+			// devilq hotplug_sampling_rate
+			value = preferences.getInt(c.getString(R.string.key_devilq_hotplug_sampling_rate), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/devilq/hotplug_sampling_rate\n");
+			}
+
+			// devilq up_nr_cpus
+			value = preferences.getInt(c.getString(R.string.key_devilq_up_nr_cpus), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/devilq/up_nr_cpus\n");
+			}
+
+			// devilq hotplug_lock
+			value = preferences.getInt(c.getString(R.string.key_devilq_hotplug_lock), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/devilq/hotplug_lock\n");
+			}
+
+			value = preferences.getInt(c.getString(R.string.key_devilq_suspend_max_cpu), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/devilq/suspend_max_cpu\n");
+			}
 		}
 		// cmled
 		value = preferences.getInt(c.getString(R.string.key_cmled_bltimeout), -1);
