@@ -369,10 +369,10 @@ public class SettingsManager {
 				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/lulzactiveq/pump_down_step\n");
 			}
 			
-			// lulzactiveq screen_off_min_step
-			value = preferences.getInt(c.getString(R.string.key_lulzactiveq_screen_off_min_step), -1);
+			// lulzactiveq screen_off_max_step
+			value = preferences.getInt(c.getString(R.string.key_lulzactiveq_screen_off_max_step), -1);
 			if(value > -1) {
-				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/lulzactiveq/screen_off_min_step\n");
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/lulzactiveq/screen_off_max_step\n");
 			}
 			
 			// lulzactiveq up_sample_time
