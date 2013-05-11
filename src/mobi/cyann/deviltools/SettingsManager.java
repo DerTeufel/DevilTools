@@ -344,7 +344,7 @@ public class SettingsManager {
 			if(value > -1) {
 				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/lulzactive/down_sample_time\n");
 			}
-}else if(status.equals("lulzactiveq")) { // set this parameter only if active governor = lulzactiveq
+		}else if(status.equals("lulzactiveq")) { // set this parameter only if active governor = lulzactiveq
 			// lulzactiveq hispeed_freq
 			value = preferences.getInt(c.getString(R.string.key_lulzactiveq_hispeed_freq), -1);
 			if(value > -1) {
@@ -506,10 +506,48 @@ public class SettingsManager {
 			if(value > -1) {
 				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/lulzactiveq/hotplug_lock\n");
 			}
+
+		}else if(status.equals("hotplug")) { // set this parameter only if active governor = hotplug
+			value = preferences.getInt(c.getString(R.string.key_hotplug_up_threshold), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/hotplug/up_threshold\n");
+			}
+
+			value = preferences.getInt(c.getString(R.string.key_hotplug_down_threshold), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/hotplug/down_threshold\n");
+			}
+
+			value = preferences.getInt(c.getString(R.string.key_hotplug_sampling_rate), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/hotplug/sampling_rate\n");
+			}
+
+			value = preferences.getInt(c.getString(R.string.key_hotplug_ignore_nice_load), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/hotplug/ignore_nice_load\n");
+			}
+
+			value = preferences.getInt(c.getString(R.string.key_hotplug_io_is_busy), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/hotplug/io_is_busy\n");
+			}
+
+			value = preferences.getInt(c.getString(R.string.key_hotplug_down_differential), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/hotplug/down_differential\n");
+			}
+
+			value = preferences.getInt(c.getString(R.string.key_hotplug_in_sampling_periods), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/hotplug/hotplug_in_sampling_periods\n");
+			}
+
+			value = preferences.getInt(c.getString(R.string.key_hotplug_out_sampling_periods), -1);
+			if(value > -1) {
+				command.append("echo " + value + " > " + "/sys/devices/system/cpu/cpufreq/hotplug/hotplug_out_sampling_periods\n");
+			}
 		}
-
-
-
 		// cmled
 		value = preferences.getInt(c.getString(R.string.key_cmled_bltimeout), -1);
 		if(value > -1) {

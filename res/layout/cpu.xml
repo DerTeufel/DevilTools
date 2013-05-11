@@ -877,7 +877,7 @@
             android:title="@string/label_hotplug_down_differential" />
 
         <mobi.cyann.deviltools.preference.IntegerPreference
-            custom:interfacePath="hotplug_in_sampling_periods"
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/hotplug/hotplug_in_sampling_periods"
             android:key="@string/key_hotplug_in_sampling_periods"
             custom:maxValue="40"
 	    custom:description="how many sampling periods do we use for hotplug decisions (turn cpu on)?"
@@ -887,7 +887,7 @@
             android:title="@string/label_hotplug_in_sampling_periods" />
 
         <mobi.cyann.deviltools.preference.IntegerPreference
-            custom:interfacePath="hotplug_out_sampling_periods"
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/hotplug/hotplug_out_sampling_periods"
             android:key="@string/key_hotplug_out_sampling_periods"
             custom:maxValue="40"
 	    custom:description="how many sampling periods do we use for hotplug decisions (turn cpu off)?"
