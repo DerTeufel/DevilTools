@@ -786,7 +786,7 @@
             custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/hotplug_sampling_rate"
             android:key="@string/key_lulzactiveq_hotplug_sampling_rate"
             custom:maxValue="500000"
-	    custom:description="Time between two checks for hotplug changes"
+	    custom:description="Sets hot plug sampling intervals for screen-on state"
             custom:metrics="µs"
             custom:minValue="10000"
             custom:step="1000"
@@ -797,7 +797,6 @@
             custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/up_nr_cpus"
             android:key="@string/key_lulzactiveq_up_nr_cpus"
             custom:maxValue="4"
-	    custom:description="min number of online cpus while auto-hotplugging."
             custom:metrics="cores"
             custom:minValue="0"
             custom:step="1"
@@ -1156,7 +1155,7 @@
             custom:interfacePath="/sys/devices/system/cpu/cpufreq/devilq/hotplug_sampling_rate"
             android:key="@string/key_devilq_hotplug_sampling_rate"
             custom:maxValue="500000"
-	    custom:description="Time between two checks for hotplug changes"
+	    custom:description="Sets hot plug sampling intervals for screen-on state"
             custom:metrics="µs"
             custom:minValue="10000"
             custom:step="1000"
@@ -1167,7 +1166,6 @@
             custom:interfacePath="/sys/devices/system/cpu/cpufreq/devilq/up_nr_cpus"
             android:key="@string/key_devilq_up_nr_cpus"
             custom:maxValue="4"
-	    custom:description="min number of online cpus while auto-hotplugging."
             custom:metrics="cores"
             custom:minValue="0"
             custom:step="1"
@@ -1184,6 +1182,17 @@
             custom:step="1"
             android:summary="0"
             android:title="@string/label_devilq_hotplug_lock" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/devilq/suspend_max_cpu"
+            android:key="@string/key_devilq_suspend_max_cpu"
+            custom:maxValue="4"
+	    custom:description="Max number of online CPUs while screen off"
+            custom:metrics="cores"
+            custom:minValue="0"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_devilq_suspend_max_cpu" />
     </mobi.cyann.deviltools.preference.GovernorPreferenceGroup>
 
 </PreferenceScreen>

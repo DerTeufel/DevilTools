@@ -200,34 +200,35 @@
 	<string name="label_interactive_timer_rate">Timer rate</string>
 
 	<!-- devilq governor -->
-<string name="label_devilq">DevilQ</string>
-<string name="label_devilq_cpu_down_rate">CPU down rate</string>
-<string name="label_devilq_cpu_up_rate">CPU up rate</string>
-<string name="label_devilq_dec_cpu_load">Dec CPU Load</string>
-<string name="label_devilq_down_sample_time">Down Sample Time</string>
-<string name="label_devilq_early_demand">Early Demand</string>
-<string name="label_devilq_grad_down_threshold">Grad_down_threshold</string>
-<string name="label_devilq_grad_up_threshold">Grad_up_threshold</string>
-<string name="label_devilq_hotplug_freq_1_1">hotplug_freq_1_1</string>
-<string name="label_devilq_hotplug_freq_2_0">hotplug_freq_2_0</string>
-<string name="label_devilq_hotplug_freq_2_1">hotplug_freq_2_1</string>
-<string name="label_devilq_hotplug_freq_3_0">hotplug_freq_3_0</string>
-<string name="label_devilq_hotplug_freq_3_1">hotplug_freq_3_1</string>
-<string name="label_devilq_hotplug_freq_4_0">hotplug_freq_4_0</string>
-<string name="label_devilq_hotplug_lock">hotplug_lock</string>
-<string name="label_devilq_hotplug_rq_1_1">hotplug_rq_1_1</string>
-<string name="label_devilq_hotplug_rq_2_0">hotplug_rq_2_0</string>
-<string name="label_devilq_hotplug_rq_2_1">hotplug_rq_2_1</string>
-<string name="label_devilq_hotplug_rq_3_0">hotplug_rq_3_0</string>
-<string name="label_devilq_hotplug_rq_3_1">hotplug_rq_3_1</string>
-<string name="label_devilq_hotplug_rq_4_0">hotplug_rq_4_0</string>
-<string name="label_devilq_hotplug_sampling_rate">hotplug_sampling_rate</string>
-<string name="label_devilq_ignore_nice_load">ignore_nice_load</string>
-<string name="label_devilq_inc_cpu_load">Inc Cpu Load</string>
-<string name="label_devilq_max_cpu_lock">max_cpu_lock</string>
-<string name="label_devilq_min_cpu_lock">min_cpu_lock</string>
-<string name="label_devilq_up_nr_cpus">up_nr_cpus</string>
-<string name="label_devilq_up_sample_time">up_sample_time</string>
+	<string name="label_devilq">DevilQ</string>
+	<string name="label_devilq_cpu_down_rate">CPU down rate</string>
+	<string name="label_devilq_cpu_up_rate">CPU up rate</string>
+	<string name="label_devilq_dec_cpu_load">Dec CPU Load</string>
+	<string name="label_devilq_down_sample_time">Down Sample Time</string>
+	<string name="label_devilq_early_demand">Early Demand</string>
+	<string name="label_devilq_grad_down_threshold">Grad_down_threshold</string>
+	<string name="label_devilq_grad_up_threshold">Grad_up_threshold</string>
+	<string name="label_devilq_hotplug_freq_1_1">hotplug_freq_1_1</string>
+	<string name="label_devilq_hotplug_freq_2_0">hotplug_freq_2_0</string>
+	<string name="label_devilq_hotplug_freq_2_1">hotplug_freq_2_1</string>
+	<string name="label_devilq_hotplug_freq_3_0">hotplug_freq_3_0</string>
+	<string name="label_devilq_hotplug_freq_3_1">hotplug_freq_3_1</string>
+	<string name="label_devilq_hotplug_freq_4_0">hotplug_freq_4_0</string>
+	<string name="label_devilq_hotplug_lock">hotplug_lock</string>
+	<string name="label_devilq_hotplug_rq_1_1">hotplug_rq_1_1</string>
+	<string name="label_devilq_hotplug_rq_2_0">hotplug_rq_2_0</string>
+	<string name="label_devilq_hotplug_rq_2_1">hotplug_rq_2_1</string>
+	<string name="label_devilq_hotplug_rq_3_0">hotplug_rq_3_0</string>
+	<string name="label_devilq_hotplug_rq_3_1">hotplug_rq_3_1</string>
+	<string name="label_devilq_hotplug_rq_4_0">hotplug_rq_4_0</string>
+	<string name="label_devilq_hotplug_sampling_rate">hotplug_sampling_rate</string>
+	<string name="label_devilq_ignore_nice_load">ignore_nice_load</string>
+	<string name="label_devilq_inc_cpu_load">Inc Cpu Load</string>
+	<string name="label_devilq_max_cpu_lock">max_cpu_lock</string>
+	<string name="label_devilq_min_cpu_lock">min_cpu_lock</string>
+	<string name="label_devilq_up_nr_cpus">up_nr_cpus</string>
+	<string name="label_devilq_up_sample_time">up_sample_time</string>
+	<string name="label_devilq_suspend_max_cpu">Suspend max. CPUs</string>
 
 	<!-- Battery -->
 	<string name="label_battery_tweak">Charging Control</string>
@@ -283,9 +284,6 @@
 	<string name="label_dac_direct">dac direct</string>
 	<string name="label_adc_osr128">DAC OverSampling (record)</string>
 	<string name="label_mono_downmix">Force Mono</string>
-
-
-
 
 
 	<string name="msg_kernel_changed">Settings discarded because the kernel version has changed</string>
