@@ -782,6 +782,11 @@ public class SettingsManager {
 		if(!status.equals("-1"))
 		command.append("echo " + status + " > " + filePath + "\n");
         	}
+
+		status = preferences.getString(c.getString(R.string.key_malivolt_pref), "-1");
+		if(!status.equals("-1")) {
+			command.append("echo " + status + " > " + "/sys/class/misc/mali_control/voltage_control\n");
+		}
 		
 		// io scheduler
 		status = preferences.getString(c.getString(R.string.key_iosched), "-1");
