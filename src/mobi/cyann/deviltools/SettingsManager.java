@@ -60,6 +60,72 @@ public class SettingsManager {
 				command.append("echo " + armvolts + " > " + "/sys/class/misc/customvoltage/int_volt\n");
 			}
 		}
+		// Audio
+		value = preferences.getInt(c.getString(R.string.key_speaker_tuning), -1);
+		if(value > -1) {
+			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/speaker_tuning\n");
+		}
+		value = preferences.getInt(c.getString(R.string.key_speaker_offset), -1);
+		if(value > -1) {
+			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/speaker_offset\n");
+		}
+		value = preferences.getInt(c.getString(R.string.key_headphone_amplifier_level), -1);
+		if(value > -1) {
+			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/headphone_amplifier_level\n");
+		}
+		value = preferences.getInt(c.getString(R.string.key_stereo_expansion), -1);
+		if(value > -1) {
+			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/stereo_expansion\n");
+		}
+		value = preferences.getInt(c.getString(R.string.key_stereo_expansion_gain), -1);
+		if(value > -1) {
+			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/stereo_expansion_gain\n");
+		}
+		value = preferences.getInt(c.getString(R.string.key_headphone_eq), -1);
+		if(value > -1) {
+			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/headphone_eq\n");
+		}
+		value = preferences.getInt(c.getString(R.string.key_headphone_eq_b1_gain), -1);
+		if(value > -1) {
+			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/headphone_eq_b1_gain\n");
+		}
+		value = preferences.getInt(c.getString(R.string.key_headphone_eq_b2_gain), -1);
+		if(value > -1) {
+			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/headphone_eq_b2_gain\n");
+		}
+		value = preferences.getInt(c.getString(R.string.key_headphone_eq_b3_gain), -1);
+		if(value > -1) {
+			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/headphone_eq_b3_gain\n");
+		}
+		value = preferences.getInt(c.getString(R.string.key_headphone_eq_b4_gain), -1);
+		if(value > -1) {
+			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/headphone_eq_b4_gain\n");
+		}
+		value = preferences.getInt(c.getString(R.string.key_headphone_eq_b5_gain), -1);
+		if(value > -1) {
+			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/headphone_eq_b5_gain\n");
+		}
+		value = preferences.getInt(c.getString(R.string.key_fll_tuning), -1);
+		if(value > -1) {
+			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/fll_tuning\n");
+		}
+		value = preferences.getInt(c.getString(R.string.key_dac_osr128), -1);
+		if(value > -1) {
+			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/dac_osr128\n");
+		}
+		value = preferences.getInt(c.getString(R.string.key_adc_osr128), -1);
+		if(value > -1) {
+			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/adc_osr128\n");
+		}
+		value = preferences.getInt(c.getString(R.string.key_dac_direct), -1);
+		if(value > -1) {
+			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/dac_direct\n");
+		}
+		value = preferences.getInt(c.getString(R.string.key_mono_downmix), -1);
+		if(value > -1) {
+			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/mono_downmix\n");
+		}
+
 		// BLD
 		value = preferences.getInt(c.getString(R.string.key_bld_status), -1);
 		if(value > -1) {
