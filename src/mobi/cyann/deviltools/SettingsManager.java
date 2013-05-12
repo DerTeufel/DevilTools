@@ -221,7 +221,7 @@ public class SettingsManager {
 		value = preferences.getInt(c.getString(R.string.key_touch_boost_enabled), -1);
 		if(value > -1) {
 			command.append("echo " + value + " > " + "/sys/class/misc/touchboost/input_boost_enabled\n");
-			value = preferences.getInt(c.getString(R.string.key_touch_boost_enabled), -1);
+			value = preferences.getInt(c.getString(R.string.key_touch_boost_freq), -1);
 			if(value > -1)
 				command.append("echo " + value + " > " + "/sys/class/misc/touchboost/input_boost_freq\n");
 		}
