@@ -775,6 +775,13 @@ public class SettingsManager {
 			
 			command.append("echo " + value + " > " + "/sys/class/misc/notification/blink\n");
 		}
+
+		// gpu
+        	for (String filePath : GpuFragment.GPU_CLOCK_FILE_PATH) {
+            	status = preferences.getString(filePath, "-1");
+		if(!status.equals("-1"))
+		command.append("echo " + status + " > " + filePath + "\n");
+        	}
 		
 		// io scheduler
 		status = preferences.getString(c.getString(R.string.key_iosched), "-1");

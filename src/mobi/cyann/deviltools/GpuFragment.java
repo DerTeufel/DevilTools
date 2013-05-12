@@ -73,13 +73,14 @@ public class GpuFragment extends BasePreferenceFragment implements OnPreferenceC
         mGpuClock[i] = (ListPreference) findPreference("key_step4_clk");
 	   if (Utils.fileExists(filePath)) {
         	mGpuClock[i].setOnPreferenceChangeListener(this);
-           	String value = "0";
-	   	if(sysCommand.readSysfs(filePath) > 0) {
-           	value = preferences.getString(filePath, sysCommand.getLastResult(0));
-	   	}
+           	String value = preferences.getString(filePath, "-1");
+		if(!value.equals("-1")) {
 		sysCommand.writeSysfs(filePath, value);
 		setPreferenceString(filePath, value);
-           	mGpuClock[i].setSummary(value + " Mhz");
+		}
+	   	if(sysCommand.readSysfs(filePath) > 0) {
+           	mGpuClock[i].setSummary(sysCommand.getLastResult(0) + " Mhz");
+		}
 	   }
 	i++;
 	}
