@@ -151,6 +151,15 @@ public class SettingsManager {
 				command.append("echo " + value + " > " + "/sys/class/misc/touchwake/delay\n");
 		}
 
+		// TouchBoost
+		value = preferences.getInt(c.getString(R.string.key_touch_boost_enabled), -1);
+		if(value > -1) {
+			command.append("echo " + value + " > " + "/sys/class/misc/touchboost/input_boost_enabled\n");
+			value = preferences.getInt(c.getString(R.string.key_touch_boost_enabled), -1);
+			if(value > -1)
+				command.append("echo " + value + " > " + "/sys/class/misc/touchboost/input_boost_freq\n");
+		}
+
 		// bigmem
 		value = Integer.parseInt(preferences.getString(c.getString(R.string.key_bigmem), "-1"));
 		if(value > -1) {
