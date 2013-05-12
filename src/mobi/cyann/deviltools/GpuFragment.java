@@ -59,7 +59,8 @@ public class GpuFragment extends BasePreferenceFragment implements OnPreferenceC
         mContentResolver = getActivity().getApplicationContext().getContentResolver();
 	SysCommand sysCommand = SysCommand.getInstance();
 
-        for (int i = 0; i < GPU_CLOCK_FILE_PATH.length; i++) {
+	int i = 0;
+	for (String filePath : GPU_CLOCK_FILE_PATH) {
 	if (i == 0)
         mGpuClock[i] = (ListPreference) findPreference("key_step0_clk");
 	else if (i == 1)
@@ -70,36 +71,34 @@ public class GpuFragment extends BasePreferenceFragment implements OnPreferenceC
         mGpuClock[i] = (ListPreference) findPreference("key_step3_clk");
 	else if (i == 4)
         mGpuClock[i] = (ListPreference) findPreference("key_step4_clk");
-
-        mGpuClock[i].setOnPreferenceChangeListener(this);
-	   if(sysCommand.readSysfs(GPU_CLOCK_FILE_PATH[i]) > 0) {
-           mGpuClock[i].setSummary(sysCommand.getLastResult(0) + " Mhz");
+	   if (Utils.fileExists(filePath)) {
+        	mGpuClock[i].setOnPreferenceChangeListener(this);
+           	String value = "0";
+	   	if(sysCommand.readSysfs(filePath) > 0) {
+           	value = preferences.getString(filePath, sysCommand.getLastResult(0));
+	   	}
+		sysCommand.writeSysfs(filePath, value);
+		setPreferenceString(filePath, value);
+           	mGpuClock[i].setSummary(value + " Mhz");
 	   }
+	i++;
 	}
 
     }
 	
     public boolean onPreferenceChange(Preference preference, Object objValue) {
 	SysCommand sc = SysCommand.getInstance();
-	int status, index;
-        for (int i = 0; i < GPU_CLOCK_FILE_PATH.length; i++) {
+	int status, index, i = 0;
+	for (String filePath : GPU_CLOCK_FILE_PATH) {
 	    if (preference == mGpuClock[i]) {
             status = Integer.valueOf((String) objValue);
             index = mGpuClock[i].findIndexOfValue((String) objValue);
             mGpuClock[i].setSummary(mGpuClock[i].getEntries()[index]);
-	    sc.writeSysfs(GPU_CLOCK_FILE_PATH[i], ((String) objValue));
-	    if (i == 0)
-        	setPreferenceString(getString(R.string.key_step0_clk), ((String) objValue));
-	    else if (i == 1)
-        	setPreferenceString(getString(R.string.key_step1_clk), ((String) objValue));
-	    else if (i == 2)
-        	setPreferenceString(getString(R.string.key_step2_clk), ((String) objValue));
-	    else if (i == 3)
-        	setPreferenceString(getString(R.string.key_step3_clk), ((String) objValue));
-	    else if (i == 4)
-        	setPreferenceString(getString(R.string.key_step4_clk), ((String) objValue));
+	    sc.writeSysfs(filePath, ((String) objValue));
+            setPreferenceString(filePath, ((String) objValue));
             return true;
             }
+	i++;
 	}
 
         return false;
