@@ -4,7 +4,7 @@
     <PreferenceCategory android:title="System Info" >
         <Preference
             android:key="system_memory"
-            android:title="Toatal Ram"
+            android:title="Total Ram"
             android:summary="MB">
         </Preference>
 
