@@ -57,60 +57,11 @@
             android:summary="@string/status_not_available"
             android:title="@string/label_headphone_eq" />
 
-        <mobi.cyann.deviltools.preference.IntegerPreference
-            android:dependency="@string/key_headphone_eq"
-            custom:interfacePath="/sys/devices/virtual/misc/scoobydoo_sound/headphone_eq_b1_gain"
-            android:key="@string/key_headphone_eq_b1_gain"
-            custom:maxValue="12"
-            custom:metrics=""
-            custom:minValue="-12"
-            custom:step="1"
-            android:summary="0"
-            android:title="@string/label_headphone_eq_b1_gain" />
-
-        <mobi.cyann.deviltools.preference.IntegerPreference
-            android:dependency="@string/key_headphone_eq"
-            custom:interfacePath="/sys/devices/virtual/misc/scoobydoo_sound/headphone_eq_b2_gain"
-            android:key="@string/key_headphone_eq_b2_gain"
-            custom:maxValue="12"
-            custom:metrics=""
-            custom:minValue="-12"
-            custom:step="1"
-            android:summary="0"
-            android:title="@string/label_headphone_eq_b2_gain" />
-
-        <mobi.cyann.deviltools.preference.IntegerPreference
-            android:dependency="@string/key_headphone_eq"
-            custom:interfacePath="/sys/devices/virtual/misc/scoobydoo_sound/headphone_eq_b3_gain"
-            android:key="@string/key_headphone_eq_b3_gain"
-            custom:maxValue="12"
-            custom:metrics=""
-            custom:minValue="-12"
-            custom:step="1"
-            android:summary="0"
-            android:title="@string/label_headphone_eq_b3_gain" />
-
-        <mobi.cyann.deviltools.preference.IntegerPreference
-            android:dependency="@string/key_headphone_eq"
-            custom:interfacePath="/sys/devices/virtual/misc/scoobydoo_sound/headphone_eq_b4_gain"
-            android:key="@string/key_headphone_eq_b4_gain"
-            custom:maxValue="12"
-            custom:metrics=""
-            custom:minValue="-12"
-            custom:step="1"
-            android:summary="0"
-            android:title="@string/label_headphone_eq_b4_gain" />
-
-        <mobi.cyann.deviltools.preference.IntegerPreference
-            android:dependency="@string/key_headphone_eq"
-            custom:interfacePath="/sys/devices/virtual/misc/scoobydoo_sound/headphone_eq_b5_gain"
-            android:key="@string/key_headphone_eq_b5_gain"
-            custom:maxValue="12"
-            custom:metrics=""
-            custom:minValue="-12"
-            custom:step="1"
-            android:summary="0"
-            android:title="@string/label_headphone_eq_b5_gain" />
+    <mobi.cyann.deviltools.EqTuningPreference 
+	    android:key="eq_tuning"
+	    android:title="@string/eq_tuning_title_head"
+	    android:summary="@string/eq_tuning_summary_head" />
+       
 
     <mobi.cyann.deviltools.preference.StatusPreference
             custom:interfacePath="/sys/devices/virtual/misc/scoobydoo_sound/fll_tuning"

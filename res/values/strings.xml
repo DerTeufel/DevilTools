@@ -274,11 +274,15 @@
 	<string name="label_stereo_expansion">3D Effect Settings</string>
 	<string name="label_stereo_expansion_gain">3D Effect Gain Level</string>
 	<string name="label_headphone_eq">Use Graphical Eq</string>
-	<string name="label_headphone_eq_b1_gain">Band1 gain</string>
-	<string name="label_headphone_eq_b2_gain">Band2 gain</string>
-	<string name="label_headphone_eq_b3_gain">Band3 gain</string>
-	<string name="label_headphone_eq_b4_gain">Band4 gain</string>
-	<string name="label_headphone_eq_b5_gain">Band5 gain</string>
+
+	<string name="eq_tuning_title_head">Equelizer Tuning</string>
+	<string name="eq_tuning_summary_head">Eq gain for band 1 to 5</string>
+	<string name="eq_b1_title">Band 1 gain</string>
+	<string name="eq_b2_title">Band 2 gain</string>
+	<string name="eq_b3_title">Band 3 gain</string>
+	<string name="eq_b4_title">Band 4 gain</string>
+	<string name="eq_b5_title">Band 5 gain</string>
+
 	<string name="label_fll_tuning">Anti-jitter</string>
 	<string name="label_dac_osr128">DAC OverSampling (play)</string>
 	<string name="label_dac_direct">dac direct</string>

@@ -44,6 +44,10 @@ public class Utils {
         writeValue(filename, String.valueOf(value));
     }
 
+    public static void writeEq(String filename, int value) {
+        writeValue(filename, String.valueOf(value));
+    }
+
     /**
      * Check if the specified file exists.
      * @param filename      The filename
