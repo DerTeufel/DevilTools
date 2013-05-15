@@ -199,6 +199,11 @@ public class SettingsManager {
 		if(value > -1) {
 			command.append("echo " + value + " > " + "/sys/class/misc/pwm_duty/pwm_duty\n");
 		}
+
+		value = preferences.getInt(c.getString(R.string.key_vibration_intensity_smdk4412), -1);
+		if(value > -1) {
+			command.append("echo " + value + " > " + "/sys/vibrator/pwm_val\n");
+		}
 		
 		// Touchwake
 		value = preferences.getInt(c.getString(R.string.key_touchwake_status), -1);
