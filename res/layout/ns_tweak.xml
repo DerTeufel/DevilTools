@@ -150,6 +150,7 @@
         <mobi.cyann.deviltools.preference.IntegerPreference
             custom:interfacePath="/sys/vibrator/pwm_val"
             android:key="@string/key_vibration_intensity_smdk4412"
+	    custom:description="This option does not work on SAmmy Roms!"
             custom:maxValue="100"
             custom:metrics="%"
             custom:minValue="0"

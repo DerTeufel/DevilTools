@@ -285,7 +285,7 @@
 
 	<string name="label_fll_tuning">Anti-jitter</string>
 	<string name="label_dac_osr128">DAC OverSampling (play)</string>
-	<string name="label_dac_direct">dac direct</string>
+	<string name="label_dac_direct">DAC Direct</string>
 	<string name="label_adc_osr128">DAC OverSampling (record)</string>
 	<string name="label_mono_downmix">Force Mono</string>
 
