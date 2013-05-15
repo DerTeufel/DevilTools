@@ -54,8 +54,9 @@ public class EqTuningPreference extends DialogPreference implements OnClickListe
 
     private EqSeekBar mSeekBars[] = new EqSeekBar[5];
 
-    public static final int MAX_VALUE = 12;
-    public static final int DEFAULT_VALUE = 0;
+    public static final int MAX_VALUE = 24;
+    public static final int DEFAULT_VALUE = 12;
+    public static final int OFFSET_VALUE = 12;
 
     // Track instances to know when to restore original eq value
     // (when the orientation changes, a new dialog is created before the old one is destroyed)
@@ -116,7 +117,7 @@ public class EqTuningPreference extends DialogPreference implements OnClickListe
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
         for (String filePath : FILE_PATH) {
             int value = sharedPrefs.getInt(filePath, DEFAULT_VALUE);
-            Utils.writeEq(filePath, value);
+            Utils.writeEq(filePath, value - OFFSET_VALUE);
         }
     }
 
@@ -162,7 +163,7 @@ public class EqTuningPreference extends DialogPreference implements OnClickListe
 
         public void reset() {
             mSeekBar.setProgress(mOriginal);
-            updateValue(mOriginal);
+            updateValue(mOriginal - OFFSET_VALUE);
         }
 
         public void save() {
@@ -174,8 +175,8 @@ public class EqTuningPreference extends DialogPreference implements OnClickListe
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress,
                 boolean fromUser) {
-            Utils.writeEq(mFilePath, progress);
-            updateValue(progress);
+            Utils.writeEq(mFilePath, progress - OFFSET_VALUE);
+            updateValue(progress - OFFSET_VALUE);
         }
 
         @Override
@@ -189,13 +190,13 @@ public class EqTuningPreference extends DialogPreference implements OnClickListe
         }
 
         protected void updateValue(int progress) {
-            mValueDisplay.setText(String.format("%.3f", (double) progress / MAX_VALUE));
+            mValueDisplay.setText("" + progress);
         }
 
         public void resetDefault(String path, int value) {
             mSeekBar.setProgress(value);
-            updateValue(value);
-            Utils.writeEq(path, value);
+            updateValue(value - OFFSET_VALUE);
+            Utils.writeEq(path, value - OFFSET_VALUE);
         }
 
     }

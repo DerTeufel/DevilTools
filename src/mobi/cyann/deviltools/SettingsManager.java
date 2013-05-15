@@ -84,27 +84,19 @@ public class SettingsManager {
 		value = preferences.getInt(c.getString(R.string.key_headphone_eq), -1);
 		if(value > -1) {
 			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/headphone_eq\n");
+		   if(value > 0) {
+        	   	for (String filePath : EqTuningPreference.FILE_PATH) {
+            	   	value = preferences.getInt(filePath, EqTuningPreference.DEFAULT_VALUE) - EqTuningPreference.OFFSET_VALUE;
+		   	command.append("echo " + value + " > " + filePath + "\n");
+			}
+        	   } else {
+        	   	for (String filePath : EqTuningPreference.FILE_PATH) {
+            	   	value = 0;
+		   	command.append("echo " + value + " > " + filePath + "\n");
+			}
+		   }
 		}
-		value = preferences.getInt(c.getString(R.string.key_headphone_eq_b1_gain), -1);
-		if(value > -1) {
-			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/headphone_eq_b1_gain\n");
-		}
-		value = preferences.getInt(c.getString(R.string.key_headphone_eq_b2_gain), -1);
-		if(value > -1) {
-			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/headphone_eq_b2_gain\n");
-		}
-		value = preferences.getInt(c.getString(R.string.key_headphone_eq_b3_gain), -1);
-		if(value > -1) {
-			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/headphone_eq_b3_gain\n");
-		}
-		value = preferences.getInt(c.getString(R.string.key_headphone_eq_b4_gain), -1);
-		if(value > -1) {
-			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/headphone_eq_b4_gain\n");
-		}
-		value = preferences.getInt(c.getString(R.string.key_headphone_eq_b5_gain), -1);
-		if(value > -1) {
-			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/headphone_eq_b5_gain\n");
-		}
+		
 		value = preferences.getInt(c.getString(R.string.key_fll_tuning), -1);
 		if(value > -1) {
 			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/fll_tuning\n");
