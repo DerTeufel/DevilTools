@@ -2,7 +2,8 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res/mobi.cyann.deviltools" android:key="root" >
 
-    <mobi.cyann.deviltools.preference.RemovablePreferenceCategory android:title="@string/label_gpu_tweak" >
+    <PreferenceCategory android:title="@string/label_gpu_speed"
+	android:key="gpu_speed_category" >
     	<ListPreference
             	android:key="@string/key_step0_clk"
             	android:title="@string/label_step0_clk"
@@ -37,6 +38,10 @@
             	android:entries="@array/gpu_clk_entries"
             	android:entryValues="@array/gpu_clk_values"
             	android:summary="@string/status_not_available" />
+
+    </PreferenceCategory>
+
+    <mobi.cyann.deviltools.preference.RemovablePreferenceCategory android:title="@string/label_gpu_threshold" >
 
         <mobi.cyann.deviltools.preference.IntegerPreference
             custom:interfacePath="/sys/module/mali/parameters/step0_up"
@@ -119,7 +124,9 @@
             custom:step="1"
             android:summary="0"
             android:title="@string/label_step4_down" />
+    </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
 
+    <mobi.cyann.deviltools.preference.RemovablePreferenceCategory android:title="@string/label_gpu_utilization" >
         <mobi.cyann.deviltools.preference.IntegerPreference
             custom:interfacePath="/sys/module/mali/parameters/mali_gpu_utilization_timeout"
             android:key="@string/key_mali_gpu_utilization_timeout"

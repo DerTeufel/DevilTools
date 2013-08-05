@@ -67,21 +67,28 @@ public class GpuFragment extends BasePreferenceFragment implements OnPreferenceC
         mContentResolver = getActivity().getApplicationContext().getContentResolver();
 	SysCommand sysCommand = SysCommand.getInstance();
 
+	boolean supported=isSupported();
+
 	int i = 0;
-	for (String filePath : GPU_CLOCK_FILE_PATH) {
-        mGpuClock[i] = (ListPreference) findPreference(KEY_GPU_CLOCK[i]);
-	   if (Utils.fileExists(filePath)) {
-        	mGpuClock[i].setOnPreferenceChangeListener(this);
-           	String value = preferences.getString(filePath, "-1");
-		if(!value.equals("-1")) {
-		sysCommand.writeSysfs(filePath, value);
-		setPreferenceString(filePath, value);
-		}
-	   	if(sysCommand.readSysfs(filePath) > 0) {
-           	mGpuClock[i].setSummary(sysCommand.getLastResult(0) + " Mhz");
-		}
+	if (supported) {
+	   for (String filePath : GPU_CLOCK_FILE_PATH) {
+           mGpuClock[i] = (ListPreference) findPreference(KEY_GPU_CLOCK[i]);
+	   	if (mGpuClock[i] != null) {
+        	   mGpuClock[i].setOnPreferenceChangeListener(this);
+           	   String value = preferences.getString(filePath, "-1");
+		   if(!value.equals("-1")) {
+		   sysCommand.writeSysfs(filePath, value);
+		   setPreferenceString(filePath, value);
+		   }
+	   	   if(sysCommand.readSysfs(filePath) > 0) {
+           	   mGpuClock[i].setSummary(sysCommand.getLastResult(0) + " Mhz");
+		   }
+	   	}
+	   i++;
 	   }
-	i++;
+	} else {
+        PreferenceCategory category = (PreferenceCategory) getPreferenceScreen().findPreference("gpu_speed_category");
+            getPreferenceScreen().removePreference(category);
 	}
 
     }
@@ -118,5 +125,15 @@ public class GpuFragment extends BasePreferenceFragment implements OnPreferenceC
 	ed.putInt(key, value);
 	ed.commit();
     }
+
+    public static boolean isSupported() {
+        boolean exists = true;
+        for (String filePath : GPU_CLOCK_FILE_PATH) {
+            if (!Utils.fileExists(filePath)) {
+                exists = false;
+            }
+        }
+	return exists;
+   }
 
 }

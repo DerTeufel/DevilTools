@@ -244,6 +244,9 @@
 
 	<!-- GPU -->
 	<string name="label_gpu_tweak">GPU Settings</string>
+	<string name="label_gpu_speed">Clock Settings</string>
+	<string name="label_gpu_threshold">Up/Down Threshold</string>
+	<string name="label_gpu_utilization">Utilization</string>
 	<string name="label_mali_gpu_utilization_timeout">Utilization Timeout</string>
 	<string name="label_step0_clk">Gpu Speed Step 1</string>
 	<string name="label_step0_up">Up_threshold Step 1</string>
