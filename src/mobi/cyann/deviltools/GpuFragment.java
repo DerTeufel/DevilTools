@@ -49,6 +49,14 @@ public class GpuFragment extends BasePreferenceFragment implements OnPreferenceC
 	"/sys/module/mali/parameters/step4_clk"
 	};
 
+    private static final String[] KEY_GPU_CLOCK = new String[] {
+        "key_step0_clk",
+        "key_step1_clk",
+        "key_step2_clk",
+        "key_step3_clk",
+        "key_step4_clk",
+    };
+
 	@Override
     	public void onCreate(Bundle savedInstanceState) {
         	super.onCreate(savedInstanceState);
@@ -61,16 +69,7 @@ public class GpuFragment extends BasePreferenceFragment implements OnPreferenceC
 
 	int i = 0;
 	for (String filePath : GPU_CLOCK_FILE_PATH) {
-	if (i == 0)
-        mGpuClock[i] = (ListPreference) findPreference("key_step0_clk");
-	else if (i == 1)
-        mGpuClock[i] = (ListPreference) findPreference("key_step1_clk");
-	else if (i == 2)
-        mGpuClock[i] = (ListPreference) findPreference("key_step2_clk");
-	else if (i == 3)
-        mGpuClock[i] = (ListPreference) findPreference("key_step3_clk");
-	else if (i == 4)
-        mGpuClock[i] = (ListPreference) findPreference("key_step4_clk");
+        mGpuClock[i] = (ListPreference) findPreference(KEY_GPU_CLOCK[i]);
 	   if (Utils.fileExists(filePath)) {
         	mGpuClock[i].setOnPreferenceChangeListener(this);
            	String value = preferences.getString(filePath, "-1");
@@ -91,12 +90,15 @@ public class GpuFragment extends BasePreferenceFragment implements OnPreferenceC
 	SysCommand sc = SysCommand.getInstance();
 	int status, index, i = 0;
 	for (String filePath : GPU_CLOCK_FILE_PATH) {
-	    if (preference == mGpuClock[i]) {
+	    if (preference == mGpuClock[i] && Utils.fileExists(filePath)) {
             status = Integer.valueOf((String) objValue);
             index = mGpuClock[i].findIndexOfValue((String) objValue);
-            mGpuClock[i].setSummary(mGpuClock[i].getEntries()[index]);
+            //mGpuClock[i].setSummary(mGpuClock[i].getEntries()[index]);
 	    sc.writeSysfs(filePath, ((String) objValue));
             setPreferenceString(filePath, ((String) objValue));
+	   	if(sc.readSysfs(filePath) > 0) {
+           	mGpuClock[i].setSummary(sc.getLastResult(0) + " Mhz");
+		}
             return true;
             }
 	i++;
