@@ -3,6 +3,13 @@
     xmlns:custom="http://schemas.android.com/apk/res/mobi.cyann.deviltools">
 
     <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="@string/key_reboot_preference"
+        android:summaryOff="@string/summaryOff_reboot_preference"
+        android:summaryOn="@string/summaryOn_reboot_preference"
+        android:title="@string/label_reboot_preference" />
+
+    <CheckBoxPreference
         android:defaultValue="true"
         android:key="@string/key_restore_on_boot"
         android:summaryOff="@string/summaryOff_restore_on_boot"

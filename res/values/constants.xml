@@ -42,6 +42,7 @@
     <string name="key_int_volt_pref">key_int_volt_pref</string>
     <string name="key_max_int_volt">key_max_int_volt</string>
     <string name="key_dont_show_volt_warning">key_dont_show_volt_warning</string>
+    <string name="key_reboot_preference">key_reboot_preference</string>
     <string name="key_restore_on_boot">key_restore_on_boot</string>
     <string name="key_restore_on_initd">key_restore_on_initd</string>
     <string name="key_force_restore_on_boot">key_force_restore_on_boot</string>

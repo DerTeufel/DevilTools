@@ -67,7 +67,7 @@ public class GpuFragment extends BasePreferenceFragment implements OnPreferenceC
         mContentResolver = getActivity().getApplicationContext().getContentResolver();
 	SysCommand sysCommand = SysCommand.getInstance();
 
-	boolean supported=isSupported();
+	boolean supported = isSupported();
 
 	int i = 0;
 	if (supported) {
