@@ -45,6 +45,7 @@ public class AudioFragment extends BasePreferenceFragment implements OnPreferenc
         mContentResolver = getActivity().getApplicationContext().getContentResolver();
 
   	mHeadphoneEq = (StatusPreference) findPreference("key_headphone_eq");
+	if (mHeadphoneEq != null)
 	mHeadphoneEq.setOnPreferenceChangeListener(this);
 	int eq_enabled = preferences.getInt("key_headphone_eq", 0);
 	boolean is_enabled = false;
@@ -52,10 +53,12 @@ public class AudioFragment extends BasePreferenceFragment implements OnPreferenc
 	is_enabled = true;
 
   	mEq = (EqTuningPreference) findPreference("eq_tuning");
-	if(EqTuningPreference.isSupported())
-        mEq.setEnabled(is_enabled);
-	else
-        mEq.setEnabled(false);
+	if (mEq != null) {
+	   if(EqTuningPreference.isSupported())
+        	mEq.setEnabled(is_enabled);
+	   else
+        	mEq.setEnabled(false);
+	}
 
     }
 	
