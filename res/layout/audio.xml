@@ -11,14 +11,8 @@
             android:summary="@string/status_not_available"
             android:title="@string/label_speaker_tuning" />
 
-        <mobi.cyann.deviltools.preference.IntegerPreference
-            custom:interfacePath="/sys/devices/virtual/misc/scoobydoo_sound/speaker_offset"
+    <mobi.cyann.deviltools.SpeakerOffsetPreference 
             android:key="@string/key_speaker_offset"
-	    custom:description="Speaker Amplification Offset. 0 means stock value. Having too much amplification may cause distortion."
-            custom:maxValue="6"
-            custom:metrics=""
-            custom:minValue="-6"
-            custom:step="1"
             android:summary="0"
             android:title="@string/label_speaker_offset" />
 
