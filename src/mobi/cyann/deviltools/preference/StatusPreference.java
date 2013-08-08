@@ -21,12 +21,16 @@ public class StatusPreference extends BasePreference<Integer> {
 	private final static String LOG_TAG = "DevilTools.StatusPreference";
 	protected int value = -1;
 	private String description;
+	private String status_on;
+	private String status_off;
 	
 	public StatusPreference(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 
 		TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.mobi_cyann_deviltools_preference_IntegerPreference, defStyle, 0);
 		description = a.getString(R.styleable.mobi_cyann_deviltools_preference_IntegerPreference_description);
+		status_on = a.getString(R.styleable.mobi_cyann_deviltools_preference_IntegerPreference_status_on);
+		status_off = a.getString(R.styleable.mobi_cyann_deviltools_preference_IntegerPreference_status_off);
 		a.recycle();
 		
 	}
@@ -48,11 +52,15 @@ public class StatusPreference extends BasePreference<Integer> {
         	if(value == 0) {
 			if(description != null)
         		summaryView.setText(description + "\n" + "Current status: Disabled");
+			else if (status_off != null)
+			summaryView.setText(status_off);
 			else
         		summaryView.setText(R.string.status_off);
         	}else if(value == 1) {
 			if(description != null)
         		summaryView.setText(description + "\n" + "Current status: Enabled");
+			else if (status_on != null)
+			summaryView.setText(status_on);
 			else
         		summaryView.setText(R.string.status_on);
         	}else {
@@ -150,8 +158,24 @@ public class StatusPreference extends BasePreference<Integer> {
 		return description;
 	}
 
+	public String getStatusOn() {
+		return status_on;
+	}
+
+	public String getStatusOff() {
+		return status_off;
+	}
+
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public void setStatusOn(String status_on) {
+		this.status_on = status_on;
+	}
+
+	public void setStatusOff(String status_off) {
+		this.status_off = status_off;
 	}
 	
 	@Override

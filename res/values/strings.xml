@@ -19,6 +19,27 @@
     <string name="touchwake_tweak">Touchwake</string>
 	<string name="iosched_tweak">IO Scheduler</string>
 	<string name="label_iosched">Active scheduler</string>
+    <!-- LED Control -->
+    <string name="led_control">LED Control</string>
+    <string name="led_fade_control">Enable Fading</string>
+    <string name="led_intensity">Brightness</string>
+    <string name="label_led_intensity">LED Brightness</string>
+    <string name="led_speed">Speed</string>
+    <string name="label_led_speed">Speed</string>
+    <string name="led_slope_up_1">LED Slope Up1</string>
+    <string name="led_slope_up_2">LED Slope Up2</string>
+    <string name="led_slope_down_1">LED Slope Down1</string>
+    <string name="led_slope_down_2">LED Slope Down2</string>
+    <string name="label_led_slope_up_1">Slope Up1</string>
+    <string name="label_led_slope_up_2">Slope Up2</string>
+    <string name="label_led_slope_down_1">Slope Down1</string>
+    <string name="label_led_slope_down_2">Slope Down2</string>
+
+
+
+
+
+
 	
     <!-- VoltageControlActivity -->
     <string name="voltage_control">Volt</string>
@@ -86,6 +107,7 @@
     <string name="label_governor">Governor</string>
     <string name="label_min_cpufreq">Min CPU freq</string>
     <string name="label_max_cpufreq">Max CPU freq</string>
+    <string name="label_cpu_scaling">Set CPU freq limits</string>
     <string name="deepidle_tweak">Deep Idle</string>
     <string name="label_deepidle_stats">Idle Stats</string>
     <string name="label_state">State</string>

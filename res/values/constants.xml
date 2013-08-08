@@ -172,6 +172,18 @@
 	<string name="key_vibration_intensity">key_vibration_intensity</string>
 	<string name="key_vibration_intensity_smdk4412">key_vibration_intensity_smdk4412</string>
 
+	<!-- LED Control -->
+	<string name="key_led_fade">key_led_fade</string>
+	<string name="key_led_intensity">key_led_intensity</string>
+	<string name="key_led_speed">key_led_speed</string>
+	<string name="key_led_slope_up_1">key_led_slope_up_1</string>
+	<string name="key_led_slope_up_2">key_led_slope_up_2</string>
+	<string name="key_led_slope_down_1">key_led_slope_down_1</string>
+	<string name="key_led_slope_down_2">key_led_slope_down_2</string>
+
+
+
+
 	<!-- Battery -->
 	<string name="key_dcp_ac_input_curr">key_dcp_ac_input_curr</string>
 	<string name="key_dcp_ac_chrg_curr">key_dcp_ac_chrg_curr</string>

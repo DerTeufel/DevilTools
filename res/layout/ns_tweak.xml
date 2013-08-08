@@ -134,7 +134,6 @@
 
 
     <mobi.cyann.deviltools.preference.RemovablePreferenceCategory android:title="@string/vibration_intensity" >
-
         <mobi.cyann.deviltools.preference.IntegerPreference
             custom:interfacePath="/sys/class/misc/pwm_duty/pwm_duty"
             android:key="@string/key_vibration_intensity"
@@ -150,7 +149,7 @@
         <mobi.cyann.deviltools.preference.IntegerPreference
             custom:interfacePath="/sys/vibrator/pwm_val"
             android:key="@string/key_vibration_intensity_smdk4412"
-	    custom:description="This option does not work on SAmmy Roms!"
+	    custom:description="This option does not work on Sammy Roms!"
             custom:maxValue="100"
             custom:metrics="%"
             custom:minValue="0"
@@ -158,5 +157,66 @@
             android:summary="0"
             android:title="@string/label_vibration_intensity" />
    </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
+
+    <mobi.cyann.deviltools.preference.RemovablePreferenceCategory android:title="@string/led_control" >
+        <mobi.cyann.deviltools.preference.StatusPreference
+            custom:interfacePath="/sys/class/sec/led/led_fade"
+            android:key="@string/key_led_fade"
+            custom:status_on="Fading"
+            custom:status_off="Blinking"
+            android:summary="@string/status_not_available"
+            android:title="@string/led_fade_control" />
+
+        <mobi.cyann.deviltools.preference.normal.IntegerPreference
+            custom:interfacePath="/sys/device/virtual/sec/led/led_intensity"
+            android:key="@string/key_led_intensity"
+	    custom:description="0=CM, 40=Samsung, max=255"
+            custom:maxValue="255"
+            custom:minValue="0"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_led_intensity" />
+
+        <mobi.cyann.deviltools.preference.normal.IntegerPreference
+            custom:interfacePath="/sys/class/sec/led/led_speed"
+            android:key="@string/key_led_speed"
+            custom:maxValue="5"
+            custom:minValue="1"
+            custom:step="1"
+            android:summary="1"
+            android:title="@string/label_led_speed" />
+        <mobi.cyann.deviltools.preference.normal.IntegerPreference
+            custom:interfacePath="/sys/class/sec/led/led_slope_up_1"
+            android:key="@string/key_led_slope_up_1"
+            custom:maxValue="5"
+            custom:minValue="0"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_led_slope_up_1" />
+        <mobi.cyann.deviltools.preference.normal.IntegerPreference
+            custom:interfacePath="/sys/class/sec/led/led_slope_up_2"
+            android:key="@string/key_led_slope_up_2"
+            custom:maxValue="5"
+            custom:minValue="0"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_led_slope_up_2" />
+        <mobi.cyann.deviltools.preference.normal.IntegerPreference
+            custom:interfacePath="/sys/class/sec/led/led_slope_down_1"
+            android:key="@string/key_led_slope_down_1"
+            custom:maxValue="5"
+            custom:minValue="0"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_led_slope_down_1" />
+        <mobi.cyann.deviltools.preference.normal.IntegerPreference
+            custom:interfacePath="/sys/class/sec/led/led_slope_down_2"
+            android:key="@string/key_led_slope_down_2"
+            custom:maxValue="5"
+            custom:minValue="0"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_led_slope_down_2" />
+    </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
 
 </PreferenceScreen>

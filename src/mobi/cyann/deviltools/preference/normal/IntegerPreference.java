@@ -1,6 +1,7 @@
 /**
  * IntegerPreference.java
  * Jan 21, 2012 10:47:26 PM
+
  */
 package mobi.cyann.deviltools.preference.normal;
 
@@ -19,10 +20,11 @@ import android.widget.TextView;
  *
  */
 public class IntegerPreference extends Preference implements DialogInterface.OnClickListener {
+
 	private Context context;
 	private int minValue, maxValue, step;
 	private String metrics;
-	
+	private String description;
 	private int value;
 	
 	public IntegerPreference(Context context, AttributeSet attrs, int defStyle) {
@@ -33,6 +35,7 @@ public class IntegerPreference extends Preference implements DialogInterface.OnC
 		maxValue = a.getInt(R.styleable.mobi_cyann_deviltools_preference_IntegerPreference_maxValue, 100);
 		step = a.getInt(R.styleable.mobi_cyann_deviltools_preference_IntegerPreference_step, 1);
 		metrics = a.getString(R.styleable.mobi_cyann_deviltools_preference_IntegerPreference_metrics);
+		description = a.getString(R.styleable.mobi_cyann_deviltools_preference_IntegerPreference_description);
 		a.recycle();
 		
 		this.context = context;
@@ -55,8 +58,14 @@ public class IntegerPreference extends Preference implements DialogInterface.OnC
         	if(value < 0) {
         		summaryView.setText(R.string.status_not_available);
         	}else if(metrics != null) {
+			if(description != null)
+        		summaryView.setText(description + "\n" + value + " " + metrics);
+			else
         		summaryView.setText(value + " " + metrics);
         	}else {
+			if(description != null)
+        		summaryView.setText(description + "\n" + value);
+			else
         		summaryView.setText(String.valueOf(value));
         	}
         }
@@ -83,7 +92,7 @@ public class IntegerPreference extends Preference implements DialogInterface.OnC
 		dialog.setStep(step);
 		dialog.setTitle(getTitle());
 		dialog.setMetrics(metrics);
-		
+		dialog.setDescription(description);
 		dialog.setValue(value);
 		dialog.show();
 	}
@@ -105,6 +114,10 @@ public class IntegerPreference extends Preference implements DialogInterface.OnC
 	
 	public void setMetrics(String metrics) {
 		this.metrics = metrics;
+	}
+	
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 	public void setMinValue(int minValue) {

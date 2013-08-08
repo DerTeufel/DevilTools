@@ -14,6 +14,8 @@
 		<attr name="step" format="integer"/>
 		<attr name="metrics" format="string"/>
 		<attr name="description" format="string"/>
+		<attr name="status_on" format="string"/>
+		<attr name="status_off" format="string"/>
 	</declare-styleable>
 	<declare-styleable name="mobi.cyann.deviltools.preference.IoSchedPreference">
 		<attr name="writeToInterface" format="reference"/>    
