@@ -13,7 +13,6 @@
 
     <mobi.cyann.deviltools.SpeakerOffsetPreference 
             android:key="@string/key_speaker_offset"
-            android:summary="0"
             android:title="@string/label_speaker_offset" />
 
         <mobi.cyann.deviltools.preference.IntegerPreference
