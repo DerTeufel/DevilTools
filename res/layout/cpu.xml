@@ -68,6 +68,8 @@
             android:title="@string/label_deepidle_stats" />
     </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
 
+	<PreferenceCategory
+            android:key="@string/key_deepidle_stats" />
 
     <mobi.cyann.deviltools.preference.GovernorPreferenceGroup
         android:dependency="@string/key_governor"
