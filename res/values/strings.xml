@@ -104,6 +104,8 @@
 
     <!-- CPU Activity -->
     <string name="label_cpu_tweak">CPU</string>
+    <string name="label_idle_mode">Idle Mode</string>
+    <string name="title_idle_mode">Set Idle Mode</string>
     <string name="label_governor">Governor</string>
     <string name="label_min_cpufreq">Min CPU freq</string>
     <string name="label_max_cpufreq">Max CPU freq</string>

@@ -12,6 +12,7 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
+/*import android.graphics.Typeface;*/
 
 /**
  * @author arif
@@ -66,6 +67,7 @@ public class IntegerPreference extends StatusPreference implements DialogInterfa
 			else
         		summaryView.setText(String.valueOf(value));
         	}
+	/*summaryView.setTypeface(null, Typeface.BOLD);*/
         }
 	}
 	

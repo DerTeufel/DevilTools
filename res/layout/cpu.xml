@@ -3,6 +3,18 @@
     xmlns:custom="http://schemas.android.com/apk/res/mobi.cyann.deviltools"
     android:key="root" >
 
+    <mobi.cyann.deviltools.preference.RemovablePreferenceCategory android:title="@string/label_idle_mode" >
+    <mobi.cyann.deviltools.preference.IntegerPreference
+        custom:interfacePath="/sys/module/cpuidle_exynos4/parameters/enable_mask"
+        android:key="@string/key_idle_mode"
+            custom:maxValue="3"
+            custom:minValue="0"
+            custom:step="1"
+	    custom:description="0 = IDLE, 1 = AFTR\n2 = IDLE+LPA, 3 = AFTR+LPA (best powersaving)"
+            android:summary="0"
+        android:title="@string/title_idle_mode" />
+   </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
+
     <mobi.cyann.deviltools.preference.RemovablePreferenceCategory android:title="@string/label_governor" >
     <mobi.cyann.deviltools.preference.ListPreference
         custom:interfacePath="/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor"
