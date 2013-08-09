@@ -167,8 +167,8 @@
             android:summary="@string/status_not_available"
             android:title="@string/led_fade_control" />
 
-        <mobi.cyann.deviltools.preference.normal.IntegerPreference
-            custom:interfacePath="/sys/device/virtual/sec/led/led_intensity"
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/class/sec/led/led_intensity"
             android:key="@string/key_led_intensity"
 	    custom:description="0=CM, 40=Samsung, max=255"
             custom:maxValue="255"
@@ -177,7 +177,7 @@
             android:summary="0"
             android:title="@string/label_led_intensity" />
 
-        <mobi.cyann.deviltools.preference.normal.IntegerPreference
+        <mobi.cyann.deviltools.preference.IntegerPreference
             custom:interfacePath="/sys/class/sec/led/led_speed"
             android:key="@string/key_led_speed"
             custom:maxValue="5"
@@ -185,7 +185,7 @@
             custom:step="1"
             android:summary="1"
             android:title="@string/label_led_speed" />
-        <mobi.cyann.deviltools.preference.normal.IntegerPreference
+        <mobi.cyann.deviltools.preference.IntegerPreference
             custom:interfacePath="/sys/class/sec/led/led_slope_up_1"
             android:key="@string/key_led_slope_up_1"
             custom:maxValue="5"
@@ -193,7 +193,7 @@
             custom:step="1"
             android:summary="0"
             android:title="@string/label_led_slope_up_1" />
-        <mobi.cyann.deviltools.preference.normal.IntegerPreference
+        <mobi.cyann.deviltools.preference.IntegerPreference
             custom:interfacePath="/sys/class/sec/led/led_slope_up_2"
             android:key="@string/key_led_slope_up_2"
             custom:maxValue="5"
@@ -201,7 +201,7 @@
             custom:step="1"
             android:summary="0"
             android:title="@string/label_led_slope_up_2" />
-        <mobi.cyann.deviltools.preference.normal.IntegerPreference
+        <mobi.cyann.deviltools.preference.IntegerPreference
             custom:interfacePath="/sys/class/sec/led/led_slope_down_1"
             android:key="@string/key_led_slope_down_1"
             custom:maxValue="5"
@@ -209,7 +209,7 @@
             custom:step="1"
             android:summary="0"
             android:title="@string/label_led_slope_down_1" />
-        <mobi.cyann.deviltools.preference.normal.IntegerPreference
+        <mobi.cyann.deviltools.preference.IntegerPreference
             custom:interfacePath="/sys/class/sec/led/led_slope_down_2"
             android:key="@string/key_led_slope_down_2"
             custom:maxValue="5"
