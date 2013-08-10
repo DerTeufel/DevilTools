@@ -39,7 +39,7 @@ public class SettingFragment extends PreferenceListFragment implements OnPrefere
     }
 
     private static boolean HasSecondrom() {
-        return Utils.fileExists(SECONDROM_SYSTEM_PATH);
+        return Utils.fileExists(SECONDROM_SYSTEM_PATH) || IsSecondrom();
     }
 
     private static boolean IsSecondrom() {
