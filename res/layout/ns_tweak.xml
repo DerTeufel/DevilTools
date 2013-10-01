@@ -219,4 +219,18 @@
             android:title="@string/label_led_slope_down_2" />
     </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
 
+    <mobi.cyann.deviltools.preference.RemovablePreferenceCategory android:title="@string/touch_led_handling" >
+        <mobi.cyann.deviltools.preference.StatusPreference
+            custom:interfacePath="/sys/class/sec/sec_touchkey/touch_led_handling"
+            android:key="@string/key_touch_led_handling"
+            android:summary="@string/status_not_available"
+            android:title="@string/label_touch_led_handling" />
+        <mobi.cyann.deviltools.preference.StatusPreference
+            android:dependency="@string/key_touch_led_handling"
+            custom:interfacePath="/sys/class/sec/sec_touchkey/touch_led_on_screen_touch"
+            android:key="@string/key_touch_led_on_screen_touch"
+            android:summary="@string/status_not_available"
+            android:title="@string/label_touch_led_on_screen_touch" />
+    </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
+
 </PreferenceScreen>

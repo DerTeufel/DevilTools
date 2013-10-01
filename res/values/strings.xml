@@ -35,10 +35,10 @@
     <string name="label_led_slope_down_1">Slope Down1</string>
     <string name="label_led_slope_down_2">Slope Down2</string>
 
-
-
-
-
+    <!-- Touchkey backlight -->
+    <string name="touch_led_handling">Touchkey backlight settings</string>
+    <string name="label_touch_led_handling">Rom controls backlight</string>
+    <string name="label_touch_led_on_screen_touch">Light up on screen touch</string>
 
 	
     <!-- VoltageControlActivity -->

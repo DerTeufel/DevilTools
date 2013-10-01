@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">DevilTools</string>
-    <string name="app_version">0.7.2</string>
+    <string name="app_version">0.7.32</string>
     
 	<string name="SETTINGS_DIR">/data/data/mobi.cyann.deviltools/settings/</string>
     <string name="SCRIPT_DIR">/data/data/mobi.cyann.deviltools/scripts/</string>
@@ -182,6 +182,9 @@
 	<string name="key_led_slope_up_2">key_led_slope_up_2</string>
 	<string name="key_led_slope_down_1">key_led_slope_down_1</string>
 	<string name="key_led_slope_down_2">key_led_slope_down_2</string>
+
+	<string name="key_touch_led_handling">key_touch_led_handling</string>
+	<string name="key_touch_led_on_screen_touch">key_touch_led_on_screen_touch</string>
 
 
 
