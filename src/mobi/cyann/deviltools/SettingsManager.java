@@ -1055,56 +1055,11 @@ public class SettingsManager {
 		if(!restoreOnBoot) {
 			return ERR_DIFFERENT_KERNEL;
 		}
-		boolean restoreOnInitd = preferences.getBoolean(c.getString(R.string.key_restore_on_initd), false);
-		if(!restoreOnInitd) {
-			String command = buildCommand(c, preferences);
-			SysCommand.getInstance().suRun(command);
-        		ColorTuningPreference.restore(c);
-        		Mdnie.restore(c);
-			SpeakerOffsetPreference.restore(c);
-		}
+		String command = buildCommand(c, preferences);
+		SysCommand.getInstance().suRun(command);
+        	ColorTuningPreference.restore(c);
+        	Mdnie.restore(c);
+		SpeakerOffsetPreference.restore(c);
 		return SUCCESS;
-	}
-	
-	public static void saveToInitd(Context c) {
-		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(c);
-		boolean restoreOnBoot = preferences.getBoolean(c.getString(R.string.key_restore_on_boot), true);
-		boolean restoreOnInitd = preferences.getBoolean(c.getString(R.string.key_restore_on_initd), false);
-		boolean forceRestore = preferences.getBoolean(c.getString(R.string.key_force_restore_on_boot), false);
-		SysCommand sysCommand = SysCommand.getInstance();
-		if(restoreOnBoot && restoreOnInitd) {
-			Log.d(LOG_TAG, "write to init.d script");
-			StringBuilder cmd = new StringBuilder();
-			cmd.append("mount -o remount,rw /dev/block/platform/s3c-sdhci.0/by-name/system /system\n");
-			cmd.append("echo a > " + c.getString(R.string.INITD_SCRIPT) + "\n");
-			cmd.append("chmod 0777 " + c.getString(R.string.INITD_SCRIPT) + "\n");
-			sysCommand.suRun(cmd.toString());
-			
-			File destination = new File(c.getString(R.string.INITD_SCRIPT));
-			String command = buildCommand(c, preferences);
-			try {
-				FileWriter fw = new FileWriter(destination);
-				fw.write("#!/system/bin/sh\n");
-				fw.write("CUR=`cat /proc/version`\n");
-				fw.write("SAV=\""+preferences.getString(c.getString(R.string.key_kernel_version), null)+"\"\n");
-				if (!forceRestore) {
-				fw.write("if [ ! \"$CUR\" == \"$SAV\" ] ; then\n");
-				fw.write("exit\n");
-				fw.write("fi\n");
-				}
-				fw.write(command);
-				fw.close();
-			}catch(IOException e) {
-				Log.e(LOG_TAG, "", e);
-			}
-			sysCommand.suRun("mount", "-o", "remount,ro", "/dev/block/platform/s3c-sdhci.0/by-name/system", "/system");
-		}else {
-			Log.d(LOG_TAG, "remove init.d script");
-			StringBuilder cmd = new StringBuilder();
-			cmd.append("mount -o remount,rw /dev/block/platform/s3c-sdhci.0/by-name/system /system\n");
-			cmd.append("rm " + c.getString(R.string.INITD_SCRIPT) + "\n");
-			cmd.append("mount -o remount,ro /dev/block/platform/s3c-sdhci.0/by-name/system /system\n");
-			sysCommand.suRun(cmd.toString());
-		}
 	}
 }
