@@ -66,9 +66,7 @@ public class SettingsManager {
 			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/speaker_tuning\n");
 		}
 		value = preferences.getInt(c.getString(R.string.key_speaker_offset), -1);
-		if(value > -1) {
 			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/speaker_offset\n");
-		}
 		value = preferences.getInt(c.getString(R.string.key_headphone_amplifier_level), -1);
 		if(value > -1) {
 			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/headphone_amplifier_level\n");
