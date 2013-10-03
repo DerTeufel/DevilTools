@@ -93,5 +93,21 @@
     <string name="label_liveoc_ocvalue">Valori OC</string>
  
     <string name="msg_kernel_changed">Impostazioni scartate perchè la versione del kernel è cambiata</string>
+
+	<!-- misc settings -->
+	<string name="dyn_fsync">Dynamic Fsync</string>
+	<string name="label_dyn_fsync">Dynamic Fsync</string>
+	<string name="vibration_intensity">Intensità Vibrazione</string>
+	<string name="label_vibration_intensity">Imposta l'intensità</string>
+
+    <!-- Bigmem Settings-->
+	<string name="bigmem">Bigmem</string>
+	<string name="label_bigmem">Cambia i valori della Ram</string>
+	<string name="bigmem_default">Predefinito</string>
+	<string name="bigmem_xl">Circa 395 mb</string>
+	<string name="bigmem_big">Circa 407 mb, disattiva il 720p</string>
+	<string name="bigmem_nocam">Massimo disponibile, no camera e ripoduzione video</string>
+
+    <string name="label_performance_tweak">Performance Tweaks</string>
  
 </resources>
