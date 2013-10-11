@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">DevilTools</string>
-    <string name="app_version">0.7.32</string>
+    <string name="app_version">0.8.1</string>
     
 	<string name="SETTINGS_DIR">/data/data/mobi.cyann.deviltools/settings/</string>
     <string name="SCRIPT_DIR">/data/data/mobi.cyann.deviltools/scripts/</string>
@@ -198,6 +198,7 @@
 	<string name="key_batt_chrg_soft_volt">key_batt_chrg_soft_volt</string>
 
 	<!-- GPU -->
+	<string name="key_gpu_oc">key_gpu_oc</string>
 	<string name="key_mali_gpu_utilization_timeout">key_mali_gpu_utilization_timeout</string>
 	<string name="key_step0_clk">key_step0_clk</string>
 	<string name="key_step0_up">key_step0_up</string>

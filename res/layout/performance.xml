@@ -2,6 +2,10 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res/mobi.cyann.deviltools" android:key="root" >
 
+        <PreferenceScreen
+        android:key="gpu_oc"
+        android:title="@string/gpu_oc" >
+
     <PreferenceCategory android:title="@string/label_gpu_speed"
 	android:key="gpu_speed_category" >
     	<ListPreference
@@ -138,4 +142,8 @@
             android:title="@string/label_mali_gpu_utilization_timeout" />
     </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
 
+
+
+
+ </PreferenceScreen>
 </PreferenceScreen>

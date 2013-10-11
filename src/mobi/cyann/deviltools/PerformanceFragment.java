@@ -29,17 +29,17 @@ import android.widget.TextView;
  * @DerTeufel1980
  *
  */
-public class GpuFragment extends BasePreferenceFragment implements OnPreferenceChangeListener {
-	public GpuFragment() {
-		super(R.layout.gpu);
+public class PerformanceFragment extends BasePreferenceFragment implements OnPreferenceChangeListener {
+	public PerformanceFragment() {
+		super(R.layout.performance);
 	}
-	
-	//private final static String LOG_TAG = "DevilTools.tweaks";
+    private ContentResolver mContentResolver;
+    private static SharedPreferences preferences;
 
-	private ListPreference mGpuClock[] = new ListPreference[5];
+    private static final String GPU_OC = "gpu_oc";
 
-        private ContentResolver mContentResolver;
-	private static SharedPreferences preferences;
+    private PreferenceScreen mGpuOc;
+    private ListPreference mGpuClock[] = new ListPreference[5];
 
     public static final String[] GPU_CLOCK_FILE_PATH = new String[] {
 	"/sys/module/mali/parameters/step0_clk",
@@ -57,6 +57,19 @@ public class GpuFragment extends BasePreferenceFragment implements OnPreferenceC
         "key_step4_clk",
     };
 
+    public static final String[] GPU_THRESHOLD_FILE_PATH = new String[] {
+	"/sys/module/mali/parameters/step0_up",
+	"/sys/module/mali/parameters/step1_up",
+	"/sys/module/mali/parameters/step2_up",
+	"/sys/module/mali/parameters/step3_up",
+	"/sys/module/mali/parameters/step1_down",
+	"/sys/module/mali/parameters/step2_down",
+	"/sys/module/mali/parameters/step3_down",
+	"/sys/module/mali/parameters/step4_down",
+	"/sys/module/mali/parameters/mali_gpu_utilization_timeout",
+	};
+
+
 	@Override
     	public void onCreate(Bundle savedInstanceState) {
         	super.onCreate(savedInstanceState);
@@ -66,11 +79,15 @@ public class GpuFragment extends BasePreferenceFragment implements OnPreferenceC
         PreferenceScreen prefSet = getPreferenceScreen();
         mContentResolver = getActivity().getApplicationContext().getContentResolver();
 	SysCommand sysCommand = SysCommand.getInstance();
+	mGpuOc = (PreferenceScreen) prefSet.findPreference(GPU_OC);
 
-	boolean supported = isSupported();
-
+	if(!IsSupported()) {
+	mGpuOc.setEnabled(false);
+	} else {
+	mGpuOc.setEnabled(true);
+	}
+	if (ocIsSupported()) {
 	int i = 0;
-	if (supported) {
 	   for (String filePath : GPU_CLOCK_FILE_PATH) {
            mGpuClock[i] = (ListPreference) findPreference(KEY_GPU_CLOCK[i]);
 	   	if (mGpuClock[i] != null) {
@@ -126,7 +143,7 @@ public class GpuFragment extends BasePreferenceFragment implements OnPreferenceC
 	ed.commit();
     }
 
-    public static boolean isSupported() {
+    public static boolean ocIsSupported() {
         boolean exists = true;
         for (String filePath : GPU_CLOCK_FILE_PATH) {
             if (!Utils.fileExists(filePath)) {
@@ -135,5 +152,21 @@ public class GpuFragment extends BasePreferenceFragment implements OnPreferenceC
         }
 	return exists;
    }
+
+    public static boolean thresholdIsSupported() {
+        boolean exists = false;
+        for (String filePath : GPU_THRESHOLD_FILE_PATH) {
+            if (Utils.fileExists(filePath)) {
+                exists = true;
+            }
+        }
+	return exists;
+   }
+
+    public static boolean IsSupported() {
+	    boolean ocsupported = ocIsSupported();
+	    boolean thresholdsupported = thresholdIsSupported();
+	    return (ocsupported && thresholdsupported);
+    }
 
 }

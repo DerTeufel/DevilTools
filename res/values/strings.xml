@@ -40,6 +40,9 @@
     <string name="label_touch_led_handling">Rom controls backlight</string>
     <string name="label_touch_led_on_screen_touch">Light up on screen touch</string>
 
+    <!-- Performance -->
+    <string name="label_performance_tweak">Performance Settings</string>
+
 	
     <!-- VoltageControlActivity -->
     <string name="voltage_control">Volt</string>
@@ -265,7 +268,7 @@
 	<string name="label_batt_chrg_soft_volt">Charge Soft voltage</string>
 
 	<!-- GPU -->
-	<string name="label_gpu_tweak">GPU Settings</string>
+	<string name="gpu_oc">GPU Control</string>
 	<string name="label_gpu_speed">Clock Settings</string>
 	<string name="label_gpu_threshold">Up/Down Threshold</string>
 	<string name="label_gpu_utilization">Utilization</string>
@@ -331,8 +334,6 @@
 	<string name="bigmem_xl">about 395 mb</string>
 	<string name="bigmem_big">about 407 mb, breaks 720p</string>
 	<string name="bigmem_nocam">maximum ram, no cam at all</string>
-
-    <string name="label_performance_tweak">Performance Tweaks</string>
 
     <!-- About Activity -->
     <string name="label_info">Info</string>

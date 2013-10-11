@@ -848,7 +848,7 @@ public class SettingsManager {
 		}
 
 		// gpu
-        	for (String filePath : GpuFragment.GPU_CLOCK_FILE_PATH) {
+        	for (String filePath : PerformanceFragment.GPU_CLOCK_FILE_PATH) {
             	status = preferences.getString(filePath, "-1000");
 		if(!status.equals("-1000"))
 		command.append("echo " + status + " > " + filePath + "\n");
