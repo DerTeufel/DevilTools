@@ -268,7 +268,8 @@
 	<string name="label_batt_chrg_soft_volt">Charge Soft voltage</string>
 
 	<!-- GPU -->
-	<string name="gpu_oc">GPU Control</string>
+	<string name="gpu_control">GPU Control</string>
+	<string name="gpu_control_category">GPU Performance Settings</string>
 	<string name="label_gpu_speed">Clock Settings</string>
 	<string name="label_gpu_threshold">Up/Down Threshold</string>
 	<string name="label_gpu_utilization">Utilization</string>

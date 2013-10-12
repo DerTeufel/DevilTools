@@ -36,7 +36,8 @@ public class PerformanceFragment extends BasePreferenceFragment implements OnPre
     private ContentResolver mContentResolver;
     private static SharedPreferences preferences;
 
-    private static final String GPU_OC = "gpu_oc";
+    private static final String GPU_CONTROL = "key_gpu_control";
+    private static final String CATEGORY_GPU_CONTROL = "key_gpu_control_category";
 
     private PreferenceScreen mGpuOc;
     private ListPreference mGpuClock[] = new ListPreference[5];
@@ -79,14 +80,13 @@ public class PerformanceFragment extends BasePreferenceFragment implements OnPre
         PreferenceScreen prefSet = getPreferenceScreen();
         mContentResolver = getActivity().getApplicationContext().getContentResolver();
 	SysCommand sysCommand = SysCommand.getInstance();
-	mGpuOc = (PreferenceScreen) prefSet.findPreference(GPU_OC);
+	mGpuOc = (PreferenceScreen) prefSet.findPreference(GPU_CONTROL);
+    	final PreferenceCategory gpucontrolCategory =
+                (PreferenceCategory) prefSet.findPreference(CATEGORY_GPU_CONTROL);
 
 	if(!IsSupported()) {
-	mGpuOc.setEnabled(false);
-	} else {
-	mGpuOc.setEnabled(true);
-	}
-	if (ocIsSupported()) {
+	prefSet.removePreference(gpucontrolCategory);
+	} else if (ocIsSupported()) {
 	int i = 0;
 	   for (String filePath : GPU_CLOCK_FILE_PATH) {
            mGpuClock[i] = (ListPreference) findPreference(KEY_GPU_CLOCK[i]);
@@ -104,8 +104,7 @@ public class PerformanceFragment extends BasePreferenceFragment implements OnPre
 	   i++;
 	   }
 	} else {
-        PreferenceCategory category = (PreferenceCategory) getPreferenceScreen().findPreference("gpu_speed_category");
-            getPreferenceScreen().removePreference(category);
+	mGpuOc.removePreference(findPreference("gpu_speed_category"));
 	}
 
     }
@@ -117,7 +116,6 @@ public class PerformanceFragment extends BasePreferenceFragment implements OnPre
 	    if (preference == mGpuClock[i] && Utils.fileExists(filePath)) {
             status = Integer.valueOf((String) objValue);
             index = mGpuClock[i].findIndexOfValue((String) objValue);
-            //mGpuClock[i].setSummary(mGpuClock[i].getEntries()[index]);
 	    sc.writeSysfs(filePath, ((String) objValue));
             setPreferenceString(filePath, ((String) objValue));
 	   	if(sc.readSysfs(filePath) > 0) {
@@ -166,7 +164,7 @@ public class PerformanceFragment extends BasePreferenceFragment implements OnPre
     public static boolean IsSupported() {
 	    boolean ocsupported = ocIsSupported();
 	    boolean thresholdsupported = thresholdIsSupported();
-	    return (ocsupported && thresholdsupported);
+	    return (ocsupported || thresholdsupported);
     }
 
 }

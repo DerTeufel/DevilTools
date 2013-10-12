@@ -198,7 +198,7 @@
 	<string name="key_batt_chrg_soft_volt">key_batt_chrg_soft_volt</string>
 
 	<!-- GPU -->
-	<string name="key_gpu_oc">key_gpu_oc</string>
+	<string name="key_gpu_control">key_gpu_control</string>
 	<string name="key_mali_gpu_utilization_timeout">key_mali_gpu_utilization_timeout</string>
 	<string name="key_step0_clk">key_step0_clk</string>
 	<string name="key_step0_up">key_step0_up</string>

@@ -2,148 +2,188 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res/mobi.cyann.deviltools" android:key="root" >
 
-        <PreferenceScreen
-        android:key="gpu_oc"
-        android:title="@string/gpu_oc" >
+    <mobi.cyann.deviltools.preference.RemovablePreferenceCategory android:title="@string/iosched_tweak" >
+        <mobi.cyann.deviltools.preference.IoSchedPreference
+            custom:interfacePath="/sys/block/mmcblk0/queue/scheduler"
+            android:key="@string/key_iosched"
+            android:summary="@string/status_not_available"
+            android:title="@string/label_iosched"
+            custom:writeToInterface="@array/iosched_interfaces" />
+    </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
 
-    <PreferenceCategory android:title="@string/label_gpu_speed"
-	android:key="gpu_speed_category" >
-    	<ListPreference
+    <PreferenceCategory android:title="@string/gpu_control_category"
+	android:key="key_gpu_control_category" >
+	<PreferenceScreen
+        android:key="key_gpu_control"
+        android:title="@string/gpu_control" >
+
+    	    <PreferenceCategory android:title="@string/label_gpu_speed"
+	    android:key="gpu_speed_category" >
+    		<ListPreference
             	android:key="@string/key_step0_clk"
             	android:title="@string/label_step0_clk"
             	android:entries="@array/gpu_clk_entries"
             	android:entryValues="@array/gpu_clk_values"
             	android:summary="@string/status_not_available" />
 
-    	<ListPreference
+    		<ListPreference
             	android:key="@string/key_step1_clk"
             	android:title="@string/label_step1_clk"
             	android:entries="@array/gpu_clk_entries"
             	android:entryValues="@array/gpu_clk_values"
             	android:summary="@string/status_not_available" />
 
-    	<ListPreference
+    		<ListPreference
             	android:key="@string/key_step2_clk"
             	android:title="@string/label_step2_clk"
             	android:entries="@array/gpu_clk_entries"
             	android:entryValues="@array/gpu_clk_values"
             	android:summary="@string/status_not_available" />
 
-    	<ListPreference
+    		<ListPreference
             	android:key="@string/key_step3_clk"
             	android:title="@string/label_step3_clk"
             	android:entries="@array/gpu_clk_entries"
             	android:entryValues="@array/gpu_clk_values"
             	android:summary="@string/status_not_available" />
 
-    	<ListPreference
+    		<ListPreference
             	android:key="@string/key_step4_clk"
             	android:title="@string/label_step4_clk"
             	android:entries="@array/gpu_clk_entries"
             	android:entryValues="@array/gpu_clk_values"
             	android:summary="@string/status_not_available" />
+    	    </PreferenceCategory>
 
+    	    <mobi.cyann.deviltools.preference.RemovablePreferenceCategory android:title="@string/label_gpu_threshold" >
+
+            	<mobi.cyann.deviltools.preference.IntegerPreference
+            	custom:interfacePath="/sys/module/mali/parameters/step0_up"
+            	android:key="@string/key_step0_up"
+            	custom:maxValue="100"
+            	custom:metrics="%"
+            	custom:minValue="11"
+            	custom:step="1"
+            	android:summary="0"
+            	android:title="@string/label_step0_up" />
+
+            	<mobi.cyann.deviltools.preference.IntegerPreference
+            	custom:interfacePath="/sys/module/mali/parameters/step1_up"
+            	android:key="@string/key_step1_up"
+            	custom:maxValue="100"
+            	custom:metrics="%"
+            	custom:minValue="11"
+            	custom:step="1"
+            	android:summary="0"
+            	android:title="@string/label_step1_up" />
+
+            	<mobi.cyann.deviltools.preference.IntegerPreference
+            	custom:interfacePath="/sys/module/mali/parameters/step1_down"
+            	android:key="@string/key_step1_down"
+            	custom:maxValue="100"
+            	custom:metrics="%"
+            	custom:minValue="11"
+            	custom:step="1"
+            	android:summary="0"
+            	android:title="@string/label_step1_down" />
+
+            	<mobi.cyann.deviltools.preference.IntegerPreference
+            	custom:interfacePath="/sys/module/mali/parameters/step2_up"
+            	android:key="@string/key_step2_up"
+            	custom:maxValue="100"
+            	custom:metrics="%"
+            	custom:minValue="11"
+            	custom:step="1"
+            	android:summary="0"
+            	android:title="@string/label_step2_up" />
+
+            	<mobi.cyann.deviltools.preference.IntegerPreference
+            	custom:interfacePath="/sys/module/mali/parameters/step2_down"
+            	android:key="@string/key_step2_down"
+            	custom:maxValue="100"
+            	custom:metrics="%"
+            	custom:minValue="11"
+            	custom:step="1"
+            	android:summary="0"
+           	android:title="@string/label_step2_down" />
+
+            	<mobi.cyann.deviltools.preference.IntegerPreference
+            	custom:interfacePath="/sys/module/mali/parameters/step3_up"
+            	android:key="@string/key_step3_up"
+            	custom:maxValue="100"
+            	custom:metrics="%"
+            	custom:minValue="11"
+            	custom:step="1"
+            	android:summary="0"
+            	android:title="@string/label_step3_up" />
+
+            	<mobi.cyann.deviltools.preference.IntegerPreference
+            	custom:interfacePath="/sys/module/mali/parameters/step3_down"
+            	android:key="@string/key_step3_down"
+            	custom:maxValue="100"
+            	custom:metrics="%"
+            	custom:minValue="11"
+            	custom:step="1"
+            	android:summary="0"
+            	android:title="@string/label_step3_down" />
+
+            	<mobi.cyann.deviltools.preference.IntegerPreference
+            	custom:interfacePath="/sys/module/mali/parameters/step4_down"
+            	android:key="@string/key_step4_down"
+            	custom:maxValue="100"
+            	custom:metrics="%"
+            	custom:minValue="11"
+            	custom:step="1"
+            	android:summary="0"
+            	android:title="@string/label_step4_down" />
+    	     	</mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
+
+		<mobi.cyann.deviltools.preference.RemovablePreferenceCategory android:title="@string/label_gpu_utilization" >
+             	<mobi.cyann.deviltools.preference.IntegerPreference
+             	custom:interfacePath="/sys/module/mali/parameters/mali_gpu_utilization_timeout"
+             	android:key="@string/key_mali_gpu_utilization_timeout"
+             	custom:maxValue="500"
+             	custom:metrics="ms"
+             	custom:minValue="100"
+             	custom:step="50"
+             	android:summary="0"
+             	android:title="@string/label_mali_gpu_utilization_timeout" />
+    	     	</mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
+
+         </PreferenceScreen>
     </PreferenceCategory>
 
-    <mobi.cyann.deviltools.preference.RemovablePreferenceCategory android:title="@string/label_gpu_threshold" >
+
+    <mobi.cyann.deviltools.preference.RemovablePreferenceCategory android:title="@string/touch_boost" >
+
+        <mobi.cyann.deviltools.preference.StatusPreference
+            custom:interfacePath="/sys/class/misc/touchboost/input_boost_enabled"
+            android:key="@string/key_touch_boost_enabled"
+	    custom:description="Enable or disable Touch Boost"
+            android:summary="@string/status_not_available"
+            android:title="@string/label_touch_boost_enabled" />
 
         <mobi.cyann.deviltools.preference.IntegerPreference
-            custom:interfacePath="/sys/module/mali/parameters/step0_up"
-            android:key="@string/key_step0_up"
-            custom:maxValue="100"
-            custom:metrics="%"
-            custom:minValue="11"
-            custom:step="1"
+            custom:interfacePath="/sys/class/misc/touchboost/input_boost_freq"
+            android:dependency="@string/key_touch_boost_enabled"
+            android:key="@string/key_touch_boost_freq"
+	    custom:description="Push Cpu to this Freq. if Touchscreen gets touched"
+            custom:maxValue="1600000"
+            custom:metrics="Hz"
+            custom:minValue="200000"
+            custom:step="100000"
             android:summary="0"
-            android:title="@string/label_step0_up" />
-
-
-        <mobi.cyann.deviltools.preference.IntegerPreference
-            custom:interfacePath="/sys/module/mali/parameters/step1_up"
-            android:key="@string/key_step1_up"
-            custom:maxValue="100"
-            custom:metrics="%"
-            custom:minValue="11"
-            custom:step="1"
-            android:summary="0"
-            android:title="@string/label_step1_up" />
-
-        <mobi.cyann.deviltools.preference.IntegerPreference
-            custom:interfacePath="/sys/module/mali/parameters/step1_down"
-            android:key="@string/key_step1_down"
-            custom:maxValue="100"
-            custom:metrics="%"
-            custom:minValue="11"
-            custom:step="1"
-            android:summary="0"
-            android:title="@string/label_step1_down" />
-
-
-        <mobi.cyann.deviltools.preference.IntegerPreference
-            custom:interfacePath="/sys/module/mali/parameters/step2_up"
-            android:key="@string/key_step2_up"
-            custom:maxValue="100"
-            custom:metrics="%"
-            custom:minValue="11"
-            custom:step="1"
-            android:summary="0"
-            android:title="@string/label_step2_up" />
-
-        <mobi.cyann.deviltools.preference.IntegerPreference
-            custom:interfacePath="/sys/module/mali/parameters/step2_down"
-            android:key="@string/key_step2_down"
-            custom:maxValue="100"
-            custom:metrics="%"
-            custom:minValue="11"
-            custom:step="1"
-            android:summary="0"
-            android:title="@string/label_step2_down" />
-
-        <mobi.cyann.deviltools.preference.IntegerPreference
-            custom:interfacePath="/sys/module/mali/parameters/step3_up"
-            android:key="@string/key_step3_up"
-            custom:maxValue="100"
-            custom:metrics="%"
-            custom:minValue="11"
-            custom:step="1"
-            android:summary="0"
-            android:title="@string/label_step3_up" />
-
-        <mobi.cyann.deviltools.preference.IntegerPreference
-            custom:interfacePath="/sys/module/mali/parameters/step3_down"
-            android:key="@string/key_step3_down"
-            custom:maxValue="100"
-            custom:metrics="%"
-            custom:minValue="11"
-            custom:step="1"
-            android:summary="0"
-            android:title="@string/label_step3_down" />
-
-        <mobi.cyann.deviltools.preference.IntegerPreference
-            custom:interfacePath="/sys/module/mali/parameters/step4_down"
-            android:key="@string/key_step4_down"
-            custom:maxValue="100"
-            custom:metrics="%"
-            custom:minValue="11"
-            custom:step="1"
-            android:summary="0"
-            android:title="@string/label_step4_down" />
+            android:title="@string/label_touch_boost_freq" />
     </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
 
-    <mobi.cyann.deviltools.preference.RemovablePreferenceCategory android:title="@string/label_gpu_utilization" >
-        <mobi.cyann.deviltools.preference.IntegerPreference
-            custom:interfacePath="/sys/module/mali/parameters/mali_gpu_utilization_timeout"
-            android:key="@string/key_mali_gpu_utilization_timeout"
-            custom:maxValue="500"
-            custom:metrics="ms"
-            custom:minValue="100"
-            custom:step="50"
-            android:summary="0"
-            android:title="@string/label_mali_gpu_utilization_timeout" />
+    <mobi.cyann.deviltools.preference.RemovablePreferenceCategory android:title="@string/dyn_fsync" >
+        <mobi.cyann.deviltools.preference.StatusPreference
+            custom:interfacePath="/sys/kernel/dyn_fsync/Dyn_fsync_active"
+            android:key="@string/key_dyn_fsync"
+	    custom:description="With this enabled, fsync is disabled, while screen on, and enabled while screen off. Can lead to data loss in case of a system crash!"
+            android:summary="@string/status_not_available"
+            android:title="@string/label_dyn_fsync" />
     </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
 
 
-
-
- </PreferenceScreen>
 </PreferenceScreen>
