@@ -47,6 +47,8 @@
     <!-- VoltageControlActivity -->
     <string name="cpu_voltage_category">CPU Voltage Control</string>
     <string name="cpu_voltage_control">CPU Voltage</string>
+    <string name="gpu_voltage_category">GPU Voltage Control</string>
+    <string name="gpu_voltage_control">GPU Voltage</string>
     <string name="label_default_voltage">Default voltages</string>
     <string name="summaryOn_default_voltage">Use voltage settings from kernel</string>
     <string name="summaryOff_default_voltage">Use customized voltage settings below</string>

@@ -36,6 +36,7 @@
     <string name="key_touchwake_status">key_touchwake_status</string>
     <string name="key_touchwake_delay">key_touchwake_delay</string>
     <string name="key_default_voltage">key_default_voltage</string>
+    <string name="key_default_gpu_voltage">key_default_gpu_voltage</string>
     <string name="key_arm_volt_pref">key_arm_volt_pref</string>
     <string name="key_uvmvtable_pref">key_uvmvtable_pref</string>
     <string name="key_max_arm_volt">key_max_arm_volt</string>

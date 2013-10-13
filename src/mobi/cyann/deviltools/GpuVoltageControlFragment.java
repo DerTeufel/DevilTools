@@ -30,14 +30,14 @@ import android.widget.CheckBox;
 public class GpuVoltageControlFragment extends BasePreferenceFragment implements OnPreferenceChangeListener {
 	private final static String LOG_TAG = "DevilTools.GpuVoltageControlActivity";
 
-	private List<Integer> armVoltages;
+	private List<Integer> gpuVoltages;
 	
 	private SharedPreferences preferences;
 	
 	public GpuVoltageControlFragment() {
 		super(R.layout.gpu_voltage);
 		
-		armVoltages = new ArrayList<Integer>();
+		gpuVoltages = new ArrayList<Integer>();
 	}
 
 	@Override
@@ -46,7 +46,7 @@ public class GpuVoltageControlFragment extends BasePreferenceFragment implements
 
 		findPreference(getString(R.string.key_default_voltage)).setOnPreferenceChangeListener(this);
 
-		armVoltages.clear();
+		gpuVoltages.clear();
 
 		Log.d(LOG_TAG, "read from mali_table");
 		// if we can't get customvoltage mod, then try to read UV_mV_table
@@ -107,11 +107,11 @@ public class GpuVoltageControlFragment extends BasePreferenceFragment implements
 				Log.d(LOG_TAG, line);
 				createDefaultVoltPreference(c, "malivolt_", i, parts[0], volt);
 				
-				armVoltages.add(volt);
+				gpuVoltages.add(volt);
 			}
 		}
-		if(armVoltages.size() > 0) {
-			saveVoltages(getString(R.string.key_malivolt_pref), armVoltages, null);
+		if(gpuVoltages.size() > 0) {
+			saveVoltages(getString(R.string.key_malivolt_pref), gpuVoltages, null);
 		}
 	}
 	
@@ -136,8 +136,8 @@ public class GpuVoltageControlFragment extends BasePreferenceFragment implements
 		if(preference.getKey().startsWith("malivolt_")) {
 			String parts[] = preference.getKey().split("_");
 			int i = Integer.parseInt(parts[1]);
-			armVoltages.set(i, (Integer)newValue);
-			saveVoltages(getString(R.string.key_malivolt_pref), armVoltages, "/sys/class/misc/mali_control/voltage_control");
+			gpuVoltages.set(i, (Integer)newValue);
+			saveVoltages(getString(R.string.key_malivolt_pref), gpuVoltages, "/sys/class/misc/mali_control/voltage_control");
 		}else if(preference.getKey().equals(getString(R.string.key_default_voltage))) {
 			if(!(Boolean)newValue) {
 				showWarningDialog();
