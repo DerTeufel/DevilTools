@@ -29,7 +29,7 @@ import android.widget.CheckBox;
  */
 public class VoltageControlFragment extends BasePreferenceFragment implements OnPreferenceChangeListener {
 	private final static String LOG_TAG = "DevilTools.VoltageControlActivity";
-	
+	private static final String CATEGORY_GPU_CONTROL = "key_cpu_voltage_category";
 	private IntegerPreference maxArmVolt;
 	private IntegerPreference maxIntVolt;
 	
@@ -37,6 +37,14 @@ public class VoltageControlFragment extends BasePreferenceFragment implements On
 	private List<Integer> intVoltages;
 	
 	private SharedPreferences preferences;
+	private PreferenceScreen mCpuVolt;
+
+
+    public static final String[] CPU_FILE_PATH = new String[] {
+	"/sys/class/misc/customvoltage/arm_volt",
+	"/sys/devices/system/cpu/cpu0/cpufreq/UV_mV_table",
+	"/sys/class/misc/customvoltage/int_volt"
+	};
 	
 	public VoltageControlFragment() {
 		super(R.layout.voltage);
@@ -48,11 +56,21 @@ public class VoltageControlFragment extends BasePreferenceFragment implements On
 	@Override
 	public void onPreferenceAttached(PreferenceScreen rootPreference, int xmlId) {
 		preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        	PreferenceScreen prefSet = getPreferenceScreen();
+
+		mCpuVolt = (PreferenceScreen) prefSet.findPreference("key_cpu_voltage");
+    		final PreferenceCategory cpuvoltageCategory =
+                    (PreferenceCategory) prefSet.findPreference(CATEGORY_GPU_CONTROL);
 		
 		maxArmVolt = (IntegerPreference)findPreference(getString(R.string.key_max_arm_volt));
 		maxIntVolt = (IntegerPreference)findPreference(getString(R.string.key_max_int_volt));
 		findPreference(getString(R.string.key_default_voltage)).setOnPreferenceChangeListener(this);
-
+	    if(!cpuVolatgeSupported()) {
+		prefSet.removePreference(cpuvoltageCategory);
+	    } else {
+		if (! Utils.fileExists("/sys/class/misc/customvoltage/int_volt")) {
+	mCpuVolt.removePreference(findPreference("key_int_volt_pref"));
+		}
 		armVoltages.clear();
 		intVoltages.clear();
 		
@@ -65,6 +83,7 @@ public class VoltageControlFragment extends BasePreferenceFragment implements On
 			Log.d(LOG_TAG, "read from customvoltage");
 			readVoltages(maxArmVolt, getString(R.string.key_arm_volt_pref), "armvolt_", "/sys/class/misc/customvoltage/arm_volt", armVoltages);
 		}
+	    }
 		
 		super.onPreferenceAttached(rootPreference, xmlId);
 	}
@@ -169,6 +188,16 @@ public class VoltageControlFragment extends BasePreferenceFragment implements On
 		ed.putString(key, s.toString());
 		ed.commit();
 	}
+
+    public static boolean cpuVolatgeSupported() {
+        boolean exists = false;
+        for (String filePath : CPU_FILE_PATH) {
+            if (Utils.fileExists(filePath)) {
+                exists = true;
+            }
+        }
+	return exists;
+   }
 
 	@Override
 	public boolean onPreferenceChange(Preference preference, Object newValue) {
