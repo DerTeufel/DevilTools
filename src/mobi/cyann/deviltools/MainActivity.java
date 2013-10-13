@@ -86,21 +86,17 @@ public class MainActivity extends FragmentActivity {
 		tab6.setIndicator(getString(R.string.label_performance_tweak), res.getDrawable(R.drawable.ic_tab_performance));
 		tabsAdapter.addTab(tab6, PerformanceFragment.class, null);
 
-		TabSpec tab7 = tabHost.newTabSpec("gpuvolt");
-		tab7.setIndicator(getString(R.string.gpu_voltage), res.getDrawable(R.drawable.ic_tab_gpu_voltages));
-		tabsAdapter.addTab(tab7, GpuVoltageControlFragment.class, null);
-
-		TabSpec tab8 = tabHost.newTabSpec("audio");
-		tab8.setIndicator(getString(R.string.label_audio_tweak), res.getDrawable(R.drawable.ic_tab_audio));
-		tabsAdapter.addTab(tab8, AudioFragment.class, null);
+		TabSpec tab7 = tabHost.newTabSpec("audio");
+		tab7.setIndicator(getString(R.string.label_audio_tweak), res.getDrawable(R.drawable.ic_tab_audio));
+		tabsAdapter.addTab(tab7, AudioFragment.class, null);
 		
-		TabSpec tab9 = tabHost.newTabSpec("setting");
-		tab9.setIndicator(getString(R.string.label_setting), res.getDrawable(R.drawable.ic_tab_settings));
-		tabsAdapter.addTab(tab9, SettingFragment.class, null);
+		TabSpec tab8 = tabHost.newTabSpec("setting");
+		tab8.setIndicator(getString(R.string.label_setting), res.getDrawable(R.drawable.ic_tab_settings));
+		tabsAdapter.addTab(tab8, SettingFragment.class, null);
 
-		TabSpec tab10 = tabHost.newTabSpec("info");
-		tab10.setIndicator(getString(R.string.label_info), res.getDrawable(R.drawable.ic_tab_info));
-		tabsAdapter.addTab(tab10, InfoFragment.class, null);
+		TabSpec tab9 = tabHost.newTabSpec("info");
+		tab9.setIndicator(getString(R.string.label_info), res.getDrawable(R.drawable.ic_tab_info));
+		tabsAdapter.addTab(tab9, InfoFragment.class, null);
 
 		suggestedWidth = tabsAdapter.getSuggestedWidth();
        		// set the width of tab 

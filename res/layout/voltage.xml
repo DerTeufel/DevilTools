@@ -54,20 +54,19 @@
     <PreferenceCategory android:title="@string/gpu_voltage_category"
 	android:key="key_gpu_voltage_category" >
 	<PreferenceScreen
-        android:key="key_gpu_voltage"
-        android:title="@string/gpu_voltage_control" >
-    <CheckBoxPreference
-        android:key="@string/key_default_gpu_voltage"
-        android:summaryOff="@string/summaryOff_default_voltage"
-        android:summaryOn="@string/summaryOn_default_voltage"
-        android:title="@string/label_default_voltage" android:defaultValue="true"
-        android:disableDependentsState="true"/>
+            android:key="key_gpu_voltage"
+            android:title="@string/gpu_voltage_control" >
+    	    <CheckBoxPreference
+           	 android:key="@string/key_default_gpu_voltage"
+            	android:summaryOff="@string/summaryOff_default_voltage"
+        	android:summaryOn="@string/summaryOn_default_voltage"
+        	android:title="@string/label_default_voltage" android:defaultValue="true"
+        	android:disableDependentsState="true"/>
 
-    <mobi.cyann.deviltools.preference.RemovablePreferenceCategory
-        android:key="@string/key_gpu_volt_pref"
-        android:title="@string/gpu_voltage" >
-    </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
-
+    	    <mobi.cyann.deviltools.preference.RemovablePreferenceCategory
+        	android:key="@string/key_gpu_volt_pref"
+        	android:title="@string/gpu_voltage" >
+    	    </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
          </PreferenceScreen>
     </PreferenceCategory>
 
