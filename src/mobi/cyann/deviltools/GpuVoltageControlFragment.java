@@ -29,9 +29,7 @@ import android.widget.CheckBox;
  */
 public class GpuVoltageControlFragment extends BasePreferenceFragment implements OnPreferenceChangeListener {
 	private final static String LOG_TAG = "DevilTools.GpuVoltageControlActivity";
-	
-	private IntegerPreference maxArmVolt;
-	
+
 	private List<Integer> armVoltages;
 	
 	private SharedPreferences preferences;
@@ -45,8 +43,7 @@ public class GpuVoltageControlFragment extends BasePreferenceFragment implements
 	@Override
 	public void onPreferenceAttached(PreferenceScreen rootPreference, int xmlId) {
 		preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-		
-		maxArmVolt = (IntegerPreference)findPreference(getString(R.string.key_max_gpu_volt));
+
 		findPreference(getString(R.string.key_default_voltage)).setOnPreferenceChangeListener(this);
 
 		armVoltages.clear();

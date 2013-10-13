@@ -12,16 +12,6 @@
     <mobi.cyann.deviltools.preference.RemovablePreferenceCategory
         android:key="@string/key_gpu_volt_pref"
         android:title="@string/gpu_voltage" >
-
-        <mobi.cyann.deviltools.preference.VoltagePreference
-            android:dependency="@string/key_default_voltage"
-            custom:interfacePath="/sys/class/misc/customvoltage/max_gpu_volt"
-            android:key="@string/key_max_gpu_volt"
-            custom:maxValue="1400000"
-            custom:minValue="600000"
-            custom:step="5000"
-            android:summary="0"
-            android:title="@string/label_max_gpu_volt" />
     </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
 
 </PreferenceScreen>
