@@ -17,7 +17,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- Bigmem Settings-->
+    <!-- Memory Settings-->
     <string-array name="bigmem_entries" translatable="false">
         <item>@string/bigmem_default</item>
         <item>@string/bigmem_xl</item>
@@ -31,6 +31,28 @@
         <item>2</item>
         <item>3</item>
     </string-array>
+
+
+    <string-array name="zram_entries" translatable="false">
+        <item>0% (disabled)</item>
+        <item>10%</item>
+        <item>20%</item>
+        <item>30%</item>
+        <item>40%</item>
+        <item>50%</item>
+    </string-array>
+
+    <string-array name="zram_values" translatable="false">
+        <item>0</item>
+        <item>10</item>
+        <item>20</item>
+        <item>30</item>
+        <item>40</item>
+        <item>50</item>
+    </string-array>
+
+
+
 
     <string-array name="mdnie_entries">
         <item>Disabled</item>

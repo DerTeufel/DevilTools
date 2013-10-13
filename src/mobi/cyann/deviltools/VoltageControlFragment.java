@@ -77,7 +77,7 @@ public class VoltageControlFragment extends BasePreferenceFragment implements On
 		prefSet.removePreference(cpuvoltageCategory);
 	    } else {
 		if (! Utils.fileExists("/sys/class/misc/customvoltage/int_volt")) {
-	mCpuVolt.removePreference(findPreference("key_int_volt_pref"));
+		mCpuVolt.removePreference(findPreference("key_int_volt_pref"));
 		}
 		armVoltages.clear();
 		intVoltages.clear();

@@ -30,7 +30,7 @@ public class Mdnie implements OnPreferenceChangeListener {
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         Utils.writeValue(FILE, (String) newValue);
-	DevilTweaksFragment.setPreferenceString(FILE, (String) newValue);
+	ColorSettings.setPreferenceString(FILE, (String) newValue);
         return true;
     }
 

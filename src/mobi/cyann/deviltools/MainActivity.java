@@ -66,25 +66,29 @@ public class MainActivity extends FragmentActivity {
 		tab1.setIndicator(getString(R.string.ns_tweak), res.getDrawable(R.drawable.ic_tab_tweaks));
 		tabsAdapter.addTab(tab1, NSTweakFragment.class, null);
 
-		TabSpec tab2 = tabHost.newTabSpec("performancetweaks");
-		tab2.setIndicator(getString(R.string.label_performance_tweak), res.getDrawable(R.drawable.ic_tab_deviltweaks));
-		tabsAdapter.addTab(tab2, DevilTweaksFragment.class, null);
+		TabSpec tab2 = tabHost.newTabSpec("performance");
+		tab2.setIndicator(getString(R.string.label_performance_tweak), res.getDrawable(R.drawable.ic_tab_performance));
+		tabsAdapter.addTab(tab2, PerformanceFragment.class, null);
 
-		TabSpec tab3 = tabHost.newTabSpec("chargingcontrol");
-		tab3.setIndicator(getString(R.string.label_battery_tweak), res.getDrawable(R.drawable.ic_tab_battery));
-		tabsAdapter.addTab(tab3, BatteryFragment.class, null);
+		TabSpec tab3 = tabHost.newTabSpec("volt");
+		tab3.setIndicator(getString(R.string.voltage_control), res.getDrawable(R.drawable.ic_tab_voltages));
+		tabsAdapter.addTab(tab3, VoltageControlFragment.class, null);
+
+		TabSpec tab4 = tabHost.newTabSpec("memory");
+		tab4.setIndicator(getString(R.string.label_memory), res.getDrawable(R.drawable.ic_tab_memory));
+		tabsAdapter.addTab(tab4, MemoryFragment.class, null);
+
+		TabSpec tab5 = tabHost.newTabSpec("chargingcontrol");
+		tab5.setIndicator(getString(R.string.label_battery_tweak), res.getDrawable(R.drawable.ic_tab_battery));
+		tabsAdapter.addTab(tab5, BatteryFragment.class, null);
 		
-		TabSpec tab4 = tabHost.newTabSpec("cpu");
+		/*TabSpec tab4 = tabHost.newTabSpec("cpu");
 		tab4.setIndicator(getString(R.string.label_cpu_tweak), res.getDrawable(R.drawable.ic_tab_cpu));
-		tabsAdapter.addTab(tab4, CPUFragment.class, null);
+		tabsAdapter.addTab(tab4, CPUFragment.class, null);*/
 		
-		TabSpec tab5 = tabHost.newTabSpec("volt");
-		tab5.setIndicator(getString(R.string.voltage_control), res.getDrawable(R.drawable.ic_tab_voltages));
-		tabsAdapter.addTab(tab5, VoltageControlFragment.class, null);
-
-		TabSpec tab6 = tabHost.newTabSpec("performance");
-		tab6.setIndicator(getString(R.string.label_performance_tweak), res.getDrawable(R.drawable.ic_tab_performance));
-		tabsAdapter.addTab(tab6, PerformanceFragment.class, null);
+		TabSpec tab6 = tabHost.newTabSpec("color");
+		tab6.setIndicator(getString(R.string.color_control), res.getDrawable(R.drawable.ic_tab_color));
+		tabsAdapter.addTab(tab6, ColorSettings.class, null);
 
 		TabSpec tab7 = tabHost.newTabSpec("audio");
 		tab7.setIndicator(getString(R.string.label_audio_tweak), res.getDrawable(R.drawable.ic_tab_audio));

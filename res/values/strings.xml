@@ -331,18 +331,22 @@
 	<string name="vibration_intensity">Vibration intensity</string>
 	<string name="label_vibration_intensity">Set vibration intensity</string>
 
-    <!-- Bigmem Settings-->
+    <!-- Memory Settings-->
+	<string name="label_memory">Memory Management</string>
 	<string name="bigmem">Bigmem</string>
 	<string name="label_bigmem">Change Ram settings</string>
 	<string name="bigmem_default">Default</string>
 	<string name="bigmem_xl">about 395 mb</string>
 	<string name="bigmem_big">about 407 mb, breaks 720p</string>
 	<string name="bigmem_nocam">maximum ram, no cam at all</string>
+	<string name="label_zram">Change Zram settings</string>
+	<string name="label_swappiness">Change Swappiness settings</string>
+
 
     <!-- About Activity -->
     <string name="label_info">Info</string>
 
-    <string name="category_screen_title">Screen</string>
+    <string name="color_control">Color Control</string>
     <string name="color_tuning_title_head">Color Tuning</string>
     <string name="color_tuning_summary_head">Calibrate screen color</string>
     <string name="color_red_title">Red</string>

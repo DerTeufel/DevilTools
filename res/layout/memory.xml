@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res/mobi.cyann.deviltools" android:key="root" >
+
+	<PreferenceCategory
+	android:key="bigmem_category" >
+    	<ListPreference
+            custom:interfacePath="/sys/kernel/bigmem/enable"
+            android:key="@string/key_bigmem"
+            android:title="@string/label_bigmem"
+            android:entries="@array/bigmem_entries"
+            android:entryValues="@array/bigmem_values"
+            android:summary="@string/status_not_available" />
+	</PreferenceCategory>
+
+	<PreferenceCategory
+	android:key="zram_category" >
+    	<ListPreference
+            android:key="@string/key_zram"
+            android:title="@string/label_zram"
+            android:entries="@array/zram_entries"
+            android:entryValues="@array/zram_values"
+            android:summary="@string/status_not_available" />
+	</PreferenceCategory>
+
+    <mobi.cyann.deviltools.preference.RemovablePreferenceCategory >
+    <mobi.cyann.deviltools.preference.IntegerPreference
+            android:key="@string/key_swappiness"
+            custom:interfacePath="/proc/sys/vm/swappiness"
+            custom:maxValue="100"
+            custom:minValue="0"
+            custom:metrics="%"
+            custom:step="1"
+            android:summary="0"
+        android:title="@string/label_swappiness" />
+   </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
+
+</PreferenceScreen>

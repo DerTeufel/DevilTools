@@ -242,8 +242,13 @@
 
 
 
-
+	<!-- Memory Management -->
 	<string name="key_bigmem">key_bigmem</string>
+	<string name="key_zram">key_zram</string>
+	<string name="key_swappiness">key_swappiness</string>
+
+
+
 	<string name="key_voodoo_gamma_presets">key_voodoo_gamma_presets</string>
            
 	<string-array name="iosched_interfaces">
