@@ -70,37 +70,38 @@ public class MainActivity extends FragmentActivity {
 		tab2.setIndicator(getString(R.string.label_performance_tweak), res.getDrawable(R.drawable.ic_tab_performance));
 		tabsAdapter.addTab(tab2, PerformanceFragment.class, null);
 
-		TabSpec tab3 = tabHost.newTabSpec("volt");
-		tab3.setIndicator(getString(R.string.voltage_control), res.getDrawable(R.drawable.ic_tab_voltages));
-		tabsAdapter.addTab(tab3, VoltageControlFragment.class, null);
+		TabSpec tab3 = tabHost.newTabSpec("cpu");
+		tab3.setIndicator(getString(R.string.label_cpu_tweak), res.getDrawable(R.drawable.ic_tab_cpu));
+		tabsAdapter.addTab(tab3, CPUFragment.class, null);
 
-		TabSpec tab4 = tabHost.newTabSpec("memory");
-		tab4.setIndicator(getString(R.string.label_memory), res.getDrawable(R.drawable.ic_tab_memory));
-		tabsAdapter.addTab(tab4, MemoryFragment.class, null);
+		TabSpec tab4 = tabHost.newTabSpec("volt");
+		tab4.setIndicator(getString(R.string.voltage_control), res.getDrawable(R.drawable.ic_tab_voltages));
+		tabsAdapter.addTab(tab4, VoltageControlFragment.class, null);
 
-		TabSpec tab5 = tabHost.newTabSpec("chargingcontrol");
-		tab5.setIndicator(getString(R.string.label_battery_tweak), res.getDrawable(R.drawable.ic_tab_battery));
-		tabsAdapter.addTab(tab5, BatteryFragment.class, null);
+		TabSpec tab5 = tabHost.newTabSpec("memory");
+		tab5.setIndicator(getString(R.string.label_memory), res.getDrawable(R.drawable.ic_tab_memory));
+		tabsAdapter.addTab(tab5, MemoryFragment.class, null);
+
+		TabSpec tab6 = tabHost.newTabSpec("chargingcontrol");
+		tab6.setIndicator(getString(R.string.label_battery_tweak), res.getDrawable(R.drawable.ic_tab_battery));
+		tabsAdapter.addTab(tab6, BatteryFragment.class, null);
 		
-		/*TabSpec tab4 = tabHost.newTabSpec("cpu");
-		tab4.setIndicator(getString(R.string.label_cpu_tweak), res.getDrawable(R.drawable.ic_tab_cpu));
-		tabsAdapter.addTab(tab4, CPUFragment.class, null);*/
 		
-		TabSpec tab6 = tabHost.newTabSpec("color");
-		tab6.setIndicator(getString(R.string.color_control), res.getDrawable(R.drawable.ic_tab_color));
-		tabsAdapter.addTab(tab6, ColorSettings.class, null);
+		TabSpec tab7 = tabHost.newTabSpec("color");
+		tab7.setIndicator(getString(R.string.color_control), res.getDrawable(R.drawable.ic_tab_color));
+		tabsAdapter.addTab(tab7, ColorSettings.class, null);
 
-		TabSpec tab7 = tabHost.newTabSpec("audio");
-		tab7.setIndicator(getString(R.string.label_audio_tweak), res.getDrawable(R.drawable.ic_tab_audio));
-		tabsAdapter.addTab(tab7, AudioFragment.class, null);
+		TabSpec tab8 = tabHost.newTabSpec("audio");
+		tab8.setIndicator(getString(R.string.label_audio_tweak), res.getDrawable(R.drawable.ic_tab_audio));
+		tabsAdapter.addTab(tab8, AudioFragment.class, null);
 		
-		TabSpec tab8 = tabHost.newTabSpec("setting");
-		tab8.setIndicator(getString(R.string.label_setting), res.getDrawable(R.drawable.ic_tab_settings));
-		tabsAdapter.addTab(tab8, SettingFragment.class, null);
+		TabSpec tab9 = tabHost.newTabSpec("setting");
+		tab9.setIndicator(getString(R.string.label_setting), res.getDrawable(R.drawable.ic_tab_settings));
+		tabsAdapter.addTab(tab9, SettingFragment.class, null);
 
-		TabSpec tab9 = tabHost.newTabSpec("info");
-		tab9.setIndicator(getString(R.string.label_info), res.getDrawable(R.drawable.ic_tab_info));
-		tabsAdapter.addTab(tab9, InfoFragment.class, null);
+		TabSpec ta10 = tabHost.newTabSpec("info");
+		ta10.setIndicator(getString(R.string.label_info), res.getDrawable(R.drawable.ic_tab_info));
+		tabsAdapter.addTab(ta10, InfoFragment.class, null);
 
 		suggestedWidth = tabsAdapter.getSuggestedWidth();
        		// set the width of tab 

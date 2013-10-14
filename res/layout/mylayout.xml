@@ -5,7 +5,7 @@
 
     <TextView android:id="@+android:id/title"
         android:layout_width="wrap_content" 
-        android:layout_height="wrap_content"
+        android:layout_height="54px"
 	android:textColor="#FFFFFF"
 	android:paddingLeft="14dp"
         android:textSize="46px"/>  
