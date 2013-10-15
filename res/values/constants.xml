@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">DevilTools</string>
-    <string name="app_version">0.8.1</string>
+    <string name="app_version">0.9.0</string>
     
 	<string name="SETTINGS_DIR">/data/data/mobi.cyann.deviltools/settings/</string>
     <string name="SCRIPT_DIR">/data/data/mobi.cyann.deviltools/scripts/</string>
@@ -248,8 +248,15 @@
 	<string name="key_swappiness">key_swappiness</string>
 
 
-
+	<!-- Screen -->
+	<string name="key_master_sequence">key_master_sequence</string>
 	<string name="key_voodoo_gamma_presets">key_voodoo_gamma_presets</string>
+	<string name="key_hook_intercept">key_hook_intercept</string>
+	<string name="brightness_reduction">brightness_reduction</string>
+	<string name="brightness_takeover_point">brightness_takeover_point</string>
+	<string name="brightness_input_delta">brightness_input_delta</string>
+	<string name="key_fb_delay">key_fb_delay</string>
+
            
 	<string-array name="iosched_interfaces">
 	    <item>/sys/block/mtdblock4/queue/scheduler</item>

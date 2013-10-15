@@ -86,10 +86,9 @@ public class MainActivity extends FragmentActivity {
 		tab6.setIndicator(getString(R.string.label_battery_tweak), res.getDrawable(R.drawable.ic_tab_battery));
 		tabsAdapter.addTab(tab6, BatteryFragment.class, null);
 		
-		
-		TabSpec tab7 = tabHost.newTabSpec("color");
-		tab7.setIndicator(getString(R.string.color_control), res.getDrawable(R.drawable.ic_tab_color));
-		tabsAdapter.addTab(tab7, ColorSettings.class, null);
+		TabSpec tab7 = tabHost.newTabSpec("screen");
+		tab7.setIndicator(getString(R.string.screen_control), res.getDrawable(R.drawable.ic_tab_screen));
+		tabsAdapter.addTab(tab7, ScreenSettings.class, null);
 
 		TabSpec tab8 = tabHost.newTabSpec("audio");
 		tab8.setIndicator(getString(R.string.label_audio_tweak), res.getDrawable(R.drawable.ic_tab_audio));

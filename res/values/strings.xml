@@ -346,7 +346,14 @@
     <!-- About Activity -->
     <string name="label_info">Info</string>
 
-    <string name="color_control">Color Control</string>
+
+    <!-- Screen Control -->
+    <string name="screen_control">Screen Settings</string>
+    <string name="color_control">Color Settings</string>
+    <string name="color_calibration_category">Color Calibration</string>
+    <string name="color_calibration">Color Calibration</string>
+    <string name="label_master_sequence">Master Sequence</string>
+    <string name="voodoo_color_category">Color and Mdnie Control</string>
     <string name="color_tuning_title_head">Color Tuning</string>
     <string name="color_tuning_summary_head">Calibrate screen color</string>
     <string name="color_red_title">Red</string>
@@ -358,6 +365,14 @@
     <string name="mdnie_title_head">mDNIe Mode</string>
     <string name="mdnie_summary_head">Adjust mDNIe display post-processing</string>
     <string name="label_voodoo_gamma_presets">Voodoo Gamma Presets</string>
+    <string name="label_hook_intercept">Register intercept</string>
+    <string name="label_brightness_reduction">Brightness reduction</string>
+    <string name="label_brightness_takeover_point">Takeover point</string>
+    <string name="label_brightness_input_delta">Auto-brightness input delta</string>
+    <string name="label_fb_delay">Front buffer delay</string>
+    <string name="brightness_manipulation_category">Brightness</string>
+    <string name="brightness_manipulation">Digital brightness manipulation</string>
+
 
     <string name="button_reset_title">Reset</string>
 </resources>

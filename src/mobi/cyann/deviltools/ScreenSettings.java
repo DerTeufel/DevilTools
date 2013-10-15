@@ -30,9 +30,9 @@ import android.widget.TextView;
  * @DerTeufel1980
  *
  */
-public class ColorSettings extends BasePreferenceFragment implements OnPreferenceChangeListener {
-	public ColorSettings() {
-		super(R.layout.color);
+public class ScreenSettings extends BasePreferenceFragment implements OnPreferenceChangeListener {
+	public ScreenSettings() {
+		super(R.layout.screen);
 	}
 	
     	private ColorTuningPreference mColor;

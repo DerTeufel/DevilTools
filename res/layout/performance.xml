@@ -15,8 +15,7 @@
 	android:key="key_gpu_control_category" >
 	<PreferenceScreen
         android:key="key_gpu_control"
-        android:title="@string/gpu_control"
-	android:layout="@layout/mylayout" >
+        android:title="@string/gpu_control" >
 
     	    <PreferenceCategory android:title="@string/label_gpu_speed"
 	    android:key="gpu_speed_category" >

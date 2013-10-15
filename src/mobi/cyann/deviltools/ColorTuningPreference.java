@@ -257,7 +257,7 @@ public class ColorTuningPreference extends DialogPreference implements OnClickLi
 
         for (int i = 0; i < VOODOO_GAMMA_FILE_PATH.length; i++) {
             Utils.writeGamma(VOODOO_GAMMA_FILE_PATH[i], GAMMA_VALUE[selection][i]);
-	    ColorSettings.setPreferenceInteger(VOODOO_GAMMA_FILE_PATH[i], GAMMA_VALUE[selection][i] + 40);
+	    ScreenSettings.setPreferenceInteger(VOODOO_GAMMA_FILE_PATH[i], GAMMA_VALUE[selection][i] + 40);
         }
     }
 
@@ -298,7 +298,7 @@ public class ColorTuningPreference extends DialogPreference implements OnClickLi
         }
 
         public void save() {
-	ColorSettings.setPreferenceInteger(mFilePath, mSeekBar.getProgress());
+	ScreenSettings.setPreferenceInteger(mFilePath, mSeekBar.getProgress());
         }
 
         @Override

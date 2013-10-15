@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res/mobi.cyann.deviltools" android:key="root" >
+
+    <mobi.cyann.deviltools.preference.RemovablePreferenceCategory >
+    <mobi.cyann.deviltools.preference.IntegerPreference
+            android:key="@string/key_fb_delay"
+            custom:interfacePath="/sys/power/fb_delay"
+            custom:maxValue="500"
+            custom:minValue="0"
+            custom:step="10"
+            android:summary="0"
+	    custom:description="Adds a delay to early-suspend to continue drawing for x amount of milliseconds"
+            android:title="@string/label_fb_delay" />
+   </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
+
+    <PreferenceCategory android:title="@string/voodoo_color_category"
+	android:key="key_voodoo_color_category" >
+	<PreferenceScreen
+        android:key="key_voodoo_color"
+        android:title="@string/color_control" >
+	   	 <!-- Color tuning -->
+    		<mobi.cyann.deviltools.ColorTuningPreference 
+	        android:key="color_tuning"
+	        android:title="@string/color_tuning_title_head"
+	        android:summary="@string/color_tuning_summary_head" />
+
+    		<ListPreference
+            	android:key="@string/key_voodoo_gamma_presets"
+            	android:title="@string/label_voodoo_gamma_presets"
+            	android:entries="@array/voodoo_gamma_presets_entries"
+            	android:entryValues="@array/voodoo_gamma_presets_values"
+            	android:summary="@string/status_not_available" />
+
+	 	<!-- mDNIe Options -->
+	 	<ListPreference
+	        android:key="mdnie"
+	        android:title="@string/mdnie_title_head"
+	        android:summary="@string/mdnie_summary_head"
+	        android:entries="@array/mdnie_entries"
+	        android:entryValues="@array/mdnie_entries_values"
+	        android:defaultValue="6" />
+    	</PreferenceScreen>
+    </PreferenceCategory>
+
+
+    <PreferenceCategory android:title="@string/color_calibration_category"
+	android:key="key_color_calibration_category" >
+	<PreferenceScreen
+        android:key="key_color_calibration"
+        android:title="@string/color_calibration" >
+
+        <mobi.cyann.deviltools.preference.StatusPreference
+            custom:interfacePath="/sys/class/misc/mdnie/sequence_intercept"
+            android:key="@string/key_master_sequence"
+	    custom:description="Enabling the master sequence will disable and ignore Samsungs profiles and scenarios, the ROM controls will be disabled"
+            android:summary="@string/status_not_available"
+            android:title="@string/label_master_sequence" />
+
+        <mobi.cyann.deviltools.preference.StatusPreference
+            custom:interfacePath="/sys/class/misc/mdnie/hook_intercept"
+            android:key="@string/key_hook_intercept"
+	    custom:description="Register intercept acts like a hook and will enable catching scenario settings and modifying them through delta controls. If a scenario does not have a setting (register) in its base sequence, then it cannot be modified by the hook"
+            android:summary="@string/status_not_available"
+            android:title="@string/label_hook_intercept" />
+
+    	</PreferenceScreen>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/brightness_manipulation_category"
+	android:key="key_brightness_manipulation_category" >
+	<PreferenceScreen
+        android:key="key_brightness_manipulation"
+        android:title="@string/brightness_manipulation" >
+    <mobi.cyann.deviltools.preference.IntegerPreference
+            android:key="@string/brightness_reduction"
+            custom:interfacePath="/sys/class/misc/mdnie/brightness_reduction"
+            custom:maxValue="128"
+            custom:minValue="0"
+            custom:step="1"
+            android:summary="0"
+	    custom:description="The amount of luminance to be shaved off from the colour channel components."
+            android:title="@string/label_brightness_reduction" />
+
+    <mobi.cyann.deviltools.preference.IntegerPreference
+            android:key="@string/brightness_takeover_point"
+            custom:interfacePath="/sys/class/misc/mdnie/brightness_takeover_point"
+            custom:maxValue="64"
+            custom:minValue="0"
+            custom:step="1"
+            android:summary="0"
+	    custom:description="The stock backlight driver ignores brightness values below 20 (0-255) and values below that point do not have any effect on brightness. The takeover point is the point in the brightness curve where the digital brightness reduction takes effect. The brightness reduction is weighted linearly from full configured value to zero on the range of zero brigtness to the takeover point. If the takeover point is beyond 20, then both hardware and digital brightness reduction can take place. This can help with having a less abrupt brightness curve caused by the digital reduction."
+            android:title="@string/label_brightness_takeover_point" />
+
+    <mobi.cyann.deviltools.preference.IntegerPreference
+            android:key="@string/brightness_input_delta"
+            custom:interfacePath="/sys/class/misc/mdnie/brightness_input_delta"
+            custom:maxValue="64"
+            custom:minValue="0"
+            custom:step="1"
+            android:summary="0"
+	    custom:description="Positive delta to be applied on top system brightness. Used only for the digital reduction logic during stock ROM auto-brightness activation, can be used to brighten back up the reduction value by shifting the interpreted brightness value without sacrificing minimum brightness in manual mode."
+            android:title="@string/label_brightness_input_delta" />
+
+    	</PreferenceScreen>
+    </PreferenceCategory>
+
+
+</PreferenceScreen>
