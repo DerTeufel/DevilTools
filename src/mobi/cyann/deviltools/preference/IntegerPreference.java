@@ -9,6 +9,7 @@ import mobi.cyann.deviltools.SeekbarDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.TypedArray;
+import android.text.Html;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
@@ -54,20 +55,20 @@ public class IntegerPreference extends StatusPreference implements DialogInterfa
 		// Sync the summary view
         TextView summaryView = (TextView) view.findViewById(android.R.id.summary);
         if (summaryView != null) {
+		summaryView.setMaxLines(15);
         	if(value < 0) {
         		summaryView.setText(R.string.status_not_available);
         	}else if(metrics != null) {
 			if(description != null)
-        		summaryView.setText(description + "\n" + value + " " + metrics);
+        		summaryView.setText(Html.fromHtml("<i>" + description + "</i><br/>" + value + " " + metrics));
 			else
         		summaryView.setText(value + " " + metrics);
         	}else {
 			if(description != null)
-        		summaryView.setText(description + "\n" + value);
+        		summaryView.setText(Html.fromHtml("<i>" + description + "</i><br/>" + value));
 			else
         		summaryView.setText(String.valueOf(value));
         	}
-	/*summaryView.setTypeface(null, Typeface.BOLD);*/
         }
 	}
 	

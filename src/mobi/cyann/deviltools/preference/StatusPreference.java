@@ -8,6 +8,7 @@ import mobi.cyann.deviltools.PreloadValues;
 import mobi.cyann.deviltools.R;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.text.Html;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -49,16 +50,17 @@ public class StatusPreference extends BasePreference<Integer> {
 		// Sync the summary view
         TextView summaryView = (TextView) view.findViewById(android.R.id.summary);
         if (summaryView != null) {
+		summaryView.setMaxLines(15);
         	if(value == 0) {
 			if(description != null)
-        		summaryView.setText(description + "\n" + "Current status: Disabled");
+        		summaryView.setText(Html.fromHtml("<i>" + description + "</i><br/>" + "Current status: Disabled"));
 			else if (status_off != null)
 			summaryView.setText(status_off);
 			else
         		summaryView.setText(R.string.status_off);
         	}else if(value == 1) {
 			if(description != null)
-        		summaryView.setText(description + "\n" + "Current status: Enabled");
+        		summaryView.setText(Html.fromHtml("<i>" + description + "</i><br/>" + "Current status: Enabled"));
 			else if (status_on != null)
 			summaryView.setText(status_on);
 			else
