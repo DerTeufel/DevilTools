@@ -98,7 +98,7 @@ public class MemoryFragment extends BasePreferenceFragment implements OnPreferen
 	} else {
         mZram.setOnPreferenceChangeListener(this);
 	String zramPercent = preferences.getString("key_zram", "0");
-        mZram.setSummary(zramPercent + " Percent of total availbale Ram");
+        mZram.setSummary(zramPercent + "%% of total availbale Ram are used for compressed Memory" + "\n" + "This is equivalent to " + String.valueOf(totalZramSize(zramPercent)) + " MB");
 
 	String command = zramCommand(zramPercent);
 	sc.suRun(command);
@@ -118,7 +118,7 @@ public class MemoryFragment extends BasePreferenceFragment implements OnPreferen
         } else if (preference == mZram) {
             String zramPercent = ((String) objValue);
             index = mZram.findIndexOfValue((String) objValue);
-            mZram.setSummary(zramPercent + " Percent of total availbale Ram");
+            mZram.setSummary(zramPercent + "%% of total availbale Ram are used for compressed Memory" + "\n" + "This is equivalent to " + String.valueOf(totalZramSize(zramPercent)) + " MB");
 	    setPreferenceString(getString(R.string.key_zram), zramPercent);
 	    String command = zramCommand(zramPercent);
 	    sc.suRun(command);
@@ -148,6 +148,16 @@ public class MemoryFragment extends BasePreferenceFragment implements OnPreferen
         }
 	return count;
     }
+
+    private long totalZramSize(String percent) {
+	String zramPercent = percent;
+        MemoryInfo mi = new MemoryInfo();
+        ActivityManager activityManager = (ActivityManager) getActivity().getSystemService(Context.ACTIVITY_SERVICE);
+        activityManager.getMemoryInfo(mi);
+	long totalzramSize = (mi.totalMem / 100) * Integer.parseInt(zramPercent) / 1048576L;
+	return totalzramSize;
+    }
+
 
     private String zramCommand(String percent) {
 	int num_devices = zram_num_devices();
