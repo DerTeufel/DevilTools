@@ -42,21 +42,21 @@ public class MemoryFragment extends BasePreferenceFragment implements OnPreferen
 	private static SharedPreferences preferences;
 
     	private static final String BIGMEM_FILE_PATH = "/sys/kernel/bigmem/enable";
-    	private static final String[] ZRAM_FILE_SIZE_PATH = new String[] {
+    	public static final String[] ZRAM_FILE_SIZE_PATH = new String[] {
     	"/sys/block/zram0/disksize",
     	"/sys/block/zram1/disksize",
     	"/sys/block/zram2/disksize",
     	"/sys/block/zram3/disksize",
 	};
 
-    	private static final String[] ZRAM_FILE_RESET_PATH = new String[] {
+    	public static final String[] ZRAM_FILE_RESET_PATH = new String[] {
     	"/sys/block/zram0/reset",
     	"/sys/block/zram1/reset",
     	"/sys/block/zram2/reset",
     	"/sys/block/zram3/reset",
 	};
 
-    	private static final String[] ZRAM_FILE_PATH = new String[] {
+    	public static final String[] ZRAM_FILE_PATH = new String[] {
     	"/dev/block/zram0",
     	"/dev/block/zram1",
     	"/dev/block/zram2",
@@ -127,19 +127,19 @@ public class MemoryFragment extends BasePreferenceFragment implements OnPreferen
         return false;
     }
 
-    public static void setPreferenceString(String key, String value) {
+    private static void setPreferenceString(String key, String value) {
 	Editor ed = preferences.edit();
 	ed.putString(key, value);
 	ed.commit();
     }
 
-    public static void setPreferenceInteger(String key, int value) {
+    private static void setPreferenceInteger(String key, int value) {
 	Editor ed = preferences.edit();
 	ed.putInt(key, value);
 	ed.commit();
     }
 
-    private static int zram_num_devices() {
+    public static int zram_num_devices() {
         int count = 0;
         for (String filePath : ZRAM_FILE_SIZE_PATH) {
             if (Utils.fileExists(filePath)) {
@@ -166,6 +166,7 @@ public class MemoryFragment extends BasePreferenceFragment implements OnPreferen
         ActivityManager activityManager = (ActivityManager) getActivity().getSystemService(Context.ACTIVITY_SERVICE);
         activityManager.getMemoryInfo(mi);
 	long zramSize = (mi.totalMem / num_devices / 100) * Integer.parseInt(zramPercent);
+	setPreferenceString("zramSize", String.valueOf(zramSize));
 	StringBuilder command = new StringBuilder();
         for (int i = 0; i < num_devices; i++) {
 		command.append("swapoff " + ZRAM_FILE_PATH[i] + "\n");

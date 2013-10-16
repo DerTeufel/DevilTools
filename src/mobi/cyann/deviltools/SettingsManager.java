@@ -181,6 +181,12 @@ public class SettingsManager {
 			command.append("echo " + value + " > " + "/sys/class/misc/deepidle/enabled\n");
 		}
 
+		// Idle Mode
+		value = preferences.getInt(c.getString(R.string.key_idle_mode), -1000);
+		if(value > -1000) {
+			command.append("echo " + value + " > " + "/sys/module/cpuidle_exynos4/parameters/enable_mask\n");
+		}
+
 		// Smooth Ui
 		value = preferences.getInt(c.getString(R.string.key_smooth_ui_enabled), -1000);
 		if(value > -1000) {
@@ -191,6 +197,47 @@ public class SettingsManager {
 		value = preferences.getInt(c.getString(R.string.key_dyn_fsync), -1000);
 		if(value > -1000) {
 			command.append("echo " + value + " > " + "/sys/kernel/dyn_fsync/Dyn_fsync_active\n");
+		}
+
+		// led control
+		value = preferences.getInt(c.getString(R.string.key_led_fade), -1000);
+		if(value > -1000) {
+			command.append("echo " + value + " > " + "/sys/class/sec/led/led_fade\n");
+		}
+		value = preferences.getInt(c.getString(R.string.key_led_intensity), -1000);
+		if(value > -1000) {
+			command.append("echo " + value + " > " + "/sys/class/sec/led/led_intensity\n");
+		}
+		value = preferences.getInt(c.getString(R.string.key_led_speed), -1000);
+		if(value > -1000) {
+			command.append("echo " + value + " > " + "/sys/class/sec/led/led_speed\n");
+		}
+		value = preferences.getInt(c.getString(R.string.key_led_slope_up_1), -1000);
+		if(value > -1000) {
+			command.append("echo " + value + " > " + "/sys/class/sec/led/led_slope_up_1\n");
+		}
+		value = preferences.getInt(c.getString(R.string.key_led_slope_up_2), -1000);
+		if(value > -1000) {
+			command.append("echo " + value + " > " + "/sys/class/sec/led/led_slope_up_2\n");
+		}
+		value = preferences.getInt(c.getString(R.string.key_led_slope_down_1), -1000);
+		if(value > -1000) {
+			command.append("echo " + value + " > " + "/sys/class/sec/led/led_slope_down_1\n");
+		}
+		value = preferences.getInt(c.getString(R.string.key_led_slope_down_2), -1000);
+		if(value > -1000) {
+			command.append("echo " + value + " > " + "/sys/class/sec/led/led_slope_down_2\n");
+		}
+
+
+		// backlight control
+		value = preferences.getInt(c.getString(R.string.key_touch_led_handling), -1000);
+		if(value > -1000) {
+			command.append("echo " + value + " > " + "/sys/class/sec/sec_touchkey/touch_led_handling\n");
+		}
+		value = preferences.getInt(c.getString(R.string.key_touch_led_on_screen_touch), -1000);
+		if(value > -1000) {
+			command.append("echo " + value + " > " + "/sys/class/sec/sec_touchkey/touch_led_on_screen_touch\n");
 		}
 
 		// vibrator
@@ -925,6 +972,57 @@ public class SettingsManager {
 		value = preferences.getInt(c.getString(R.string.key_touch_led_on_screen_touch), -1000);
 		if(value > -1000) {
 			command.append("echo " + value + " > " + "/sys/class/sec/sec_touchkey/touch_led_on_screen_touch\n");
+		}
+
+		// Screen
+
+		value = preferences.getInt(c.getString(R.string.key_fb_delay), -1000);
+		if(value > -1000) {
+			command.append("echo " + value + " > " + "/sys/power/fb_delay\n");
+		}
+
+		value = preferences.getInt(c.getString(R.string.key_master_sequence), -1000);
+		if(value > -1000) {
+			command.append("echo " + value + " > " + "/sys/class/misc/mdnie/sequence_intercept\n");
+		}
+		value = preferences.getInt(c.getString(R.string.key_hook_intercept), -1000);
+		if(value > -1000) {
+			command.append("echo " + value + " > " + "/sys/class/misc/mdnie/hook_intercept\n");
+		}
+		value = preferences.getInt(c.getString(R.string.brightness_reduction), -1000);
+		if(value > -1000) {
+			command.append("echo " + value + " > " + "/sys/class/misc/mdnie/brightness_reduction\n");
+		}
+		value = preferences.getInt(c.getString(R.string.brightness_takeover_point), -1000);
+		if(value > -1000) {
+			command.append("echo " + value + " > " + "/sys/class/misc/mdnie/brightness_takeover_point\n");
+		}
+		value = preferences.getInt(c.getString(R.string.brightness_input_delta), -1000);
+		if(value > -1000) {
+			command.append("echo " + value + " > " + "/sys/class/misc/mdnie/brightness_input_delta\n");
+		}
+
+
+		//Memory
+		String zramSize = preferences.getString("zramSize", "-1000");
+		if(!zramSize.equals("-1000")) {
+        	    for (int i = 0; i < MemoryFragment.zram_num_devices(); i++) {
+		    command.append("swapoff " + 
+			MemoryFragment.ZRAM_FILE_PATH[i] + "\n");
+		    command.append("echo " + 1 + " > " +
+			MemoryFragment.ZRAM_FILE_RESET_PATH[i] + "\n");
+		    command.append("echo " + String.valueOf(zramSize) + " > " + 
+			MemoryFragment.ZRAM_FILE_SIZE_PATH[i] + "\n");
+		    command.append("mkswap " + MemoryFragment.ZRAM_FILE_PATH[i] + 
+			"\n");
+		    command.append("swapon " + MemoryFragment.ZRAM_FILE_PATH[i] + 
+			"\n");
+        	    }
+		}
+
+		value = preferences.getInt(c.getString(R.string.key_swappiness), -1000);
+		if(value > -1000) {
+			command.append("echo " + value + " > " + "/proc/sys/vm/swappiness\n");
 		}
 
 
