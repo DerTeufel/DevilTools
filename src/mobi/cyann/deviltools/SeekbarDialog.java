@@ -69,7 +69,7 @@ public class SeekbarDialog extends AlertDialog implements OnSeekBarChangeListene
 		seekbar.setOnSeekBarChangeListener(this);
 
 		editValue = (EditText)customView.findViewById(R.id.editValue);
-		editValue.setOnKeyListener(new View.OnKeyListener() {
+		/*editValue.setOnKeyListener(new View.OnKeyListener() {
 			@Override
 			public boolean onKey(View v, int keyCode, KeyEvent event) {
 				String val = editValue.getText().toString();
@@ -87,21 +87,21 @@ public class SeekbarDialog extends AlertDialog implements OnSeekBarChangeListene
 				}
 				return false;
 			}
-		});
+		});*/
 		
 		// set onclick to text (show soft keyboard)
 		textValue = (TextView)customView.findViewById(R.id.textValue);
-		textValue.setOnClickListener(new View.OnClickListener() {
+		/*textValue.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) { // open EditText
-				editValue.setText(String.valueOf(value));
+				editValue.setText(String.valueOf(value-shift));
 				editValue.setVisibility(View.VISIBLE);
 				textValue.setVisibility(View.GONE);
 				editValue.requestFocus();
 				
 				inputMethodManager.showSoftInput(editValue, InputMethodManager.SHOW_FORCED);
 			}
-		});
+		});*/
 
 		// set on click to '-' button
 		customView.findViewById(R.id.valueMin).setOnClickListener(this);
@@ -123,11 +123,11 @@ public class SeekbarDialog extends AlertDialog implements OnSeekBarChangeListene
 		resetValues();
 	}
 	
-	private void closeEditText() {
+	/*private void closeEditText() {
 		inputMethodManager.hideSoftInputFromWindow(editValue.getWindowToken(), 0);
 		editValue.setVisibility(View.GONE);
 		textValue.setVisibility(View.VISIBLE);
-	}
+	}*/
 	
 	private void resetValues() {
 		int seekbarValue = (value - min) / step;
@@ -239,7 +239,7 @@ public class SeekbarDialog extends AlertDialog implements OnSeekBarChangeListene
 
 	@Override
 	public void dismiss() {
-		closeEditText();
+		//closeEditText();
 		super.dismiss();
 	}
 	
