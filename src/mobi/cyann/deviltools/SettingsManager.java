@@ -1001,6 +1001,14 @@ public class SettingsManager {
 		if(value > -1000) {
 			command.append("echo " + value + " > " + "/sys/class/misc/mdnie/brightness_input_delta\n");
 		}
+		value = preferences.getInt(c.getString(R.string.key_white_color_master), -1000);
+		if(value > -1000) {
+			command.append("echo " + value + " > " + "/sys/class/misc/mdnie/hook_control/s_MCM\n");
+		}
+		value = preferences.getInt(c.getString(R.string.white_color_temperature), -1000);
+		if(value > -1000) {
+			command.append("echo " + value + " > " + "/sys/class/misc/mdnie/hook_control/mcm_temperature\n");
+		}
 
 
 		//Memory

@@ -372,6 +372,10 @@
     <string name="label_fb_delay">Front buffer delay</string>
     <string name="brightness_manipulation_category">Brightness</string>
     <string name="brightness_manipulation">Digital brightness manipulation</string>
+    <string name="white_color_category">White colour temperature</string>
+    <string name="white_color">Change white colour temperature</string>
+    <string name="label_white_color_master">Colour temperature master switch</string>
+    <string name="label_white_color_temperature">Colour temperature</string>
 
 
     <string name="button_reset_title">Reset</string>

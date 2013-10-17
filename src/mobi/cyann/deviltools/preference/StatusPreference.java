@@ -21,6 +21,7 @@ import android.widget.TextView;
 public class StatusPreference extends BasePreference<Integer> {
 	private final static String LOG_TAG = "DevilTools.StatusPreference";
 	protected int value = -1;
+	private int shift = 0;
 	private String description;
 	private String status_on;
 	private String status_off;
@@ -30,6 +31,7 @@ public class StatusPreference extends BasePreference<Integer> {
 
 		TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.mobi_cyann_deviltools_preference_IntegerPreference, defStyle, 0);
 		description = a.getString(R.styleable.mobi_cyann_deviltools_preference_IntegerPreference_description);
+		shift = a.getInt(R.styleable.mobi_cyann_deviltools_preference_IntegerPreference_shift, 0);
 		status_on = a.getString(R.styleable.mobi_cyann_deviltools_preference_IntegerPreference_status_on);
 		status_off = a.getString(R.styleable.mobi_cyann_deviltools_preference_IntegerPreference_status_off);
 		a.recycle();
@@ -73,15 +75,14 @@ public class StatusPreference extends BasePreference<Integer> {
 
 	@Override
 	protected void writeValue(Integer newValue, boolean writeInterface) {
-		if(writeInterface && value > -1 && newValue != value) {
-			writeToInterface(String.valueOf(newValue));
+		if(writeInterface && value + shift > -1 && newValue - shift != value) {
+			writeToInterface(String.valueOf(newValue - shift));
 			// re-read from interface (to detect error)
 			newValue = readValue();
 		}
 		if(newValue != value) {
 			value = newValue;
 			persistInt(newValue);
-			
 			notifyDependencyChange(shouldDisableDependents());
             notifyChanged();
 		}
@@ -113,7 +114,7 @@ public class StatusPreference extends BasePreference<Integer> {
 	
 	@Override
 	public boolean isEnabled() {
-		return (value > -1) && super.isEnabled();
+		return (value + shift > -1) && super.isEnabled();
 	}
 
 	@Override
@@ -141,6 +142,10 @@ public class StatusPreference extends BasePreference<Integer> {
     		value = getPersistedInt(-1);
     	}
 		writeValue(readPreloadValue(), false);
+
+		if (shift != 0) {
+		Log.d(LOG_TAG, "onSetInitialValue:" + value);
+		}
     }
     
 	@Override
@@ -154,6 +159,10 @@ public class StatusPreference extends BasePreference<Integer> {
 	
 	public void setValue(int value) {
 		this.value = value;
+	}
+
+	public void setShift(int shift) {
+		this.shift = shift;
 	}
 
 	public String getDescription() {
@@ -182,6 +191,6 @@ public class StatusPreference extends BasePreference<Integer> {
 	
 	@Override
 	public boolean isAvailable() {
-		return value > -1;
+		return value + shift > -1;
 	}
 }

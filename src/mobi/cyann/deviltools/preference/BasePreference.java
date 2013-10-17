@@ -41,6 +41,7 @@ public abstract class BasePreference<T> extends Preference {
 	protected abstract T readValue();
 	protected abstract void writeValue(T newValue, boolean writeInterface);
 	public abstract boolean isAvailable();
+	private int shift = 0;
 	
 	private static View blankView;
 	
@@ -52,6 +53,7 @@ public abstract class BasePreference<T> extends Preference {
 		TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.mobi_cyann_deviltools_preference_BasePreference, defStyle, 0);
 		reloadOnResume = a.getBoolean(R.styleable.mobi_cyann_deviltools_preference_BasePreference_reloadOnResume, false);
 		interfacePath = a.getString(R.styleable.mobi_cyann_deviltools_preference_BasePreference_interfacePath);
+		shift = a.getInt(R.styleable.mobi_cyann_deviltools_preference_IntegerPreference_shift, 0);
 		dependencyType = a.getInt(R.styleable.mobi_cyann_deviltools_preference_BasePreference_dependencyType, 0);
 		a.recycle();
 		
@@ -86,6 +88,10 @@ public abstract class BasePreference<T> extends Preference {
 	public boolean isVisible() {
 		return visible;
 	}
+
+	public void setShift(int shift) {
+		this.shift = shift;
+	}
 	
 	protected String readFromInterface() {
 		String ret = null;
@@ -94,7 +100,12 @@ public abstract class BasePreference<T> extends Preference {
 			SysCommand sc = SysCommand.getInstance();
 			int n = sc.readSysfs(interfacePath); 
 			if(n > 0) {
-				ret = sc.getLastResult(0); 
+				ret = sc.getLastResult(0);
+			    if (ret.contains("delta") || ret.contains("override")) {
+				String[] splitResult = ret.split(" "); // –> splitten an den Leerzeichen
+				ret = splitResult[1];
+			    }
+
 				Log.d(LOG_TAG, "ROK:" + ret);
 			}else if(n < 0) {
 				Log.e(LOG_TAG, "RER:" + sc.getLastError(0));

@@ -11,6 +11,7 @@ import android.content.DialogInterface;
 import android.content.res.TypedArray;
 import android.text.Html;
 import android.util.AttributeSet;
+
 import android.view.View;
 import android.widget.TextView;
 /*import android.graphics.Typeface;*/
@@ -23,7 +24,7 @@ public class IntegerPreference extends StatusPreference implements DialogInterfa
 	//private final static String LOG_TAG = "DevilTools.IntegerPreference";
 	
 	private Context context;
-	private int minValue, maxValue, step;
+	private int minValue, maxValue, step, shift;
 	private String metrics;
 	private String description;
 	
@@ -34,6 +35,7 @@ public class IntegerPreference extends StatusPreference implements DialogInterfa
 		minValue = a.getInt(R.styleable.mobi_cyann_deviltools_preference_IntegerPreference_minValue, 0);
 		maxValue = a.getInt(R.styleable.mobi_cyann_deviltools_preference_IntegerPreference_maxValue, 100);
 		step = a.getInt(R.styleable.mobi_cyann_deviltools_preference_IntegerPreference_step, 1);
+		shift = a.getInt(R.styleable.mobi_cyann_deviltools_preference_IntegerPreference_shift, 0);
 		metrics = a.getString(R.styleable.mobi_cyann_deviltools_preference_IntegerPreference_metrics);
 		description = a.getString(R.styleable.mobi_cyann_deviltools_preference_IntegerPreference_description);
 		a.recycle();
@@ -56,7 +58,7 @@ public class IntegerPreference extends StatusPreference implements DialogInterfa
         TextView summaryView = (TextView) view.findViewById(android.R.id.summary);
         if (summaryView != null) {
 		summaryView.setMaxLines(15);
-        	if(value < 0) {
+        	if(value < -shift) {
         		summaryView.setText(R.string.status_not_available);
         	}else if(metrics != null) {
 			if(description != null)
@@ -78,13 +80,12 @@ public class IntegerPreference extends StatusPreference implements DialogInterfa
 		
 		dialog.setMin(minValue);
 		dialog.setMax(maxValue);
+		dialog.setShift(shift);
 		dialog.setStep(step);
 		dialog.setTitle(getTitle());
 		dialog.setMetrics(metrics);
 		dialog.setDescription(description);
-
-		
-		dialog.setValue(value);
+		dialog.setValue(value + shift);
 		dialog.show();
 	}
 	
@@ -113,6 +114,10 @@ public class IntegerPreference extends StatusPreference implements DialogInterfa
 	
 	public void setMaxValue(int maxValue) {
 		this.maxValue = maxValue;
+	}
+	
+	public void setShift(int shift) {
+		this.shift = shift;
 	}
 	
 	public void setStep(int step) {

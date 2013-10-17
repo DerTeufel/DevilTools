@@ -105,5 +105,31 @@
     	</PreferenceScreen>
     </PreferenceCategory>
 
+    <PreferenceCategory android:title="@string/white_color_category"
+	android:key="key_white_color_category" >
+	<PreferenceScreen
+        android:key="key_white_color"
+        android:title="@string/white_color" >
+        <mobi.cyann.deviltools.preference.StatusPreference
+            custom:interfacePath="/sys/class/misc/mdnie/hook_control/s_MCM"
+            android:key="@string/key_white_color_master"
+	    custom:description="Toggle colour temperature control"
+            android:summary="@string/status_not_available"
+            android:title="@string/label_white_color_master" />
+
+    <mobi.cyann.deviltools.preference.IntegerPreference
+            android:key="@string/white_color_temperature"
+            custom:interfacePath="/sys/class/misc/mdnie/hook_control/mcm_temperature"
+            custom:maxValue="132"
+            custom:minValue="0"
+            custom:shift="100"
+            custom:step="1"
+            android:summary="0"
+	    custom:description="Starting point is 6500K."
+            android:title="@string/label_white_color_temperature" />
+
+    	</PreferenceScreen>
+    </PreferenceCategory>
+
 
 </PreferenceScreen>

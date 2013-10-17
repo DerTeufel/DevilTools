@@ -256,7 +256,8 @@
 	<string name="brightness_takeover_point">brightness_takeover_point</string>
 	<string name="brightness_input_delta">brightness_input_delta</string>
 	<string name="key_fb_delay">key_fb_delay</string>
-
+	<string name="key_white_color_master">key_white_color_master</string>
+	<string name="white_color_temperature">white_color_temperature</string>
            
 	<string-array name="iosched_interfaces">
 	    <item>/sys/block/mtdblock4/queue/scheduler</item>

@@ -21,6 +21,7 @@ import android.widget.TextView;
  *
  */
 public class SeekbarDialog extends AlertDialog implements OnSeekBarChangeListener, View.OnClickListener {
+	private final static String LOG_TAG = "DevilTools.SeekbarDialog";
 	private SeekBar seekbar;
 	private TextView textValue;
 	private EditText editValue;
@@ -30,6 +31,7 @@ public class SeekbarDialog extends AlertDialog implements OnSeekBarChangeListene
 	private int max;
 	private int step;
 	private int value;
+	private int shift;
 	private String metrics;
 	private String description;
 	
@@ -45,6 +47,7 @@ public class SeekbarDialog extends AlertDialog implements OnSeekBarChangeListene
 		cancelButtonListener = cancel;
 		min = 0;
 		max = 100;
+		shift = 0;
 		step = 1;
 		value = 0;
 		
@@ -133,9 +136,9 @@ public class SeekbarDialog extends AlertDialog implements OnSeekBarChangeListene
 			seekbar.setMax(seekbarMax);
 			seekbar.setProgress(seekbarValue);
         		if(metrics != null) {
-        			textValue.setText(value + " " + metrics);
+        			textValue.setText(value - shift + " " + metrics);
         		}else {
-        			textValue.setText(String.valueOf(value));
+        			textValue.setText(String.valueOf(value - shift));
         		}
 
 		}
@@ -200,17 +203,26 @@ public class SeekbarDialog extends AlertDialog implements OnSeekBarChangeListene
 		this.max = max;
 		resetValues();
 	}
+
+	public int getShift() {
+		return shift;
+	}
+
+	public void setShift(int shift) {
+		this.shift = shift;
+		resetValues();
+	}
 	
 	@Override
 	public void onProgressChanged(SeekBar seekBar, int progress,
 			boolean fromUser) {
 
 		value = progress * step + min;
-
+		int newvalue = value - shift;
         	if(metrics != null) {
-        		textValue.setText(value + " " + metrics);
+        		textValue.setText(newvalue + " " + metrics);
         	}else {
-        		textValue.setText(String.valueOf(value));
+        		textValue.setText(String.valueOf(newvalue));
         	}
 
 	}
