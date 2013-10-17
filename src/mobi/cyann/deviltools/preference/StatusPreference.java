@@ -142,10 +142,6 @@ public class StatusPreference extends BasePreference<Integer> {
     		value = getPersistedInt(-1);
     	}
 		writeValue(readPreloadValue(), false);
-
-		if (shift != 0) {
-		Log.d(LOG_TAG, "onSetInitialValue:" + value);
-		}
     }
     
 	@Override

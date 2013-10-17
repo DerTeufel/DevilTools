@@ -101,11 +101,19 @@ public abstract class BasePreference<T> extends Preference {
 			int n = sc.readSysfs(interfacePath); 
 			if(n > 0) {
 				ret = sc.getLastResult(0);
-			    if (ret.contains("delta") || ret.contains("override")) {
+			    /*if (ret.contains("delta") || ret.contains("override")) {
 				String[] splitResult = ret.split(" "); // –> splitten an den Leerzeichen
 				ret = splitResult[1];
-			    }
-
+			    }*/
+			String[] splitResult = ret.split(" ");
+			for (int i = 0; i < 4; i++) {
+			    try {
+			    int tmpret = Integer.parseInt(splitResult[i]);
+			    ret = String.valueOf(tmpret);
+			    } catch (NumberFormatException ex){
+			    } catch (ArrayIndexOutOfBoundsException sx){}
+			}
+			
 				Log.d(LOG_TAG, "ROK:" + ret);
 			}else if(n < 0) {
 				Log.e(LOG_TAG, "RER:" + sc.getLastError(0));
