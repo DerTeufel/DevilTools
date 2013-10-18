@@ -43,6 +43,22 @@ public class ScreenSettings extends BasePreferenceFragment implements OnPreferen
         private ContentResolver mContentResolver;
 	private static SharedPreferences preferences;
 
+    	public static final String[] ColorCalibrationPath = new String[] {
+	"/sys/class/misc/mdnie/hook_intercept",
+        "/sys/class/misc/mdnie/sequence_intercept"
+	};
+
+    	public static final String[] BrightnessManipulationPath = new String[] {
+        "/sys/class/misc/mdnie/brightness_reduction",
+        "/sys/class/misc/mdnie/brightness_takeover_point",
+        "/sys/class/misc/mdnie/brightness_input_delta"
+	};
+
+    	public static final String[] WhiteColorPath = new String[] {
+        "/sys/class/misc/mdnie/hook_control/s_MCM",
+        "/sys/class/misc/mdnie/hook_control/mcm_temperature"
+	};
+
 	@Override
     	public void onPreferenceAttached(PreferenceScreen rootPreference, int xmlId) {
 
@@ -53,6 +69,14 @@ public class ScreenSettings extends BasePreferenceFragment implements OnPreferen
 
     	final PreferenceCategory VoodooColorCategory =
             (PreferenceCategory) prefSet.findPreference("key_voodoo_color_category");
+    	final PreferenceCategory ColorCalibrationCategory =
+            (PreferenceCategory) prefSet.findPreference("key_color_calibration_category");
+    	final PreferenceCategory BrightnessManipulationCategory =
+            (PreferenceCategory) prefSet.findPreference("key_brightness_manipulation_category");
+    	final PreferenceCategory WhiteColorCategory =
+            (PreferenceCategory) prefSet.findPreference("key_white_color_category");
+
+
 	mVoodooColor = (PreferenceScreen) prefSet.findPreference("key_voodoo_color");
 
         mMdnie = (ListPreference) findPreference("mdnie");
@@ -74,6 +98,18 @@ public class ScreenSettings extends BasePreferenceFragment implements OnPreferen
         } else if (Mdnie.isSupported()) {
         mMdnie.setOnPreferenceChangeListener(new Mdnie());
         }
+
+	if(!IsSupported(ColorCalibrationPath)) {
+	    prefSet.removePreference(ColorCalibrationCategory);
+	}
+
+	if(!IsSupported(BrightnessManipulationPath)) {
+	    prefSet.removePreference(BrightnessManipulationCategory);
+	}
+
+	if(!IsSupported(WhiteColorPath)) {
+	    prefSet.removePreference(WhiteColorCategory);
+	}
 
 	super.onPreferenceAttached(rootPreference, xmlId);
     }
@@ -116,5 +152,15 @@ public class ScreenSettings extends BasePreferenceFragment implements OnPreferen
 	ed.putInt(key, value);
 	ed.commit();
     }
+
+    public static boolean IsSupported(String[] path) {
+        boolean exists = false;
+        for (String filePath : path) {
+            if (Utils.fileExists(filePath)) {
+                exists = true;
+            }
+        }
+	return exists;
+   }
 
 }
