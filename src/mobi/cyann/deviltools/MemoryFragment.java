@@ -90,18 +90,28 @@ public class MemoryFragment extends BasePreferenceFragment implements OnPreferen
 	}
 
         mZram = (ListPreference) findPreference("key_zram");
+ 	Preference button = (Preference)findPreference("zram_apply");
 	int num_devices = zram_num_devices();
 	if (num_devices < 1) {
             PreferenceCategory category = (PreferenceCategory) getPreferenceScreen().findPreference("zram_category");
             category.removePreference(mZram);
+            category.removePreference(button);
             getPreferenceScreen().removePreference(category);
 	} else {
         mZram.setOnPreferenceChangeListener(this);
-	String zramPercent = preferences.getString("key_zram", "0");
-        mZram.setSummary(zramPercent + "%% of total availbale Ram are used for compressed Memory" + "\n" + "This is equivalent to " + String.valueOf(totalZramSize(zramPercent)) + " MB");
+   	if(button != null) 
+   	{
+        button.setOnPreferenceClickListener(new Preference.
+		OnPreferenceClickListener() {
+                    @Override
+                    public boolean onPreferenceClick(Preference arg0) {
+                        zram_apply(true);   
+                        return true;
+                    }
+                });     
+    	}
 
-	//String command = zramCommand(zramPercent);
-	//sc.suRun(command);
+	zram_apply(false);
 	}
     }
 	
@@ -117,11 +127,8 @@ public class MemoryFragment extends BasePreferenceFragment implements OnPreferen
             return true;
         } else if (preference == mZram) {
             String zramPercent = ((String) objValue);
-            index = mZram.findIndexOfValue((String) objValue);
-            mZram.setSummary(zramPercent + "%% of total availbale Ram are used for compressed Memory" + "\n" + "This is equivalent to " + String.valueOf(totalZramSize(zramPercent)) + " MB");
 	    setPreferenceString(getString(R.string.key_zram), zramPercent);
-	    String command = zramCommand(zramPercent);
-	    sc.suRun(command);
+	    zram_apply(false);
             return true;
         }
         return false;
@@ -176,5 +183,15 @@ public class MemoryFragment extends BasePreferenceFragment implements OnPreferen
 		command.append("swapon " + ZRAM_FILE_PATH[i] + "\n");
         }
 	return command.toString();
+    }
+
+    private void zram_apply(boolean apply) {
+	SysCommand sc = SysCommand.getInstance();
+	String zramPercent = preferences.getString("key_zram", "0");
+        mZram.setSummary(zramPercent + "%% of total availbale Ram are going to be used for compressed Memory" + "\n" + "This is equivalent to " + String.valueOf(totalZramSize(zramPercent)) + " MB");
+	if (apply) {
+	String command = zramCommand(zramPercent);
+	sc.suRun(command);
+	}
     }
 }

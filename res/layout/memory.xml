@@ -14,7 +14,8 @@
 	</PreferenceCategory>
 
 	<PreferenceCategory
-	android:key="zram_category" >
+	android:key="zram_category"
+	android:title="Zram Settings" >
     	<ListPreference
             android:key="@string/key_zram"
             android:title="@string/label_zram"
@@ -22,9 +23,15 @@
             android:entryValues="@array/zram_values"
             android:summary="@string/status_not_available"
 	    android:layout="@layout/mylayout"/>
+
+     	<Preference 
+	    android:title="Click to apply zram settings"
+	    android:key="zram_apply"/>      
+
 	</PreferenceCategory>
 
-    <mobi.cyann.deviltools.preference.RemovablePreferenceCategory >
+    <mobi.cyann.deviltools.preference.RemovablePreferenceCategory
+	android:title="Swappiness Settings" >
     <mobi.cyann.deviltools.preference.IntegerPreference
             android:key="@string/key_swappiness"
             custom:interfacePath="/proc/sys/vm/swappiness"
@@ -33,6 +40,7 @@
             custom:metrics="%"
             custom:step="1"
             android:summary="0"
+	    custom:description="Swappiness should be set to 0, if zram/swap aren't used. A low value means the kernel will try to avoid swapping as much as possible where a higher value instead will make the kernel aggressively try to use swap space."
         android:title="@string/label_swappiness" />
    </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
 
