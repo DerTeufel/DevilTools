@@ -58,7 +58,7 @@ public class IntegerPreference extends StatusPreference implements DialogInterfa
         TextView summaryView = (TextView) view.findViewById(android.R.id.summary);
         if (summaryView != null) {
 		summaryView.setMaxLines(15);
-        	if(value < -shift) {
+        	if(value + shift < 0) {
         		summaryView.setText(R.string.status_not_available);
         	}else if(metrics != null) {
 			if(description != null)
