@@ -120,6 +120,11 @@ public class SeekbarDialog extends AlertDialog implements OnSeekBarChangeListene
 		}else {
 			value += step;
 		}
+		if(value < min) {
+			value = min;
+		}else if(value > max) {
+			value = max;
+		}
 		editValue.setText(String.valueOf(value));
 		resetValues();
 	}
