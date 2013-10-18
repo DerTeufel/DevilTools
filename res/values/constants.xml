@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">DevilTools</string>
-    <string name="app_version">0.9.3</string>
+    <string name="app_version">0.9.4</string>
     
 	<string name="SETTINGS_DIR">/data/data/mobi.cyann.deviltools/settings/</string>
 	<string name="PREFS_DIR">/data/data/mobi.cyann.deviltools/shared_prefs/</string>

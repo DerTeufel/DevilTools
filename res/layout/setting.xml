@@ -2,6 +2,10 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res/mobi.cyann.deviltools">
 
+     <Preference 
+	    android:title="Click to toggle Theme"
+	    android:key="theme_apply"/>     
+
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="@string/key_reboot_preference"

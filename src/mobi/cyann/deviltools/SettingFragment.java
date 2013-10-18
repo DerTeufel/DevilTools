@@ -7,9 +7,12 @@ package mobi.cyann.deviltools;
 import mobi.cyann.deviltools.PreferenceListFragment.OnPreferenceAttachedListener;
 import mobi.cyann.deviltools.services.ObserverService;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.preference.EditTextPreference;
 import android.preference.Preference;
 import android.preference.CheckBoxPreference;
+import android.preference.PreferenceManager;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceScreen;
@@ -73,6 +76,24 @@ public class SettingFragment extends PreferenceListFragment implements OnPrefere
 		   }
 		//Toast.makeText(getActivity(), String.valueOf(Integer.valueOf(sc.getLastResult(0)) > 0 ? true : false), Toast.LENGTH_LONG).show();
 		}
+
+ 	Preference button = (Preference)findPreference("theme_apply");
+   	if(button != null) 
+   	{
+        button.setOnPreferenceClickListener(new Preference.
+		OnPreferenceClickListener() {
+                    @Override
+                    public boolean onPreferenceClick(Preference arg0) {
+                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+                boolean darktheme = prefs.getBoolean("darktheme", false);
+                Editor edit = prefs.edit();
+                edit.putBoolean("darktheme", !darktheme);
+                edit.commit();
+		MainActivity.restart(getActivity());
+                        return true;
+                    }
+                });     
+    	}
 		
 	}
 

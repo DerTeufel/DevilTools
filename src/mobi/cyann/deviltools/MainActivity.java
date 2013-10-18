@@ -34,6 +34,10 @@ public class MainActivity extends FragmentActivity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+	SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean darktheme = pref.getBoolean("darktheme", false);
+        if (!darktheme)
+            setTheme(android.R.style.Theme_Holo_Light);
 		super.onCreate(savedInstanceState);
 		
 		// start our ObserverService
