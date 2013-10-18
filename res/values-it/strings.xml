@@ -98,7 +98,7 @@
 	<string name="dyn_fsync">Dynamic Fsync</string>
 	<string name="label_dyn_fsync">Dynamic Fsync</string>
 	<string name="vibration_intensity">Intensità Vibrazione</string>
-	<string name="label_vibration_intensity">Imposta l'intensità</string>
+	<string name="label_vibration_intensity">Imposta l\'intensità</string>
 
     <!-- Bigmem Settings-->
 	<string name="bigmem">Bigmem</string>
