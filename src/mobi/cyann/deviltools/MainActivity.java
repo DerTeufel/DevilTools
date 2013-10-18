@@ -63,43 +63,43 @@ public class MainActivity extends FragmentActivity {
 		Resources res = getResources();
 		
 		TabSpec tab1 = tabHost.newTabSpec("nstweak");
-		tab1.setIndicator(getString(R.string.ns_tweak), res.getDrawable(R.drawable.ic_tab_tweaks));
+		tab1.setIndicator(getString(R.string.ns_tweak));
 		tabsAdapter.addTab(tab1, NSTweakFragment.class, null);
 
 		TabSpec tab2 = tabHost.newTabSpec("performance");
-		tab2.setIndicator(getString(R.string.label_performance_tweak), res.getDrawable(R.drawable.ic_tab_performance));
+		tab2.setIndicator(getString(R.string.label_performance_tweak));
 		tabsAdapter.addTab(tab2, PerformanceFragment.class, null);
 
 		TabSpec tab3 = tabHost.newTabSpec("cpu");
-		tab3.setIndicator(getString(R.string.label_cpu_tweak), res.getDrawable(R.drawable.ic_tab_cpu));
+		tab3.setIndicator(getString(R.string.label_cpu_tweak));
 		tabsAdapter.addTab(tab3, CPUFragment.class, null);
 
 		TabSpec tab4 = tabHost.newTabSpec("volt");
-		tab4.setIndicator(getString(R.string.voltage_control), res.getDrawable(R.drawable.ic_tab_voltages));
+		tab4.setIndicator(getString(R.string.voltage_control));
 		tabsAdapter.addTab(tab4, VoltageControlFragment.class, null);
 
 		TabSpec tab5 = tabHost.newTabSpec("memory");
-		tab5.setIndicator(getString(R.string.label_memory), res.getDrawable(R.drawable.ic_tab_memory));
+		tab5.setIndicator(getString(R.string.label_memory));
 		tabsAdapter.addTab(tab5, MemoryFragment.class, null);
 
 		TabSpec tab6 = tabHost.newTabSpec("chargingcontrol");
-		tab6.setIndicator(getString(R.string.label_battery_tweak), res.getDrawable(R.drawable.ic_tab_battery));
+		tab6.setIndicator(getString(R.string.label_battery_tweak));
 		tabsAdapter.addTab(tab6, BatteryFragment.class, null);
 		
 		TabSpec tab7 = tabHost.newTabSpec("screen");
-		tab7.setIndicator(getString(R.string.screen_control), res.getDrawable(R.drawable.ic_tab_screen));
+		tab7.setIndicator(getString(R.string.screen_control));
 		tabsAdapter.addTab(tab7, ScreenSettings.class, null);
 
 		TabSpec tab8 = tabHost.newTabSpec("audio");
-		tab8.setIndicator(getString(R.string.label_audio_tweak), res.getDrawable(R.drawable.ic_tab_audio));
+		tab8.setIndicator(getString(R.string.label_audio_tweak));
 		tabsAdapter.addTab(tab8, AudioFragment.class, null);
 		
 		TabSpec tab9 = tabHost.newTabSpec("setting");
-		tab9.setIndicator(getString(R.string.label_setting), res.getDrawable(R.drawable.ic_tab_settings));
+		tab9.setIndicator(getString(R.string.label_setting));
 		tabsAdapter.addTab(tab9, SettingFragment.class, null);
 
 		TabSpec ta10 = tabHost.newTabSpec("info");
-		ta10.setIndicator(getString(R.string.label_info), res.getDrawable(R.drawable.ic_tab_info));
+		ta10.setIndicator(getString(R.string.label_info));
 		tabsAdapter.addTab(ta10, InfoFragment.class, null);
 
 		suggestedWidth = tabsAdapter.getSuggestedWidth();
@@ -171,14 +171,20 @@ public class MainActivity extends FragmentActivity {
 	private void extractScripts() {
 		String scriptDir = getString(R.string.SCRIPT_DIR);
 		String scriptVersion = getString(R.string.SCRIPT_VERSION);
+		String settingsDir = getString(R.string.SETTINGS_DIR);
+		String prefsDir = getString(R.string.PREFS_DIR);
 		
 		String scriptVersionTagFile = scriptDir + scriptVersion;
 		// first check script version (in the future we can change SCRIPT_VERSION constant to overwrite existing scripts)
 		if(!new File(scriptVersionTagFile).exists()) {
 			try {
 				SysCommand sc = SysCommand.getInstance();
+				int r = sc.suRun("rm", "-r", prefsDir);
+				if(r < 0) {
+					Log.e(LOG_TAG, sc.getLastError(0));
+				}
 				// clean old script dir
-				int r = sc.suRun("rm", "-r", scriptDir);
+				r = sc.suRun("rm", "-r", scriptDir);
 				if(r < 0) {
 					Log.e(LOG_TAG, sc.getLastError(0));
 				}
