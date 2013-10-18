@@ -100,8 +100,8 @@ public class MemoryFragment extends BasePreferenceFragment implements OnPreferen
 	String zramPercent = preferences.getString("key_zram", "0");
         mZram.setSummary(zramPercent + "%% of total availbale Ram are used for compressed Memory" + "\n" + "This is equivalent to " + String.valueOf(totalZramSize(zramPercent)) + " MB");
 
-	String command = zramCommand(zramPercent);
-	sc.suRun(command);
+	//String command = zramCommand(zramPercent);
+	//sc.suRun(command);
 	}
     }
 	
