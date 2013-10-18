@@ -78,7 +78,7 @@
     <string name="label_setting">Setting</string>
     <string name="label_reboot_preference">Which rom to boot next time</string>
     <string name="summaryOn_reboot_preference">Rebooting into secondary rom</string>
-    <string name="summaryOff_reboot_preference">Reebooting into primary rom</string>
+    <string name="summaryOff_reboot_preference">Rebooting into primary rom</string>
     <string name="label_restore_on_boot">Set on boot</string>
     <string name="summaryOn_restore_on_boot">Settings will persist across reboots</string>
     <string name="summaryOff_restore_on_boot">Reset to default settings on boot</string>
@@ -308,7 +308,7 @@
 	<string name="label_stereo_expansion_gain">3D Effect Gain Level</string>
 	<string name="label_headphone_eq">Use Graphical Eq</string>
 
-	<string name="eq_tuning_title_head">Equelizer Tuning</string>
+	<string name="eq_tuning_title_head">Equalizer Tuning</string>
 	<string name="eq_tuning_summary_head">Eq gain for band 1 to 5</string>
 	<string name="eq_b1_title">Band 1 gain</string>
 	<string name="eq_b2_title">Band 2 gain</string>
