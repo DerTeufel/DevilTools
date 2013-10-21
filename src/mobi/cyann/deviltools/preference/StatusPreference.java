@@ -90,7 +90,7 @@ public class StatusPreference extends BasePreference<Integer> {
 
 	@Override
 	protected Integer readValue() {
-		int ret = -1;
+		int ret = -1000;
 		String str = readFromInterface();
 		try {
 			ret = Integer.parseInt(str);

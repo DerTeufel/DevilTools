@@ -22,60 +22,42 @@ import android.view.View;
 import android.widget.TextView;
 
 
-public class AudioFragment extends BasePreferenceFragment implements OnPreferenceChangeListener {
+public class AudioFragment extends BasePreferenceFragment {
 	//private final static String LOG_TAG = "DevilTools.AudioActivity";
 	
 	public AudioFragment() {
 		super(R.layout.audio);
 	}
 
-        private ContentResolver mContentResolver;
-	private static SharedPreferences preferences;
+    public static final String[] SCOOBYDOO_EQ_KEY = new String[] {
+        "key_scoobydoo_sound_headphone_eq_b1_gain",
+        "key_scoobydoo_sound_headphone_eq_b2_gain",
+        "key_scoobydoo_sound_headphone_eq_b3_gain",
+        "key_scoobydoo_sound_headphone_eq_b4_gain",
+        "key_scoobydoo_sound_headphone_eq_b5_gain"
+    };
 
-    	private StatusPreference mHeadphoneEq;
-    	private EqTuningPreference mEq;
+    public static final String[] SCOOBYDOO_FILE_PATH = new String[] {
+        "/sys/devices/virtual/misc/scoobydoo_sound/headphone_eq_b1_gain",
+        "/sys/devices/virtual/misc/scoobydoo_sound/headphone_eq_b2_gain",
+        "/sys/devices/virtual/misc/scoobydoo_sound/headphone_eq_b3_gain",
+        "/sys/devices/virtual/misc/scoobydoo_sound/headphone_eq_b4_gain",
+        "/sys/devices/virtual/misc/scoobydoo_sound/headphone_eq_b5_gain"
+    };
 
-	@Override
-    	public void onCreate(Bundle savedInstanceState) {
-        	super.onCreate(savedInstanceState);
+    public static final String[] VOODOO_EQ_KEY = new String[] {
+        "key_voodoo_sound_headphone_eq_b1_gain",
+        "key_voodoo_sound_headphone_eq_b2_gain",
+        "key_voodoo_sound_headphone_eq_b3_gain",
+        "key_voodoo_sound_headphone_eq_b4_gain",
+        "key_voodoo_sound_headphone_eq_b5_gain"
+    };
 
-	preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-
-        PreferenceScreen prefSet = getPreferenceScreen();
-        mContentResolver = getActivity().getApplicationContext().getContentResolver();
-
-  	mHeadphoneEq = (StatusPreference) findPreference("key_headphone_eq");
-	if (mHeadphoneEq != null)
-	mHeadphoneEq.setOnPreferenceChangeListener(this);
-	int eq_enabled = preferences.getInt("key_headphone_eq", 0);
-	boolean is_enabled = false;
-	if (eq_enabled == 1)
-	is_enabled = true;
-
-  	mEq = (EqTuningPreference) findPreference("eq_tuning");
-	if (mEq != null) {
-	   if(EqTuningPreference.isSupported())
-        	mEq.setEnabled(is_enabled);
-	   else
-        	mEq.setEnabled(false);
-	}
-
-    }
-	
-    public boolean onPreferenceChange(Preference preference, Object objValue) {
-	int status;
-	boolean is_enabled;
-	if (preference == mHeadphoneEq) {
-	    status = (Integer) objValue;
-	    if(status == 1)
-	    	is_enabled = true;
-	    else
-	    	is_enabled = false;
-	    mEq.setEnabled(is_enabled);
-            return true;
-        }
-
-        return false;
-    }
-
+    public static final String[] VOODOO_FILE_PATH = new String[] {
+        "/sys/devices/virtual/misc/voodoo_sound/headphone_eq_b1_gain",
+        "/sys/devices/virtual/misc/voodoo_sound/headphone_eq_b2_gain",
+        "/sys/devices/virtual/misc/voodoo_sound/headphone_eq_b3_gain",
+        "/sys/devices/virtual/misc/voodoo_sound/headphone_eq_b4_gain",
+        "/sys/devices/virtual/misc/voodoo_sound/headphone_eq_b5_gain"
+    };
 }

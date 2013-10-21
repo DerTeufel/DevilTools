@@ -61,61 +61,123 @@ public class SettingsManager {
 			}
 		}
 		// Audio
-		value = preferences.getInt(c.getString(R.string.key_speaker_tuning), -1000);
+		value = preferences.getInt(c.getString(R.string.key_scoobydoo_sound_speaker_tuning), -1000);
 		if(value > -1000) {
 			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/speaker_tuning\n");
 		}
-		value = preferences.getInt(c.getString(R.string.key_speaker_offset), -1000);
+		value = preferences.getInt(c.getString(R.string.key_scoobydoo_sound_speaker_offset), -1000);
 		if(value > -1000) {
 			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/speaker_offset\n");
 		}
-		value = preferences.getInt(c.getString(R.string.key_headphone_amplifier_level), -1000);
+		value = preferences.getInt(c.getString(R.string.key_scoobydoo_sound_headphone_amplifier_level), -1000);
 		if(value > -1000) {
 			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/headphone_amplifier_level\n");
 		}
-		value = preferences.getInt(c.getString(R.string.key_stereo_expansion), -1000);
+		value = preferences.getInt(c.getString(R.string.key_scoobydoo_sound_stereo_expansion), -1000);
 		if(value > -1000) {
 			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/stereo_expansion\n");
-		}
-		value = preferences.getInt(c.getString(R.string.key_stereo_expansion_gain), -1000);
-		if(value > -1000) {
+		if(value > 0) {
+		    value = preferences.getInt(c.getString(R.string.key_scoobydoo_sound_stereo_expansion_gain), -1000);
+		    if(value > -1000) {
 			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/stereo_expansion_gain\n");
+		    }
 		}
-		value = preferences.getInt(c.getString(R.string.key_headphone_eq), -1000);
+		}
+		value = preferences.getInt(c.getString(R.string.key_scoobydoo_sound_headphone_eq), -1000);
 		if(value > -1000) {
 			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/headphone_eq\n");
 		   if(value > 0) {
-        	   	for (String filePath : EqTuningPreference.FILE_PATH) {
-            	   	value = preferences.getInt(filePath, EqTuningPreference.DEFAULT_VALUE) - EqTuningPreference.OFFSET_VALUE;
-		   	command.append("echo " + value + " > " + filePath + "\n");
+        		for (int i = 0; i < AudioFragment.SCOOBYDOO_FILE_PATH.length; i++) {
+            	   	value = preferences.getInt(AudioFragment.SCOOBYDOO_EQ_KEY[i], 0);
+		   	command.append("echo " + value + " > " + AudioFragment.SCOOBYDOO_FILE_PATH[i] + "\n");
 			}
         	   } else {
-        	   	for (String filePath : EqTuningPreference.FILE_PATH) {
+        		for (int i = 0; i < AudioFragment.SCOOBYDOO_FILE_PATH.length; i++) {
             	   	value = 0;
-		   	command.append("echo " + value + " > " + filePath + "\n");
+		   	command.append("echo " + value + " > " + AudioFragment.SCOOBYDOO_FILE_PATH[i] + "\n");
 			}
 		   }
 		}
 		
-		value = preferences.getInt(c.getString(R.string.key_fll_tuning), -1000);
+		value = preferences.getInt(c.getString(R.string.key_scoobydoo_sound_fll_tuning), -1000);
 		if(value > -1000) {
 			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/fll_tuning\n");
 		}
-		value = preferences.getInt(c.getString(R.string.key_dac_osr128), -1000);
+		value = preferences.getInt(c.getString(R.string.key_scoobydoo_sound_dac_osr128), -1000);
 		if(value > -1000) {
 			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/dac_osr128\n");
 		}
-		value = preferences.getInt(c.getString(R.string.key_adc_osr128), -1000);
+		value = preferences.getInt(c.getString(R.string.key_scoobydoo_sound_adc_osr128), -1000);
 		if(value > -1000) {
 			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/adc_osr128\n");
 		}
-		value = preferences.getInt(c.getString(R.string.key_dac_direct), -1000);
+		value = preferences.getInt(c.getString(R.string.key_scoobydoo_sound_dac_direct), -1000);
 		if(value > -1000) {
 			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/dac_direct\n");
 		}
-		value = preferences.getInt(c.getString(R.string.key_mono_downmix), -1000);
+		value = preferences.getInt(c.getString(R.string.key_scoobydoo_sound_mono_downmix), -1000);
 		if(value > -1000) {
 			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/mono_downmix\n");
+		}
+
+
+		value = preferences.getInt(c.getString(R.string.key_voodoo_sound_speaker_tuning), -1000);
+		if(value > -1000) {
+			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/voodoo_sound/speaker_tuning\n");
+		}
+		value = preferences.getInt(c.getString(R.string.key_voodoo_sound_speaker_offset), -1000);
+		if(value > -1000) {
+			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/voodoo_sound/speaker_offset\n");
+		}
+		value = preferences.getInt(c.getString(R.string.key_voodoo_sound_headphone_amplifier_level), -1000);
+		if(value > -1000) {
+			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/voodoo_sound/headphone_amplifier_level\n");
+		}
+		value = preferences.getInt(c.getString(R.string.key_voodoo_sound_stereo_expansion), -1000);
+		if(value > -1000) {
+			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/voodoo_sound/stereo_expansion\n");
+		if(value > 0) {
+		    value = preferences.getInt(c.getString(R.string.key_voodoo_sound_stereo_expansion_gain), -1000);
+		    if(value > -1000) {
+			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/voodoo_sound/stereo_expansion_gain\n");
+		    }
+		}
+		}
+		value = preferences.getInt(c.getString(R.string.key_voodoo_sound_headphone_eq), -1000);
+		if(value > -1000) {
+			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/voodoo_sound/headphone_eq\n");
+		   if(value > 0) {
+        		for (int i = 0; i < AudioFragment.VOODOO_FILE_PATH.length; i++) {
+            	   	value = preferences.getInt(AudioFragment.VOODOO_EQ_KEY[i], 0);
+		   	command.append("echo " + value + " > " + AudioFragment.VOODOO_FILE_PATH[i] + "\n");
+			}
+        	   } else {
+        		for (int i = 0; i < AudioFragment.VOODOO_FILE_PATH.length; i++) {
+            	   	value = 0;
+		   	command.append("echo " + value + " > " + AudioFragment.VOODOO_FILE_PATH[i] + "\n");
+			}
+		   }
+		}
+		
+		value = preferences.getInt(c.getString(R.string.key_voodoo_sound_fll_tuning), -1000);
+		if(value > -1000) {
+			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/voodoo_sound/fll_tuning\n");
+		}
+		value = preferences.getInt(c.getString(R.string.key_voodoo_sound_dac_osr128), -1000);
+		if(value > -1000) {
+			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/voodoo_sound/dac_osr128\n");
+		}
+		value = preferences.getInt(c.getString(R.string.key_voodoo_sound_adc_osr128), -1000);
+		if(value > -1000) {
+			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/voodoo_sound/adc_osr128\n");
+		}
+		value = preferences.getInt(c.getString(R.string.key_voodoo_sound_dac_direct), -1000);
+		if(value > -1000) {
+			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/voodoo_sound/dac_direct\n");
+		}
+		value = preferences.getInt(c.getString(R.string.key_voodoo_sound_mono_downmix), -1000);
+		if(value > -1000) {
+			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/voodoo_sound/mono_downmix\n");
 		}
 
 		// BLD

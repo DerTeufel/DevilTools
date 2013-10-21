@@ -6,18 +6,25 @@
 
     <mobi.cyann.deviltools.preference.StatusPreference
             custom:interfacePath="/sys/devices/virtual/misc/scoobydoo_sound/speaker_tuning"
-            android:key="@string/key_speaker_tuning"
+            android:key="@string/key_scoobydoo_sound_speaker_tuning"
 	    custom:description="Enable speaker tuning for better bass."
             android:summary="@string/status_not_available"
             android:title="@string/label_speaker_tuning" />
 
-    <mobi.cyann.deviltools.SpeakerOffsetPreference 
-            android:key="@string/key_speaker_offset"
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/virtual/misc/scoobydoo_sound/speaker_offset"
+            android:key="@string/key_scoobydoo_sound_speaker_offset"
+	    custom:description="Speaker Amplification Offset. 0 means stock value. Having too much amplification may cause distortion."
+            custom:maxValue="6"
+            custom:metrics=""
+            custom:minValue="-6"
+            custom:step="1"
+	    android:summary="0"
             android:title="@string/label_speaker_offset" />
 
         <mobi.cyann.deviltools.preference.IntegerPreference
             custom:interfacePath="/sys/devices/virtual/misc/scoobydoo_sound/headphone_amplifier_level"
-            android:key="@string/key_headphone_amplifier_level"
+            android:key="@string/key_scoobydoo_sound_headphone_amplifier_level"
 	    custom:description="Headphone Amplifier Level (0-63 which corresponds to -57db-6db)."
             custom:maxValue="63"
             custom:metrics=""
@@ -28,14 +35,14 @@
 
     <mobi.cyann.deviltools.preference.StatusPreference
             custom:interfacePath="/sys/devices/virtual/misc/scoobydoo_sound/stereo_expansion"
-            android:key="@string/key_stereo_expansion"
+            android:key="@string/key_scoobydoo_sound_stereo_expansion"
             android:summary="@string/status_not_available"
             android:title="@string/label_stereo_expansion" />
 
         <mobi.cyann.deviltools.preference.IntegerPreference
-            android:dependency="@string/key_stereo_expansion"
+            android:dependency="@string/key_scoobydoo_sound_stereo_expansion"
             custom:interfacePath="/sys/devices/virtual/misc/scoobydoo_sound/stereo_expansion_gain"
-            android:key="@string/key_stereo_expansion_gain"
+            android:key="@string/key_scoobydoo_sound_stereo_expansion_gain"
 	    custom:description="3D Effect Gain Level (0-31)."
             custom:maxValue="31"
             custom:metrics=""
@@ -46,43 +53,248 @@
 
     <mobi.cyann.deviltools.preference.StatusPreference
             custom:interfacePath="/sys/devices/virtual/misc/scoobydoo_sound/headphone_eq"
-            android:key="@string/key_headphone_eq"
+            android:key="@string/key_scoobydoo_sound_headphone_eq"
             android:summary="@string/status_not_available"
             android:title="@string/label_headphone_eq" />
 
-    <mobi.cyann.deviltools.EqTuningPreference 
-	    android:key="eq_tuning"
-	    android:title="@string/eq_tuning_title_head"
-	    android:summary="@string/eq_tuning_summary_head" />
+     <mobi.cyann.deviltools.preference.IntegerPreference
+         android:dependency="@string/key_scoobydoo_sound_headphone_eq"
+         custom:interfacePath="/sys/devices/virtual/misc/scoobydoo_sound/headphone_eq_b1_gain"
+         android:key="@string/key_scoobydoo_sound_headphone_eq_b1_gain"
+         custom:maxValue="24"
+         custom:shift="12"
+         custom:metrics=""
+         custom:minValue="0"
+         custom:step="1"
+         android:summary="0"
+         android:title="@string/eq_b1_title" />
+
+     <mobi.cyann.deviltools.preference.IntegerPreference
+         android:dependency="@string/key_scoobydoo_sound_headphone_eq"
+         custom:interfacePath="/sys/devices/virtual/misc/scoobydoo_sound/headphone_eq_b2_gain"
+         android:key="@string/key_scoobydoo_sound_headphone_eq_b2_gain"
+         custom:maxValue="24"
+         custom:shift="12"
+         custom:metrics=""
+         custom:minValue="0"
+         custom:step="1"
+         android:summary="0"
+         android:title="@string/eq_b2_title" />
+
+     <mobi.cyann.deviltools.preference.IntegerPreference
+         android:dependency="@string/key_scoobydoo_sound_headphone_eq"
+         custom:interfacePath="/sys/devices/virtual/misc/scoobydoo_sound/headphone_eq_b3_gain"
+         android:key="@string/key_scoobydoo_sound_headphone_eq_b3_gain"
+         custom:maxValue="24"
+         custom:shift="12"
+         custom:metrics=""
+         custom:minValue="0"
+         custom:step="1"
+         android:summary="0"
+         android:title="@string/eq_b3_title" />
+
+     <mobi.cyann.deviltools.preference.IntegerPreference
+         android:dependency="@string/key_scoobydoo_sound_headphone_eq"
+         custom:interfacePath="/sys/devices/virtual/misc/scoobydoo_sound/headphone_eq_b4_gain"
+         android:key="@string/key_scoobydoo_sound_headphone_eq_b4_gain"
+         custom:maxValue="24"
+         custom:shift="12"
+         custom:metrics=""
+         custom:minValue="0"
+         custom:step="1"
+         android:summary="0"
+         android:title="@string/eq_b4_title" />
+
+     <mobi.cyann.deviltools.preference.IntegerPreference
+         android:dependency="@string/key_scoobydoo_sound_headphone_eq"
+         custom:interfacePath="/sys/devices/virtual/misc/scoobydoo_sound/headphone_eq_b5_gain"
+
+         android:key="@string/key_scoobydoo_sound_headphone_eq_b5_gain"
+         custom:maxValue="24"
+         custom:shift="12"
+         custom:metrics=""
+         custom:minValue="0"
+         custom:step="1"
+         android:summary="0"
+         android:title="@string/eq_b5_title" />
        
 
     <mobi.cyann.deviltools.preference.StatusPreference
             custom:interfacePath="/sys/devices/virtual/misc/scoobydoo_sound/fll_tuning"
-            android:key="@string/key_fll_tuning"
+            android:key="@string/key_scoobydoo_sound_fll_tuning"
             android:summary="@string/status_not_available"
             android:title="@string/label_fll_tuning" />
 
     <mobi.cyann.deviltools.preference.StatusPreference
             custom:interfacePath="/sys/devices/virtual/misc/scoobydoo_sound/dac_osr128"
-            android:key="@string/key_dac_osr128"
+            android:key="@string/key_scoobydoo_sound_dac_osr128"
             android:summary="@string/status_not_available"
             android:title="@string/label_dac_osr128" />
 
     <mobi.cyann.deviltools.preference.StatusPreference
             custom:interfacePath="/sys/devices/virtual/misc/scoobydoo_sound/adc_osr128"
-            android:key="@string/key_adc_osr128"
+            android:key="@string/key_scoobydoo_sound_adc_osr128"
             android:summary="@string/status_not_available"
             android:title="@string/label_adc_osr128" />
 
     <mobi.cyann.deviltools.preference.StatusPreference
             custom:interfacePath="/sys/devices/virtual/misc/scoobydoo_sound/dac_direct"
-            android:key="@string/key_dac_direct"
+            android:key="@string/key_scoobydoo_sound_dac_direct"
             android:summary="@string/status_not_available"
             android:title="@string/label_dac_direct" />
 
     <mobi.cyann.deviltools.preference.StatusPreference
             custom:interfacePath="/sys/devices/virtual/misc/scoobydoo_sound/mono_downmix"
-            android:key="@string/key_mono_downmix"
+            android:key="@string/key_scoobydoo_sound_mono_downmix"
+            android:summary="@string/status_not_available"
+            android:title="@string/label_mono_downmix" />
+    </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>
+
+
+
+<mobi.cyann.deviltools.preference.RemovablePreferenceCategory android:title="@string/label_audio_tweak" >
+
+    <mobi.cyann.deviltools.preference.StatusPreference
+            custom:interfacePath="/sys/devices/virtual/misc/voodoo_sound/speaker_tuning"
+            android:key="@string/key_voodoo_sound_speaker_tuning"
+	    custom:description="Enable speaker tuning for better bass."
+            android:summary="@string/status_not_available"
+            android:title="@string/label_speaker_tuning" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/virtual/misc/voodoo_sound/speaker_offset"
+            android:key="@string/key_voodoo_sound_speaker_offset"
+			custom:description="Speaker Amplification Offset. 0 means stock value. Having too much amplification may cause distortion."
+            custom:maxValue="6"
+            custom:metrics=""
+            custom:minValue="-6"
+            custom:step="1"
+			android:summary="0"
+            android:title="@string/label_speaker_offset" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/virtual/misc/voodoo_sound/headphone_amplifier_level"
+            android:key="@string/key_voodoo_sound_headphone_amplifier_level"
+	    custom:description="Headphone Amplifier Level (0-63 which corresponds to -57db-6db)."
+            custom:maxValue="63"
+            custom:metrics=""
+            custom:minValue="0"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_headphone_amplifier_level" />
+
+    <mobi.cyann.deviltools.preference.StatusPreference
+            custom:interfacePath="/sys/devices/virtual/misc/voodoo_sound/stereo_expansion"
+            android:key="@string/key_voodoo_sound_stereo_expansion"
+            android:summary="@string/status_not_available"
+            android:title="@string/label_stereo_expansion" />
+
+        <mobi.cyann.deviltools.preference.IntegerPreference
+            android:dependency="@string/key_voodoo_sound_stereo_expansion"
+            custom:interfacePath="/sys/devices/virtual/misc/voodoo_sound/stereo_expansion_gain"
+            android:key="@string/key_voodoo_sound_stereo_expansion_gain"
+	    custom:description="3D Effect Gain Level (0-31)."
+            custom:maxValue="31"
+            custom:metrics=""
+            custom:minValue="0"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_stereo_expansion_gain" />
+
+    <mobi.cyann.deviltools.preference.StatusPreference
+            custom:interfacePath="/sys/devices/virtual/misc/voodoo_sound/headphone_eq"
+            android:key="@string/key_voodoo_sound_headphone_eq"
+            android:summary="@string/status_not_available"
+            android:title="@string/label_headphone_eq" />
+
+     <mobi.cyann.deviltools.preference.IntegerPreference
+         android:dependency="@string/key_voodoo_sound_headphone_eq"
+         custom:interfacePath="/sys/devices/virtual/misc/voodoo_sound/headphone_eq_b1_gain"
+         android:key="@string/key_voodoo_sound_headphone_eq_b1_gain"
+         custom:maxValue="24"
+         custom:shift="12"
+         custom:metrics=""
+         custom:minValue="0"
+         custom:step="1"
+         android:summary="0"
+         android:title="@string/eq_b1_title" />
+
+     <mobi.cyann.deviltools.preference.IntegerPreference
+         android:dependency="@string/key_voodoo_sound_headphone_eq"
+         custom:interfacePath="/sys/devices/virtual/misc/voodoo_sound/headphone_eq_b2_gain"
+         android:key="@string/key_voodoo_sound_headphone_eq_b2_gain"
+         custom:maxValue="24"
+         custom:shift="12"
+         custom:metrics=""
+         custom:minValue="0"
+         custom:step="1"
+         android:summary="0"
+         android:title="@string/eq_b2_title" />
+
+     <mobi.cyann.deviltools.preference.IntegerPreference
+         android:dependency="@string/key_voodoo_sound_headphone_eq"
+         custom:interfacePath="/sys/devices/virtual/misc/voodoo_sound/headphone_eq_b3_gain"
+         android:key="@string/key_voodoo_sound_headphone_eq_b3_gain"
+         custom:maxValue="24"
+         custom:shift="12"
+         custom:metrics=""
+         custom:minValue="0"
+         custom:step="1"
+         android:summary="0"
+         android:title="@string/eq_b3_title" />
+
+     <mobi.cyann.deviltools.preference.IntegerPreference
+         android:dependency="@string/key_voodoo_sound_headphone_eq"
+         custom:interfacePath="/sys/devices/virtual/misc/voodoo_sound/headphone_eq_b4_gain"
+         android:key="@string/key_voodoo_sound_headphone_eq_b4_gain"
+         custom:maxValue="24"
+         custom:shift="12"
+         custom:metrics=""
+         custom:minValue="0"
+         custom:step="1"
+         android:summary="0"
+         android:title="@string/eq_b4_title" />
+
+     <mobi.cyann.deviltools.preference.IntegerPreference
+         android:dependency="@string/key_voodoo_sound_headphone_eq"
+         custom:interfacePath="/sys/devices/virtual/misc/voodoo_sound/headphone_eq_b5_gain"
+         android:key="@string/key_voodoo_sound_headphone_eq_b5_gain"
+         custom:maxValue="24"
+         custom:shift="12"
+         custom:metrics=""
+         custom:minValue="0"
+         custom:step="1"
+         android:summary="0"
+         android:title="@string/eq_b5_title" />
+       
+
+    <mobi.cyann.deviltools.preference.StatusPreference
+            custom:interfacePath="/sys/devices/virtual/misc/voodoo_sound/fll_tuning"
+            android:key="@string/key_voodoo_sound_fll_tuning"
+            android:summary="@string/status_not_available"
+            android:title="@string/label_fll_tuning" />
+
+    <mobi.cyann.deviltools.preference.StatusPreference
+            custom:interfacePath="/sys/devices/virtual/misc/voodoo_sound/dac_osr128"
+            android:key="@string/key_voodoo_sound_dac_osr128"
+            android:summary="@string/status_not_available"
+            android:title="@string/label_dac_osr128" />
+
+    <mobi.cyann.deviltools.preference.StatusPreference
+            custom:interfacePath="/sys/devices/virtual/misc/voodoo_sound/adc_osr128"
+            android:key="@string/key_voodoo_sound_adc_osr128"
+            android:summary="@string/status_not_available"
+            android:title="@string/label_adc_osr128" />
+
+    <mobi.cyann.deviltools.preference.StatusPreference
+            custom:interfacePath="/sys/devices/virtual/misc/voodoo_sound/dac_direct"
+            android:key="@string/key_voodoo_sound_dac_direct"
+            android:summary="@string/status_not_available"
+            android:title="@string/label_dac_direct" />
+
+    <mobi.cyann.deviltools.preference.StatusPreference
+            custom:interfacePath="/sys/devices/virtual/misc/voodoo_sound/mono_downmix"
+            android:key="@string/key_voodoo_sound_mono_downmix"
             android:summary="@string/status_not_available"
             android:title="@string/label_mono_downmix" />
     </mobi.cyann.deviltools.preference.RemovablePreferenceCategory>

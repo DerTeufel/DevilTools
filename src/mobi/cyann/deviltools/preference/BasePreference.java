@@ -48,7 +48,7 @@ public abstract class BasePreference<T> extends Preference {
 	public BasePreference(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		
-		setDefaultValue(-1);
+		setDefaultValue(-1000);
 		
 		TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.mobi_cyann_deviltools_preference_BasePreference, defStyle, 0);
 		reloadOnResume = a.getBoolean(R.styleable.mobi_cyann_deviltools_preference_BasePreference_reloadOnResume, false);
