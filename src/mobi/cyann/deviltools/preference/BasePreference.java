@@ -100,13 +100,9 @@ public abstract class BasePreference<T> extends Preference {
 			SysCommand sc = SysCommand.getInstance();
 			int n = sc.readSysfs(interfacePath); 
 			if(n > 0) {
-				ret = sc.getLastResult(0);
-			    /*if (ret.contains("delta") || ret.contains("override")) {
-				String[] splitResult = ret.split(" "); // –> splitten an den Leerzeichen
-				ret = splitResult[1];
-			    }*/
+			ret = sc.getLastResult(0);
 			String[] splitResult = ret.split(" ");
-			for (int i = 0; i < 4; i++) {
+			for (int i = 0; i < splitResult.length; i++) {
 			    try {
 			    int tmpret = Integer.parseInt(splitResult[i]);
 			    ret = String.valueOf(tmpret);
