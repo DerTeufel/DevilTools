@@ -227,17 +227,6 @@ case "$?" in
 	;;
 esac
 
-# vibrate
-STAT=`cat /sys/class/misc/pwm_duty/pwm_duty`
-case "$?" in
-	0)
-	echo "key_vibration_intensity=$STAT" >> $OUT_FILE
-	;;
-	*)
-	echo "key_vibration_intensity=-1" >> $OUT_FILE
-	;;
-esac
-
 # bigmem
 STAT=`cat /sys/kernel/bigmem/enable`
 case "$STAT" in
