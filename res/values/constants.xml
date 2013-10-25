@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">DevilTools</string>
-    <string name="app_version">0.9.5</string>
+    <string name="app_version">0.9.6</string>
     
 	<string name="SETTINGS_DIR">/data/data/mobi.cyann.deviltools/settings/</string>
 	<string name="PREFS_DIR">/data/data/mobi.cyann.deviltools/shared_prefs/</string>
@@ -170,6 +170,7 @@
 
 	<string name="key_smooth_ui_enabled">key_smooth_ui_enabled</string>
 	<string name="key_dyn_fsync">key_dyn_fsync</string>
+	<string name="key_vibration_kernelcontrol">key_vibration_kernelcontrol</string>
 	<string name="key_vibration_intensity">key_vibration_intensity</string>
 	<string name="key_vibration_intensity_smdk4412">key_vibration_intensity_smdk4412</string>
 

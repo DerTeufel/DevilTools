@@ -303,9 +303,15 @@ public class SettingsManager {
 		}
 
 		// vibrator
-		value = preferences.getInt(c.getString(R.string.key_vibration_intensity), -1000);
+		value = preferences.getInt(c.getString(R.string.key_vibration_kernelcontrol), -1000);
 		if(value > -1000) {
-			command.append("echo " + value + " > " + "/sys/class/misc/pwm_duty/pwm_duty\n");
+			command.append("echo " + value + " > " + "/sys/class/misc/pwm_duty/kernelcontrol\n");
+		}
+		if(value > 0) {
+		    value = preferences.getInt(c.getString(R.string.key_vibration_intensity), -1000);
+		    if(value > -1000) {
+			command.append("echo " + value + " > " + "/sys/class/misc/pwm_duty/pwm_kernel_duty\n");
+		    }
 		}
 
 		value = preferences.getInt(c.getString(R.string.key_vibration_intensity_smdk4412), -1000);

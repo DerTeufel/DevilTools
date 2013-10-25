@@ -134,8 +134,16 @@
 
 
     <mobi.cyann.deviltools.preference.RemovablePreferenceCategory android:title="@string/vibration_intensity" >
+
+        <mobi.cyann.deviltools.preference.StatusPreference
+            custom:interfacePath="/sys/class/misc/pwm_duty/kernelcontrol"
+            android:key="@string/key_vibration_kernelcontrol"
+            android:summary="@string/status_not_available"
+            android:title="DevilTools controls vibration" />
+
         <mobi.cyann.deviltools.preference.IntegerPreference
-            custom:interfacePath="/sys/class/misc/pwm_duty/pwm_duty"
+            custom:interfacePath="/sys/class/misc/pwm_duty/pwm_kernel_duty"
+            android:dependency="@string/key_vibration_kernelcontrol"
             android:key="@string/key_vibration_intensity"
             custom:maxValue="100"
             custom:metrics="%"
