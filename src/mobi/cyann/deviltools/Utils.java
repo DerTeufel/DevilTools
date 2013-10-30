@@ -57,4 +57,13 @@ public class Utils {
         return new File(filename).exists();
     }
 
+    public static boolean folderNotEmpty(String folder) {
+        File file = new File(folder);
+	if (file.isDirectory()) {
+	    return file.list().length > 0;
+	} else {
+	    return false;
+	}
+    }
+
 }

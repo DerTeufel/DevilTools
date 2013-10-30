@@ -22,7 +22,6 @@ include $(BUILD_PACKAGE)
 ##################################################
 include $(CLEAR_VARS)
 
-LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES := android-support-v4:android-support-v4.jar \
-					roottools:RootTools.jar
+LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES := roottools:RootTools.jar
 
 include $(BUILD_MULTI_PREBUILT)

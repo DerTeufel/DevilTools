@@ -32,6 +32,7 @@ public class SettingFragment extends PreferenceListFragment implements OnPrefere
     private CheckBoxPreference mSecondrom;
     private static final String BLNFILE = "/sys/class/misc/backlightnotification/enabled";
 
+    public static final String SECONDROM_PATH = "/data/media/.secondrom/";
     public static final String SECONDROM_SYSTEM_PATH = "/data/media/.secondrom/system.img";
     public static final String SECONDROM_VERIFY_PATH = "/.secondrom/media";
     public static final String SECONDROM_PRIMARY_PATH = "/data/.secondaryboot";
@@ -42,7 +43,8 @@ public class SettingFragment extends PreferenceListFragment implements OnPrefere
     }
 
     private static boolean HasSecondrom() {
-        return Utils.fileExists(SECONDROM_SYSTEM_PATH) || IsSecondrom();
+        return Utils.fileExists(SECONDROM_SYSTEM_PATH) || IsSecondrom() || 
+		Utils.folderNotEmpty(SECONDROM_PATH);
     }
 
     private static boolean IsSecondrom() {
