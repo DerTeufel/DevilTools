@@ -58,8 +58,11 @@ public class SettingFragment extends PreferenceListFragment implements OnPrefere
 
 		mService = (CheckBoxPreference) findPreference(getString(R.string.key_deviltools_service));
         	mService.setEnabled(BLNisSupported());
-		if(BLNisSupported())
+		if(BLNisSupported()) {
 		mService.setOnPreferenceChangeListener(this);
+		} else {
+            	getPreferenceScreen().removePreference(mService);
+		}
 		findPreference(getString(R.string.key_load_settings)).setOnPreferenceChangeListener(this);
 		findPreference(getString(R.string.key_save_settings)).setOnPreferenceClickListener(this);
 		findPreference(getString(R.string.key_save_settings)).setOnPreferenceChangeListener(this);
