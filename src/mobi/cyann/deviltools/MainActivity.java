@@ -217,8 +217,8 @@ public class MainActivity extends FragmentActivity {
 	}
 	
 	public static void restart(Context c) {
-		Intent i = new Intent(c, MainActivity.class);
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        c.startActivity(i);
+	    Intent i = new Intent(c, MainActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            c.startActivity(i);
 	}
 }
