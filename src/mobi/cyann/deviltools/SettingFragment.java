@@ -144,15 +144,12 @@ public class SettingFragment extends PreferenceListFragment implements OnPrefere
 			}
 			return true;
 		} else if(preference == mSecondrom) {
+			if(newValue != null) {
 			   SysCommand sc = SysCommand.getInstance();
-		   	   if(IsSecondrom())
-// reversed logic!? seems the checkbox gets set, after its value has been checked, write 1 if the checkox currently is not checked 
-		   	   	sc.writeSysfs(SECONDROM_SECONDARY_PATH, String.valueOf(mSecondrom.isChecked() ? 0 : 1));
-		   	   else
-		   	   	sc.writeSysfs(SECONDROM_PRIMARY_PATH, String.valueOf(mSecondrom.isChecked() ? 0 : 1));
-
-			//Toast.makeText(getActivity(), String.valueOf(mSecondrom.isChecked() ? 0 : 1), Toast.LENGTH_LONG).show();
-
+		   	   sc.writeSysfs(IsSecondrom() ? 
+				SECONDROM_SECONDARY_PATH : SECONDROM_PRIMARY_PATH,
+				 String.valueOf((Boolean)newValue ? 1 : 0));
+			}
 			return true;
 		}
 		return false;
