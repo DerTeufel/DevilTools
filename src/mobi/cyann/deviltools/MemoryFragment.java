@@ -208,7 +208,8 @@ public class MemoryFragment extends BasePreferenceFragment implements OnPreferen
 		command.append("echo " + 1 + " > " + ZRAM_FILE_RESET_PATH[i] + "\n");
 		command.append("echo " + String.valueOf(zramSize) + " > " + ZRAM_FILE_SIZE_PATH[i] + "\n");
 		command.append("mkswap " + ZRAM_FILE_PATH[i] + "\n");
-		command.append("swapon " + ZRAM_FILE_PATH[i] + "\n");
+		if (zramSize!=0)
+			command.append("swapon " + ZRAM_FILE_PATH[i] + "\n");
         }
 	return command.toString();
     }
