@@ -48,7 +48,7 @@ public class VoltageControlFragment extends BasePreferenceFragment implements On
 	"/sys/class/misc/customvoltage/int_volt"
 	};
 
-    public static final String GPU_FILE_PATH = "/sys/class/misc/mali_control/voltage_control";
+    public static final String GPU_FILE_PATH = "/sys/class/misc/gpu_control/gpu_voltage_control";
 	
 	public VoltageControlFragment() {
 		super(R.layout.voltage);
