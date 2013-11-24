@@ -61,6 +61,11 @@ public class SettingsManager {
 			}
 		}
 		// Audio
+		value = preferences.getInt(c.getString(R.string.key_scoobydoo_sound_enable), -1000);
+		if(value > -1000) {
+			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound_control/enable\n");
+		}
+
 		value = preferences.getInt(c.getString(R.string.key_scoobydoo_sound_speaker_tuning), -1000);
 		if(value > -1000) {
 			command.append("echo " + value + " > " + "/sys/devices/virtual/misc/scoobydoo_sound/speaker_tuning\n");
@@ -1041,6 +1046,16 @@ public class SettingsManager {
 		if(value > -1000) {
 			command.append("echo " + value + " > " + "/sys/class/sec/sec_touchkey/touch_led_on_screen_touch\n");
 		}
+
+		value = preferences.getInt(c.getString(R.string.key_touch_led_force_disable), -1000);
+		if(value > -1000) {
+			command.append("echo " + value + " > " + "/sys/class/sec/sec_touchkey/force_disable\n");
+		}
+		value = preferences.getInt(c.getString(R.string.key_touch_led_timeout), -1000);
+		if(value > -1000) {
+			command.append("echo " + value + " > " + "/sys/class/sec/sec_touchkey/timeout\n");
+		}
+
 
 		// Screen
 

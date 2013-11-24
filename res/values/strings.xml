@@ -37,8 +37,10 @@
 
     <!-- Touchkey backlight -->
     <string name="touch_led_handling">Touchkey backlight settings</string>
-    <string name="label_touch_led_handling">Rom controls backlight</string>
+    <string name="label_touch_led_handling">Kernel controls backlight</string>
     <string name="label_touch_led_on_screen_touch">Light up on screen touch</string>
+    <string name="label_touch_led_force_disable">Completely disable backlight</string>
+    <string name="label_touch_led_timeout">Backlight timeout</string>
 
     <!-- Performance -->
     <string name="label_performance_tweak">Performance Settings</string>
@@ -300,6 +302,7 @@
     	<string name="label_touch_boost_freq">Touch Boost Frequency</string>
 
 	<!-- Audio -->
+    	<string name="label_scoobydoo_sound_enable">Enable Soundengine</string>
     	<string name="label_audio_tweak">Audio Settings</string>
 	<string name="label_speaker_tuning">Enable speaker tuning</string>
 	<string name="label_speaker_offset">Speaker Amplification Offset</string>

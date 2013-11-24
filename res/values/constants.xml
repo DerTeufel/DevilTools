@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">DevilTools</string>
-    <string name="app_version">0.9.6</string>
+    <string name="app_version">1.0.1</string>
     
 	<string name="SETTINGS_DIR">/data/data/mobi.cyann.deviltools/settings/</string>
 	<string name="PREFS_DIR">/data/data/mobi.cyann.deviltools/shared_prefs/</string>
@@ -185,9 +185,8 @@
 
 	<string name="key_touch_led_handling">key_touch_led_handling</string>
 	<string name="key_touch_led_on_screen_touch">key_touch_led_on_screen_touch</string>
-
-
-
+	<string name="key_touch_led_force_disable">key_touch_led_force_disable</string>
+	<string name="key_touch_led_timeout">key_touch_led_timeout</string>
 
 	<!-- Battery -->
 	<string name="key_dcp_ac_input_curr">key_dcp_ac_input_curr</string>
@@ -261,10 +260,7 @@
 	<string name="key_scoobydoo_sound_dac_direct">key_scoobydoo_sound_dac_direct</string>
 	<string name="key_scoobydoo_sound_adc_osr128">key_scoobydoo_sound_adc_osr128</string>
 	<string name="key_scoobydoo_sound_mono_downmix">key_scoobydoo_sound_mono_downmix</string>
-
-
-
-
+	<string name="key_scoobydoo_sound_enable">key_scoobydoo_sound_enable</string>
 
 	<!-- Memory Management -->
 	<string name="key_bigmem">key_bigmem</string>
