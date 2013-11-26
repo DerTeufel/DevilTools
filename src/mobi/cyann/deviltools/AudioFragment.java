@@ -22,11 +22,12 @@ import android.view.View;
 import android.widget.TextView;
 
 
-public class AudioFragment extends BasePreferenceFragment {
+public class AudioFragment extends BasePreferenceFragment implements OnPreferenceAttachedListener{
 	//private final static String LOG_TAG = "DevilTools.AudioActivity";
 	
 	public AudioFragment() {
 		super(R.layout.audio);
+		setOnPreferenceAttachedListener(this);
 	}
 
     public static final String[] SCOOBYDOO_EQ_KEY = new String[] {
@@ -60,4 +61,27 @@ public class AudioFragment extends BasePreferenceFragment {
         "/sys/devices/virtual/misc/voodoo_sound/headphone_eq_b4_gain",
         "/sys/devices/virtual/misc/voodoo_sound/headphone_eq_b5_gain"
     };
+
+
+	@Override
+	public void onPreferenceAttached(PreferenceScreen rootPreference, int xmlId) {
+
+ 	Preference button = (Preference)findPreference("key_scoobydoo_sound_enable");
+   	if(button != null) 
+   	{
+        button.setOnPreferenceClickListener(new Preference.
+		OnPreferenceClickListener() {
+                    @Override
+                    public boolean onPreferenceClick(Preference arg0) {
+			MainActivity.restart(getActivity());
+                        return true;
+                    }
+                });     
+    	}
+
+
+	}
+
+
+
 }
