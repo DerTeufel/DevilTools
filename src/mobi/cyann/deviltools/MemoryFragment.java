@@ -4,18 +4,22 @@
  */
 package mobi.cyann.deviltools;
 
+import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import mobi.cyann.deviltools.PreferenceListFragment.OnPreferenceAttachedListener;
 import mobi.cyann.deviltools.preference.IntegerPreference;
 import mobi.cyann.deviltools.SysCommand;
+import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.app.ActivityManager.MemoryInfo;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.ListPreference;
@@ -77,7 +81,7 @@ public class MemoryFragment extends BasePreferenceFragment implements OnPreferen
         MemoryInfo mi = new MemoryInfo();
         ActivityManager activityManager = (ActivityManager) getActivity().getSystemService(Context.ACTIVITY_SERVICE);
         activityManager.getMemoryInfo(mi);
-        long totalMegs = mi.totalMem / 1048576L;
+        long totalMegs = getTotalMem() / 1048576L;
 
         mBigmem = (ListPreference) findPreference("key_bigmem");
 	if (!Utils.fileExists(BIGMEM_FILE_PATH)) {
@@ -156,23 +160,47 @@ public class MemoryFragment extends BasePreferenceFragment implements OnPreferen
 	return count;
     }
 
-    private long totalZramSize(String percent) {
-	String zramPercent = percent;
-        MemoryInfo mi = new MemoryInfo();
+    public static synchronized int readTotalRam() { 
+ 		int tm=1000; 
+ 		try { 
+ 			RandomAccessFile reader = new RandomAccessFile("/proc/meminfo", "r"); 
+ 			String load = reader.readLine(); 
+ 			String[] totrm = load.split(" kB"); 
+ 			String[] trm = totrm[0].split(" "); 
+ 			tm=Integer.parseInt(trm[trm.length-1]); 
+ 			tm=Math.round(tm/1024); } 
+ 		catch (IOException ex) 
+ 		{ 
+ 			ex.printStackTrace(); } 
+ 		return tm; 
+ 	}
+    
+    @SuppressLint("NewApi")
+	private long getTotalMem() {
+    	MemoryInfo mi = new MemoryInfo();
         ActivityManager activityManager = (ActivityManager) getActivity().getSystemService(Context.ACTIVITY_SERVICE);
         activityManager.getMemoryInfo(mi);
-	long totalzramSize = (mi.totalMem / 100) * Integer.parseInt(zramPercent) / 1048576L;
-	return totalzramSize;
+        long totalMem=0;
+        if (Build.VERSION.SDK_INT >= 16)
+        	totalMem=mi.totalMem;
+        else
+        	totalMem=readTotalRam();
+		return totalMem;
+    	
+    }
+    
+    private long totalZramSize(String percent) {
+    	String zramPercent = percent;       
+    	long totalzramSize = (getTotalMem() / 100) * Integer.parseInt(zramPercent) / 1048576L;
+    	return totalzramSize;
     }
 
-
+    
+    
     private String zramCommand(String percent) {
 	int num_devices = zram_num_devices();
 	String zramPercent = percent;
-        MemoryInfo mi = new MemoryInfo();
-        ActivityManager activityManager = (ActivityManager) getActivity().getSystemService(Context.ACTIVITY_SERVICE);
-        activityManager.getMemoryInfo(mi);
-	long zramSize = (mi.totalMem / num_devices / 100) * Integer.parseInt(zramPercent);
+	long zramSize = (getTotalMem() / num_devices / 100) * Integer.parseInt(zramPercent);
 	setPreferenceString("zramSize", String.valueOf(zramSize));
 	StringBuilder command = new StringBuilder();
         for (int i = 0; i < num_devices; i++) {
@@ -180,7 +208,8 @@ public class MemoryFragment extends BasePreferenceFragment implements OnPreferen
 		command.append("echo " + 1 + " > " + ZRAM_FILE_RESET_PATH[i] + "\n");
 		command.append("echo " + String.valueOf(zramSize) + " > " + ZRAM_FILE_SIZE_PATH[i] + "\n");
 		command.append("mkswap " + ZRAM_FILE_PATH[i] + "\n");
-		command.append("swapon " + ZRAM_FILE_PATH[i] + "\n");
+		if (zramSize!=0)
+			command.append("swapon " + ZRAM_FILE_PATH[i] + "\n");
         }
 	return command.toString();
     }

@@ -1106,7 +1106,8 @@ public class SettingsManager {
 			MemoryFragment.ZRAM_FILE_SIZE_PATH[i] + "\n");
 		    command.append("mkswap " + MemoryFragment.ZRAM_FILE_PATH[i] + 
 			"\n");
-		    command.append("swapon " + MemoryFragment.ZRAM_FILE_PATH[i] + 
+		    if (!String.valueOf(zramSize).equals("0"))
+		    	command.append("swapon " + MemoryFragment.ZRAM_FILE_PATH[i] + 
 			"\n");
         	    }
 		}
