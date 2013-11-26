@@ -212,6 +212,8 @@ public class MainActivity extends FragmentActivity {
 				pref.edit().clear().commit();
 			}catch(IOException e) {
 				Log.e(LOG_TAG, "failed to extract scripts", e);
+			}catch(NullPointerException e) {
+				Log.e(LOG_TAG, "failed to extract scripts", e);
 			}
 		}
 	}
